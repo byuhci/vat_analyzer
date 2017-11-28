@@ -20,48 +20,69 @@ noData = {}
 
 output_file = argv[1]
 
-SURVEY_PATH = "/home/naomi/Documents/AML/vat/data/Tues9PM/"
+SURVEY_PATH = "/home/naomi/Documents/AML/vat/data/surveyResultsForPython/"
 
-#NEED TO KEEP TRACK OF WHEN/WHAT IS STUDY A B C OR D
+#enter the folder for survey A
+    # go through all the files in each folder that end in .info.json
+        #go the "surveys" section
+            #skip user info, practice-first, practice-second, practice-third, practice-survey
+            #gather info for "run-blue" (has-both-task), "run-yellow" (no-video-task), "run-red" (no-data-task)
+            # "run-survey"
+            #and "pill-blue" (has-both-task), "pill-red" (no-video-task), "pill-orange" (no-data-task),
+            # "pills-survey"
+            # and "run-pink" (no-video-task) #their post-distraction task
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+#enter the folder for survey B
+    # go through all the files in each folder that end in .info.json
+        #go the "surveys" section
+            #skip user info, practice-first, practice-second, practice-third, practice-survey
+            #gather info for "run-blue" (has-both-task), "run-yellow" (no-data-task), "run-red" (no-video-task)
+            # "run-survey"
+            #and "pill-blue" (has-both-task), "pill-red" (no-data-task), "pill-orange" (no-video-task),
+            # "pills-survey"
+            # and "run-pink" (no-video-task) #their post-distraction task
+            
+#enter the folder for survey C
+    # go through all the files in each folder that end in .info.json
+        #go the "surveys" section
+            #skip user info, practice-first, practice-second, practice-third, practice-survey
+            #gather info for "run-blue" (has-both-task), "run-yellow" (no-video-task), "run-red" (no-data-task)
+            # "run-survey",
 
-def findSurveyFiles(theWorkSpace, time):
-    for dirpath, dirs, files in os.walk(SURVEY_PATH):
-        for file in files:
-            filename = os.path.join(dirpath,file)
-            survey_dictionary = json.load(filename)
-            split_survey_dictionary = filename.split('/')
-            final_split = split_survey_dictionary[-1].split('.')
-            with open(filename) as data_file:
-            print("final_split[0]")
-            print(final_split[0])
-            	if(final_split[0] in theWorkSpace):
-                	yield findSurveyAnswers(survey_dictionary)
+            #and "pill-blue" (has-both-task), "pill-red" (no-video-task), "pill-orange" ((no-data-task),
+            # "pills-survey"
+            # and "run-pink" (no-video-task) #their post-distraction task
+#enter the folder for survey D
+    # go through all the files in each folder that end in .info.json
+        #go the "surveys" section
+            #skip user info, practice-first, practice-second, practice-third, practice-survey
+            #gather info for "run-blue" (has-both-task), "run-yellow" (no-video-task), "run-red" (no-data-task)
+            # "run-survey",
 
-def findSurveyAnswers(survey_dictionary):
-	for survey in filter(lambda x: x['study'] == 'studyA', findSurveyFiles()); 
-	for survey in filter(lambda x: x['study'] == 'studyB', findSurveyFiles()); 
-	for survey in filter(lambda x: x['study'] == 'studyC', findSurveyFiles()); 
-	for survey in filter(lambda x: x['study'] == 'studyD', findSurveyFiles()); 
+            #and "pill-blue" (has-both-task), "pill-red" (no-video-task), "pill-orange" ((no-data-task),
+            # "pills-survey"
+            # and "run-pink" (no-video-task) #their post-distraction task
 
 
 
-
-    if 'surveys' in info:
-    	#for 
-        #print("in findSurveyAnswers at loop")
-        #for #each survey in this survey #make an obj/array in the appropriate place
-        	#for each question in this survey #save the answer in the right obj/array (note that scale might beed to change? )
-        	#save the 
-
-def findSurveyAverages():
-	#for each question that we have data
-		#how many people answered that question, what the average was, what the outliers were
-		#maybe we just want to return all the data so we can visualize it?? 
-		#do I care enough to synchronize the data with the questions? probably not? 
-
-
-
-
-
-#things I might need later
-#import pdb; pdb.set_trace()
