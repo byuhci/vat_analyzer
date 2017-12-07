@@ -2,6 +2,7 @@ import os
 import glob
 import json
 import pprint
+import ankura.ankura.validate
 video_events = ["hotkey:restart", "hotkey:end", "video:drag", "hotkey", "video:button", "video:click", "hotkey:up", "hotkey:down", "video:button", "video:menu"]
 data_events = ["data:dblclick", "data:drag"]
 final_res = {}
@@ -17,8 +18,10 @@ video_lengths = {"cane.cane-vid1-dat2" : 107.26, "cane.cane-vid3-dat3" : 86.91, 
 label_times_list = []
 person_label_times = {}
 delta_t = float(1) / float(30)
-PATH = '/home/austin/user-studies'
-GOLD_PATH = "/home/austin/workspacegold"
+#PATH = '/home/austin/user-studies'
+# GOLD_PATH = "/home/austin/workspacegold"
+PATH = '../user-studies'
+GOLD_PATH = "../workspacegold"
 confusionMatrix = {}
 perPersonConfusionMatrices = {}
 
@@ -251,15 +254,45 @@ def calc_workspace_percentages(workspace_totals):
         workspace_percentages[key]["video"] = value["video"] / float(total_num)
     return workspace_percentages
 
+def get_f_score_confusion(confusionMatrix):
+    fscores = {}
+
+
+def get_f_score_per_Person_confusion(perPersonConfusionMatrices):
+    fscores = {}
+    for person in perPersonConfusionMatrices:
+        for workspace in perPersonConfusionMatrices[person]:
+            c = ContingencyTable()
+            for gold in perPersonConfusionMatrices[person][workspace]:
+                for user in perPersonConfusionMatrices[person][workspace][gold]:
+                    c[gold,user] = perPersonConfusionMatrices[person][workspace][gold][user]
+            score = c.fmeasure()
+            if workspace in fscores:
+                fscores[workspace][1] += score
+                fscores[workspace][0]+=1
+            else:
+                fscores[workspace] = [1, score]
+            # c = ContingencyTable(perPersonConfusionMatrices[person][workspace])
+
+    return fscores
+
+
 
 outer_loop()
 print("HERE is the confusionMatrix")
 print(confusionMatrix)
+with open('confusion.json', 'w') as fp:
+    json.dump(confusionMatrix, fp, sort_keys=True, indent=4)
 print("\n\n\n\n\n")
 print("matrix per Person")
 print(perPersonConfusionMatrices)
-print"\n\n\n\n"
+with open('perpersonconfusion.json', 'w') as fp2:
+    json.dump(perPersonConfusionMatrices, fp2, sort_keys=True, indent=4)
+print("\n\n\n\n")
 print(json.dumps(perPersonConfusionMatrices, indent=4, sort_keys=True))
+
+print("\n\n\nPer workspace per person confusion matrix f scores ")
+print(get_f_score_per_Person_confusion(perPersonConfusionMatrices))
 #pprint.pprint(perPersonConfusionMatrices)
 #gold_totals = calculate_gold_totals()
 work_percent = calc_workspace_percentages(workspace_totals)
