@@ -21,30 +21,49 @@ videoAndQuestionPairings = [] #holds video name, question type, ques number, and
 
 with open(rulesLocation, 'r') as file:
     fileOfSurveyGuidlines = json.load(file)
-
-    surveys = fileOfSurveyGuidlines['surveys']
+    surveys = fileOfSurveyGuidlines['surveys'] #this is a dictionary
     #print(*surveys, sep='\n')
+    #print(surveys)
+    #exampleThing = {"surveys": {"empty-task": [],"practice-task": [{"type": "likert","name": "Question1","text": "After the practice rounds, you will be given a survey after each task. Most questions will be on a scale of one to five."}]}}
 
-    for survey in surveys:
-        print(survey)
-        #quesDetailsOne = survey[1]
-        #print(quesDetailsOne)
-        #holds video name (key), question type, question number, and question text
+    for key, value in surveys.items(): #loop through each diff survey style
+        #loop through each question in the survey:
+        if key not in ['userinfo', 'practice-task', 'empty-task']:
+            #print(key)
+            for question in value:
+                #print(question)
+                quesType = question['type']
+                #print(quesType)
+                quesNum = question['name']
+                quesText = question['text']
+                videoAndQuestionPairings.append((key,quesType,quesNum,quesText))
+                #holds video name (key), question type, question number, and question text
+        #else:
+            #print("reject: ", key)
+    #print(videoAndQuestionPairings)
+    #print(*sorted(videoAndQuestionPairings), sep='\n')
+
+
 
 
     allTasks = fileOfSurveyGuidlines['tasks']
     #print(allTasks)
-    for task in allTasks:
-        name = task['name']
-        #print(name)
+    for task in allTasks: #allTasks is a list
+        name = task['name'] #string
+        itemType = task['type']
+        if itemType not in ['survey']:
+            #print(itemType)
+            data = task['data']
+            #print(data)
+            #print(len(data.items()))
+            if len(data.items())==2:
+                situation = 'both'
+            else:
+                situation = data['hide']
+            #print(situation)
+            videoAndDataPairings.append((name, situation))
 
-        #error on next line: 
-        #data = task['data']
-        #print(data)
-        #situation = task['data']'s ['hide']
-        #videoAndDataPairings.append((name, situation))
-
-
+    print(*videoAndDataPairings, sep='\n')
 
 
 
