@@ -1,88 +1,91 @@
+import glob
 import json
+import os
 from sys import argv
 
-user_info = {}
-run_blue = {}
-run_yellow = {}
-run_red = {}
-run_pink = {}
-run_survey = {}
-pill_blue = {}
-pill_orange = {}
-pill_red = {}
-pill_pink = {}
-pill_survey = {}
-overall_survey  = {}
-
-both = {}
-noVideo = {}
-noData = {}
-
-output_file = argv[1]
+outputFile = argv[1]
 
 SURVEY_PATH = "/home/naomi/Documents/AML/vat/data/surveyResultsForPython/"
 
-#enter the folder for survey A
-    # go through all the files in each folder that end in .info.json
-        #go the "surveys" section
-            #skip user info, practice-first, practice-second, practice-third, practice-survey
-            #gather info for "run-blue" (has-both-task), "run-yellow" (no-video-task), "run-red" (no-data-task)
-            # "run-survey"
-            #and "pill-blue" (has-both-task), "pill-red" (no-video-task), "pill-orange" (no-data-task),
-            # "pills-survey"
-            # and "run-pink" (no-video-task) #their post-distraction task
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-#enter the folder for survey B
-    # go through all the files in each folder that end in .info.json
-        #go the "surveys" section
-            #skip user info, practice-first, practice-second, practice-third, practice-survey
-            #gather info for "run-blue" (has-both-task), "run-yellow" (no-data-task), "run-red" (no-video-task)
-            # "run-survey"
-            #and "pill-blue" (has-both-task), "pill-red" (no-data-task), "pill-orange" (no-video-task),
-            # "pills-survey"
-            # and "run-pink" (no-video-task) #their post-distraction task
-            
-#enter the folder for survey C
-    # go through all the files in each folder that end in .info.json
-        #go the "surveys" section
-            #skip user info, practice-first, practice-second, practice-third, practice-survey
-            #gather info for "run-blue" (has-both-task), "run-yellow" (no-video-task), "run-red" (no-data-task)
-            # "run-survey",
+#see which folder we want to use, pick set of rules 
+surveyType = argv[1]
 
-            #and "pill-blue" (has-both-task), "pill-red" (no-video-task), "pill-orange" ((no-data-task),
-            # "pills-survey"
-            # and "run-pink" (no-video-task) #their post-distraction task
-#enter the folder for survey D
-    # go through all the files in each folder that end in .info.json
-        #go the "surveys" section
-            #skip user info, practice-first, practice-second, practice-third, practice-survey
-            #gather info for "run-blue" (has-both-task), "run-yellow" (no-video-task), "run-red" (no-data-task)
-            # "run-survey",
+#check rules based on what kind of survey we're doing
+rulesLocation = argv[1] + '.tasks.json'
+convertToFiveRulesLocation = os.path.join(SURVEY_PATH)
+os.chdir(convertToFiveRulesLocation)
 
-            #and "pill-blue" (has-both-task), "pill-red" (no-video-task), "pill-orange" ((no-data-task),
-            # "pills-survey"
-            # and "run-pink" (no-video-task) #their post-distraction task
+#store name of video with "situation" type
+videoAndDataPairings = []
+videoAndQuestionPairings = [] #holds video name, question type, ques number, and question text
+
+with open(rulesLocation, 'r') as file:
+    fileOfSurveyGuidlines = json.load(file)
+
+    surveys = fileOfSurveyGuidlines['surveys']
+    #print(*surveys, sep='\n')
+
+    for survey in surveys:
+        print(survey)
+        #quesDetailsOne = survey[1]
+        #print(quesDetailsOne)
+        #holds video name (key), question type, question number, and question text
+
+
+    allTasks = fileOfSurveyGuidlines['tasks']
+    #print(allTasks)
+    for task in allTasks:
+        name = task['name']
+        #print(name)
+
+        #error on next line: 
+        #data = task['data']
+        #print(data)
+        #situation = task['data']'s ['hide']
+        #videoAndDataPairings.append((name, situation))
 
 
 
+
+
+#go to the correct folder
+destination = os.path.join(SURVEY_PATH, surveyType)
+os.chdir(destination)
+
+#see what files are in this folder
+glob.glob('*.info.json')
+
+rounds = []
+
+#only allow users 001-045
+validFiles = list(filter(lambda x: x.split('.')[0]<='045', glob.glob('*.info.json')))#make sure we're ignoring 2020 and 4040
+#print(validFiles)
+for fileName in validFiles:
+    #print(validFiles)
+    with open(fileName, 'r') as file:
+        #print(information['user_id'])
+        information = json.load(file)
+        userName = information['user_id']
+        allSurveys = information['surveys']
+        #print(type(allSurveys))
+        for key, value in allSurveys.items():
+            if key not in ['user-info', 'practice-first', 'practice-second', 'practice-third', 'practice-survey']:
+                ques1 = value['question1']
+                ques2 = value['question2']
+                ques3 = value['question3']
+                ques4 = value['question4']
+                rounds.append((userName, surveyType, key, ques1, ques2, ques3, ques4))
+#print(*sorted(rounds), sep='\n') #easy to look at tuples
+#for tup in sorted(rounds): #makes a CSV: 
+ #   print(*tup, sep=',')
+
+
+
+
+
+#things to put in tuple: userName, surveyType, key (aka name of video), ques1-4
+
+
+#grab their user id, grab name of first video
+#make a tuple with name, video name, and then Q1-4 data points
+#repeat for each video
