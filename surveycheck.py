@@ -120,10 +120,11 @@ for fileName in validFiles:
                     groupSurvey = videoAndDataPairings[key][1]
                     #print(groupSurvey)
                     quesText = videoAndQuestionPairings[groupSurvey][2]
+                    quesType = videoAndQuestionPairings[groupSurvey][0]
                     rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType))
 
 
-                    #print(quesText)
+                    #print(quesType)
                     #key = name of video
 
 
@@ -139,14 +140,17 @@ for fileName in validFiles:
 
 #print(*sorted(rounds), sep='\n') #easy to look at tuples
 
-# with open(surveyType+'results.csv','w') as csvfile: 
-#     csvwriter = csv.writer(csvfile,delimiter='^')
-#     for tup in sorted(rounds): #makes a CSV: 
-#         print('^'.join(tup))
-#         csvwriter.writerow('^'.join(tup))
+destination = os.path.join(SURVEY_PATH)
+os.chdir(destination)
+
+with open(surveyType+'autoResults.csv','w') as csvfile: 
+    csvwriter = csv.writer(csvfile)
+    for tup in sorted(rounds): #makes a CSV: 
+        #print('^'.join(tup))
+        csvwriter.writerow(tup)
 
 # with open('asdf.txt','w') as outfile:
 #     outfile.write('asdf')
 
-for tup in sorted(rounds): #makes a CSV: 
-     print(*tup, sep=',')
+# for tup in sorted(rounds): #makes a CSV: 
+#     print(*tup, sep=',')
