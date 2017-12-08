@@ -1,6 +1,7 @@
 import glob
 import json
 import os
+import csv
 from sys import argv
 
 outputFile = argv[1]
@@ -17,61 +18,68 @@ os.chdir(convertToFiveRulesLocation)
 
 #store name of video with "situation" type
 videoAndDataPairings = {}
-videoAndQuestionPairings = [] #holds video name, question type, ques number, and question text
+videoAndQuestionPairings = {} #holds video name, question type, ques number, and question text
 
 with open(rulesLocation, 'r') as file:
     fileOfSurveyGuidlines = json.load(file)
-    surveys = fileOfSurveyGuidlines['surveys'] #this is a dictionary
-    #print(*surveys, sep='\n')
-    #print(surveys)
-    #exampleThing = {"surveys": {"empty-task": [],"practice-task": [{"type": "likert","name": "Question1","text": "After the practice rounds, you will be given a survey after each task. Most questions will be on a scale of one to five."}]}}
+surveys = fileOfSurveyGuidlines['surveys'] #this is a dictionary
+#print(*surveys, sep='\n')
+#print(surveys)
+#exampleThing = {"surveys": {"empty-task": [],"practice-task": [{"type": "likert","name": "Question1","text": "After the practice rounds, you will be given a survey after each task. Most questions will be on a scale of one to five."}]}}
 
-    for key, value in surveys.items(): #loop through each diff survey style
-        #loop through each question in the survey:
-        if key not in ['userinfo', 'practice-task', 'empty-task']:
-            #print(key)
-            for question in value:
-                #print(question)
-                quesType = question['type']
-                #print(quesType)
-                quesNum = question['name']
-                quesText = question['text']
-                videoAndQuestionPairings.append((key,quesType,quesNum,quesText))
-                #print(key,quesType,quesNum,quesText)
-                #holds video name (key), question type, question number, and question text
-        #else:
-            #print("reject: ", key)
-    #print(videoAndQuestionPairings)
-    #print(*sorted(videoAndQuestionPairings), sep='\n')
+for key, value in surveys.items(): #loop through each diff survey style
+    #loop through each question in the survey:
+    if key not in ['userinfo', 'practice-task', 'empty-task']:
+        #print(key)
+        for question in value:
+            #print(question)
+            quesType = question['type']
+            #print(quesType)
+            quesNum = question['name']
+            quesText = question['text']
+            #print("quesText: ", quesText)
+            videoAndQuestionPairings[key] = (quesType,quesNum,quesText)
 
-    allTasks = fileOfSurveyGuidlines['tasks']
-    #print(allTasks)
-    for task in allTasks: #allTasks is a list
-        name = task['name'] #string
-        itemType = task['type']
-        if itemType not in ['survey']:
-            #print(itemType)
-            data = task['data']
-            #print(data)
-            #print(len(data.items()))
-            if len(data.items())==2:
-                hidden = 'neither'
-            else:
-                hidden = data['hide']
-            #print(name, hidden)
-            survey = task['survey']
+            #print(key,quesType,quesNum,quesText)
+            #holds video name (key), question type, question number, and question text
+    #else:
+        #print("reject: ", key)
+#print(videoAndQuestionPairings)
+#print(*sorted(videoAndQuestionPairings), sep='\n')
 
-        else: 
-            #print(itemType)
-            survey = task['survey']
-            hidden = itemType #holds the fact that it is a survey
-
-        #videoAndDataPairings.append((name, hidden, survey))
-        videoAndDataPairings[name] = (hidden, survey) 
+allTasks = fileOfSurveyGuidlines['tasks']
+#print(allTasks)
+for task in allTasks: #allTasks is a list
+    #print(task)
+    name = task['name'] #string
+    itemType = task['type']
+    if itemType not in ['survey']:
+        #print(itemType)
+        data = task['data']
+        #print(data)
+        #print(len(data.items()))
+        if len(data.items())==2:
+            hidden = 'has-both-task' #neither is hidden
+        else:
+            hidden = data['hide']
+            #print(hidden)
+            if data['hide']=='data':
+                hidden = 'no-data-task'
+            elif data['hide']=='video':
+                hidden = 'no-video-task'
+        #print(name, hidden)
+        survey = task['survey']
+    else: 
+        #print(task)
+        survey = task['survey']
+        hidden = itemType #holds the fact that it is a survey
         #print(name, hidden, survey)
+    #videoAndDataPairings.append((name, hidden, survey))
+    videoAndDataPairings[name] = (hidden, survey) 
+    #print(name, hidden, survey)
 
-    #print(*videoAndDataPairings, sep='\n')
-    #print(videoAndDataPairings)
+#print(*videoAndDataPairings, sep='\n')
+#print(videoAndDataPairings)
 
 
 #go to the correct folder
@@ -101,35 +109,44 @@ for fileName in validFiles:
                 #print(quesGroupName)
                 hiddenThing = videoAndDataPairings[key][0]
                 #print(hiddenThing)
-                #print(key, value)
-                for item in value:
-                    #print(item)
-                    
-
-                #for loop through all the questions
-                #grab the question types, question text, question number, question (bc matching by video name)
-                ques1ans = value['question1']
-                ques2ans = value['question2']
-                ques3ans = value['question3']
-                ques4ans = value['question4']
-  
-                # ques1ques = 
-                # ques2ques = 
-                # ques3ques = 
-                # ques4ques = 
-                #print(nameQuesGroup)
-                #if key == videoAndDataPairings[][0]
-                #videoAndDataPairings.type()
-                #when key == videoAndDataPairings[0]//name, then grab & go to videoAndDataPairings[2]
-                #
+                # print(key, value)
+                # print(value.values())
+                # print(len(value))
+                questions = ['question' + str(i+1) for i in range(len(value))]
+                answers = [value[q] for q in questions]
+                for i in range(len(value)):
+                    quesAnswer = answers[i]
+                    quesNum = questions[i]
+                    groupSurvey = videoAndDataPairings[key][1]
+                    #print(groupSurvey)
+                    quesText = videoAndQuestionPairings[groupSurvey][2]
+                    rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType))
 
 
+                    #print(quesText)
+                    #key = name of video
 
 
-
-                rounds.append((userName, surveyType, key, hiddenThing, ques1ans, ques2ans, ques3ans, ques4ans))#also add questions and situation
-                #print(userName, surveyType, key, hiddenThing, ques1ans, ques2ans, ques3ans, ques4ans)
+                    #print(quesAnswer, quesNum)
+                    #print(hiddenThing)#quesAnswer, quesNum
+                    #quesText = videoAndQuestionPairings[hiddenThing][2] #quesType,quesNum,quesText
+                    #print(quesAnswer, quesNum, quesText)
+                    # quesType = 
+                    # quesGroup = 
+                    # print(quesAnswer, quesNum) #quesText, quesType)
+                
+                    #rounds.append(userName, surveyType, key, hiddenThing, quesAnswer, quesText, quesNum, quesType)
 
 #print(*sorted(rounds), sep='\n') #easy to look at tuples
-# for tup in sorted(rounds): #makes a CSV: 
-#      print(*tup, sep=',')
+
+# with open(surveyType+'results.csv','w') as csvfile: 
+#     csvwriter = csv.writer(csvfile,delimiter='^')
+#     for tup in sorted(rounds): #makes a CSV: 
+#         print('^'.join(tup))
+#         csvwriter.writerow('^'.join(tup))
+
+# with open('asdf.txt','w') as outfile:
+#     outfile.write('asdf')
+
+for tup in sorted(rounds): #makes a CSV: 
+     print(*tup, sep=',')
