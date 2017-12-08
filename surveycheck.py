@@ -16,7 +16,7 @@ convertToFiveRulesLocation = os.path.join(SURVEY_PATH)
 os.chdir(convertToFiveRulesLocation)
 
 #store name of video with "situation" type
-videoAndDataPairings = []
+videoAndDataPairings = {}
 videoAndQuestionPairings = [] #holds video name, question type, ques number, and question text
 
 with open(rulesLocation, 'r') as file:
@@ -37,7 +37,7 @@ with open(rulesLocation, 'r') as file:
                 quesNum = question['name']
                 quesText = question['text']
                 videoAndQuestionPairings.append((key,quesType,quesNum,quesText))
-                print(key,quesType,quesNum,quesText)
+                #print(key,quesType,quesNum,quesText)
                 #holds video name (key), question type, question number, and question text
         #else:
             #print("reject: ", key)
@@ -59,7 +59,16 @@ with open(rulesLocation, 'r') as file:
             else:
                 hidden = data['hide']
             #print(name, hidden)
-            videoAndDataPairings.append((name, hidden))
+            survey = task['survey']
+
+        else: 
+            #print(itemType)
+            survey = task['survey']
+            hidden = itemType #holds the fact that it is a survey
+
+        #videoAndDataPairings.append((name, hidden, survey))
+        videoAndDataPairings[name] = (hidden, survey) 
+        #print(name, hidden, survey)
 
     #print(*videoAndDataPairings, sep='\n')
     #print(videoAndDataPairings)
@@ -87,37 +96,37 @@ for fileName in validFiles:
         #print(type(allSurveys))
         for key, value in allSurveys.items():
             if key not in ['user-info', 'practice-first', 'practice-second', 'practice-third', 'practice-survey']:
-                reference = [item for item in videoAndDataPairings if item[0] == key] #gets pair ov vidName and hiddenThing
-                #print(reference)
-                if not reference == []:
-                    hiddenThing = reference[0][1]
-                else:
-                    hiddenThing = 'postSectionSurvey'
+                quesGroupName = videoAndDataPairings[key][1]
+                #[item for item in videoAndDataPairings if item[0] == key] #gets pair vidName and hiddenThing
+                #print(quesGroupName)
+                hiddenThing = videoAndDataPairings[key][0]
+                #print(hiddenThing)
+                #print(key, value)
+                for item in value:
+                    #print(item)
+                    
 
                 #for loop through all the questions
-                # ques1ans = value['question1']
-                # ques2ans = value['question2']
-                # ques3ans = value['question3']
-                # ques4ans = value['question4']
-
-
-
-                # 
-                
-                #store what the questions were asking:
-                #videoAndQuestionPairings.append((key,quesType,quesNum,quesText))
-                #holds video name (key), question type, question number, and question text
-
-                #print(len(videoAndQuestionPairings))
-                #print(key)
-
-                #findQuesText = [item[3] for item in videoAndQuestionPairings if item[0] == key]
-                #print(findQuesText)
-
+                #grab the question types, question text, question number, question (bc matching by video name)
+                ques1ans = value['question1']
+                ques2ans = value['question2']
+                ques3ans = value['question3']
+                ques4ans = value['question4']
+  
                 # ques1ques = 
                 # ques2ques = 
                 # ques3ques = 
                 # ques4ques = 
+                #print(nameQuesGroup)
+                #if key == videoAndDataPairings[][0]
+                #videoAndDataPairings.type()
+                #when key == videoAndDataPairings[0]//name, then grab & go to videoAndDataPairings[2]
+                #
+
+
+
+
+
                 rounds.append((userName, surveyType, key, hiddenThing, ques1ans, ques2ans, ques3ans, ques4ans))#also add questions and situation
                 #print(userName, surveyType, key, hiddenThing, ques1ans, ques2ans, ques3ans, ques4ans)
 
