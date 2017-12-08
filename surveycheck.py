@@ -37,14 +37,12 @@ with open(rulesLocation, 'r') as file:
                 quesNum = question['name']
                 quesText = question['text']
                 videoAndQuestionPairings.append((key,quesType,quesNum,quesText))
+                print(key,quesType,quesNum,quesText)
                 #holds video name (key), question type, question number, and question text
         #else:
             #print("reject: ", key)
     #print(videoAndQuestionPairings)
     #print(*sorted(videoAndQuestionPairings), sep='\n')
-
-
-
 
     allTasks = fileOfSurveyGuidlines['tasks']
     #print(allTasks)
@@ -57,14 +55,14 @@ with open(rulesLocation, 'r') as file:
             #print(data)
             #print(len(data.items()))
             if len(data.items())==2:
-                situation = 'both'
+                hidden = 'neither'
             else:
-                situation = data['hide']
-            #print(situation)
-            videoAndDataPairings.append((name, situation))
+                hidden = data['hide']
+            #print(name, hidden)
+            videoAndDataPairings.append((name, hidden))
 
-    print(*videoAndDataPairings, sep='\n')
-
+    #print(*videoAndDataPairings, sep='\n')
+    #print(videoAndDataPairings)
 
 
 #go to the correct folder
@@ -89,22 +87,40 @@ for fileName in validFiles:
         #print(type(allSurveys))
         for key, value in allSurveys.items():
             if key not in ['user-info', 'practice-first', 'practice-second', 'practice-third', 'practice-survey']:
-                ques1 = value['question1']
-                ques2 = value['question2']
-                ques3 = value['question3']
-                ques4 = value['question4']
-                rounds.append((userName, surveyType, key, ques1, ques2, ques3, ques4))
+                reference = [item for item in videoAndDataPairings if item[0] == key] #gets pair ov vidName and hiddenThing
+                #print(reference)
+                if not reference == []:
+                    hiddenThing = reference[0][1]
+                else:
+                    hiddenThing = 'postSectionSurvey'
+
+                #for loop through all the questions
+                # ques1ans = value['question1']
+                # ques2ans = value['question2']
+                # ques3ans = value['question3']
+                # ques4ans = value['question4']
+
+
+
+                # 
+                
+                #store what the questions were asking:
+                #videoAndQuestionPairings.append((key,quesType,quesNum,quesText))
+                #holds video name (key), question type, question number, and question text
+
+                #print(len(videoAndQuestionPairings))
+                #print(key)
+
+                #findQuesText = [item[3] for item in videoAndQuestionPairings if item[0] == key]
+                #print(findQuesText)
+
+                # ques1ques = 
+                # ques2ques = 
+                # ques3ques = 
+                # ques4ques = 
+                rounds.append((userName, surveyType, key, hiddenThing, ques1ans, ques2ans, ques3ans, ques4ans))#also add questions and situation
+                #print(userName, surveyType, key, hiddenThing, ques1ans, ques2ans, ques3ans, ques4ans)
+
 #print(*sorted(rounds), sep='\n') #easy to look at tuples
-#for tup in sorted(rounds): #makes a CSV: 
- #   print(*tup, sep=',')
-
-
-
-
-
-#things to put in tuple: userName, surveyType, key (aka name of video), ques1-4
-
-
-#grab their user id, grab name of first video
-#make a tuple with name, video name, and then Q1-4 data points
-#repeat for each video
+# for tup in sorted(rounds): #makes a CSV: 
+#      print(*tup, sep=',')
