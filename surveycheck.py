@@ -31,10 +31,12 @@ for key, value in surveys.items(): #loop through each diff survey style ('has-bo
         #print(key) #key values: 'has-both', 'no-vid', etc
         for question in value:
             quesType = question['type'] #likert, likertPercentage, likertTime, etc
-            quesNum = question['name'] #ques1, ques2, etc
+            quesNum = ((question['name']).lower()).replace(" ", "") #ques1, ques2, etc
             quesText = question['text']
-            videoAndQuestionPairings[key] = (quesType,quesNum,quesText)
+            videoAndQuestionPairings[key+quesNum] = (quesType,quesNum,quesText)
 #print(*sorted(videoAndQuestionPairings), sep='\n')
+#print(videoAndQuestionPairings, '\n\n\n\n\n')
+
 
 allTasks = fileOfSurveyGuidlines['tasks']
 #print(allTasks)
@@ -78,21 +80,24 @@ for fileName in validFiles:
         information = json.load(file)
         userName = information['user_id']
         allSurveys = information['surveys']
-        #print(type(allSurveys))
-        for key, value in allSurveys.items():
+        #print(allSurveys)
+        for key, value in allSurveys.items(): #key=name of video, value={'q1'='ans',...}
             if key not in ['user-info', 'practice-first', 'practice-second', 'practice-third', 'practice-survey']:
-                quesGroupName = videoAndDataPairings[key][1]
+                quesGroupName = videoAndDataPairings[key][1] #SURVEY TYPE aka hat was hidden (like 'has-both' or 'no-video' or 'post-section')
                 #[item for item in videoAndDataPairings if item[0] == key] #gets pair vidName and hiddenThing
-                hiddenThing = videoAndDataPairings[key][0]
+                hiddenThing = videoAndDataPairings[key][0] #less helpful bc all surveys get replaced w/ 'survey'
                 questions = ['question' + str(i+1) for i in range(len(value))]
                 answers = [value[q] for q in questions]
-                for i in range(len(value)):
+                for i in range(len(value)): #length of value = number of questions there were in this set
                     quesAnswer = answers[i]
                     quesNum = questions[i]
-                    groupSurvey = videoAndDataPairings[key][1]
-                    quesText = videoAndQuestionPairings[groupSurvey][2]
-                    quesType = videoAndQuestionPairings[groupSurvey][0]
+                    groupSurvey = videoAndDataPairings[key][1] #SURVEY TYPE aka hat was hidden (like 'has-both' or 'no-video' or 'post-section')
+                    #the line below is the broken line
+                    quesText = videoAndQuestionPairings[groupSurvey+quesNum][2] #actual question 
+                    quesType = videoAndQuestionPairings[groupSurvey+quesNum][0] #likert type
+                    #print(userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType)
                     rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType))
+        
 
 destination = os.path.join(SURVEY_PATH)
 os.chdir(destination)
