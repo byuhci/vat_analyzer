@@ -1,0 +1,753 @@
+{
+    "user_id": "041",
+    "session_id": "59eff2b15efd4d725417b8fe",
+    "study": "studyB",
+    "workspace": "newrun.run-pink",
+    "details": {
+        "workspace": "newrun.run-pink",
+        "labels": [
+            {
+                "time": 63.23305041463414,
+                "endTime": 73.81396155284551,
+                "type": "skip",
+                "id": 1
+            },
+            {
+                "time": 138.512542,
+                "endTime": 143.042355,
+                "type": "run",
+                "id": 2
+            },
+            {
+                "time": 276.25886465853534,
+                "endTime": 288.0683106585353,
+                "type": "skip",
+                "id": 3
+            },
+            {
+                "time": 344.551185,
+                "endTime": 349.080972,
+                "type": "run",
+                "id": 4
+            },
+            {
+                "time": 421.318,
+                "endTime": 433.51495158537267,
+                "type": "skip",
+                "id": 5
+            },
+            {
+                "time": 472.802932,
+                "endTime": 478.16215,
+                "type": "run",
+                "id": 6
+            },
+            {
+                "time": 547.513629,
+                "endTime": 560.579277,
+                "type": "skip",
+                "id": 7
+            },
+            {
+                "time": 596.234944,
+                "endTime": 608.7698,
+                "type": "skip",
+                "id": 8
+            }
+        ],
+        "_starts": [
+            "2017-10-25T02:41:43.000Z"
+        ],
+        "_ends": [
+            "2017-10-25T02:44:15.117Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyB/run-pink/041.labels.json",
+    "videoFlash": 3.300376,
+    "surveys": {
+        "user-info": {
+            "firstname": "Daniel",
+            "lastname": "Reeder",
+            "email": "reederda@gmail.com"
+        },
+        "practice-first": {
+            "question1": "2",
+            "question2": "ok",
+            "question3": "100",
+            "question4": "2"
+        },
+        "practice-second": {},
+        "practice-third": {},
+        "practice-survey": {},
+        "run-blue": {
+            "question1": "2",
+            "question2": "0",
+            "question3": "70",
+            "question4": "100"
+        },
+        "run-yellow": {
+            "question1": "-2",
+            "question2": "1",
+            "question3": "30",
+            "question4": "90"
+        },
+        "run-red": {
+            "question1": "2",
+            "question2": "2",
+            "question3": "100",
+            "question4": "100"
+        },
+        "run-survey": {
+            "question1": "2",
+            "question2": "-2",
+            "question3": "2",
+            "question4": "2"
+        },
+        "pill-blue": {
+            "question1": "2",
+            "question2": "2",
+            "question3": "100",
+            "question4": "100"
+        },
+        "pill-red": {
+            "question1": "-1",
+            "question2": "0",
+            "question3": "60",
+            "question4": "90"
+        },
+        "pill-orange": {
+            "question1": "2",
+            "question2": "1",
+            "question3": "100",
+            "question4": "100"
+        },
+        "pills-survey": {
+            "question1": "1",
+            "question2": "-2",
+            "question3": "2",
+            "question4": "2"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2017-10-25T02:42:09.586Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:42:09",
+                "_end": "-",
+                "data": {
+                    "type": "skip",
+                    "time": 63.545587
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:15.139Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "20:42:15",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 63.23305041463414,
+                        "endTime": 73.81396155284551,
+                        "type": "skip",
+                        "id": 1
+                    }
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:16.557Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "20:42:16",
+                "_end": "-",
+                "data": {
+                    "time": 63.23305041463414,
+                    "endTime": 73.81396155284551,
+                    "type": "skip",
+                    "id": 1
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:42:17.027Z",
+                    "end": "2017-10-25T02:42:17.970Z"
+                },
+                "type": "MOVE",
+                "source": "data:brush",
+                "_t": "20:42:17",
+                "_end": "20:42:17",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        63.545587,
+                        74.12649813821136
+                    ],
+                    "start": "2017-10-25T02:42:17.027Z",
+                    "ε": 0.1,
+                    "mode": "move"
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:19.849Z",
+                "type": "DESELECT",
+                "source": "side-bar:button",
+                "_t": "20:42:19",
+                "_end": "-",
+                "data": {
+                    "time": 63.23305041463414,
+                    "endTime": 73.81396155284551,
+                    "type": "skip",
+                    "id": 1
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:24.658Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:42:24",
+                "_end": "-",
+                "data": {
+                    "type": "run",
+                    "time": 138.512542
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:29.184Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "20:42:29",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 138.512542,
+                        "endTime": 143.042355,
+                        "type": "run",
+                        "id": 2
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:35.922Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:42:35",
+                "_end": "-",
+                "data": {
+                    "type": "skip",
+                    "time": 276.573846
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:47.731Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "20:42:47",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 276.25886465853534,
+                        "endTime": 288.0683106585353,
+                        "type": "skip",
+                        "id": 3
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:48.828Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "20:42:48",
+                "_end": "-",
+                "data": {
+                    "time": 276.25886465853534,
+                    "endTime": 288.0683106585353,
+                    "type": "skip",
+                    "id": 3
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:42:49.829Z",
+                    "end": "2017-10-25T02:42:50.656Z"
+                },
+                "type": "MOVE",
+                "source": "data:brush",
+                "_t": "20:42:49",
+                "_end": "20:42:50",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        276.573846,
+                        288.383292
+                    ],
+                    "start": "2017-10-25T02:42:49.829Z",
+                    "ε": 0.1,
+                    "mode": "move"
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:54.788Z",
+                "type": "DESELECT",
+                "source": "side-bar:button",
+                "_t": "20:42:54",
+                "_end": "-",
+                "data": {
+                    "time": 276.25886465853534,
+                    "endTime": 288.0683106585353,
+                    "type": "skip",
+                    "id": 3
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:58.662Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:42:58",
+                "_end": "-",
+                "data": {
+                    "type": "run",
+                    "time": 344.551185
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:03.187Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "20:43:03",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 344.551185,
+                        "endTime": 349.080972,
+                        "type": "run",
+                        "id": 4
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:10.305Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:43:10",
+                "_end": "-",
+                "data": {
+                    "type": "skip",
+                    "time": 421.318
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:19.628Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "20:43:19",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 421.318,
+                        "endTime": 433.51495158537267,
+                        "type": "skip",
+                        "id": 5
+                    }
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:28.883Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:43:28",
+                "_end": "-",
+                "data": {
+                    "type": "run",
+                    "time": 472.802932
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:34.244Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "20:43:34",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 472.802932,
+                        "endTime": 478.16215,
+                        "type": "run",
+                        "id": 6
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:39.139Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:43:39",
+                "_end": "-",
+                "data": {
+                    "type": "skip",
+                    "time": 547.513629
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:52.212Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "20:43:52",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 547.513629,
+                        "endTime": 560.579277,
+                        "type": "skip",
+                        "id": 7
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:59.588Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "20:43:59",
+                "_end": "-",
+                "data": {
+                    "type": "skip",
+                    "time": 596.234944
+                }
+            },
+            {
+                "time": "2017-10-25T02:44:12.116Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "20:44:12",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 596.234944,
+                        "endTime": 608.7698,
+                        "type": "skip",
+                        "id": 8
+                    },
+                    "key": "enter"
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": "2017-10-25T02:41:58.354Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "20:41:58",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:03.030Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:03",
+                "data": {
+                    "time": 54.757096
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:05.526Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:05",
+                "data": {
+                    "time": 59.547458
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:13.858Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "20:42:13",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:15.137Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:15",
+                "data": {
+                    "time": 67.823677
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:15.835Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:15",
+                "data": {
+                    "time": 67.875766
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:16.554Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:16",
+                "data": {
+                    "time": 67.875766
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:17.977Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:17",
+                "data": {
+                    "time": 67.875766
+                }
+            },
+            {
+                "time": "2017-10-25T02:42:20.098Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "20:42:20",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:22.953Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:22",
+                "data": {
+                    "time": 137.023392
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:31.417Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:31",
+                "data": {
+                    "time": 224.478161
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:33.860Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:33",
+                "data": {
+                    "time": 274.796551
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:48.826Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:48",
+                "data": {
+                    "time": 289.474774
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:50.661Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:50",
+                "data": {
+                    "time": 291.310461
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:52.829Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:52",
+                "data": {
+                    "time": 319.294258
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:42:56.640Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:42:56",
+                "data": {
+                    "time": 342.819718
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:06.428Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:06",
+                "data": {
+                    "time": 417.74394
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:15.778Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "20:43:15",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:19.626Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:19",
+                "data": {
+                    "time": 426.795415
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:23.417Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:23",
+                "data": {
+                    "time": 466.331293
+                }
+            },
+            {
+                "time": "2017-10-25T02:43:23.698Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "20:43:23",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:25.532Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:25",
+                "data": {
+                    "time": 469.758998
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:37.294Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:37",
+                "data": {
+                    "time": 545.980987
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:54.044Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:54",
+                "data": {
+                    "time": 596.327287
+                }
+            },
+            {
+                "time": {
+                    "start": "2017-10-25T02:41:44.049Z",
+                    "end": "2017-10-25T02:43:55.248Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "20:41:44",
+                "_end": "20:43:55",
+                "data": {
+                    "time": 592.161208
+                }
+            }
+        ]
+    }
+}
