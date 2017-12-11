@@ -2,7 +2,7 @@ import os
 import glob
 import json
 import pprint
-import ankura.ankura.validate
+
 video_events = ["hotkey:restart", "hotkey:end", "video:drag", "hotkey", "video:button", "video:click", "hotkey:up", "hotkey:down", "video:button", "video:menu"]
 data_events = ["data:dblclick", "data:drag"]
 final_res = {}
@@ -18,10 +18,10 @@ video_lengths = {"cane.cane-vid1-dat2" : 107.26, "cane.cane-vid3-dat3" : 86.91, 
 label_times_list = []
 person_label_times = {}
 delta_t = float(1) / float(30)
-#PATH = '/home/austin/user-studies'
-# GOLD_PATH = "/home/austin/workspacegold"
 PATH = '../user-studies'
 GOLD_PATH = "../workspacegold"
+#PATH = '../user-studies'
+#GOLD_PATH = "../workspacegold"
 confusionMatrix = {}
 perPersonConfusionMatrices = {}
 
@@ -58,7 +58,9 @@ def getLabel(file, time):
         if event["time"] < time and event["endTime"] > time:
             return event["type"]
     return "None"
-#so the way I need to do this is go through an amount of time based on the workspace, then go through each file in the workspace and do the confusion matrix
+
+#this function calculates the confusionMatrix for each workspace.
+#it also calls the function that calculates the perPersonConfusionMatrices
 def doConfusion(filename):
     #for file in workspace:
     theWorkSpace = filename["workspace"].encode('utf-8')
@@ -285,14 +287,15 @@ with open('confusion.json', 'w') as fp:
     json.dump(confusionMatrix, fp, sort_keys=True, indent=4)
 print("\n\n\n\n\n")
 print("matrix per Person")
-print(perPersonConfusionMatrices)
+# print(perPersonConfusionMatrices)
 with open('perpersonconfusion.json', 'w') as fp2:
     json.dump(perPersonConfusionMatrices, fp2, sort_keys=True, indent=4)
 print("\n\n\n\n")
 print(json.dumps(perPersonConfusionMatrices, indent=4, sort_keys=True))
 
-print("\n\n\nPer workspace per person confusion matrix f scores ")
-print(get_f_score_per_Person_confusion(perPersonConfusionMatrices))
+# print("\n\n\nPer workspace per person confusion matrix f scores ")
+# print(get_f_score_per_Person_confusion(perPersonConfusionMatrices))
+
 #pprint.pprint(perPersonConfusionMatrices)
 #gold_totals = calculate_gold_totals()
 work_percent = calc_workspace_percentages(workspace_totals)
