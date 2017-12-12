@@ -20,8 +20,11 @@ def putInNumpyMatrix(perPersonConfusionMatrices):
         for workspace in perPersonConfusionMatrices[person]:
             c = createConfusion(perPersonConfusionMatrices, person, workspace)
             matrix = [[0] * 3 for q in range(3)]
+            print(person)
+            print(workspace)
             if workspace in run_workspaces:
                 for i, k in enumerate(['None', 'run', 'skip']):
+                    print(c)
                     row = c[k]
                     for j, kk in enumerate(['None', 'run', 'skip']):
                         val = row.get(kk,0)
