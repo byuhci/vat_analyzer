@@ -97,10 +97,9 @@ def runOneVariationOfSurveys(rounds, name):
                         #the line below is the broken line
                         quesText = videoAndQuestionPairings[groupSurvey+quesNum][2] #actual question 
                         quesType = videoAndQuestionPairings[groupSurvey+quesNum][0] #likert type
-                        if quesType == ('likert' or 'likertTime'):
+                        if (quesType == 'likert' or quesType == 'likertTime'):
                             quesAnswer = int(quesAnswer)+3 #because it was on a scale of -2 to +2 (adjusting it to 1 to 5)
-                        #print(userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType)
-                        rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType))
+                        rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType, groupSurvey))
     return rounds
 
 rounds = runOneVariationOfSurveys(rounds, 'studyA')
@@ -115,4 +114,70 @@ with open('allRawResults.csv','w') as csvfile:
     csvwriter = csv.writer(csvfile)
     for tup in sorted(rounds): #makes a CSV, actual real file: 
         csvwriter.writerow(tup)
+        #print(tup)
+
+#figure out how many videos and data statuses there are
+possibleVideoNameSets = []
+possibleHiddenValue = []
+possibleQuestionText = []
+possibleSurveyGroupTypes = []
+possibleSurveyTypes = []
+for round in rounds:
+    if round[2] not in possibleVideoNameSets:
+        possibleVideoNameSets.append(round[2])
+
+    if round[3] not in possibleHiddenValue:
+        possibleHiddenValue.append(round[3])
+
+    if round[4] not in possibleQuestionText:
+        possibleQuestionText.append(round[4])
+
+    if round[8] not in possibleSurveyGroupTypes:
+        possibleSurveyGroupTypes.append(round[8])
+
+    if round[1] not in possibleSurveyTypes:
+        possibleSurveyTypes.append(round[1])
+
+averageCalc = {} #sum, count, average
+
+#while there are more combinations
+possibilites = (len(possibleVideoNameSets)*len(possibleHiddenValue)*len(possibleQuestionText))
+#print(possibilites)
+for i in range(0,int(possibilites)):
+    for videoDataSet in possibleVideoNameSets:#r2
+        for hiddenType in possibleHiddenValue:#r3
+            for questionText in possibleQuestionText:#r4
+                for round in rounds:
+                    if ((round[2]==videoDataSet) and (round[3]==hiddenType) and (round[4]==questionText)):
+                        if (videoDataSet+hiddenType+questionText) not in averageCalc: 
+                            averageCalc[videoDataSet+hiddenType+questionText] = (round[5], 1, '?', videoDataSet, hiddenType, questionText)
+                        else:
+                            things = averageCalc.get(videoDataSet+hiddenType+questionText)
+                            #print(things)
+                            newThings = [int(things[0])+int(round[5]), int(things[1])+1, '?', videoDataSet, hiddenType, questionText]
+                            #print(newTup)
+                            averageCalc[videoDataSet+hiddenType+questionText] = newThings
+
+
+
+                        
+                #averageCalc(questionText) = (videoDataSet, hiddenType, questionText)
+    # tup = (questionText, videoDataSet, hiddenType, average)
+    # average = summation/counter
+    # averageCalc.append(tup)
+for key, value in averageCalc.items():
+    value[2] = int(value[0])/int(value[1]) 
+    print(value)
+    #row[2] = int(row[0])/int(row[1]) 
+
+print('\n\n\n\n\n\n')
+
+print(averageCalc)
+
+print('\n\n\n\n\n\n')
+
+with open('averagesPerQuestionPerVideoPerDataResults.csv','w') as csvfile: 
+    csvwriter = csv.writer(csvfile)
+    for key, value in averageCalc.items(): #makes a CSV, actual real file: 
+        csvwriter.writerow(value)
         #print(tup)
