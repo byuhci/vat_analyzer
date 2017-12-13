@@ -149,12 +149,12 @@ for i in range(0,int(possibilites)):
             for questionText in possibleQuestionText:#r4
                 for round in rounds:
                     if ((round[2]==videoDataSet) and (round[3]==hiddenType) and (round[4]==questionText)):
-                        if (videoDataSet+hiddenType+questionText) not in averageCalc: 
+                        if (videoDataSet+hiddenType+questionText) not in averageCalc:  
                             averageCalc[videoDataSet+hiddenType+questionText] = (round[5], 1, '?', videoDataSet, hiddenType, questionText)
                         else:
                             things = averageCalc.get(videoDataSet+hiddenType+questionText)
                             #print(things)
-                            newThings = [int(things[0])+int(round[5]), int(things[1])+1, '?', videoDataSet, hiddenType, questionText]
+                            newThings = [int(things[0])+int(round[5]), int(things[1])+1, '?', videoDataSet, hiddenType, round[6], questionText]
                             #print(newTup)
                             averageCalc[videoDataSet+hiddenType+questionText] = newThings
 
