@@ -30,7 +30,7 @@ def calculateTotalAnswersPerQuestion(points):
     averages = defaultdict(lambda: [0, 0, 0])
     for point in points:
         # Increment sum by answer, then increment count by 1
-        averages[point[2:5]][0] += point.quesAnswer
+        averages[point[2:5]][0] += int(point.quesAnswer) #TODO: WHY DO I NEED INT() HERE???
         averages[point[2:5]][1] += 1
     return averages
 
@@ -45,6 +45,7 @@ def makeAveragedCSV(averages):
         csvwriter = csv.writer(csvfile)
         for value in averages.values(): 
             csvwriter.writerow(value)
+            print(value)
 
 def runOneVariationOfSurveys(studyType):
     os.chdir(SURVEY_PATH)
@@ -103,7 +104,9 @@ def runOneVariationOfSurveys(studyType):
         #print('set(studyInfo.keys()): ', set(studyInfo.keys()))
         #key=name of video, value={'q1'='ans',...}
         for key, value in allSurveys.items():
-            if key not in ['user-info', 'practice-first',
+            if key in ['run-survey', 'pills-survey']: 
+                print("'run-survey', 'pills-survey' BUG")
+            elif key not in ['user-info', 'practice-first',
                            'practice-second', 'practice-third',
                            'practice-survey']:
                 # 'has-both' or 'no-video' or 'post-section'
@@ -123,6 +126,7 @@ def runOneVariationOfSurveys(studyType):
                     #print(userName, studyType, key,
                                         #hiddenThing, quesText, quesAnswer,
                                         #quesNum, quesType, surveyFamily)
+
     return points
 
 points = runVariousSurveys()
