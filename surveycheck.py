@@ -68,7 +68,7 @@ def calculateTotalAnswersPerQuestion(rounds):
 def calculateAverageAnswer(averageCalc):
     for key, value in averageCalc.items():
         value[2] = int(value[0])/int(value[1]) 
-        print(value[2])
+        #print(value[2])
     return averageCalc
 
 def makeAveragedCSV(averageCalc):
@@ -120,6 +120,7 @@ def runOneVariationOfSurveys(name):
             survey = task['survey']
         else: 
             survey = task['survey']
+            print(survey)
             hidden = itemType #holds the fact that it is a survey
         videoAndDataPairings[name] = (hidden, survey) 
     return getUserStudyInfo(videoAndDataPairings, videoAndQuestionPairings, surveyType)
@@ -168,6 +169,7 @@ def putTuplesInRounds(validFiles, videoAndDataPairings, videoAndQuestionPairings
                         if (quesType == 'likert' or quesType == 'likertTime'):
                             quesAnswer = int(quesAnswer)+3 #because it was on a scale of -2 to +2 (adjusting it to 1 to 5)
                         rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType, groupSurvey))
+                        #print(userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType, groupSurvey)
     return rounds
 
 rounds = runVariousSurveys()
