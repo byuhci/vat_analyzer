@@ -21,8 +21,8 @@ map_gold_to_workspace = {"run-red" : "newrun.run-thurs-seven-attempt", "run-blue
 label_times_list = []
 person_label_times = {}
 delta_t = float(1) / float(30)
-PATH = '../user-studies'
-GOLD_PATH = "../workspacegold2"
+PATH = 'user-surveyResultsForPython_raw_cleaned_data'
+GOLD_PATH = "/home/naomi/Documents/AML/vat_analyzer/gold"
 #PATH = '../user-studies'
 #GOLD_PATH = "../workspacegold"
 confusionMatrix = {}
@@ -35,12 +35,16 @@ perPersonConfusionMatrices = {}
 #confusion[gold][user]++
 def findGoldLabel(theWorkSpace, time):
     for root, dirs, files in os.walk(GOLD_PATH):
+        #print("hi")
         for file in files:
             filename = os.path.join(root,file)
-            with open(filename) as data_file:
+
+            with open(filename, 'r') as data_file:
+                print(data_file)
+
                 gold_filename = json.load(data_file)
 
-                # print("gold_filename")
+                
                 # print(gold_filename)
                 split_gold_filename = filename.split('/')
                 # print("split gold filename")
@@ -148,17 +152,38 @@ class label_class:
 
 
 def outer_loop():
-    #path = '../user-studies/'
-    print(PATH)
-    for root, dirs, files in os.walk(PATH):
-        print("root")
-        print(root)
-        print("dirs")
-        print(dirs)
-        print(" files")
-        print(files)
-        for file in files:
-            inner_loop(os.path.join(root,file))
+    #path = '../user-studies/' #for austin
+    os.chdir('surveyResultsForPython_raw_cleaned_data')
+    cwd = os.getcwd()
+    print(cwd)
+
+    # os.chdir('studyA')
+    # cwd = os.getcwd()
+    # print(cwd)
+
+    possibleStudyFolders = ['studyA', 'studyB', 'studyC', 'studyD']
+
+    # print(PATH)
+    for subfolder in possibleStudyFolders: 
+        
+        
+
+        #os.path.join(SURVEY_PATH)
+        os.chdir(subfolder)
+        PATH = os.getcwd()
+        print(PATH)
+        for root, dirs, files in os.walk(PATH):
+            print("root")
+            print(root)
+            print("dirs")
+            print(dirs)
+            print(" files")
+            print(files)
+            for file in files:
+                inner_loop(os.path.join(root,file))
+        os.chdir('..')
+        cwd = os.getcwd()
+        print('new:', cwd)
 
 
 
