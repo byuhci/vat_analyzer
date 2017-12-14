@@ -9,13 +9,10 @@ SURVEY_PATH = "/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw
 
 def runVariousSurveys():
     rounds = []
-    #print(len(rounds))
-    #print(rounds.type())
     rounds = runOneVariationOfSurveys('studyA')
     rounds += runOneVariationOfSurveys('studyB')
     rounds += runOneVariationOfSurveys('studyC')
     rounds += runOneVariationOfSurveys('studyD')
-    #print(len(rounds))
     return rounds
 
 def rawDataCSV(rounds):
@@ -26,7 +23,6 @@ def rawDataCSV(rounds):
         csvwriter = csv.writer(csvfile)
         for tup in sorted(rounds): #makes a CSV, actual real file: 
             csvwriter.writerow(tup)
-            #print(tup)
 
 def calculateTotalAnswersPerQuestion(rounds): 
     #figure out how many videos and data statuses there are
@@ -35,8 +31,6 @@ def calculateTotalAnswersPerQuestion(rounds):
     possibleQuestionText = []
     possibleSurveyGroupTypes = []
     possibleSurveyTypes = []
-    #print(rounds.type())
-    #print(len(rounds))
     for round in rounds:
         if round[2] not in possibleVideoNameSets:
             possibleVideoNameSets.append(round[2])
@@ -82,14 +76,11 @@ def makeAveragedCSV(averageCalc):
         csvwriter = csv.writer(csvfile)
         for key, value in averageCalc.items(): #makes a CSV, actual real file: 
             csvwriter.writerow(value)
-            #print(tup)
 
 def runOneVariationOfSurveys(name):
-
     outputFile = name #argv[1]
     #see which folder we want to use, pick set of rules 
-    surveyType = name #argv[1]#value should be 'surveyA' or 'surveyB', etc.
-
+    surveyType = name 
     #check rules based on what kind of survey we're doing
     rulesLocation = name + '.tasks.json'
     convertToFiveRulesLocation = os.path.join(SURVEY_PATH)
@@ -102,8 +93,6 @@ def runOneVariationOfSurveys(name):
         fileOfSurveyGuidlines = json.load(file)
     surveys = fileOfSurveyGuidlines['surveys'] #this is a dictionary
 
-    #print(*surveys, sep='\n')
-
     for key, value in surveys.items(): #loop through each diff survey style ('has-both', 'no-vid', etc)
         #loop through each question in the survey:
         if key not in ['userinfo', 'practice-task', 'empty-task']:
@@ -115,7 +104,6 @@ def runOneVariationOfSurveys(name):
                 videoAndQuestionPairings[key+quesNum] = (quesType,quesNum,quesText)
 
     allTasks = fileOfSurveyGuidlines['tasks']
-    #print(allTasks)
     for task in allTasks: #allTasks is a list of which videos they'll annotate/surveys they'll take & the order
         name = task['name'] #string
         itemType = task['type']
@@ -134,7 +122,10 @@ def runOneVariationOfSurveys(name):
             survey = task['survey']
             hidden = itemType #holds the fact that it is a survey
         videoAndDataPairings[name] = (hidden, survey) 
+    return getUserStudyInfo(videoAndDataPairings, videoAndQuestionPairings, surveyType)
 
+
+def getUserStudyInfo(videoAndDataPairings, videoAndQuestionPairings, surveyType):
     #go to the folder with all users' data/results
     destination = os.path.join(SURVEY_PATH, surveyType)
     os.chdir(destination)
@@ -142,14 +133,14 @@ def runOneVariationOfSurveys(name):
     #see what files are in this folder
     glob.glob('*.info.json')
 
-    validUsers = []
-
     #only allow users 001-045
     validFiles = list(filter(lambda x: x.split('.')[0]<='045.info.json', glob.glob('*.info.json')))#make sure we're ignoring users 2020 and 4040
     #print(validFiles)#shows which user ids are saved in this folder
+    return putTuplesInRounds(validFiles, videoAndDataPairings, videoAndQuestionPairings, surveyType)
 
+
+def putTuplesInRounds(validFiles, videoAndDataPairings, videoAndQuestionPairings, surveyType):
     rounds = []
-
     for fileName in validFiles:
         #print(validFiles)
         with open(fileName, 'r') as file:
@@ -171,22 +162,13 @@ def runOneVariationOfSurveys(name):
                     for i in range(len(value)): #length of value = number of questions there were in this set
                         quesAnswer = answers[i]
                         quesNum = questions[i]
-                        groupSurvey = videoAndDataPairings[key][1] #SURVEY TYPE aka hat was hidden (like 'has-both' or 'no-video' or 'post-section')
-                        #the line below is the broken line
+                        groupSurvey = videoAndDataPairings[key][1] #SURVEY TYPE aka what was hidden (like 'has-both' or 'no-video' or 'post-section')
                         quesText = videoAndQuestionPairings[groupSurvey+quesNum][2] #actual question 
                         quesType = videoAndQuestionPairings[groupSurvey+quesNum][0] #likert type
                         if (quesType == 'likert' or quesType == 'likertTime'):
                             quesAnswer = int(quesAnswer)+3 #because it was on a scale of -2 to +2 (adjusting it to 1 to 5)
                         rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType, groupSurvey))
     return rounds
-
-
-
-
-
-
-
-
 
 rounds = runVariousSurveys()
 rawDataCSV(rounds)
