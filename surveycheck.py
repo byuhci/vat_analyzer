@@ -5,7 +5,7 @@ import csv
 from sys import argv
 from collections import defaultdict, namedtuple
 
-SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data/'
+SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data____orig'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                    'quesText, quesAnswer, quesNum, responseType, surveyFamily')
@@ -30,7 +30,7 @@ def calculateTotalAnswersPerQuestion(points):
     averages = defaultdict(lambda: [0, 0, 0])
     for point in points:
         # Increment sum by answer, then increment count by 1
-        averages[point[2:5]][0] += int(point.quesAnswer) #TODO: WHY DO I NEED INT() HERE???
+        averages[point[2:5]][0] += int(point.quesAnswer)
         averages[point[2:5]][1] += 1
     return averages
 
@@ -43,9 +43,13 @@ def calculateAverageAnswer(averages):
 def makeAveragedCSV(averages):
     with open('averagesPerQuestionPerVideoPerDataResults.csv', 'w') as csvfile: 
         csvwriter = csv.writer(csvfile)
-        for value in averages.values(): 
-            csvwriter.writerow(value)
-            print(value)
+        for key, value in averages.items(): 
+            print(key, value) 
+            row = []
+            row.extend(value)
+            row.extend(key)
+            print(row)
+            csvwriter.writerow(row) #TODO: add the list of users who were in this bucket
 
 def runOneVariationOfSurveys(studyType):
     os.chdir(SURVEY_PATH)
@@ -83,6 +87,12 @@ def runOneVariationOfSurveys(studyType):
             else:
                 hidden = 'has-both-task'  # Neither is hidden
             studyInfo[videoNames] = (hidden, survey)
+        else:
+            survey = task['survey']
+            hidden = 'not applicable'
+            studyInfo[videoNames] = (hidden, survey)
+            # print("SOLVING BUG HERE!")
+            # print(videoNames, hidden, survey)
     #print('\n')
     #print('studyInfo', studyInfo)
     #go to the folder with all users' data/results
@@ -104,9 +114,26 @@ def runOneVariationOfSurveys(studyType):
         #print('set(studyInfo.keys()): ', set(studyInfo.keys()))
         #key=name of video, value={'q1'='ans',...}
         for key, value in allSurveys.items():
-            if key in ['run-survey', 'pills-survey']: 
-                print("'run-survey', 'pills-survey' BUG")
-            elif key not in ['user-info', 'practice-first',
+            # if key in ['run-survey', 'pills-survey']: 
+                #print("'run-survey', 'pills-survey' BUG")
+                # hiddenThing = 'not applicable'
+                # userName is already set, studyType is = studyA/B/C/D
+                # hiddenThing, surveyFamily = studyInfo[key]
+                # quesText = 
+                # quesAnswer = 
+                # quesNum = 
+                # quesType = 
+                # surveyFamily = 
+                # if (quesType == 'likert' or quesType == 'likertTime'):
+                #         quesAnswer = int(quesAnswer) + 3
+                # print('BUG', userName, studyType, key,
+                #                         hiddenThing, quesText, quesAnswer,
+                #                         quesNum, quesType, surveyFamily)
+                # points.append(Point(userName, studyType, key,
+                #                         hiddenThing, quesText, quesAnswer,
+                #                         quesNum, quesType, surveyFamily))
+
+            if key not in ['user-info', 'practice-first',
                            'practice-second', 'practice-third',
                            'practice-survey']:
                 # 'has-both' or 'no-video' or 'post-section'
@@ -117,15 +144,24 @@ def runOneVariationOfSurveys(studyType):
 
                 for quesNum, quesAnswer in zip(questions, answers):
                     quesType, quesText = quesInfo[(surveyFamily, quesNum)]
-                    # Adjust -2 to +2 to 1 to 5
+                    # Adjust (-2 to +2) to (1 to 5)
                     if (quesType == 'likert' or quesType == 'likertTime'):
                         quesAnswer = int(quesAnswer) + 3
                     points.append(Point(userName, studyType, key,
                                         hiddenThing, quesText, quesAnswer,
                                         quesNum, quesType, surveyFamily))
-                    #print(userName, studyType, key,
-                                        #hiddenThing, quesText, quesAnswer,
-                                        #quesNum, quesType, surveyFamily)
+
+                if key in ['run-survey', 'pills-survey']: 
+                    1+2
+            #         print(userName, studyType, key,
+            #                             hiddenThing, quesText, quesAnswer,
+            #                             quesNum, quesType, surveyFamily)
+            elif key in ['user-info', 'practice-first',
+                           'practice-second', 'practice-third',
+                           'practice-survey']:
+                1+1
+            else:
+                print("key: ", key, '\n', 'this was a BUG')
 
     return points
 

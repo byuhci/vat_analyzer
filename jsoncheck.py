@@ -353,6 +353,7 @@ print(json.dumps(perPersonConfusionMatrices, indent=4, sort_keys=True))
 #pprint.pprint(perPersonConfusionMatrices)
 #gold_totals = calculate_gold_totals()
 work_percent = calc_workspace_percentages(workspace_totals)
+print('\n', "work_percent: ", '\n', work_percent)
 
 # print(final_res)
 # print("\n\n")
