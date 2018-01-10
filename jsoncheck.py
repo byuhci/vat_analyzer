@@ -2,6 +2,7 @@ import os
 import glob
 import json
 import pprint
+import codecs
 
 video_events = ["hotkey:restart", "hotkey:end", "video:drag", "hotkey", "video:button", "video:click", "hotkey:up", "hotkey:down", "video:button", "video:menu"]
 data_events = ["data:dblclick", "data:drag"]
@@ -23,10 +24,12 @@ person_label_times = {}
 delta_t = float(1) / float(30)
 PATH = '../user-studies'
 GOLD_PATH = "../workspacegold2"
+DATA_OR_VIDEO_PATH = "../data_or_video"
 #PATH = '../user-studies'
 #GOLD_PATH = "../workspacegold"
 confusionMatrix = {}
 perPersonConfusionMatrices = {}
+dataOrVideoOrBothMap = {}
 
 #rough outline of loop that will give us the per frame accurracy
 # for frame in frames:
@@ -46,22 +49,23 @@ def findGoldLabel(theWorkSpace, time):
                 # print("split gold filename")
                 # print(split_gold_filename)
                 final_split = split_gold_filename[-1].split('.')
-                print("theWorkSpace")
-                print(theWorkSpace)
-                print("final_split[0]")
-                print(final_split[0])
-                try:
-                    print("map_gold_to_workspace[final_split[0]]  " + str(map_gold_to_workspace[final_split[0]]))
-                except KeyError:
-                    print(final_split[0])
-                    continue
-                if map_gold_to_workspace[final_split[0]] in theWorkSpace:
-                    print("returning getGoldLabelAt")
-                # if final_split[0] in theWorkSpace or final_split[0] in filename: #TODO:: add or in filename. this MIGHT NOT WORK because theWorkSpace is the one we're looking for not necessarily the filename
-                    return getGoldLabelAt(gold_filename, time)
-                else:
-                    print("more for")
-    print("returning none from findGoldLabel")
+                # print("theWorkSpace")
+                # print(theWorkSpace)
+                # print("final_split[0]")
+                # print(final_split[0])
+                # try:
+                #     print("map_gold_to_workspace[final_split[0]]  " + str(map_gold_to_workspace[final_split[0]]))
+                # except KeyError:
+                #     # print(final_split[0])
+                #     continue
+                if final_split[0] in map_gold_to_workspace:
+                    if map_gold_to_workspace[final_split[0]] in theWorkSpace:
+                        # print("returning getGoldLabelAt")
+                    # if final_split[0] in theWorkSpace or final_split[0] in filename: #TODO:: add or in filename. this MIGHT NOT WORK because theWorkSpace is the one we're looking for not necessarily the filename
+                        return getGoldLabelAt(gold_filename, time)
+                    # else:
+                        # print("more for")
+    # print("returning none from findGoldLabel")
     return "None"
 
 def getGoldLabelAt(gold_filename, time):
@@ -87,7 +91,9 @@ def doConfusion(filename):
     theWorkSpace = filename["workspace"]
     # print("theWorkSpace")
     # print(theWorkSpace)
-
+    if "studyD" in filename["study"] and 'newrun.run-pink' in filename["workspace"]:
+        print("skipping a run-pink in studyD")
+        return
     start_time = delta_t
     while start_time < video_lengths[theWorkSpace]:
         gold = findGoldLabel(theWorkSpace, start_time)
@@ -96,43 +102,60 @@ def doConfusion(filename):
         # print(theWorkSpace)
         # print("gold")
         # print(gold)
-        doPerPersonMatrix(filename, theWorkSpace, gold, user)
-        if theWorkSpace in confusionMatrix:
-            if gold in confusionMatrix[theWorkSpace]:
-                if user in confusionMatrix[theWorkSpace][gold]:
-                    confusionMatrix[theWorkSpace][gold][user] = confusionMatrix[theWorkSpace][gold][user] + 1
+
+        #the information_type variable indicates whether the part was data, video, or both
+
+        information_type = dataOrVideoOrBothMap[filename["study"].encode("utf-8")][filename["workspace"].encode("utf-8")]
+        doPerPersonMatrix(filename, theWorkSpace, gold, user, information_type)
+        if information_type in confusionMatrix:
+            if theWorkSpace in confusionMatrix[information_type]:
+                if gold in confusionMatrix[information_type][theWorkSpace]:
+                    if user in confusionMatrix[information_type][theWorkSpace][gold]:
+                        confusionMatrix[information_type][theWorkSpace][gold][user] = confusionMatrix[information_type][theWorkSpace][gold][user] + 1
+                    else:
+                        confusionMatrix[information_type][theWorkSpace][gold].update({user : 1})
                 else:
-                    confusionMatrix[theWorkSpace][gold].update({user : 1})
+                    confusionMatrix[information_type][theWorkSpace][gold] = {}
+                    confusionMatrix[information_type][theWorkSpace][gold].update({user : 1})
             else:
-                confusionMatrix[theWorkSpace][gold] = {}
-                confusionMatrix[theWorkSpace][gold].update({user : 1})
+                confusionMatrix[information_type][theWorkSpace] = {}
+                confusionMatrix[information_type][theWorkSpace][gold] = {}
+                confusionMatrix[information_type][theWorkSpace][gold].update({user : 1})
         else:
-            confusionMatrix[theWorkSpace] = {}
-            confusionMatrix[theWorkSpace][gold] = {}
-            confusionMatrix[theWorkSpace][gold].update({user : 1})
+            confusionMatrix[information_type] = {}
+            confusionMatrix[information_type][theWorkSpace] = {}
+            confusionMatrix[information_type][theWorkSpace][gold] = {}
+            confusionMatrix[information_type][theWorkSpace][gold].update({user : 1})
         start_time += delta_t
 
-def doPerPersonMatrix(filename, theWorkSpace, gold, user):
+def doPerPersonMatrix(filename, theWorkSpace, gold, user, information_type):
     personID = filename["user_id"]
-    if personID in perPersonConfusionMatrices:
-        if theWorkSpace in perPersonConfusionMatrices[personID]:
-            if gold in perPersonConfusionMatrices[personID][theWorkSpace]:
-                if user in perPersonConfusionMatrices[personID][theWorkSpace][gold]:
-                    perPersonConfusionMatrices[personID][theWorkSpace][gold][user] = perPersonConfusionMatrices[personID][theWorkSpace][gold][user] + 1
+    if information_type in perPersonConfusionMatrices:
+        if personID in perPersonConfusionMatrices[information_type]:
+            if theWorkSpace in perPersonConfusionMatrices[information_type][personID]:
+                if gold in perPersonConfusionMatrices[information_type][personID][theWorkSpace]:
+                    if user in perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold]:
+                        perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold][user] = perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold][user] + 1
+                    else:
+                        perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold].update({user : 1})
                 else:
-                    perPersonConfusionMatrices[personID][theWorkSpace][gold].update({user : 1})
+                    perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold] = {}
+                    perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold].update({user : 1})
             else:
-                perPersonConfusionMatrices[personID][theWorkSpace][gold] = {}
-                perPersonConfusionMatrices[personID][theWorkSpace][gold].update({user : 1})
+                perPersonConfusionMatrices[information_type][personID][theWorkSpace] = {}
+                perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold] = {}
+                perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold].update({user : 1})
         else:
-            perPersonConfusionMatrices[personID][theWorkSpace] = {}
-            perPersonConfusionMatrices[personID][theWorkSpace][gold] = {}
-            perPersonConfusionMatrices[personID][theWorkSpace][gold].update({user : 1})
+            perPersonConfusionMatrices[information_type][personID] = {}
+            perPersonConfusionMatrices[information_type][personID][theWorkSpace] = {}
+            perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold] = {}
+            perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold].update({user : 1})
     else:
-        perPersonConfusionMatrices[personID] = {}
-        perPersonConfusionMatrices[personID][theWorkSpace] = {}
-        perPersonConfusionMatrices[personID][theWorkSpace][gold] = {}
-        perPersonConfusionMatrices[personID][theWorkSpace][gold].update({user : 1})
+        perPersonConfusionMatrices[information_type] = {}
+        perPersonConfusionMatrices[information_type][personID] = {}
+        perPersonConfusionMatrices[information_type][personID][theWorkSpace] = {}
+        perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold] = {}
+        perPersonConfusionMatrices[information_type][personID][theWorkSpace][gold].update({user : 1})
     # here I would do a while loop but the bounds would be < total_time(workspace) but I don't know how to find that. So I'm in a bad spot you see.
 
 class label_time:
@@ -151,14 +174,52 @@ def outer_loop():
     #path = '../user-studies/'
     print(PATH)
     for root, dirs, files in os.walk(PATH):
-        print("root")
-        print(root)
-        print("dirs")
-        print(dirs)
-        print(" files")
-        print(files)
+        # print("root")
+        # print(root)
+        # print("dirs")
+        # print(dirs)
+        # print(" files")
+        # print(files)
         for file in files:
             inner_loop(os.path.join(root,file))
+
+def createDataVideoOrBothMap():
+    for root, dirs, files in os.walk(DATA_OR_VIDEO_PATH):
+        for file in files:
+            if("tasks.json" in file):
+                # print("file  " + str(file))
+                study = file.split(".")
+                studyName = study[0]
+                file_str_name = os.path.join(root,file)
+                # print("file_str_name  " + str(file_str_name))
+                try:
+                    if "studyA" in file_str_name:
+                        fileJson = json.load(codecs.open(file_str_name, 'r', 'utf-8-sig'))
+                    else:
+                        with open(file_str_name) as data_file:
+                            fileJson = json.load(data_file)
+                    for task in fileJson["tasks"]:
+                        # print("task  " + str(task))
+                        try:
+                            task_workspace = task["data"]["workspace"]
+                        except KeyError:
+                            # print("KeyError because some don't have \"data\" or \"workspace\" ")
+                            continue
+                        utf8_tw = task_workspace.encode("utf-8")
+                        utf8_ts = task["survey"].encode("utf-8")
+                        if studyName in dataOrVideoOrBothMap:
+                            dataOrVideoOrBothMap[studyName].update({utf8_tw : utf8_ts })
+                        else:
+                            dataOrVideoOrBothMap[studyName] = {}
+                            dataOrVideoOrBothMap[studyName].update({utf8_tw : utf8_ts })
+                except ValueError:
+                    # print("ValueError")
+                    print(file_str_name)
+                    continue
+            else:
+                continue
+
+
 
 
 
@@ -198,6 +259,7 @@ def inner_loop(pfile):
             # print("workspace")
             # print(workspace)
             if workspace not in cane_andor_practice_workspaces:
+                print(workspace)
                 doConfusion(filename)
                 sesh_title = (filename["user_id"] + " " +  filename["workspace"])
                 final_res[sesh_title] = {"video" : 0, "data" : 0}
@@ -207,8 +269,8 @@ def inner_loop(pfile):
                 workspace_totals.setdefault(workspace, {"video" : 0, "data" : 0})
                 calc_label_times(sesh_title, person, workspace, filename)
                 try_catch_inner(sesh_title, person, workspace, filename)
-            else:
-                print("skipped practice workspace")
+            # else:
+                # print("skipped practice workspace")
 
 #this function actively does the counts-- i.e., it evaluates whether each person had more data or video events, and also
 #whether each workspace had more data or video events, and also counts the total data versus video events of the data
@@ -308,30 +370,25 @@ def get_f_score_per_Person_confusion(perPersonConfusionMatrices):
     return fscores
 
 
-
+createDataVideoOrBothMap()
+print("dataOrVideoOrBothMap")
+print(dataOrVideoOrBothMap)
+#TODO: uncomment following block
 outer_loop()
 print("HERE is the confusionMatrix")
 print(confusionMatrix)
 with open('confusion.json', 'w') as fp:
     json.dump(confusionMatrix, fp, sort_keys=True, indent=4)
-print("\n\n\n\n\n")
-print("matrix per Person")
-# print(perPersonConfusionMatrices)
+# print("\n\n\n\n\n")
+# print("matrix per Person")
 with open('perpersonconfusion.json', 'w') as fp2:
     json.dump(perPersonConfusionMatrices, fp2, sort_keys=True, indent=4)
-print("\n\n\n\n")
-print(json.dumps(perPersonConfusionMatrices, indent=4, sort_keys=True))
+# print("\n\n\n\n")
+# print(json.dumps(perPersonConfusionMatrices, indent=4, sort_keys=True))
+#STOP UNCOMMENTING HERE
 
-# print("\n\n\nPer workspace per person confusion matrix f scores ")
-# print(get_f_score_per_Person_confusion(perPersonConfusionMatrices))
 
-#pprint.pprint(perPersonConfusionMatrices)
-#gold_totals = calculate_gold_totals()
 work_percent = calc_workspace_percentages(workspace_totals)
-
-# print(final_res)
-# print("\n\n")
-# print(final_res["event_totals"])
 print("\n\n")
 print("workspace totals -- the real good stuff ")
 print(workspace_totals)
@@ -344,22 +401,3 @@ print(work_percent)
 
 print("\n\nEvent Overall Sums\n")
 print(event_sums)
-# print("\n\nPeople Workspace Labels")
-# for (person, label) in person_label_times:
-#     print(person)
-#     print(label)
-#     print (person, label)
-#     print(person_label_times[(person, label)])
-#     print(" ")
-
-
-# print("\n\nGold Standard Labels")
-# for label in gold_totals:
-#     print(label)
-#     print(" ")
-#     print(gold_totals[label])
-#     print("")
-
-
-#to extend analysis, can find the gold standard here with one for loop, then can find the differences between
-#its results and the rest of the data using absolute value. should be fairly straightforward
