@@ -78,10 +78,8 @@ def makeAveragedCSV(averageCalc):
             csvwriter.writerow(value)
 
 def runOneVariationOfSurveys(name):
-    outputFile = name #argv[1]
-    # see which folder we want to use, pick set of rules 
-    surveyType = name 
-    # check rules based on what kind of survey we're doing
+    outputFile = name # see which folder we want to use, pick set of rules/pairings 
+    surveyType = name # check rules based on what kind of survey we're doing
     rulesLocation = name + '.tasks.json'
     convertToFiveRulesLocation = os.path.join(SURVEY_PATH)
     os.chdir(convertToFiveRulesLocation)
@@ -101,7 +99,7 @@ def runOneVariationOfSurveys(name):
                 quesNum = ((question['name']).lower()).replace(" ", "") #ques1, ques2, etc
                 quesText = question['text']
                 videoAndQuestionPairings[key+quesNum] = (quesType,quesNum,quesText)
-    print('videoAndQuestionPairings', videoAndQuestionPairings, '\n')
+    # print('videoAndQuestionPairings', videoAndQuestionPairings, '\n')
 
     allTasks = fileOfSurveyGuidlines['tasks']
     for task in allTasks: # allTasks is a list of which videos they'll annotate/surveys they'll take & the order
@@ -122,7 +120,7 @@ def runOneVariationOfSurveys(name):
             survey = task['survey']
             hidden = itemType # holds the fact that it is a survey
         videoAndDataPairings[name] = (hidden, survey) 
-    print('videoAndDataPairings', videoAndDataPairings, '\n')
+    # print('videoAndDataPairings', videoAndDataPairings, '\n')
     return getUserStudyInfo(videoAndDataPairings, videoAndQuestionPairings, surveyType)
 
 def getUserStudyInfo(videoAndDataPairings, videoAndQuestionPairings, surveyType):
@@ -135,7 +133,7 @@ def getUserStudyInfo(videoAndDataPairings, videoAndQuestionPairings, surveyType)
 
     # only allow users 001-045
     validFiles = list(filter(lambda x: x.split('.')[0]<='045.info.json', glob.glob('*.info.json')))#make sure we're ignoring users 2020 and 4040
-    print(validFiles) # shows which user ids are saved in this folder
+    # print(validFiles) # shows which user ids are saved in this folder
     return putTuplesInRounds(validFiles, videoAndDataPairings, videoAndQuestionPairings, surveyType)
 
 def putTuplesInRounds(validFiles, videoAndDataPairings, videoAndQuestionPairings, surveyType):
@@ -167,13 +165,27 @@ def putTuplesInRounds(validFiles, videoAndDataPairings, videoAndQuestionPairings
                         if (quesType == 'likert' or quesType == 'likertTime'):
                             quesAnswer = int(quesAnswer)+3 # because it was on a scale of -2 to +2 (adjusting it to 1 to 5)
                         rounds.append((userName, surveyType, key, hiddenThing, quesText, quesAnswer, quesNum, quesType, groupSurvey))
-    # print('rounds', rounds)
     return rounds
+
+def correctForLearningEffect(averageCalc):
+    print('\n')
+    for i in range(len(averageCalc)):
+        for j in range(len(averageCalc)):
+            print('\n')
+            # need data/vid type ()to match and question name to match
+            # if ((rounds[i][3] == rounds[j][3]) && (rounds[i][4] == rounds[j][4])):
+                # print(rounds[i][3], rounds[i][4]) # it is a match
+                # so i will merge them
+
+
+
+
 rounds = runVariousSurveys()
 rawDataCSV(rounds)
 
 averageCalc = calculateTotalAnswersPerQuestion(rounds)
-# print(averageCalc.type())
 averageCalc = calculateAverageAnswer(averageCalc)
-# print(averageCalc.type())
+print(averageCalc)
+# averageCalc = correctForLearningEffect(averageCalc)
+
 makeAveragedCSV(averageCalc)
