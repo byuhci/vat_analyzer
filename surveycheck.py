@@ -2,7 +2,7 @@ import glob
 import json
 import os
 import csv
-from sys import argv
+# from sys import argv
 
 rounds = []
 
@@ -11,8 +11,7 @@ SURVEY_PATH = "/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw
 
 def runOneVariationOfSurveys(rounds, name):
     outputFile = name #argv[1]
-    #see which folder we want to use, pick set of rules 
-    surveyType = name #argv[1]#value should be 'surveyA' or 'surveyB', etc.
+    surveyType = name #argv[1] #value should be 'surveyA' or 'surveyB', etc.
 
     #check rules based on what kind of survey we're doing
     rulesLocation = name + '.tasks.json'
@@ -181,3 +180,67 @@ with open('averagesPerQuestionPerVideoPerDataResults.csv','w') as csvfile:
     for key, value in averageCalc.items(): #makes a CSV, actual real file: 
         csvwriter.writerow(value)
         #print(tup)
+        userName = fileName.split('.')[0]
+        allSurveys = information['surveys']
+        #print('set(allSurveys.keys()): ', set(allSurveys.keys()))
+        #print('set(studyInfo.keys()): ', set(studyInfo.keys()))
+        #key=name of video, value={'q1'='ans',...}
+        for key, value in allSurveys.items():
+            # if key in ['run-survey', 'pills-survey']: 
+                #print("'run-survey', 'pills-survey' BUG")
+                # hiddenThing = 'not applicable'
+                # userName is already set, studyType is = studyA/B/C/D
+                # hiddenThing, surveyFamily = studyInfo[key]
+                # quesText = 
+                # quesAnswer = 
+                # quesNum = 
+                # quesType = 
+                # surveyFamily = 
+                # if (quesType == 'likert' or quesType == 'likertTime'):
+                #         quesAnswer = int(quesAnswer) + 3
+                # print('BUG', userName, studyType, key,
+                #                         hiddenThing, quesText, quesAnswer,
+                #                         quesNum, quesType, surveyFamily)
+                # points.append(Point(userName, studyType, key,
+                #                         hiddenThing, quesText, quesAnswer,
+                #                         quesNum, quesType, surveyFamily))
+
+            if key not in ['user-info', 'practice-first',
+                           'practice-second', 'practice-third',
+                           'practice-survey']:
+                # 'has-both' or 'no-video' or 'post-section'
+                hiddenThing, surveyFamily = studyInfo[key]
+                questions = ['question' + str(i)
+                             for i in range(1, len(value)+1)]
+                answers = [value[q] for q in questions]
+
+                for quesNum, quesAnswer in zip(questions, answers):
+                    quesType, quesText = quesInfo[(surveyFamily, quesNum)]
+                    
+                    # Adjust (-2 to +2) to (1 to 5)
+                    if (quesType == 'likert' or quesType == 'likertTime'):
+                        quesAnswer = int(quesAnswer) + 3
+                    points.append(Point(userName, studyType, key,
+                                        hiddenThing, quesText, quesAnswer,
+                                        quesNum, quesType, surveyFamily))
+
+                if key in ['run-survey', 'pills-survey']: 
+                    1+2
+            #         print(userName, studyType, key,
+            #                             hiddenThing, quesText, quesAnswer,
+            #                             quesNum, quesType, surveyFamily)
+            elif key in ['user-info', 'practice-first',
+                           'practice-second', 'practice-third',
+                           'practice-survey']:
+                1+1
+            else:
+                print("key: ", key, '\n', 'this was a BUG')
+# return points
+
+points = runVariousSurveys()
+rawDataCSV(points)
+
+averages = calculateTotalAnswersPerQuestion(points)
+averages = calculateAverageAnswer(averages)
+makeAveragedCSV(averages)
+
