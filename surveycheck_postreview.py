@@ -5,7 +5,7 @@ import csv
 from sys import argv
 from collections import defaultdict, namedtuple
 
-SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data____orig'
+SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                    'quesText, quesAnswer, quesNum, responseType, surveyFamily')
@@ -41,14 +41,14 @@ def calculateAverageAnswer(averages):
     return averages
 
 def makeAveragedCSV(averages):
-    with open('averagesPerQuestionPerVideoPerDataResults.csv', 'w') as csvfile: 
+    with open('correctForLearningEffect.csv', 'w') as csvfile: 
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items(): 
-            print(key, value) 
+            # print(key, value) 
             row = []
             row.extend(value)
             row.extend(key)
-            print(row)
+            # print(row)
             csvwriter.writerow(row) #TODO: add the list of users who were in this bucket
 
 def runOneVariationOfSurveys(studyType):
@@ -114,25 +114,6 @@ def runOneVariationOfSurveys(studyType):
         #print('set(studyInfo.keys()): ', set(studyInfo.keys()))
         #key=name of video, value={'q1'='ans',...}
         for key, value in allSurveys.items():
-            # if key in ['run-survey', 'pills-survey']: 
-                #print("'run-survey', 'pills-survey' BUG")
-                # hiddenThing = 'not applicable'
-                # userName is already set, studyType is = studyA/B/C/D
-                # hiddenThing, surveyFamily = studyInfo[key]
-                # quesText = 
-                # quesAnswer = 
-                # quesNum = 
-                # quesType = 
-                # surveyFamily = 
-                # if (quesType == 'likert' or quesType == 'likertTime'):
-                #         quesAnswer = int(quesAnswer) + 3
-                # print('BUG', userName, studyType, key,
-                #                         hiddenThing, quesText, quesAnswer,
-                #                         quesNum, quesType, surveyFamily)
-                # points.append(Point(userName, studyType, key,
-                #                         hiddenThing, quesText, quesAnswer,
-                #                         quesNum, quesType, surveyFamily))
-
             if key not in ['user-info', 'practice-first',
                            'practice-second', 'practice-third',
                            'practice-survey']:
@@ -164,16 +145,31 @@ def runOneVariationOfSurveys(studyType):
                 print("key: ", key, '\n', 'this was a BUG')
     return points
 
-def correctForLearningEffect(averageCalc):
-    print('\n')
-    for i in range(len(averageCalc)):
-        for j in range(len(averageCalc)):
-            print('\n')
-            # need data/vid type ()to match and question name to match
-            # if ((rounds[i][3] == rounds[j][3]) && (rounds[i][4] == rounds[j][4])):
-                # print(rounds[i][3], rounds[i][4]) # it is a match
-                # so i will merge them
+def correctForLearningEffect(averages):
+    averageTogether = {}
+    sumCountAvg = [0, 0, 0]
+    for key1 in averages.keys():
+        print(key1)
+        for key2 in averages.keys():
+            # need data/vid type to match and question name to match
+            if ((key1[1] == key2[1]) and ((key1[2] == key2[2]))):
+                # print(key1, averages[key1])
+                sumCountAvg[0] = averages[key1][0] + averages[key2][0] 
+                sumCountAvg[1] = averages[key1][1] + averages[key2][1] 
+                sumCountAvg[2] = sumCountAvg[0] / sumCountAvg[1]
+                averageTogether[key1[1], key1[2]] = sumCountAvg
+                # print(key1[1], key1[2], averageTogether[key1[1], key1[2]])
 
+            else:
+                if not (key1[1], key1[2]) in averageTogether:
+                # if not averageTogether[key1[1], key1[2]]:
+                    averageTogether[key1[1], key1[2]] = averages[key1]
+                elif not (key2[1], key2[2]) in averageTogether:
+                    averageTogether[key2[1], key2[2]] = averages[key2]
+                # add original to it 
+    # print(averageTogether)
+    return averageTogether
+                
 
 
 points = runVariousSurveys()
@@ -181,5 +177,10 @@ rawDataCSV(points)
 
 averages = calculateTotalAnswersPerQuestion(points)
 averages = calculateAverageAnswer(averages)
+
+
 makeAveragedCSV(averages)
+
+# averageTogether = correctForLearningEffect(averages)
+# makeAveragedCSV(averageTogether)
 
