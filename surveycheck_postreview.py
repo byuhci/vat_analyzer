@@ -146,51 +146,22 @@ def runOneVariationOfSurveys(studyType):
                 print("key: ", key, '\n', 'this was a BUG')
     return points
 
-def correctForLearningEffect(averages):
-    # averageTogether = {}
-    # sumCountAvg = [0, 0, 0]
-    # for key1 in averages.keys():
-    #     # print(key1)
-    #     for key2 in averages.keys():
-    #         # need data/vid type to match and question name to match
-    #         # print(key1[1], key2[2])
-    #
-    #         if key1[1] == key2[1] and key1[2] == key2[2]:
-    #             # print(key1[1], key1[2], key2[1], key2[2])
-    #             # print(key1, averages[key1])
-    #             # print("MATCH\n")
-    #             sumCountAvg[0] = averages[key1][0] + averages[key2][0]
-    #             sumCountAvg[1] = averages[key1][1] + averages[key2][1]
-    #             sumCountAvg[2] = sumCountAvg[0] / sumCountAvg[1]
-    #             averageTogether[key1[1], key1[2]] = sumCountAvg
-    #             # print(sumCountAvg)
-    #             # print(key1[1], key1[2], averageTogether[key1[1], key1[2]])
-    #             # print(key1, averages[key1]) # averages[key1][0]
-    #             # print(averageTogether[key1[1], key1[2]], key1[1], key1[2])
-    #
-    #         elif key1[1] != key2[1] and key1[2] != key2[2]:
-    #             print(averages[key2])
-    #             if not (key1[1], key1[2]) in averageTogether:
-    #             # if not averageTogether[key1[1], key1[2]]:
-    #                 averageTogether[key1[1], key1[2]] = averages[key1]
-    #                 print(averageTogether[key1[1], key1[2]], averages[key1])
-    #             elif not (key2[1], key2[2]) in averageTogether:
-    #                 averageTogether[key2[1], key2[2]] = averages[key2]
-    #                 # print("REJECT\n")
-    #                 #  print(key1[1], key1[2])
-    #             # add original to it
-    # # print(averageTogether)
-    # # for item in averageTogether:
-    # #     print(item, averageTogether[item])
-    # return averageTogether
+def combineTwoRows(values):
+    sum, count = 0, 0
+    for sum2, count2, trashValue in values:
+        sum += sum2
+        count += count2
+    average = sum / count
+    return sum, count, average
 
-    
+def correctForLearningEffect(averages):
 
     aggregate = collections.defaultdict(list)
     for (color, visible, question), value in averages.items():
         aggregate[visible, question].append(value)
-    aggregate = {k.combine(v) for k, v in aggregate.items()}
+    aggregate = {k:combineTwoRows(v) for k, v in aggregate.items()} #
 
+    return aggregate
 
 
 
