@@ -3,6 +3,7 @@ import json
 import os
 import csv
 from sys import argv
+import collections
 from collections import defaultdict, namedtuple
 
 SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data'
@@ -41,7 +42,7 @@ def calculateAverageAnswer(averages):
     return averages
 
 def makeAveragedCSV(averages):
-    with open('correctForLearningEffect.csv', 'w') as csvfile: 
+    with open('2correctForLearningEffect.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items(): 
             # print(key, value) 
@@ -49,7 +50,7 @@ def makeAveragedCSV(averages):
             row.extend(value)
             row.extend(key)
             # print(row)
-            csvwriter.writerow(row) #TODO: add the list of users who were in this bucket
+            csvwriter.writerow(row)
 
 def runOneVariationOfSurveys(studyType):
     os.chdir(SURVEY_PATH)
@@ -146,30 +147,51 @@ def runOneVariationOfSurveys(studyType):
     return points
 
 def correctForLearningEffect(averages):
-    averageTogether = {}
-    sumCountAvg = [0, 0, 0]
-    for key1 in averages.keys():
-        print(key1)
-        for key2 in averages.keys():
-            # need data/vid type to match and question name to match
-            if ((key1[1] == key2[1]) and ((key1[2] == key2[2]))):
-                # print(key1, averages[key1])
-                sumCountAvg[0] = averages[key1][0] + averages[key2][0] 
-                sumCountAvg[1] = averages[key1][1] + averages[key2][1] 
-                sumCountAvg[2] = sumCountAvg[0] / sumCountAvg[1]
-                averageTogether[key1[1], key1[2]] = sumCountAvg
-                # print(key1[1], key1[2], averageTogether[key1[1], key1[2]])
+    # averageTogether = {}
+    # sumCountAvg = [0, 0, 0]
+    # for key1 in averages.keys():
+    #     # print(key1)
+    #     for key2 in averages.keys():
+    #         # need data/vid type to match and question name to match
+    #         # print(key1[1], key2[2])
+    #
+    #         if key1[1] == key2[1] and key1[2] == key2[2]:
+    #             # print(key1[1], key1[2], key2[1], key2[2])
+    #             # print(key1, averages[key1])
+    #             # print("MATCH\n")
+    #             sumCountAvg[0] = averages[key1][0] + averages[key2][0]
+    #             sumCountAvg[1] = averages[key1][1] + averages[key2][1]
+    #             sumCountAvg[2] = sumCountAvg[0] / sumCountAvg[1]
+    #             averageTogether[key1[1], key1[2]] = sumCountAvg
+    #             # print(sumCountAvg)
+    #             # print(key1[1], key1[2], averageTogether[key1[1], key1[2]])
+    #             # print(key1, averages[key1]) # averages[key1][0]
+    #             # print(averageTogether[key1[1], key1[2]], key1[1], key1[2])
+    #
+    #         elif key1[1] != key2[1] and key1[2] != key2[2]:
+    #             print(averages[key2])
+    #             if not (key1[1], key1[2]) in averageTogether:
+    #             # if not averageTogether[key1[1], key1[2]]:
+    #                 averageTogether[key1[1], key1[2]] = averages[key1]
+    #                 print(averageTogether[key1[1], key1[2]], averages[key1])
+    #             elif not (key2[1], key2[2]) in averageTogether:
+    #                 averageTogether[key2[1], key2[2]] = averages[key2]
+    #                 # print("REJECT\n")
+    #                 #  print(key1[1], key1[2])
+    #             # add original to it
+    # # print(averageTogether)
+    # # for item in averageTogether:
+    # #     print(item, averageTogether[item])
+    # return averageTogether
 
-            else:
-                if not (key1[1], key1[2]) in averageTogether:
-                # if not averageTogether[key1[1], key1[2]]:
-                    averageTogether[key1[1], key1[2]] = averages[key1]
-                elif not (key2[1], key2[2]) in averageTogether:
-                    averageTogether[key2[1], key2[2]] = averages[key2]
-                # add original to it 
-    # print(averageTogether)
-    return averageTogether
-                
+    
+
+    aggregate = collections.defaultdict(list)
+    for (color, visible, question), value in averages.items():
+        aggregate[visible, question].append(value)
+    aggregate = {k.combine(v) for k, v in aggregate.items()}
+
+
 
 
 points = runVariousSurveys()
@@ -179,8 +201,8 @@ averages = calculateTotalAnswersPerQuestion(points)
 averages = calculateAverageAnswer(averages)
 
 
-makeAveragedCSV(averages)
+# makeAveragedCSV(averages)
 
-# averageTogether = correctForLearningEffect(averages)
-# makeAveragedCSV(averageTogether)
+averageTogether = correctForLearningEffect(averages)
+makeAveragedCSV(averageTogether)
 

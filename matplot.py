@@ -49,8 +49,11 @@ with open('surveyResults.csv') as f:
     data.sort(key=lambda row: row[5])
 
 for group_name, rows in itertools.groupby(data, lambda row: row[5]):
+    # print(rows[5])
     plt.title(group_name)
-    rows = sorted(list(rows), key=lambda row: row[4])
+    rows = sorted(list(rows), key=lambda row: row[5]) # was four before
+    # print(rows.type())
+    print(rows), '/n'
     xs, heights, names = zip(*((n, int(row[2]), row[4]) for n, row in enumerate(rows)))
     print(group_name, xs, names, heights)
     plt.xticks(xs, names)
