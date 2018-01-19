@@ -43,7 +43,7 @@ def calculateAverageAnswer(averages):
     return averages
 
 def makeAveragedCSV(averages):
-    with open('2correctForLearningEffect.csv', 'w') as csvfile:
+    with open('pillsAndRunSep.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items(): 
             # print(key, value) 
@@ -156,7 +156,6 @@ def combineTwoRows(values):
     return sum, count, average
 
 def correctForLearningEffect(averages):
-
     aggregate = collections.defaultdict(list)
     for (color, visible, question), value in averages.items():
         aggregate[visible, question].append(value)
@@ -164,7 +163,18 @@ def correctForLearningEffect(averages):
 
     return aggregate
 
-
+def calculatePillsAndRunSeparate(averages):
+    aggregate = collections.defaultdict(list)
+    for (color, visible, question), value in averages.items():
+        if color == 'pill-red' or color == 'pill-orange':
+            color = 'pill-comb-red-orange'
+        elif color == 'run-yellow' or color == 'run-red':
+            color = 'run-comb-red-yellow'
+        else:
+            color = color + '-same'
+        aggregate[color, visible, question].append(value)
+    aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
+    return aggregate
 
 points = runVariousSurveys()
 rawDataCSV(points)
@@ -172,9 +182,13 @@ rawDataCSV(points)
 averages = calculateTotalAnswersPerQuestion(points)
 averages = calculateAverageAnswer(averages)
 
-
+# THINGS BROKEN UP # about 52 data-points
 # makeAveragedCSV(averages)
 
-averageTogether = correctForLearningEffect(averages)
-makeAveragedCSV(averageTogether)
+# this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
+#averageTogether = correctForLearningEffect(averages)
+#makeAveragedCSV(averageTogether)
 
+# this combines un-yellow with run-red BUT leaves pills and run separate
+pillsAndRunSep = calculatePillsAndRunSeparate(averages)
+makeAveragedCSV(pillsAndRunSep)
