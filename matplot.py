@@ -46,16 +46,20 @@ import matplotlib.pyplot as plt
 
 with open('surveyResults.csv') as f:
     data = list(csv.reader(f, delimiter=','))
-    data.sort(key=lambda row: row[5])
+    data.sort(key=lambda row: row[4])
 
-for group_name, rows in itertools.groupby(data, lambda row: row[5]):
-    # print(rows[5])
+for group_num, (group_name, rows) in enumerate(itertools.groupby(data, key=lambda row: row[4])):
+    plt.subplot(5, 5, group_num+1)
+    # print(rows[4])
     plt.title(group_name)
-    rows = sorted(list(rows), key=lambda row: row[5]) # was four before
+    rows = sorted(list(rows), key=lambda row: row[3]) # sort by hidden video type
     # print(rows.type())
-    print(rows), '/n'
-    xs, heights, names = zip(*((n, int(row[2]), row[4]) for n, row in enumerate(rows)))
+    print('\n'.join([str(row) for row in rows]))
+    xs, heights, names = zip(*((n, float(row[2]), row[3]) for n, row in enumerate(rows)))
     print(group_name, xs, names, heights)
+    print(type(xs), type(names))
     plt.xticks(xs, names)
     plt.bar(xs, heights)
-    plt.show()
+    plt.ylim(0, 5 if heights[0] < 5 else 100)
+
+plt.show()
