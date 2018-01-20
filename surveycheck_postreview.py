@@ -14,7 +14,7 @@ Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
 
 def runVariousSurveys():
     points = []
-    for study in ['studyA', 'studyB', 'studyC', 'studyD']:
+    for study in ['studyA', 'studyB', 'studyC', 'studyD']: #
         points += runOneVariationOfSurveys(study)
     return points
 
@@ -43,7 +43,7 @@ def calculateAverageAnswer(averages):
     return averages
 
 def makeAveragedCSV(averages):
-    with open('pillsAndRunSep.csv', 'w') as csvfile:
+    with open('pillsAndRunSepFirstVsSecondRounds.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items(): 
             # print(key, value) 
@@ -55,13 +55,10 @@ def makeAveragedCSV(averages):
 
 def runOneVariationOfSurveys(studyType):
     os.chdir(SURVEY_PATH)
-
     with open(studyType + '.tasks.json', 'r') as file:
         guidelines = json.load(file)
-
     studyInfo = {}
-    quesInfo = {} 
-
+    quesInfo = {}
     # loop through each survey style ('has-both', 'no-vid', etc.)
     for key, value in guidelines['surveys'].items():
         # loop through each question in the survey:
@@ -147,6 +144,10 @@ def runOneVariationOfSurveys(studyType):
                 print("key: ", key, '\n', 'this was a BUG')
     return points
 
+def compareLearedVsUnlearned(points):
+    print(points)
+    return points
+
 def combineTwoRows(values):
     sum, count = 0, 0
     for sum2, count2, trashValue in values:
@@ -176,19 +177,40 @@ def calculatePillsAndRunSeparate(averages):
     aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
     return aggregate
 
+def printDictionaryCSV(someDictionary):
+    with open('generalDictionaryPrinter.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        for key, value in someDictionary.items():
+            row = []
+            row.extend(value)
+            row.extend(key)
+            csvwriter.writerow(row)
+
+def printListCSV(someDictionary):
+    with open('generalDictionaryPrinter.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        for item in someDictionary:
+            csvwriter.writerow(item)
+
 points = runVariousSurveys()
 rawDataCSV(points)
 
+# this takes the sum and count to calculate averages
 averages = calculateTotalAnswersPerQuestion(points)
 averages = calculateAverageAnswer(averages)
 
+
+# make a function that compares first round v. second round of pills, then does the same with running
+# someDictionary = compareLearedVsUnlearned(points)
+# printListCSV(someDictionary)
+
 # THINGS BROKEN UP # about 52 data-points
-# makeAveragedCSV(averages)
+makeAveragedCSV(averages)
 
 # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
-#averageTogether = correctForLearningEffect(averages)
-#makeAveragedCSV(averageTogether)
+# averageTogether = correctForLearningEffect(averages)
+# makeAveragedCSV(averageTogether)
 
 # this combines un-yellow with run-red BUT leaves pills and run separate
-pillsAndRunSep = calculatePillsAndRunSeparate(averages)
-makeAveragedCSV(pillsAndRunSep)
+# pillsAndRunSep = calculatePillsAndRunSeparate(averages)
+# makeAveragedCSV(pillsAndRunSep)

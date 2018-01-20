@@ -4,6 +4,7 @@
 # import itertools
 #
 #
+# round one with Alyssa
 # x = []
 # y = []
 #
@@ -39,27 +40,37 @@
 #         # plt.show()
 #
 #
-import csv
-import itertools
-import matplotlib.pyplot as plt
 
+
+# # round two, with Jeff
+# import csv
+# import itertools
+# import matplotlib.pyplot as plt
+#
+#
+# with open('surveyResults.csv') as f:
+#     data = list(csv.reader(f, delimiter=','))
+#     data.sort(key=lambda row: row[4])
+#
+# for group_num, (group_name, rows) in enumerate(itertools.groupby(data, key=lambda row: row[4])):
+#     plt.subplot(5, 5, group_num+1)
+#     # print(rows[4])
+#     plt.title(group_name)
+#     rows = sorted(list(rows), key=lambda row: row[3]) # sort by hidden video type
+#     # print(rows.type())
+#     print('\n'.join([str(row) for row in rows]))
+#     xs, heights, names = zip(*((n, float(row[2]), row[3]) for n, row in enumerate(rows)))
+#     print(group_name, xs, names, heights)
+#     print(type(xs), type(names))
+#     plt.xticks(xs, names)
+#     plt.bar(xs, heights)
+#     plt.ylim(0, 5 if heights[0] < 5 else 100)
+#
+# plt.show()
+
+# round three, with Kristian
+import csv
 
 with open('surveyResults.csv') as f:
     data = list(csv.reader(f, delimiter=','))
-    data.sort(key=lambda row: row[4])
-
-for group_num, (group_name, rows) in enumerate(itertools.groupby(data, key=lambda row: row[4])):
-    plt.subplot(5, 5, group_num+1)
-    # print(rows[4])
-    plt.title(group_name)
-    rows = sorted(list(rows), key=lambda row: row[3]) # sort by hidden video type
-    # print(rows.type())
-    print('\n'.join([str(row) for row in rows]))
-    xs, heights, names = zip(*((n, float(row[2]), row[3]) for n, row in enumerate(rows)))
-    print(group_name, xs, names, heights)
-    print(type(xs), type(names))
-    plt.xticks(xs, names)
-    plt.bar(xs, heights)
-    plt.ylim(0, 5 if heights[0] < 5 else 100)
-
-plt.show()
+    # data.sort(key=lambda row: row[4])
