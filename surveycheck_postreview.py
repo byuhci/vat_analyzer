@@ -10,25 +10,25 @@ from collections import defaultdict, namedtuple
 SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
-                   'quesText, quesAnswer, quesNum, responseType, surveyFamily')
+                   'quesText, quesAnswer, quesNum, responseType, surveyFamily, answerMax')
 
-def runVariousSurveys():
+def runVariousSurveys(possibleSurveys):
     points = []
-    for study in ['studyA', 'studyB', 'studyC', 'studyD']: #
+    for study in possibleSurveys: # ['studyA', 'studyB', 'studyC', 'studyD']
         points += runOneVariationOfSurveys(study)
     return points
 
 def rawDataCSV(points):
     os.chdir(SURVEY_PATH)
-    with open('allRawResults.csv', 'w') as csvfile: 
+    with open('allRawResults.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for tup in sorted(points):
             csvwriter.writerow(tup)
             # or csvfile.write(*tup, sep=', ')
 
-def calculateTotalAnswersPerQuestion(points): 
+def calculateTotalAnswersPerQuestion(points):
     # sum, count, average
-    averages = defaultdict(lambda: [0, 0, 0])
+    averages = defaultdict(lambda: [0, 0, 0, 0])
     for point in points:
         # Increment sum by answer, then increment count by 1
         averages[point[2:5]][0] += int(point.quesAnswer)
@@ -42,17 +42,19 @@ def calculateAverageAnswer(averages):
     return averages
 
 def makeAveragedCSV(averages):
-    with open('pillsAndRunSepFirstVsSecondRounds.csv', 'w') as csvfile:
+    tempVar = 'A_B' # C_D
+    with open('runFirstThenPills' + tempVar + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
-        for key, value in averages.items(): 
-            # print(key, value) 
-            row = []
+        for key, value in averages.items():
+            # print(key, value)
+            row = [tempVar]
             row.extend(value)
             row.extend(key)
             # print(row)
             csvwriter.writerow(row)
 
 def runOneVariationOfSurveys(studyType):
+    answerMax = 100
     os.chdir(SURVEY_PATH)
     with open(studyType + '.tasks.json', 'r') as file:
         guidelines = json.load(file)
@@ -126,11 +128,13 @@ def runOneVariationOfSurveys(studyType):
                     # Adjust (-2 to +2) to (1 to 5)
                     if (quesType == 'likert' or quesType == 'likertTime'):
                         quesAnswer = int(quesAnswer) + 3
+                    if quesAnswer < 5:
+                        answerMax = 5
                     points.append(Point(userName, studyType, key,
                                         hiddenThing, quesText, quesAnswer,
-                                        quesNum, quesType, surveyFamily))
+                                        quesNum, quesType, surveyFamily, answerMax))
 
-                if key in ['run-survey', 'pills-survey']: 
+                if key in ['run-survey', 'pills-survey']:
                     1+2
             #         print(userName, studyType, key,
             #                             hiddenThing, quesText, quesAnswer,
@@ -144,8 +148,24 @@ def runOneVariationOfSurveys(studyType):
     return points
 
 def compareLearedVsUnlearned(points):
-    print(points)
-    return points
+    with open('learnedVsUnlearned.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        # points.type() # list
+        newMap = {}
+        print(points)
+        for key, value in averages.items():
+        # print(key, value)
+            row = []
+        # row.extend(value[
+        # quesText, hidden type, answerMax, quesAnswer
+        # row.extend(key[
+        # print(row)
+        csvwriter.writerow(row)
+        # add to newMap
+        print(newMap)
+
+    return newMap
+
 
 def combineTwoRows(values):
     sum, count = 0, 0
@@ -176,22 +196,27 @@ def calculatePillsAndRunSeparate(averages):
     aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
     return aggregate
 
-def printDictionaryCSV(someDictionary):
-    with open('generalDictionaryPrinter.csv', 'w') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        for key, value in someDictionary.items():
-            row = []
-            row.extend(value)
-            row.extend(key)
-            csvwriter.writerow(row)
+# def printDictionaryCSV(someDictionary):
+#     with open('generalDictionaryPrinter.csv', 'w') as csvfile:
+#         csvwriter = csv.writer(csvfile)
+#         for key, value in someDictionary.items():
+#             row = []
+#             row.extend(value)
+#             row.extend(key)
+#             csvwriter.writerow(row)
 
-def printListCSV(someDictionary):
-    with open('generalDictionaryPrinter.csv', 'w') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        for item in someDictionary:
-            csvwriter.writerow(item)
+# def printListCSV(someDictionary):
+#     with open('generalDictionaryPrinter.csv', 'w') as csvfile:
+#         csvwriter = csv.writer(csvfile)
+#         for item in someDictionary:
+#             csvwriter.writerow(item)
 
-points = runVariousSurveys()
+# options = ['studyA', 'studyB', 'studyC', 'studyD']
+options = ['studyA', 'studyB']
+# options = ['studyC', 'studyD']
+
+
+points = runVariousSurveys(options)
 rawDataCSV(points)
 
 # this takes the sum and count to calculate averages
@@ -200,15 +225,15 @@ averages = calculateAverageAnswer(averages)
 
 
 # make a function that compares first round v. second round of pills, then does the same with running
-someDictionary = compareLearedVsUnlearned(points)
-printListCSV(someDictionary)
+# someDictionary = compareLearedVsUnlearned(points) # I decided to not use this
+# printListCSV(someDictionary) # can't use this either
 
 # THINGS BROKEN UP # about 52 data-points
 # makeAveragedCSV(averages)
 
 # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
-# averageTogether = correctForLearningEffect(averages)
-# makeAveragedCSV(averageTogether)
+averageTogether = correctForLearningEffect(averages)
+makeAveragedCSV(averageTogether)
 
 # this combines un-yellow with run-red BUT leaves pills and run separate
 # pillsAndRunSep = calculatePillsAndRunSeparate(averages)
