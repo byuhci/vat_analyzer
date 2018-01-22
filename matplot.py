@@ -100,12 +100,31 @@ def compareLearnedVsUnlearned():
         futureGraphs[item[4], item[5]].append((item[0], item[3], maxAnswer))
     # print(futureGraphs)
     return futureGraphs
+
 def learnedAndUnlearned(futureGraphs):
+    group_num = 0
     for hiddenValue, quesText in futureGraphs:
+        group_num += 1
         # print(hiddenValue, quesText)
         points = futureGraphs[hiddenValue, quesText]
-        print(points)
-#
+        x = []
+        y = []
+        yMax = 0
+        plt.subplot(5, 5, group_num+1)
+        # plt.title(quesText, hiddenValue)
+        for triplet in points:
+            y.append(triplet[1])
+            x.append(triplet[0])
+            yMax = triplet[2]
+        plt.ylim(0, yMax)
+        
+        # plt.xticks()
+        # plt.bar()
+        # plt.legend()
+        # plt.show()
+
+
+                 #
 # for group_num, (group_name, rows) in enumerate(itertools.groupby(data, key=lambda row: row[4])):
 #     plt.subplot(5, 5, group_num+1)
 #     # print(rows[4])
