@@ -94,42 +94,41 @@ def compareLearnedVsUnlearned():
         else:
             maxAnswer = 100
         futureGraphs[item[4], item[5]].append((item[0], item[3], maxAnswer))
+    # print(futureGraphs)
     return futureGraphs
 
 def learnedAndUnlearned(futureGraphs):
+    # Sprint(futureGraphs)
     group_num = 0
     for hiddenValue, quesText in futureGraphs:
+        group_num += 1
+        # plt.subplot(6, 6, group_num)
+
         points = futureGraphs[hiddenValue, quesText]
-        xobjects = []
-        yvalues = []
-        yMax = 0
+        # print(futureGraphs[hiddenValue, quesText], hiddenValue, quesText)
+        dataDict = {}
+        yMax = 20
         yLabel = 'from 1 to 5'
-        if yMax == 100:
-            'Percentage'
+        plt.title(quesText + '\n' + hiddenValue)
+
+
+
         for triplet in points:
-            yvalues.append(triplet[1])
-            xobjects.append(triplet[0])
-
+            dataDict[triplet[0]] = triplet[1] # (x, y)
+            print(triplet[0], dataDict[triplet[0]])
             yMax = triplet[2]
-        yPos = np.arrange(len(xobjects))
-        plt.bar(yPos, yvalues, align='center', alpha=.5)  # what is alpha?
-        plt.xticks(yPos, xobjects)
+        if yMax == 100:
+            yLabel = 'Percentage'
         plt.ylabel(yLabel)
-        plt.title(quesText)
+        plt.xlabel('survey versions')
+        plt.bar(range(len(dataDict)), dataDict.values(), align='center')
+        plt.xticks(range(len(dataDict)), dataDict.keys())
+        plt.ylabel(yLabel)
+        plt.ylim(0, yMax) # 0, yMax
         plt.show()
+        plt.tight_layout()
 
-# objects = ('Python', 'C++', 'Java', 'Perl', 'Scala', 'Lisp')
-# y_pos = np.arange(len(objects))
-# performance = [10, 8, 6, 4, 2, 1]
-#
-# plt.bar(y_pos, performance, align='center', alpha=0.5)
-# plt.xticks(y_pos, objects)
-# plt.ylabel('Usage')
-# plt.title('Programming language usage')
-#
-# plt.show()
-
-
+    print(group_num)
 pleaseGraph = compareLearnedVsUnlearned()
 learnedAndUnlearned(pleaseGraph)
 
