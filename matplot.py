@@ -82,64 +82,39 @@ import matplotlib.pyplot as plt
 import itertools
 
 def compareLearnedVsUnlearned():
-    # open runFirstThenPills_allABCD.csv
     futureGraphs = collections.defaultdict(list)
     with open('runFirstThenPills_allABCD.csv') as f:
         data = list(csv.reader(f, delimiter=','))
         # print(data) # ['C_D', '103', '28', '3.6785714285714284', 'no-video-task', 'When I...']
     for item in data:
-        # print(len(item))
         # hiddenValue, quesText = x, y, ymax
-        # item[0] (xticks), item[3] (quesAns), item[6] (maxAnswer)
-        # print(float(item[3]), float(item[3]) < 5)
         if float(item[3]) < 5:
             maxAnswer = 5
         else:
             maxAnswer = 100
-        # print(maxAnswer)
         futureGraphs[item[4], item[5]].append((item[0], item[3], maxAnswer))
-    # print(futureGraphs)
     return futureGraphs
 
 def learnedAndUnlearned(futureGraphs):
     group_num = 0
     for hiddenValue, quesText in futureGraphs:
-        group_num += 1
-        # print(hiddenValue, quesText)
         points = futureGraphs[hiddenValue, quesText]
         x = []
         y = []
         yMax = 0
-        plt.subplot(5, 5, group_num+1)
+        # plt.subplot(5, 5, group_num+1)
         # plt.title(quesText, hiddenValue)
         for triplet in points:
             y.append(triplet[1])
             x.append(triplet[0])
             yMax = triplet[2]
-        plt.ylim(0, yMax)
-        
+        # plt.ylim(0, yMax)
+        # plt.bar(x)
+        # plt.legend(y)
         # plt.xticks()
         # plt.bar()
         # plt.legend()
         # plt.show()
-
-
-                 #
-# for group_num, (group_name, rows) in enumerate(itertools.groupby(data, key=lambda row: row[4])):
-#     plt.subplot(5, 5, group_num+1)
-#     # print(rows[4])
-#     plt.title(group_name)
-#     rows = sorted(list(rows), key=lambda row: row[3]) # sort by hidden video type
-#     # print(rows.type())
-#     print('\n'.join([str(row) for row in rows]))
-#     xs, heights, names = zip(*((n, float(row[2]), row[3]) for n, row in enumerate(rows)))
-#     print(group_name, xs, names, heights)
-#     print(type(xs), type(names))
-#     plt.xticks(xs, names)
-#     plt.bar(xs, heights)
-#     plt.ylim(0, 5 if heights[0] < 5 else 100)
-#
-# plt.show()
 
 
 pleaseGraph = compareLearnedVsUnlearned()
