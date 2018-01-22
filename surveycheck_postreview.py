@@ -20,7 +20,6 @@ def runVariousSurveys():
 
 def rawDataCSV(points):
     os.chdir(SURVEY_PATH)
-
     with open('allRawResults.csv', 'w') as csvfile: 
         csvwriter = csv.writer(csvfile)
         for tup in sorted(points):
@@ -201,11 +200,11 @@ averages = calculateAverageAnswer(averages)
 
 
 # make a function that compares first round v. second round of pills, then does the same with running
-# someDictionary = compareLearedVsUnlearned(points)
-# printListCSV(someDictionary)
+someDictionary = compareLearedVsUnlearned(points)
+printListCSV(someDictionary)
 
 # THINGS BROKEN UP # about 52 data-points
-makeAveragedCSV(averages)
+# makeAveragedCSV(averages)
 
 # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
 # averageTogether = correctForLearningEffect(averages)
