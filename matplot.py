@@ -80,6 +80,7 @@ import collections
 import csv
 import matplotlib.pyplot as plt
 import itertools
+import numpy as np
 
 def compareLearnedVsUnlearned():
     futureGraphs = collections.defaultdict(list)
@@ -99,22 +100,34 @@ def learnedAndUnlearned(futureGraphs):
     group_num = 0
     for hiddenValue, quesText in futureGraphs:
         points = futureGraphs[hiddenValue, quesText]
-        x = []
-        y = []
+        xobjects = []
+        yvalues = []
         yMax = 0
-        # plt.subplot(5, 5, group_num+1)
-        # plt.title(quesText, hiddenValue)
+        yLabel = 'from 1 to 5'
+        if yMax == 100:
+            'Percentage'
         for triplet in points:
-            y.append(triplet[1])
-            x.append(triplet[0])
+            yvalues.append(triplet[1])
+            xobjects.append(triplet[0])
+
             yMax = triplet[2]
-        # plt.ylim(0, yMax)
-        # plt.bar(x)
-        # plt.legend(y)
-        # plt.xticks()
-        # plt.bar()
-        # plt.legend()
-        # plt.show()
+        yPos = np.arrange(len(xobjects))
+        plt.bar(yPos, yvalues, align='center', alpha=.5)  # what is alpha?
+        plt.xticks(yPos, xobjects)
+        plt.ylabel(yLabel)
+        plt.title(quesText)
+        plt.show()
+
+# objects = ('Python', 'C++', 'Java', 'Perl', 'Scala', 'Lisp')
+# y_pos = np.arange(len(objects))
+# performance = [10, 8, 6, 4, 2, 1]
+#
+# plt.bar(y_pos, performance, align='center', alpha=0.5)
+# plt.xticks(y_pos, objects)
+# plt.ylabel('Usage')
+# plt.title('Programming language usage')
+#
+# plt.show()
 
 
 pleaseGraph = compareLearnedVsUnlearned()
