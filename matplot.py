@@ -84,7 +84,7 @@ import numpy as np
 
 def compareLearnedVsUnlearned():
     futureGraphs = collections.defaultdict(list)
-    with open('runFirstThenPills_allABCD.csv') as f:
+    with open('learnedVunlearnedForSeppi.csv') as f:
         data = list(csv.reader(f, delimiter=','))
         # print(data) # ['C_D', '103', '28', '3.6785714285714284', 'no-video-task', 'When I...']
     for item in data:
@@ -93,6 +93,7 @@ def compareLearnedVsUnlearned():
             maxAnswer = 5
         else:
             maxAnswer = 100
+        print(item)
         futureGraphs[item[4], item[5]].append((item[0], item[3], maxAnswer))
     # print(futureGraphs)
     return futureGraphs
@@ -115,7 +116,7 @@ def learnedAndUnlearned(futureGraphs):
 
         for triplet in points:
             dataDict[triplet[0]] = float(triplet[1]) # (x, y)
-            print(triplet[0], dataDict[triplet[0]])
+            # print(triplet[0], dataDict[triplet[0]])
             yMax = triplet[2]
         if yMax == 100:
             yLabel = 'Percentage'
@@ -128,8 +129,11 @@ def learnedAndUnlearned(futureGraphs):
         plt.ylim(ymax = yMax, ymin = 0) # 0, yMax
         plt.show()
         plt.tight_layout()
+        # plt.
 
-    print(group_num)
+    # print(group_num)
+
 pleaseGraph = compareLearnedVsUnlearned()
+print(pleaseGraph)
 learnedAndUnlearned(pleaseGraph)
 

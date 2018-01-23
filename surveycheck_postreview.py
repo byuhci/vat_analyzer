@@ -36,6 +36,7 @@ def calculateTotalAnswersPerQuestion(points):
         # Increment sum by answer, then increment count by 1
         averages[point[2:5]][0] += int(point.quesAnswer)
         averages[point[2:5]][1] += 1
+        # print(point[2:5])
     return averages
 
 
@@ -45,10 +46,10 @@ def calculateAverageAnswer(averages):
         value[2] = value[0] / value[1]
     return averages
 
+tempVar = 'C_D' # C_D
 
 def makeAveragedCSV(averages):
-    tempVar = 'A_B'  # C_D
-    print(averages)
+    # print(averages)
     with open('runFirstThenPills' + tempVar + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
@@ -148,11 +149,11 @@ def compareLearedVsUnlearned(points):
         csvwriter = csv.writer(csvfile)
         # points.type() # list
         newMap = {}
-        print(points)
+        # print(points)
         for key, value in averages.items():
             row = []
         csvwriter.writerow(row)
-        print(newMap)
+        # print(newMap)
 
     return newMap
 
@@ -189,10 +190,31 @@ def calculatePillsAndRunSeparate(averages):
     aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
     return aggregate
 
+def averageForPillVsRun(averages):
+    # print(averages)
+    runVpillAverage = defaultdict(lambda: [0, 0, 0, 0, key[0][:3]])
+    for key, values in averages.items():
+        runVpillAverage[key[1], key[2]][0] += float(values[0])
+        runVpillAverage[key[1], key[2]][1] += float(values[1])
+        runVpillAverage[key[1], key[2]][2] = runVpillAverage[key[1], key[2]][0] / runVpillAverage[key[1], key[2]][1]
+        runVpillAverage[key[1], key[2]][3] = 100 if runVpillAverage[key[1], key[2]][2] > 5 else 5
+    # print(runVpillAverage)
+
+    with open('learnedVunlearnedForSeppi' + tempVar + '.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        for key, value in runVpillAverage.items():
+            # print(key, value)
+            row = [tempVar]
+            row.extend(value)
+            row.extend(key)
+            # print(row)
+            csvwriter.writerow(row)
+
+
 
 # options = ['studyA', 'studyB', 'studyC', 'studyD']
-options = ['studyA', 'studyB']
-# options = ['studyC', 'studyD']
+# options = ['studyA', 'studyB']
+options = ['studyC', 'studyD']
 
 
 points = runVariousSurveys(options)
@@ -202,6 +224,9 @@ rawDataCSV(points)
 # this takes the sum and count to calculate averages
 averages = calculateTotalAnswersPerQuestion(points)
 averages = calculateAverageAnswer(averages)
+
+# according to run v. pill
+runVpillAverage = averageForPillVsRun(averages)
 
 # make a function that compares first round v. second round of pills, then does the same with running
 # someDictionary = compareLearedVsUnlearned(points) # I decided to not use this
