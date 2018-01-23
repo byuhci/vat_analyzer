@@ -76,14 +76,17 @@
 #     # data.sort(key=lambda row: row[4])
 
 # round four
-import collections
+from collections import defaultdict, namedtuple
 import csv
 import matplotlib.pyplot as plt
 import itertools
 import numpy as np
 
+forGraphing = namedtuple('forGraphing', ['pillOrRun', 'hiddenValue', 'quesText'])
+
 def compareLearnedVsUnlearned():
-    futureGraphs = collections.defaultdict(list)
+    # futureGraphs = defaultdict(list)
+    toBeGraphed = defaultdict(list)
     with open('learnedVunlearnedForSeppi.csv') as f:
         data = list(csv.reader(f, delimiter=','))
         # print(data) # ['C_D', '103', '28', '3.6785714285714284', 'no-video-task', 'When I...']
@@ -93,45 +96,53 @@ def compareLearnedVsUnlearned():
             maxAnswer = 5
         else:
             maxAnswer = 100
-        print(item)
-        futureGraphs[item[4], item[5]].append((item[0], item[3], maxAnswer))
-    # print(futureGraphs)
-    return futureGraphs
+        # print(item)
+
+        toBeGraphed[forGraphing(pillOrRun=item[5], hiddenValue=item[6], quesText=item[7])].append((item[0], item[3], maxAnswer))
+        # futureGraphs[item[4], item[5]].append((item[0], item[3], maxAnswer))
+    print(toBeGraphed)
+    return toBeGraphed
 
 def learnedAndUnlearned(futureGraphs):
     # Sprint(futureGraphs)
     group_num = 0
-    for hiddenValue, quesText in futureGraphs:
+    for keys in futureGraphs:
         group_num += 1
         # plt.subplot(6, 6, group_num)
-
-        points = futureGraphs[hiddenValue, quesText]
+        print(keys)
+        points = futureGraphs[keys]
         # print(futureGraphs[hiddenValue, quesText], hiddenValue, quesText)
         dataDict = {}
         yMax = 20
         yLabel = 'from 1 to 5'
-        plt.title(quesText + '\n' + hiddenValue)
 
+        fig, ax = plt.subplots(nrows=1, ncols=1)
 
+        title = keys.quesText + '\n' + keys.hiddenValue + '\n' + keys.pillOrRun
+        plt.title(title)
 
         for triplet in points:
             dataDict[triplet[0]] = float(triplet[1]) # (x, y)
-            # print(triplet[0], dataDict[triplet[0]])
             yMax = triplet[2]
-        if yMax == 100:
-            yLabel = 'Percentage'
-        plt.ylabel(yLabel)
-        plt.xlabel('survey versions')
+        # if yMax == 100:
+        #     yLabel = 'Percentage'
+        # plt.ylabel(yLabel)
+        # plt.xlabel('survey versions')
 
         plt.bar(range(len(dataDict)), dataDict.values(), align='center')
         plt.xticks(range(len(dataDict)), dataDict.keys())
-        plt.ylabel(yLabel)
-        plt.ylim(ymax = yMax, ymin = 0) # 0, yMax
+        # plt.ylabel(yLabel)
+        plt.ylim(0, yMax) # 0, yMax
         plt.show()
         plt.tight_layout()
-        # plt.
+        fig.savefig('graphsComparingLearningEffect/' + title.replace('\n','_') + '.png')
+        plt.close(fig)
 
-    # print(group_num)
+        # import matplotlib.pyplot as plt
+        # fig, ax = plt.subplots(nrows=1, ncols=1)  # create figure & 1 axis
+        # ax.plot([0, 1, 2], [10, 20, 3])
+        # fig.savefig('path/to/save/image/to.png')  # save the figure to file
+        # plt.close(fig)
 
 pleaseGraph = compareLearnedVsUnlearned()
 print(pleaseGraph)
