@@ -43,6 +43,7 @@ def calculateAverageAnswer(averages):
 
 def makeAveragedCSV(averages):
     tempVar = 'A_B' # C_D
+    print(averages)
     with open('runFirstThenPills' + tempVar + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
@@ -72,11 +73,8 @@ def runOneVariationOfSurveys(studyType):
                 quesNum = question['name'].lower().replace(' ', '')
                 quesText = question['text']
                 quesInfo[(key, quesNum)] = (responseType, quesText)
-    #print('quesInfo', quesInfo)
-    # allTasks is a list of order videos/surveys
-    #print('task')
+
     for task in guidelines['tasks']:
-        #print(task)
         videoNames = task['name']
         # Ignore data points that are from surveys
         if task['type'] != 'survey':
@@ -91,14 +89,9 @@ def runOneVariationOfSurveys(studyType):
             survey = task['survey']
             hidden = 'not applicable'
             studyInfo[videoNames] = (hidden, survey)
-            # print("SOLVING BUG HERE!")
-            # print(videoNames, hidden, survey)
-    #print('\n')
-    #print('studyInfo', studyInfo)
+
     #go to the folder with all users' data/results
     os.chdir(os.path.join(SURVEY_PATH, studyType))
-    # cwd = os.getcwd()
-    # print(cwd)
 
     #only allow users 001-045
     validFiles = list(filter(lambda x: x.split('.')[0]<='045.info.json',
@@ -110,9 +103,7 @@ def runOneVariationOfSurveys(studyType):
             information = json.load(file)
         userName = fileName.split('.')[0]
         allSurveys = information['surveys']
-        #print('set(allSurveys.keys()): ', set(allSurveys.keys()))
-        #print('set(studyInfo.keys()): ', set(studyInfo.keys()))
-        #key=name of video, value={'q1'='ans',...}
+
         for key, value in allSurveys.items():
             if key not in ['user-info', 'practice-first',
                            'practice-second', 'practice-third',
@@ -136,9 +127,7 @@ def runOneVariationOfSurveys(studyType):
 
                 if key in ['run-survey', 'pills-survey']:
                     1+2
-            #         print(userName, studyType, key,
-            #                             hiddenThing, quesText, quesAnswer,
-            #                             quesNum, quesType, surveyFamily)
+
             elif key in ['user-info', 'practice-first',
                            'practice-second', 'practice-third',
                            'practice-survey']:
@@ -154,14 +143,8 @@ def compareLearedVsUnlearned(points):
         newMap = {}
         print(points)
         for key, value in averages.items():
-        # print(key, value)
             row = []
-        # row.extend(value[
-        # quesText, hidden type, answerMax, quesAnswer
-        # row.extend(key[
-        # print(row)
         csvwriter.writerow(row)
-        # add to newMap
         print(newMap)
 
     return newMap
@@ -196,23 +179,9 @@ def calculatePillsAndRunSeparate(averages):
     aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
     return aggregate
 
-# def printDictionaryCSV(someDictionary):
-#     with open('generalDictionaryPrinter.csv', 'w') as csvfile:
-#         csvwriter = csv.writer(csvfile)
-#         for key, value in someDictionary.items():
-#             row = []
-#             row.extend(value)
-#             row.extend(key)
-#             csvwriter.writerow(row)
 
-# def printListCSV(someDictionary):
-#     with open('generalDictionaryPrinter.csv', 'w') as csvfile:
-#         csvwriter = csv.writer(csvfile)
-#         for item in someDictionary:
-#             csvwriter.writerow(item)
-
-# options = ['studyA', 'studyB', 'studyC', 'studyD']
-options = ['studyA', 'studyB']
+options = ['studyA', 'studyB', 'studyC', 'studyD']
+# options = ['studyA', 'studyB']
 # options = ['studyC', 'studyD']
 
 

@@ -114,17 +114,18 @@ def learnedAndUnlearned(futureGraphs):
 
 
         for triplet in points:
-            dataDict[triplet[0]] = triplet[1] # (x, y)
+            dataDict[triplet[0]] = float(triplet[1]) # (x, y)
             print(triplet[0], dataDict[triplet[0]])
             yMax = triplet[2]
         if yMax == 100:
             yLabel = 'Percentage'
         plt.ylabel(yLabel)
         plt.xlabel('survey versions')
+
         plt.bar(range(len(dataDict)), dataDict.values(), align='center')
         plt.xticks(range(len(dataDict)), dataDict.keys())
         plt.ylabel(yLabel)
-        plt.ylim(0, yMax) # 0, yMax
+        plt.ylim(ymax = yMax, ymin = 0) # 0, yMax
         plt.show()
         plt.tight_layout()
 
