@@ -27,22 +27,24 @@ def readInCSV():
 
     return toBeGraphed
 
-def mapOfData(dataFromCSV, desiredSubjectOfPlot, secondDesire):
+def mapOfData(dataFromCSV, dataThings, videoThings): # TODO: note data/video order MATTERS
     firstPlot = defaultdict(list)
     secondPlot = defaultdict(list)
-    task = 'task'
-    for item in dataFromCSV:
-        pillsOrRun = getattr(item, task)
-        firstThing = getattr(item, desiredSubjectOfPlot)
-        secondThing = getattr(item, secondDesire)
-        # print(pillsOrRun[:3])
-        #  TODO: note that this [:3] puts all 'run-' and all 'pill' into one key
-        firstPlot[pillsOrRun[:3], desiredSubjectOfPlot].append(float(firstThing))
-        secondPlot[pillsOrRun[:3], secondDesire].append(float(secondThing))
-    # print(firstPlot)
-    return firstPlot, secondPlot
+    for firstItem, secondItem in dataThings, videoThings:
 
-def makeTwoBoxAndWhiskers(toBeBoxAndWhiskered):
+        task = 'task'
+        for item in dataFromCSV:
+            pillsOrRun = getattr(item, task)
+            firstThing = getattr(item, firstItem)
+            secondThing = getattr(item, secondItem)
+            # print(pillsOrRun[:3])
+            #  TODO: note that this [:3] puts all 'run-' and all 'pill' into one key
+            firstPlot[pillsOrRun[:3], 'dataThings'].append(float(firstThing))
+            secondPlot[pillsOrRun[:3], 'videoThings'].append(float(secondThing))
+        # print(firstPlot)
+        return firstPlot, secondPlot
+
+def makeTwoBoxAndWhiskers(toBeBoxAndWhiskered, dataThings, videoThings):
     # graphOne, graphTwo = toBeBoxAndWhiskered
     overallData = {}
     fileName1 = ""
@@ -58,13 +60,18 @@ def makeTwoBoxAndWhiskers(toBeBoxAndWhiskered):
                 count += 1
             avg = sum/count
             overallData[key] = (sum, count, avg)
-            if fileName1 is "":
-                fileName1 = key[1]
-            if key[1] is not fileName1:
-                fileName2 = key[1]
-    print(fileName1 + 'Vs' + fileName2)
-    with open(fileName1 + 'V' + fileName2 + '.csv', 'w') as csvfile:
+
+    lenDataThings = len(dataThings)
+    lenVideoThings = len(videoThings)
+    with open(str(lenDataThings) + 'data' + str(lenVideoThings) + 'video.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
+        row = ['DATATHINGS:']
+        row.extend(dataThings)
+        csvwriter.writerow(row)
+        row = ['VIDEOTHINGS:']
+        row.extend(videoThings)
+        csvwriter.writerow(row)
+        csvwriter.writerow('\n')
         row = []
         for item in overallData:
             print(item, overallData[item])
@@ -89,9 +96,9 @@ dataFromCSV = readInCSV()
 # JUMPdata, 'SCRUBvideo', 'SCRUBdata'
 dataThings = ['SCRUBdata', 'JUMPdata']
 videoThings = ['SCRUBvideo', 'JUMPvideo']
-toBeBoxAndWhiskered = mapOfData(dataFromCSV, 'SCRUBvideo', 'SCRUBdata') # dataThings, videoThings
+toBeBoxAndWhiskered = mapOfData(dataFromCSV, dataThings, videoThings)
 
-makeTwoBoxAndWhiskers(toBeBoxAndWhiskered)
+makeTwoBoxAndWhiskers(toBeBoxAndWhiskered, dataThings, videoThings)
 
 
 
