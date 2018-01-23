@@ -10,13 +10,15 @@ from collections import defaultdict, namedtuple
 SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
-                   'quesText, quesAnswer, quesNum, responseType, surveyFamily, answerMax')
+                            'quesText, quesAnswer, quesNum, responseType, surveyFamily, answerMax')
+
 
 def runVariousSurveys(possibleSurveys):
     points = []
-    for study in possibleSurveys: # ['studyA', 'studyB', 'studyC', 'studyD']
+    for study in possibleSurveys:  # ['studyA', 'studyB', 'studyC', 'studyD']
         points += runOneVariationOfSurveys(study)
     return points
+
 
 def rawDataCSV(points):
     os.chdir(SURVEY_PATH)
@@ -26,8 +28,9 @@ def rawDataCSV(points):
             csvwriter.writerow(tup)
             # or csvfile.write(*tup, sep=', ')
 
+
 def calculateTotalAnswersPerQuestion(points):
-    # sum, count, average
+    # sum, count, average, maxAverage
     averages = defaultdict(lambda: [0, 0, 0, 0])
     for point in points:
         # Increment sum by answer, then increment count by 1
@@ -35,14 +38,16 @@ def calculateTotalAnswersPerQuestion(points):
         averages[point[2:5]][1] += 1
     return averages
 
+
 def calculateAverageAnswer(averages):
     # sum, count, average
     for value in averages.values():
         value[2] = value[0] / value[1]
     return averages
 
+
 def makeAveragedCSV(averages):
-    tempVar = 'A_B' # C_D
+    tempVar = 'A_B'  # C_D
     print(averages)
     with open('runFirstThenPills' + tempVar + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
@@ -53,6 +58,7 @@ def makeAveragedCSV(averages):
             row.extend(key)
             # print(row)
             csvwriter.writerow(row)
+
 
 def runOneVariationOfSurveys(studyType):
     answerMax = 100
@@ -90,11 +96,11 @@ def runOneVariationOfSurveys(studyType):
             hidden = 'not applicable'
             studyInfo[videoNames] = (hidden, survey)
 
-    #go to the folder with all users' data/results
+    # go to the folder with all users' data/results
     os.chdir(os.path.join(SURVEY_PATH, studyType))
 
-    #only allow users 001-045
-    validFiles = list(filter(lambda x: x.split('.')[0]<='045.info.json',
+    # only allow users 001-045
+    validFiles = list(filter(lambda x: x.split('.')[0] <= '045.info.json',
                              glob.glob('*.info.json')))
 
     points = []
@@ -111,7 +117,7 @@ def runOneVariationOfSurveys(studyType):
                 # 'has-both' or 'no-video' or 'post-section'
                 hiddenThing, surveyFamily = studyInfo[key]
                 questions = ['question' + str(i)
-                             for i in range(1, len(value)+1)]
+                             for i in range(1, len(value) + 1)]
                 answers = [value[q] for q in questions]
 
                 for quesNum, quesAnswer in zip(questions, answers):
@@ -126,15 +132,16 @@ def runOneVariationOfSurveys(studyType):
                                         quesNum, quesType, surveyFamily, answerMax))
 
                 if key in ['run-survey', 'pills-survey']:
-                    1+2
+                    1 + 2
 
             elif key in ['user-info', 'practice-first',
-                           'practice-second', 'practice-third',
-                           'practice-survey']:
-                1+1
+                         'practice-second', 'practice-third',
+                         'practice-survey']:
+                1 + 1
             else:
                 print("key: ", key, '\n', 'this was a BUG')
     return points
+
 
 def compareLearedVsUnlearned(points):
     with open('learnedVsUnlearned.csv', 'w') as csvfile:
@@ -152,19 +159,22 @@ def compareLearedVsUnlearned(points):
 
 def combineTwoRows(values):
     sum, count = 0, 0
-    for sum2, count2, trashValue in values:
+    # print(values)
+    for sum2, count2, currentAvg, maxAnswer in values:
         sum += sum2
         count += count2
     average = sum / count
     return sum, count, average
 
+
 def correctForLearningEffect(averages):
     aggregate = collections.defaultdict(list)
     for (color, visible, question), value in averages.items():
         aggregate[visible, question].append(value)
-    aggregate = {k:combineTwoRows(v) for k, v in aggregate.items()} #
+    aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
 
     return aggregate
+
 
 def calculatePillsAndRunSeparate(averages):
     aggregate = collections.defaultdict(list)
@@ -180,18 +190,18 @@ def calculatePillsAndRunSeparate(averages):
     return aggregate
 
 
-options = ['studyA', 'studyB', 'studyC', 'studyD']
-# options = ['studyA', 'studyB']
+# options = ['studyA', 'studyB', 'studyC', 'studyD']
+options = ['studyA', 'studyB']
 # options = ['studyC', 'studyD']
 
 
 points = runVariousSurveys(options)
+# print(points)
 rawDataCSV(points)
 
 # this takes the sum and count to calculate averages
 averages = calculateTotalAnswersPerQuestion(points)
 averages = calculateAverageAnswer(averages)
-
 
 # make a function that compares first round v. second round of pills, then does the same with running
 # someDictionary = compareLearedVsUnlearned(points) # I decided to not use this
@@ -201,8 +211,8 @@ averages = calculateAverageAnswer(averages)
 # makeAveragedCSV(averages)
 
 # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
-averageTogether = correctForLearningEffect(averages)
-makeAveragedCSV(averageTogether)
+# averageTogether = correctForLearningEffect(averages)
+# makeAveragedCSV(averageTogether)
 
 # this combines un-yellow with run-red BUT leaves pills and run separate
 # pillsAndRunSep = calculatePillsAndRunSeparate(averages)
