@@ -12,7 +12,7 @@ recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','E
 
 def readInCSV():
     # futureGraphs = defaultdict(list)
-    with open('fromLawrencejumpsScrubs.csv') as f:
+    with open('fromLawrencejumpsScrubs_withHiddenValues.csv') as f:
         data = list(csv.reader(f, delimiter=','))
     toBeGraphed = []
     for item in data:
