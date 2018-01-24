@@ -27,127 +27,57 @@ def readInCSV():
 
     return toBeGraphed
 
-def mapOfData(dataFromCSV, dataThings, videoThings): # TODO: note data/video order MATTERS
-    firstPlot = defaultdict(list)
-    secondPlot = defaultdict(list)
-    for firstItem, secondItem in dataThings, videoThings:
-
-        task = 'task'
+def mapOfData(dataFromCSV, eventsBeingConsidered):
+    dataOfEvents= defaultdict(list)
+    for measurableEvent in eventsBeingConsidered:
         for item in dataFromCSV:
-            pillsOrRun = getattr(item, task)
-            firstThing = getattr(item, firstItem)
-            secondThing = getattr(item, secondItem)
-            # print(pillsOrRun[:3])
-            #  TODO: note that this [:3] puts all 'run-' and all 'pill' into one key
-            firstPlot[pillsOrRun[:3], 'dataThings'].append(float(firstThing))
-            secondPlot[pillsOrRun[:3], 'videoThings'].append(float(secondThing))
-        # print(firstPlot)
-        return firstPlot, secondPlot
+            pillsOrRun = getattr(item, 'task')
+            firstThing = getattr(item, measurableEvent)
+            # print(firstThing)
+            #  note that this [:3] puts all 'run-' and all 'pill' into one key
+            # print(pillsOrRun[:3],measurableEvent)
+            dataOfEvents[pillsOrRun[:3],measurableEvent].append(float(firstThing))
+    # print(dataOfEvents)
+    return dataOfEvents
 
-def makeTwoBoxAndWhiskers(toBeBoxAndWhiskered, dataThings, videoThings):
-    # graphOne, graphTwo = toBeBoxAndWhiskered
+def makeCSVwithAveragesDataVsVideo(toBeAveraged, dataOrVideo, nameOfDataOrVideo):
     overallData = {}
-    fileName1 = ""
-    fileName2 = ""
-    for graph in toBeBoxAndWhiskered:
-        for key in graph:
-            sum = 0
-            count = 0
-            avg = 0
-            # print(key, graph[key])
-            for value in graph[key]:
-                sum += value
-                count += 1
-            avg = sum/count
-            overallData[key] = (sum, count, avg)
-
-    lenDataThings = len(dataThings)
-    lenVideoThings = len(videoThings)
-    with open(str(lenDataThings) + 'data' + str(lenVideoThings) + 'video.csv', 'w') as csvfile:
+    # print(toBeAveraged)
+    for key, values in toBeAveraged.items():
+        # print(key, values)
+        sum = 0
+        count = 0
+        avg = 0
+        for value in values:
+             sum += value
+             count += 1
+        avg = sum/count
+        overallData[key] = (sum, count, avg)
+    print(overallData)
+    lenDataOrVideo = len(dataOrVideo)
+    with open(str(lenDataOrVideo) + nameOfDataOrVideo + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
-        row = ['DATATHINGS:']
-        row.extend(dataThings)
+        row = [nameOfDataOrVideo + 'THINGS:']
+        row.extend(dataOrVideo)
         csvwriter.writerow(row)
-        row = ['VIDEOTHINGS:']
-        row.extend(videoThings)
-        csvwriter.writerow(row)
-        csvwriter.writerow('\n')
         row = []
         for item in overallData:
-            print(item, overallData[item])
+            # print(item, overallData[item])
             row.extend(item)
             row.extend(overallData[item])
             csvwriter.writerow(row)
-
-            # for key, value in averages.items():
-            #     # print(key, value)
-            #     row = [tempVar]
-            #     row.extend(value)
-            #     row.extend(key)
-            #     # print(row)
-            #     csvwriter.writerow(row)
-
-
-
+            row = []
 
 
 
 dataFromCSV = readInCSV()
-# JUMPdata, 'SCRUBvideo', 'SCRUBdata'
-dataThings = ['SCRUBdata', 'JUMPdata']
-videoThings = ['SCRUBvideo', 'JUMPvideo']
-toBeBoxAndWhiskered = mapOfData(dataFromCSV, dataThings, videoThings)
 
-makeTwoBoxAndWhiskers(toBeBoxAndWhiskered, dataThings, videoThings)
+dataThings = ['ENDdata','DESELECTdata','MOVE','RESIZE','JUMPdata','SCRUBdata',]
+videoThings = ['ENDvideo','JUMPvideo','SCRUBvideo','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP']
 
+toBeAveraged = mapOfData(dataFromCSV, dataThings)
+makeCSVwithAveragesDataVsVideo(toBeAveraged, dataThings, 'data')
 
-
-
-
-
-
-
-
-
-
-# def fakeGraphs(toBeBoxAndWhiskered):
-#     graphOne, graphTwo = toBeBoxAndWhiskered
-#
-#     for videoColor, desiredThing in graphOne, graphTwo:
-#         # print(videoColor, desiredThing)
-#         dataOneGraph = graphOne[videoColor, desiredThing]
-#         # print(graphOne)
-#
-#         # all_data = [np.random.normal(0, std, 100) for std in range(1, 4)]
-#         # print(all_data)
-#         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(9, 4))
-#         # rectangular box plot
-#         bplot1 = axes[0].boxplot(dataOneGraph,
-#                                  vert=True,  # vertical box aligmnent
-#                                  patch_artist=True)  # fill with color
-#
-#         dataTwoGraph = graphTwo[videoColor, desiredThing]
-#         bplot2 = axes[1].boxplot(dataTwoGraph,
-#                                  vert=True,  # vertical box aligmnent
-#                                  patch_artist=True)  # fill with color
-#         print(len(dataOneGraph), len(dataTwoGraph))
-#
-#         # fill with colors
-#         colors = ['lightblue', 'lightgreen']
-#         for bplot in (bplot1, bplot2):
-#             for patch, color in zip(bplot['boxes'], colors):
-#                 patch.set_facecolor(color)
-#
-#         # adding horizontal grid lines
-#         for ax in axes:
-#             ax.yaxis.grid(True)
-#             ax.set_xticks([y + 1 for y in range(len(all_data))], )
-#             ax.set_xlabel('xlabel')
-#             ax.set_ylabel('ylabel')
-#
-#         # add x-tick labels
-#         plt.setp(axes, xticks=[y + 1 for y in range(len(all_data))],
-#                  xticklabels=['x1']) # , 'x2', 'x3', 'x4'
-#         plt.title(videoColor) # desiredThing
-#         plt.show()
+toBeAveraged = mapOfData(dataFromCSV, videoThings)
+makeCSVwithAveragesDataVsVideo(toBeAveraged, videoThings, 'video')
 
