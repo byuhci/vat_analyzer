@@ -3,7 +3,7 @@ from collections import namedtuple, defaultdict
 import matplotlib.pyplot as plt
 import numpy as np
 
-recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','ENDvideo','SELECT','DESELECT','DESELECTdata','CHANGEEVENTTYPE','CANCEL','DELETE','MOVE','MOVEextent','RESIZE','RESIZEextent','JUMPdata','JUMPvideo','SCRUBdata','SCRUBvideo','SCRUBvideoExtent','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP','PEEK','STUDY_NAME'])
+recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','ENDvideo','SELECT','DESELECT','DESELECTdata','CHANGEEVENTTYPE','CANCEL','DELETE','MOVE','MOVEextent','RESIZE','RESIZEextent','JUMPdata','JUMPvideo','SCRUBdata','SCRUBvideo','SCRUBvideoExtent','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP','PEEK','STUDY_NAME','HIDDEN'])
 
 # task	user	START	END.data	END.video	SELECT	DESELECT	DESELECT.data
 # CHANGE-EVENT-TYPE	CANCEL	DELETE	MOVE	MOVE.extent	RESIZE	RESIZE.extent	JUMP.data
@@ -12,7 +12,7 @@ recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','E
 
 def readInCSV():
     # futureGraphs = defaultdict(list)
-    with open('fromLawrencejumpsScrubs_withHiddenValues.csv') as f:
+    with open('fromLawrenceJumpScrubs_withHiddenValue.csv') as f:
         data = list(csv.reader(f, delimiter=','))
     toBeGraphed = []
     for item in data:
@@ -23,7 +23,7 @@ def readInCSV():
                     DESELECTdata=item[7],CHANGEEVENTTYPE=item[8],CANCEL=item[9],DELETE=item[10],MOVE=item[11],MOVEextent=item[12],
                     RESIZE=item[13],RESIZEextent=item[14],JUMPdata=item[15],JUMPvideo=item[16],SCRUBdata=item[17],
                     SCRUBvideo=item[18],SCRUBvideoExtent=item[19],PLAY=item[20],PAUSE=item[21],CHANGEPLAYBACKRATE=item[22],
-                    SKIP=item[23],PEEK=item[24],STUDY_NAME=item[25]))
+                    SKIP=item[23],PEEK=item[24],STUDY_NAME=item[25],HIDDEN=item[26]))
 
     return toBeGraphed
 
@@ -33,10 +33,12 @@ def mapOfData(dataFromCSV, eventsBeingConsidered):
         for item in dataFromCSV:
             pillsOrRun = getattr(item, 'task')
             firstThing = getattr(item, measurableEvent)
-            # print(firstThing)
+            hiddenValue = getattr(item, 'HIDDEN')
+            # print(hiddenValue)
             #  note that this [:3] puts all 'run-' and all 'pill' into one key
             # print(pillsOrRun[:3],measurableEvent)
-            dataOfEvents[pillsOrRun[:3],measurableEvent].append(float(firstThing))
+            if hiddenValue == 'none':
+                dataOfEvents[pillsOrRun[:3],measurableEvent,hiddenValue].append(float(firstThing))
     # print(dataOfEvents)
     return dataOfEvents
 
