@@ -2,6 +2,8 @@ import csv
 from collections import namedtuple, defaultdict
 import matplotlib.pyplot as plt
 import numpy as np
+# from pandas import DataFrame
+import pandas as pd
 
 recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','ENDvideo','SELECT','DESELECT','DESELECTdata','CHANGEEVENTTYPE','CANCEL','DELETE','MOVE','MOVEextent','RESIZE','RESIZEextent','JUMPdata','JUMPvideo','SCRUBdata','SCRUBvideo','SCRUBvideoExtent','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP','PEEK','STUDY_NAME','HIDDEN'])
 
@@ -38,7 +40,7 @@ def mapOfData(dataFromCSV, eventsBeingConsidered):
             #  note that this [:3] puts all 'run-' and all 'pill' into one key
             # print(pillsOrRun[:3],measurableEvent)
             if hiddenValue == 'none':
-                dataOfEvents[pillsOrRun[:3],measurableEvent,hiddenValue].append(float(firstThing))
+                dataOfEvents[measurableEvent,hiddenValue].append(float(firstThing)) # to separate pills and run, use this: # pillsOrRun[:3],
     # print(dataOfEvents)
     return dataOfEvents
 
@@ -55,7 +57,7 @@ def makeCSVwithAveragesDataVsVideo(toBeAveraged, dataOrVideo, nameOfDataOrVideo)
              count += 1
         avg = sum/count
         overallData[key] = (sum, count, avg)
-    print(overallData)
+    # print(overallData) # shows the averages
     lenDataOrVideo = len(dataOrVideo)
     with open(str(lenDataOrVideo) + nameOfDataOrVideo + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
@@ -70,7 +72,30 @@ def makeCSVwithAveragesDataVsVideo(toBeAveraged, dataOrVideo, nameOfDataOrVideo)
             csvwriter.writerow(row)
             row = []
 
+def boxAndWhiskerIt(toBeAveraged):
+    # print(toBeAveraged)
+    for graph, points in toBeAveraged.items():
+        plt.figure()
+        plt.boxplot(points, 0, 'gD')
+        plt.title(graph)
 
+        print(graph[0])
+        title = graph[0]+'hidden-' +graph[1]
+
+        plt.savefig('boxAndWhiskerComparingVideoToolUsageToData/' + title + '.png')
+
+def describeTheData(toBeAveraged):
+    s = pd.Series([1, 2, 3])
+    # print(s.describe())
+    f = open('boxAndWhiskerComparingVideoToolUsageToData/dataDescribeOutput.txt', 'w')
+    for graph, points in toBeAveraged.items():
+        s = pd.Series(points)
+        f.write(graph[0])
+        f.write(graph[1])
+        f.write(str(s.describe()))
+        #print(s.describe())
+        f.write('\n\n')
+    f.close()
 
 dataFromCSV = readInCSV()
 
@@ -83,3 +108,5 @@ makeCSVwithAveragesDataVsVideo(toBeAveraged, dataThings, 'data')
 toBeAveraged = mapOfData(dataFromCSV, videoThings)
 makeCSVwithAveragesDataVsVideo(toBeAveraged, videoThings, 'video')
 
+# boxAndWhiskerIt(toBeAveraged)
+describeTheData(toBeAveraged)
