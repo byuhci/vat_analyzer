@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 # from pandas import DataFrame
 import pandas as pd
+import scipy.stats
 
 recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','ENDvideo','SELECT','DESELECT','DESELECTdata','CHANGEEVENTTYPE','CANCEL','DELETE','MOVE','MOVEextent','RESIZE','RESIZEextent','JUMPdata','JUMPvideo','SCRUBdata','SCRUBvideo','SCRUBvideoExtent','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP','PEEK','STUDY_NAME','HIDDEN'])
 
@@ -82,12 +83,11 @@ def boxAndWhiskerIt(toBeAveraged):
         print(graph[0])
         title = graph[0]+'hidden-' +graph[1]
 
-        plt.savefig('boxAndWhiskerComparingVideoToolUsageToData/' + title + '.png')
+        plt.savefig('comparingVideoToolUsageToData/' + title + '.png')
 
 def describeTheData(toBeAveraged):
-    s = pd.Series([1, 2, 3])
     # print(s.describe())
-    f = open('boxAndWhiskerComparingVideoToolUsageToData/dataDescribeOutput.txt', 'w')
+    f = open('comparingVideoToolUsageToData/dataDescribeOutput.txt', 'w')
     for graph, points in toBeAveraged.items():
         s = pd.Series(points)
         f.write(graph[0])
@@ -96,6 +96,18 @@ def describeTheData(toBeAveraged):
         #print(s.describe())
         f.write('\n\n')
     f.close()
+
+def isItNormal(toBeAveraged):
+    # print("hi")
+    f = open('comparingVideoToolUsageToData/normalizationVideoToolVsData.txt', 'w')
+    for graph, points in toBeAveraged.items():
+        f.write(str(graph))
+        if sum(points) == 0:
+            f.write("sum of all values is zero")
+            f.write('\n')
+            continue
+        f.write(str(scipy.stats.mstats.normaltest(points)))
+        f.write('\n')
 
 dataFromCSV = readInCSV()
 
@@ -109,4 +121,5 @@ toBeAveraged = mapOfData(dataFromCSV, videoThings)
 makeCSVwithAveragesDataVsVideo(toBeAveraged, videoThings, 'video')
 
 # boxAndWhiskerIt(toBeAveraged)
-describeTheData(toBeAveraged)
+# describeTheData(toBeAveraged)
+isItNormal(toBeAveraged)
