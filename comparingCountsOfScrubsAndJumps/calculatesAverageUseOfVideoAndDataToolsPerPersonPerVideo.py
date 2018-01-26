@@ -90,8 +90,8 @@ def describeTheData(toBeAveraged):
     f = open('comparingVideoToolUsageToData/dataDescribeOutput.txt', 'w')
     for graph, points in toBeAveraged.items():
         s = pd.Series(points)
-        f.write(graph[0])
-        f.write(graph[1])
+        f.write(str(graph))
+        f.write('\n')
         f.write(str(s.describe()))
         #print(s.describe())
         f.write('\n\n')
@@ -121,5 +121,5 @@ toBeAveraged = mapOfData(dataFromCSV, videoThings)
 makeCSVwithAveragesDataVsVideo(toBeAveraged, videoThings, 'video')
 
 # boxAndWhiskerIt(toBeAveraged)
-# describeTheData(toBeAveraged)
-isItNormal(toBeAveraged)
+describeTheData(toBeAveraged) # count, mean, std, mean, 25, 50, 75, max, dtype
+# isItNormal(toBeAveraged) # normalization spread
