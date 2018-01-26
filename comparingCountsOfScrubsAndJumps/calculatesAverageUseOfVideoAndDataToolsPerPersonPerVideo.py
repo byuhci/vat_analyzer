@@ -43,6 +43,7 @@ def mapOfData(dataFromCSV, eventsBeingConsidered):
             if hiddenValue == 'none':
                 dataOfEvents[measurableEvent,hiddenValue].append(float(firstThing)) # to separate pills and run, use this: # pillsOrRun[:3],
     # print(dataOfEvents)
+    print(len(dataOfEvents))
     return dataOfEvents
 
 def makeCSVwithAveragesDataVsVideo(toBeAveraged, dataOrVideo, nameOfDataOrVideo):
@@ -73,7 +74,7 @@ def makeCSVwithAveragesDataVsVideo(toBeAveraged, dataOrVideo, nameOfDataOrVideo)
             csvwriter.writerow(row)
             row = []
 
-def boxAndWhiskerIt(toBeAveraged):
+def boxAndWhiskerIt(toBeAveraged, vidOrDat):
     # print(toBeAveraged)
     for graph, points in toBeAveraged.items():
         plt.figure()
@@ -83,11 +84,12 @@ def boxAndWhiskerIt(toBeAveraged):
         print(graph[0])
         title = graph[0]+'hidden-' +graph[1]
 
-        plt.savefig('comparingVideoToolUsageToData/' + title + '.png')
+        plt.savefig('comparingVideoToolUsageToData/' + vidOrDat + title + '.png')
 
-def describeTheData(toBeAveraged):
+def describeTheData(toBeAveraged, vidOrDat):
     # print(s.describe())
-    f = open('comparingVideoToolUsageToData/dataDescribeOutput.txt', 'w')
+    f = open('comparingVideoToolUsageToData/' + vidOrDat + 'DataDescribeOutput.txt', 'w')
+    f.write(vidOrDat)
     for graph, points in toBeAveraged.items():
         s = pd.Series(points)
         f.write(str(graph))
@@ -97,9 +99,10 @@ def describeTheData(toBeAveraged):
         f.write('\n\n')
     f.close()
 
-def isItNormal(toBeAveraged):
+def isItNormal(toBeAveraged, vidOrDat):
     # print("hi")
-    f = open('comparingVideoToolUsageToData/normalizationVideoToolVsData.txt', 'w')
+    f = open('comparingVideoToolUsageToData/' + vidOrDat + 'NormalizationVideoToolVsData.txt', 'w')
+    f.write(vidOrDat)
     for graph, points in toBeAveraged.items():
         f.write(str(graph))
         if sum(points) == 0:
@@ -114,12 +117,17 @@ dataFromCSV = readInCSV()
 dataThings = ['ENDdata','DESELECTdata','MOVE','RESIZE','JUMPdata','SCRUBdata',]
 videoThings = ['ENDvideo','JUMPvideo','SCRUBvideo','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP']
 
-toBeAveraged = mapOfData(dataFromCSV, dataThings)
-makeCSVwithAveragesDataVsVideo(toBeAveraged, dataThings, 'data')
+toBeAveragedData = mapOfData(dataFromCSV, dataThings)
+makeCSVwithAveragesDataVsVideo(toBeAveragedData, dataThings, 'data')
 
-toBeAveraged = mapOfData(dataFromCSV, videoThings)
-makeCSVwithAveragesDataVsVideo(toBeAveraged, videoThings, 'video')
+toBeAveragedVideo = mapOfData(dataFromCSV, videoThings)
+makeCSVwithAveragesDataVsVideo(toBeAveragedVideo, videoThings, 'video')
 
-# boxAndWhiskerIt(toBeAveraged)
-describeTheData(toBeAveraged) # count, mean, std, mean, 25, 50, 75, max, dtype
-# isItNormal(toBeAveraged) # normalization spread
+# boxAndWhiskerIt(toBeAveragedData, 'data') # bo&whisker
+# boxAndWhiskerIt(toBeAveragedVideo, 'video') # bo&whisker
+
+# describeTheData(toBeAveragedData, 'data') # count, mean, std, mean, 25, 50, 75, max, dtype
+# describeTheData(toBeAveragedVideo, 'video') # count, mean, std, mean, 25, 50, 75, max, dtype
+
+isItNormal(toBeAveragedData, 'data') # normalization spread
+isItNormal(toBeAveragedVideo, 'video') # normalization spread
