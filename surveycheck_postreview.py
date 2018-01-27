@@ -3,12 +3,14 @@ import glob
 import json
 import os
 import csv
-from sys import argv
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.stats
 import collections
 from collections import defaultdict, namedtuple
 
-SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data'
-step_back_survey_path = '../home/naomi/Documents/AML/vat_analyzer/surveyResultsForPython_raw_cleaned_data'
+SURVEY_PATH = '/users/home/naomi/Documents/AML/vat_analyzer/surveyInstructionsAndResults'
+resultOutput = '/users/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                             'quesText, quesAnswer, quesNum, responseType, surveyFamily, answerMax')
@@ -22,7 +24,7 @@ def runVariousSurveys(possibleSurveys):
 
 
 def rawDataCSV(points):
-    os.chdir(step_back_survey_path)
+    os.chdir(SURVEY_PATH )
     with open('allRawResults.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for tup in sorted(points):
@@ -62,7 +64,9 @@ def makeAveragedCSV(averages):
 
 def runOneVariationOfSurveys(studyType):
     answerMax = 100
+    # print(os.getcwd())
     os.chdir(SURVEY_PATH)
+    # print(os.getcwd())
     with open(studyType + '.tasks.json', 'r') as file:
         guidelines = json.load(file)
     studyInfo = {}
@@ -140,7 +144,7 @@ def runOneVariationOfSurveys(studyType):
                 1 + 1
             else:
                 print("key: ", key, '\n', 'this was a BUG')
-    print(points)
+    # print(points) # total of 1200 are made here
     return points
 
 
@@ -210,6 +214,57 @@ def averageForPillVsRun(averages):
             # print(row)
             csvwriter.writerow(row)
 
+def makeListsByKeys(points):
+    hiddenValAndVideoName = defaultdict(list)
+    for point in points:
+        # print(point)
+        hiddenValue = getattr(point, 'hiddenValue')
+        subVideoName = getattr(point, 'videoName')[:4]
+        quesText = getattr(point, 'quesText')
+        quesAnswer = int(getattr(point, 'quesAnswer'))
+        hiddenValAndVideoName[hiddenValue, subVideoName, quesText].append(quesAnswer)
+    return hiddenValAndVideoName
+
+def boxAndWhiskerIt(toBeAveraged):
+    # print(toBeAveraged)
+
+    # print(os.getcwd())
+    for graph, points in toBeAveraged.items():
+        plt.figure()
+        plt.boxplot(points, 0, 'gD')
+        plt.title(graph[0] + '\n' + graph[1] + '\n' + graph[2]) # what was hidden, run- or pill, actual question
+
+        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + str(graph) + '.png')
+
+def describeTheData(toBeAveraged):
+    # print(s.describe())
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/' + 'DataDescribeOutput.txt', 'w')
+    for graph, points in toBeAveraged.items():
+        s = pd.Series(points)
+        f.write(str(graph))
+        f.write('\n')
+        f.write(str(s.describe()))
+        #print(s.describe())
+        f.write('\n\n')
+    f.close()
+
+def isItNormal(toBeAveraged):
+    # print("hi")
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/normalization.txt', 'w')
+    for graph, points in toBeAveraged.items():
+        f.write(str(graph))
+        f.write('\n')
+        if sum(points) == 0:
+            f.write("sum of all values is zero")
+            f.write('\n')
+            continue
+        if len(points) < 8:
+            f.write("less than eight points were given, this cannot be run")
+            continue
+        f.write(str(scipy.stats.mstats.normaltest(points)))
+        f.write('\n\n')
+
+
 
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']
@@ -217,16 +272,34 @@ options = ['studyA', 'studyB', 'studyC', 'studyD']
 # options = ['studyC', 'studyD']
 tempVar = 'ABCD' # C_D
 
-points = runVariousSurveys(options)
-# print(points)
-rawDataCSV(points)
+points = runVariousSurveys(options) # this holds all 1200 things
 
-# this takes the sum and count to calculate averages
-averages = calculateTotalAnswersPerQuestion(points)
-averages = calculateAverageAnswer(averages)
+listsByKeys = makeListsByKeys(points)
 
-# according to run v. pill
-runVpillAverage = averageForPillVsRun(averages)
+# need to os.chdir because in a survey folder still
+os.chdir(resultOutput)
+isItNormal(listsByKeys) # or describeTheData or boxAndWhiskerIt
+
+
+
+
+
+
+
+
+
+
+# sortedPints = makeListsByKeys(points)
+# # print(points)
+# rawDataCSV(points)
+#
+# # this takes the sum and count to calculate averages
+# averages = calculateTotalAnswersPerQuestion(points)
+# averages = calculateAverageAnswer(averages)
+#
+# # according to run v. pill
+# runVpillAverage = averageForPillVsRun(averages)
+
 
 # make a function that compares first round v. second round of pills, then does the same with running
 # someDictionary = compareLearedVsUnlearned(points) # I decided to not use this
