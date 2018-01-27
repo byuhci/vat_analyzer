@@ -274,11 +274,11 @@ tempVar = 'ABCD' # C_D
 
 points = runVariousSurveys(options) # this holds all 1200 things
 
-listsByKeys = makeListsByKeys(points)
+hiddenValAndVideoName = makeListsByKeys(points)
 
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
-isItNormal(listsByKeys) # or describeTheData or boxAndWhiskerIt
+isItNormal(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt
 
 
 
