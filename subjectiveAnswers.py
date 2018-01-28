@@ -280,8 +280,19 @@ def wilcoxonTest(analyzableData): #non parametric test
         f.write('\n')
     f.close()
 
-def oneTailedTTest(analyzableData):
-    print("do stuff")
+def oneSampleTTest(analyzableData):
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/OneSampleTTest.txt', 'w')
+    f.write('RuntimeWarning: Degrees of freedom <= 0 for slice \n')
+    f.write('RuntimeWarning: invalid value encountered in double_scalars ret = ret.dtype.type(ret / rcount) \n\n')
+    for graph, points in analyzableData.items():
+        f.write(str(graph))
+        f.write('\nlen(datapoints): ')
+        f.write(str(len(points)))
+        f.write('\n')
+        f.write(str(scipy.stats.ttest_1samp(points, 0)))
+        f.write('\n')
+        f.write('\n')
+    f.close()
 
 def mannWhiteneyTest(analyzableData):
     print("do more stuff")
@@ -298,7 +309,7 @@ hiddenValAndVideoName = makeListsByKeys(points)
 
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
-wilcoxonTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt
+oneSampleTTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest
 
 
 
