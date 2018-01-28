@@ -5,6 +5,7 @@ import scipy.stats
 import csv
 from collections import defaultdict, namedtuple
 
+# 'task', 'user', 'precision', 'recall', 'F1', 'study', 'hidden'
 objectivePoint = namedtuple('objectivePoint', 'task, user, precision, recall, F1, study, hidden')
 
 def readInput():
@@ -18,6 +19,31 @@ def readInput():
             allObjectiveData.append(objectivePoint(task=row[0], user=row[1], precision=row[2], recall=row[3], F1=row[4], study=row[5], hidden=row[6]))
     # print(allObjectiveData)
     return allObjectiveData
+
+#
+# def selectInputKeysValues(allObjectiveData):
+#     # keys = ['task', 'user', 'precision', 'recall', 'F1', 'study', 'hidden']
+#     values = ['precision', 'recall', 'F1']
+#     allThatData = defaultdict(list)
+#     for value in values:
+#         for point in allObjectiveData:
+#             task = getattr(point, 'task')
+#             user = getattr(point, 'user')
+#             precision = getattr(point, 'precision')
+#             recall = getattr(point, 'recall')
+#             F1 = getattr(point, 'F1')
+#             study = getattr(point, 'study')
+#             hidden = getattr(point, 'hidden')
+#             allThatData[task, hidden] =
+#
+#
+#
+#
+#         strSelectAspectsOfData = str(values)
+#         # print(strSelectAspectsOfData)
+#         # selectAspectsOfData(allObjectiveData)
+#
+
 
 def selectAspectsOfData(allObjectiveData):
     perTaskAndHiddenEqualsPrecision = defaultdict(list)
@@ -40,8 +66,8 @@ def selectAspectsOfData(allObjectiveData):
         perUserPrecision[user].append(float(precision))
         perStudyAndTaskEqualsPrecision[study, task].append(float(precision))
 
-    return perStudyAndTaskEqualsPrecision
-strSelectAspectsOfData = 'perStudyAndTaskEqualsPrecision'
+    return perTaskAndHiddenEqualsRecall
+strSelectAspectsOfData= 'perTaskAndHiddenEqualsRecall'
 
 
 def describeTheData(inputData):
@@ -86,5 +112,39 @@ def boxAndWhiskerIt(inputData):
         plt.title(graph) # what was hidden, run- or pill, actual question
         plt.savefig('objectiveData/boxAndWhisker/' + strSelectAspectsOfData + '/' + strSelectAspectsOfData + str(graph) + '.png')
 
-selectedResults = selectAspectsOfData(readInput())
-# isItNormal(selectedResults)
+def wilcoxonTest(analyzableData): #non parametric test
+    f = open('objectiveData/wilcoxon/' + strSelectAspectsOfData + 'Wilcoxon.txt', 'w')
+    f.write('(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
+    f.write('\n')
+    for graph, points in analyzableData.items():
+        f.write(str(graph))
+        f.write('\n')
+        f.write('datapoints: ')
+        f.write(str(len(points)))
+        f.write('\n')
+        f.write(str(scipy.stats.wilcoxon(points)))
+        f.write('\n')
+        f.write('\n')
+    f.close()
+input = readInput()
+
+def oneSampleTTest(analyzableData):
+    f = open('objectiveData/oneSampleTTest/' + strSelectAspectsOfData + 'OneSampleTTest.txt', 'w')
+    for graph, points in analyzableData.items():
+        f.write(str(graph))
+        f.write('\n')
+        f.write(str(scipy.stats.ttest_1samp(points, 0)))
+        f.write('\n')
+        f.write('\n')
+    f.close()
+
+
+
+
+
+def mannWhiteneyTest(analyzableData):
+    print("do more stuff")
+
+
+selectedResults = selectAspectsOfData(input)
+oneSampleTTest(selectedResults)

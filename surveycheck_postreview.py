@@ -263,8 +263,28 @@ def isItNormal(toBeAveraged):
             continue
         f.write(str(scipy.stats.mstats.normaltest(points)))
         f.write('\n\n')
+    f.close()
 
+def wilcoxonTest(analyzableData): #non parametric test
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/wilcoxon.txt', 'w')
+    f.write('(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
+    f.write('\n')
+    for graph, points in analyzableData.items():
+        f.write(str(graph))
+        f.write('\n')
+        f.write('datapoints: ')
+        f.write(str(len(points)))
+        f.write('\n')
+        f.write(str(scipy.stats.wilcoxon(points)))
+        f.write('\n')
+        f.write('\n')
+    f.close()
 
+def oneTailedTTest(analyzableData):
+    print("do stuff")
+
+def mannWhiteneyTest(analyzableData):
+    print("do more stuff")
 
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']
@@ -278,7 +298,7 @@ hiddenValAndVideoName = makeListsByKeys(points)
 
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
-isItNormal(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt
+wilcoxonTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt
 
 
 
