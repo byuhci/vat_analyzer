@@ -317,19 +317,27 @@ def oneSampleTTest(analyzableData):
         f.write('\n')
     f.close()
 
-def mannWhiteneyTest(analyzableData):
-    print("do more stuff")
+def mannWhitneyUTest(analyzableData):
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTest.txt', 'w')
+    possible 
+
+    # f.write(str(scipy.stats.mannwhitneyu(points, secondArray, 0, 'less'))) # 'less', 'two-sided' or 'greater'
+
+    f.close()
+
 
 def makeBarGraph(someInfo):
     toBeGraphed = defaultdict(list)
+    counter = 0
     for key, value in someInfo.items():
         # print(key, value)
         yMax = 5
         if value[2] > 5:
             yMax = 100
         toBeGraphed[key[0], key[1], yMax].append((key[2], value[2]))
-    print(toBeGraphed)
+
     for graph, items in toBeGraphed.items():
+        counter += 1
         yMax = graph[2]
         plt.title(graph)
         plt.xlabel('questions')
@@ -349,7 +357,9 @@ def makeBarGraph(someInfo):
         plt.xticks(y_pos, xvalueQuesText) # , rotation=40, ha='right'
         plt.ylim(0, graph[2])
 
-        plt.show()
+        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(counter) + '.png')
+
+#         plt.show()
 
         # plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.png')
 
@@ -366,25 +376,25 @@ points = runVariousSurveys(options) # this holds all 1200 things
 os.chdir(resultOutput)
 
 
-# hiddenValAndVideoName = makeListsByKeys(points)
-# oneSampleTTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest
+hiddenValAndVideoName = makeListsByKeys(points)
+mannWhitneyUTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest or oneSampleTTest
 
-
-# # this takes the sum and count to calculate averages
-averages = calculateTotalAnswersPerQuestion(points) # hiddenValAndVideoName
-averages = calculateAverageAnswer(averages)
-
-# # according to run v. pill
-# runVpillAverage = averageForPillVsRun(averages)
-
-# THINGS BROKEN UP # about 52 data-points
-# makeAveragedCSV(averages)
-
-# this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
-# averageTogether = correctForLearningEffect(averages)
-# makeAveragedCSV(averageTogether)
-
-# this combines run-yellow with run-red BUT leaves pills and run separate
-pillsAndRunSep = calculatePillsAndRunSeparate(averages)
-makeAveragedCSV(pillsAndRunSep)
-makeBarGraph(pillsAndRunSep)
+#
+# # # this takes the sum and count to calculate averages
+# averages = calculateTotalAnswersPerQuestion(points) # hiddenValAndVideoName
+# averages = calculateAverageAnswer(averages)
+#
+# # # according to run v. pill
+# # runVpillAverage = averageForPillVsRun(averages)
+#
+# # THINGS BROKEN UP # about 52 data-points
+# # makeAveragedCSV(averages)
+#
+# # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
+# # averageTogether = correctForLearningEffect(averages)
+# # makeAveragedCSV(averageTogether)
+#
+# # this combines run-yellow with run-red BUT leaves pills and run separate
+# pillsAndRunSep = calculatePillsAndRunSeparate(averages)
+# makeAveragedCSV(pillsAndRunSep)
+# makeBarGraph(pillsAndRunSep)
