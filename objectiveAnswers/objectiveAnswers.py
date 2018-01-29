@@ -126,7 +126,6 @@ def wilcoxonTest(analyzableData): #non parametric test
         f.write('\n')
         f.write('\n')
     f.close()
-input = readInput()
 
 def oneSampleTTest(analyzableData):
     f = open('objectiveData/oneSampleTTest/' + strSelectAspectsOfData + 'OneSampleTTest.txt', 'w')
@@ -145,6 +144,6 @@ def oneSampleTTest(analyzableData):
 def mannWhiteneyTest(analyzableData):
     print("do more stuff")
 
-
+input = readInput()
 selectedResults = selectAspectsOfData(input)
 oneSampleTTest(selectedResults)

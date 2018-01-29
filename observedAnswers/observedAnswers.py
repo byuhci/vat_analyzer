@@ -61,7 +61,7 @@ def makeCSVwithAveragesDataVsVideo(toBeAveraged, dataOrVideo, nameOfDataOrVideo)
         overallData[key] = (sum, count, avg)
     # print(overallData) # shows the averages
     lenDataOrVideo = len(dataOrVideo)
-    with open(str(lenDataOrVideo) + nameOfDataOrVideo + '.csv', 'w') as csvfile:
+    with open('comparingVideoToolUsageToData/' + str(lenDataOrVideo) + nameOfDataOrVideo + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         row = [nameOfDataOrVideo + 'THINGS:']
         row.extend(dataOrVideo)
@@ -112,6 +112,31 @@ def isItNormal(toBeAveraged, vidOrDat):
         f.write(str(scipy.stats.mstats.normaltest(points)))
         f.write('\n')
 
+def wilcoxonTest(analyzableData, vidOrDat): #non parametric test
+    f = open('comparingVideoToolUsageToData/wilcoxon/' + vidOrDat + 'Wilcoxon.txt', 'w')
+    f.write('(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
+    f.write('\n')
+    for graph, points in analyzableData.items():
+        f.write(str(graph))
+        f.write('\n')
+        f.write('datapoints: ')
+        f.write(str(len(points)))
+        f.write('\n')
+        f.write(str(scipy.stats.wilcoxon(points)))
+        f.write('\n')
+        f.write('\n')
+    f.close()
+
+def oneSampleTTest(analyzableData,vidOrDat):
+    f = open('comparingVideoToolUsageToData/oneSampleTTest/' + vidOrDat + 'OneSampleTTest.txt', 'w')
+    for graph, points in analyzableData.items():
+        f.write(str(graph))
+        f.write('\n')
+        f.write(str(scipy.stats.ttest_1samp(points, 0)))
+        f.write('\n')
+        f.write('\n')
+    f.close()
+
 dataFromCSV = readInCSV()
 
 dataThings = ['ENDdata','DESELECTdata','MOVE','RESIZE','JUMPdata','SCRUBdata',]
@@ -129,5 +154,5 @@ makeCSVwithAveragesDataVsVideo(toBeAveragedVideo, videoThings, 'video')
 # describeTheData(toBeAveragedData, 'data') # count, mean, std, mean, 25, 50, 75, max, dtype
 # describeTheData(toBeAveragedVideo, 'video') # count, mean, std, mean, 25, 50, 75, max, dtype
 
-isItNormal(toBeAveragedData, 'data') # normalization spread
-isItNormal(toBeAveragedVideo, 'video') # normalization spread
+oneSampleTTest(toBeAveragedData, 'data') # normalization spread
+oneSampleTTest(toBeAveragedVideo, 'video') # normalization spread
