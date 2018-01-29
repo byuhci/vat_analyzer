@@ -326,23 +326,21 @@ def makeBarGraph(someInfo):
         if value[2] > 5:
             yMax = 100
         toBeGraphed[key[0], key[1], yMax].append((key[2], value[2]))
-    for graph, info in toBeGraphed.items():
+    print(toBeGraphed)
+    for graph, items in toBeGraphed.items():
         plt.title(graph)
         plt.xlabel('questions')
         plt.ylabel('answers')
         xvalueQuesText = []
         yvalueQuesAns = []
-        for item in info:
-            print(item)
+        for item in items:
+            # print(item)
             xvalueQuesText.append(item[0])
             yvalueQuesAns.append(item[1])
-        print(xvalueQuesText)
-
         y_pos = np.arange(len(xvalueQuesText))
 
         plt.bar(y_pos, yvalueQuesAns, align='center', alpha=0.5)
         plt.xticks(y_pos, xvalueQuesText, rotation=40, ha='right')
-        
         plt.ylim(0, graph[2])
         plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) +'.png')
 
