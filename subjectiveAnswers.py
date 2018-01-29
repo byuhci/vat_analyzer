@@ -36,12 +36,25 @@ def calculateTotalAnswersPerQuestion(points):
     # sum, count, average, maxAverage
     averages = defaultdict(lambda: [0, 0, 0, 0])
     for point in points:
-        # print(point)
+        # (point)
         # Increment sum by answer, then increment count by 1
         averages[point[2:5]][0] += int(point.quesAnswer)
         averages[point[2:5]][1] += 1
         # print(point[2:5])
+    # print(averages)
     return averages
+
+
+    # # sum, count, average, maxAverage
+    # averages = defaultdict(lambda: [0, 0, 0, 0])
+    # for key, value in somePoints.items():
+    #     print(key, value)
+    #     averages[key] =
+    #
+    #     # Increment sum by answer, then increment count by 1
+    #     averages[point[2:5]][0] += int(point.quesAnswer)
+    #     averages[point[2:5]][1] += 1
+    #     # print(point[2:5])
 
 
 def calculateAverageAnswer(averages):
@@ -52,14 +65,14 @@ def calculateAverageAnswer(averages):
 
 def makeAveragedCSV(averages):
     # print(averages)
-    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/histograms/' + tempVar + '.csv', 'w') as csvfile:
+    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + tempVar + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
             # print(key, value)
             row = [tempVar]
             row.extend(value)
             row.extend(key)
-            print(key, value)
+            # print(key, value)
             csvwriter.writerow(row)
 
 
@@ -227,7 +240,7 @@ def makeListsByKeys(points):
         if surveyOrTask[-6:] == 'survey':
             surveyOrTask = 'survey'
         else:
-            surveyOrTask = 'video'
+            surveyOrTask = 'annotation'
         # print(surveyOrTask)
         hiddenValAndVideoName[hiddenValue, subVideoName, quesText,surveyOrTask].append(quesAnswer)
     return hiddenValAndVideoName
@@ -304,6 +317,23 @@ def oneSampleTTest(analyzableData):
 def mannWhiteneyTest(analyzableData):
     print("do more stuff")
 
+def makeBarGraph(someInfo):
+    toBeGraphed = defaultdict(list)
+    for key, value in someInfo.items():
+        # print(key, value)
+        toBeGraphed[key[0], key[1]].append((key[2], value[2]))
+    for graph, info in toBeGraphed.items():
+        if graph[1] == 'not applicable':
+            # graph all four points on one graph
+            print('hi')
+        else:
+            # make two graphs
+            print('hello')
+        # print(graph[0]) # pill or run and the colors
+        # print(graph[1]) # if 'not applicable' then it was a survey
+        # print(info) # pairs (quesText, quesAns)
+
+
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']
 # options = ['studyA', 'studyB']
@@ -311,17 +341,18 @@ options = ['studyA', 'studyB', 'studyC', 'studyD']
 tempVar = 'ABCD' # C_D
 
 points = runVariousSurveys(options) # this holds all 1200 things
-
-hiddenValAndVideoName = makeListsByKeys(points)
-# print(hiddenValAndVideoName)
+# rawDataCSV(points)
 
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
-# print(os.getcwd)
+
+
+# hiddenValAndVideoName = makeListsByKeys(points)
 # oneSampleTTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest
 
+
 # # this takes the sum and count to calculate averages
-averages = calculateTotalAnswersPerQuestion(points)
+averages = calculateTotalAnswersPerQuestion(points) # hiddenValAndVideoName
 averages = calculateAverageAnswer(averages)
 
 # # according to run v. pill
@@ -337,3 +368,4 @@ averages = calculateAverageAnswer(averages)
 # this combines run-yellow with run-red BUT leaves pills and run separate
 pillsAndRunSep = calculatePillsAndRunSeparate(averages)
 makeAveragedCSV(pillsAndRunSep)
+makeBarGraph(pillsAndRunSep)
