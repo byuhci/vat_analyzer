@@ -9,6 +9,8 @@ import scipy.stats
 import collections
 from collections import defaultdict, namedtuple
 import numpy as np
+from textwrap import wrap
+
 
 SURVEY_PATH = '/users/home/naomi/Documents/AML/vat_analyzer/surveyInstructionsAndResults'
 resultOutput = '/users/home/naomi/Documents/AML/vat_analyzer/'
@@ -328,6 +330,7 @@ def makeBarGraph(someInfo):
         toBeGraphed[key[0], key[1], yMax].append((key[2], value[2]))
     print(toBeGraphed)
     for graph, items in toBeGraphed.items():
+        yMax = graph[2]
         plt.title(graph)
         plt.xlabel('questions')
         plt.ylabel('answers')
@@ -338,11 +341,18 @@ def makeBarGraph(someInfo):
             xvalueQuesText.append(item[0])
             yvalueQuesAns.append(item[1])
         y_pos = np.arange(len(xvalueQuesText))
-
+        if len(xvalueQuesText) == 4:
+            xvalueQuesText = ['\n'.join(wrap(l, 18)) for l in xvalueQuesText]
+        else:
+            xvalueQuesText = ['\n'.join(wrap(l, 28)) for l in xvalueQuesText]
         plt.bar(y_pos, yvalueQuesAns, align='center', alpha=0.5)
-        plt.xticks(y_pos, xvalueQuesText, rotation=40, ha='right')
+        plt.xticks(y_pos, xvalueQuesText) # , rotation=40, ha='right'
         plt.ylim(0, graph[2])
+
         plt.show()
+
+        # plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.png')
+
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']
 # options = ['studyA', 'studyB']
