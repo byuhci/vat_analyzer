@@ -8,6 +8,7 @@ import pandas as pd
 import scipy.stats
 import collections
 from collections import defaultdict, namedtuple
+import numpy as np
 
 SURVEY_PATH = '/users/home/naomi/Documents/AML/vat_analyzer/surveyInstructionsAndResults'
 resultOutput = '/users/home/naomi/Documents/AML/vat_analyzer/'
@@ -323,16 +324,54 @@ def makeBarGraph(someInfo):
         # print(key, value)
         toBeGraphed[key[0], key[1]].append((key[2], value[2]))
     for graph, info in toBeGraphed.items():
+        plt.title(graph)
+        plt.xlabel('questions')
+        plt.ylabel('answers')
         if graph[1] == 'not applicable':
             # graph all four points on one graph
-            print('hi')
+            # print(graph)
+            xvalueQuesText = []
+            yvalueQuesAns = []
+            for item in info:
+                print(item)
+                xvalueQuesText.append(item[0])
+                yvalueQuesAns.append(item[1])
+            print(xvalueQuesText)
+
+            y_pos = np.arange(len(xvalueQuesText))
+
+            plt.bar(y_pos, yvalueQuesAns, align='center', alpha=0.5)
+            plt.xticks(y_pos, xvalueQuesText, rotation=40, ha='right')
+
+            plt.ylim(0, 5)
+            plt.show()
+            plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) +'.png')
         else:
             # make two graphs
-            print('hello')
-        # print(graph[0]) # pill or run and the colors
-        # print(graph[1]) # if 'not applicable' then it was a survey
-        # print(info) # pairs (quesText, quesAns)
+            x100valueQuesText = []
+            y100valueQuesAns = []
 
+            x5valueQuesText = []
+            y5valueQuesAns = []
+            for item in info:
+                if item[1] > 5:
+                    x100valueQuesText.append(item[0])
+                    y100valueQuesAns.append(item[1])
+                else:
+                    x5valueQuesText.append(item[0])
+                    y5valueQuesAns.append(item[1])
+
+            y_pos = np.arange(len(x5valueQuesText))
+            plt.bar(y_pos, y5valueQuesAns, align='center', alpha=0.5)
+            plt.xticks(y_pos, x5valueQuesText)
+            plt.ylim(0, 5)
+            plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + '5.png')
+
+            y_pos = np.arange(len(x100valueQuesText))
+            plt.bar(y_pos, y100valueQuesAns, align='center', alpha=0.5)
+            plt.xticks(y_pos, x100valueQuesText)
+            plt.ylim(0, 100)
+            plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + '100.png')
 
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']
