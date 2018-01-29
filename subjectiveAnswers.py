@@ -36,6 +36,7 @@ def calculateTotalAnswersPerQuestion(points):
     # sum, count, average, maxAverage
     averages = defaultdict(lambda: [0, 0, 0, 0])
     for point in points:
+        # print(point)
         # Increment sum by answer, then increment count by 1
         averages[point[2:5]][0] += int(point.quesAnswer)
         averages[point[2:5]][1] += 1
@@ -51,14 +52,14 @@ def calculateAverageAnswer(averages):
 
 def makeAveragedCSV(averages):
     # print(averages)
-    with open('runFirstThenPills' + tempVar + '.csv', 'w') as csvfile:
+    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/histograms/' + tempVar + '.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
             # print(key, value)
             row = [tempVar]
             row.extend(value)
             row.extend(key)
-            # print(row)
+            print(key, value)
             csvwriter.writerow(row)
 
 
@@ -222,7 +223,13 @@ def makeListsByKeys(points):
         subVideoName = getattr(point, 'videoName')[:4]
         quesText = getattr(point, 'quesText')
         quesAnswer = int(getattr(point, 'quesAnswer'))
-        hiddenValAndVideoName[hiddenValue, subVideoName, quesText].append(quesAnswer)
+        surveyOrTask = getattr(point, 'videoName')
+        if surveyOrTask[-6:] == 'survey':
+            surveyOrTask = 'survey'
+        else:
+            surveyOrTask = 'video'
+        # print(surveyOrTask)
+        hiddenValAndVideoName[hiddenValue, subVideoName, quesText,surveyOrTask].append(quesAnswer)
     return hiddenValAndVideoName
 
 def boxAndWhiskerIt(toBeAveraged):
@@ -306,35 +313,19 @@ tempVar = 'ABCD' # C_D
 points = runVariousSurveys(options) # this holds all 1200 things
 
 hiddenValAndVideoName = makeListsByKeys(points)
+# print(hiddenValAndVideoName)
 
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
-oneSampleTTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest
+# print(os.getcwd)
+# oneSampleTTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest
 
-
-
-
-
-
-
-
-
-
-# sortedPints = makeListsByKeys(points)
-# # print(points)
-# rawDataCSV(points)
-#
 # # this takes the sum and count to calculate averages
-# averages = calculateTotalAnswersPerQuestion(points)
-# averages = calculateAverageAnswer(averages)
-#
+averages = calculateTotalAnswersPerQuestion(points)
+averages = calculateAverageAnswer(averages)
+
 # # according to run v. pill
 # runVpillAverage = averageForPillVsRun(averages)
-
-
-# make a function that compares first round v. second round of pills, then does the same with running
-# someDictionary = compareLearedVsUnlearned(points) # I decided to not use this
-# printListCSV(someDictionary) # can't use this either
 
 # THINGS BROKEN UP # about 52 data-points
 # makeAveragedCSV(averages)
@@ -343,6 +334,6 @@ oneSampleTTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or
 # averageTogether = correctForLearningEffect(averages)
 # makeAveragedCSV(averageTogether)
 
-# this combines un-yellow with run-red BUT leaves pills and run separate
-# pillsAndRunSep = calculatePillsAndRunSeparate(averages)
-# makeAveragedCSV(pillsAndRunSep)
+# this combines run-yellow with run-red BUT leaves pills and run separate
+pillsAndRunSep = calculatePillsAndRunSeparate(averages)
+makeAveragedCSV(pillsAndRunSep)
