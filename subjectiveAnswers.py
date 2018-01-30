@@ -254,7 +254,12 @@ def boxAndWhiskerIt(toBeAveraged):
     # print(os.getcwd())
     for graph, points in toBeAveraged.items():
         plt.figure()
-        plt.boxplot(points, 0, 'gD')
+        yMin = 0
+        yMax = 5
+        if points[0] > 5:
+            yMax = 100
+        plt.ylim((yMin, yMax))
+        plt.boxplot(points, 0, 'gD',showmeans = True)
         plt.title(graph[0] + '\n' + graph[1] + '\n' + graph[2]) # what was hidden, run- or pill, actual question
 
         plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + str(graph) + '.png')
@@ -377,7 +382,7 @@ os.chdir(resultOutput)
 
 
 hiddenValAndVideoName = makeListsByKeys(points)
-mannWhitneyUTest(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest or oneSampleTTest
+boxAndWhiskerIt(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest or oneSampleTTest
 
 #
 # # # this takes the sum and count to calculate averages
