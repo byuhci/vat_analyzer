@@ -319,7 +319,7 @@ def oneSampleTTest(analyzableData):
 
 def mannWhitneyUTest(analyzableData):
     f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTest.txt', 'w')
-    possible 
+    # possible
 
     # f.write(str(scipy.stats.mannwhitneyu(points, secondArray, 0, 'less'))) # 'less', 'two-sided' or 'greater'
 
