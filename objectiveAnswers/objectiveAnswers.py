@@ -66,8 +66,8 @@ def selectAspectsOfData(allObjectiveData):
         perUserPrecision[user].append(float(precision))
         perStudyAndTaskEqualsPrecision[study, task].append(float(precision))
 
-    return perTaskAndHiddenEqualsRecall
-strSelectAspectsOfData= 'perTaskAndHiddenEqualsRecall'
+    return perTaskAndHiddenEqualsPrecision
+strSelectAspectsOfData= 'perTaskAndHiddenEqualsPrecision'
 
 
 def describeTheData(inputData):
@@ -106,6 +106,9 @@ def isItNormal(inputData):
 
 def boxAndWhiskerIt(inputData):
     for graph, points in inputData.items():
+        yMin = 0
+        yMax = 1
+        plt.ylim(yMin,yMax)
         print(graph, points)
         plt.figure()
         plt.boxplot(points, 0, 'gD')
@@ -146,4 +149,4 @@ def mannWhiteneyTest(analyzableData):
 
 input = readInput()
 selectedResults = selectAspectsOfData(input)
-oneSampleTTest(selectedResults)
+boxAndWhiskerIt(selectedResults)
