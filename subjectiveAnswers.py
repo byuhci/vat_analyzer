@@ -25,6 +25,26 @@ def runVariousSurveys(possibleSurveys):
         points += runOneVariationOfSurveys(study)
     return points
 
+def lookForMissing(points):
+    usersPerVideoName = defaultdict(list)
+    for point in points:
+        videoName = getattr(point, 'videoName')
+        usersName = getattr(point, 'userName')
+        # hiddenVal = getattr(point, 'hiddenValue')
+        # study = getattr(point, 'studyName')
+        usersPerVideoName[videoName].append(usersName)
+        # note that this ignores the fact that there should be four question/answer points per user per video --> four duplicates
+
+        
+    for key, value in usersPerVideoName.items():
+        usersPerVideoName[key] = sorted(value)
+
+    for video, users in usersPerVideoName.items():
+        print(video, users)
+
+
+
+
 
 def rawDataCSV(points):
     os.chdir(SURVEY_PATH )
@@ -375,14 +395,17 @@ options = ['studyA', 'studyB', 'studyC', 'studyD']
 tempVar = 'ABCD' # C_D
 
 points = runVariousSurveys(options) # this holds all 1200 things
-# rawDataCSV(points)
 
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
 
+lookForMissing(points) # not necessarily needed # rawDataCSV(points)
+
+
+
 
 hiddenValAndVideoName = makeListsByKeys(points)
-boxAndWhiskerIt(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest or oneSampleTTest
+# boxAndWhiskerIt(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest or oneSampleTTest
 
 #
 # # # this takes the sum and count to calculate averages
