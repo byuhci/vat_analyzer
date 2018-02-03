@@ -19,6 +19,23 @@ def readInput():
             allObjectiveData.append(objectivePoint(task=row[0], user=row[1], precision=row[2], recall=row[3], F1=row[4], study=row[5], hidden=row[6]))
     # print(allObjectiveData)
     return allObjectiveData
+def lookForMissing(allObjectiveData):
+    perStudyAndVideoEqualsUser = defaultdict(list)
+    for point in allObjectiveData:
+        task = getattr(point, 'task')
+        user = getattr(point, 'user')
+        precision = getattr(point, 'precision')
+        recall = getattr(point, 'recall')
+        F1 = getattr(point, 'F1')
+        study = getattr(point, 'study')
+        hidden = getattr(point, 'hidden')
+        perStudyAndVideoEqualsUser[study, task].append(user)
+    for studysTask, value in perStudyAndVideoEqualsUser.items():
+        # print(studysTask)
+        perStudyAndVideoEqualsUser[studysTask] = sorted(value)
+
+
+    print(perStudyAndVideoEqualsUser)
 
 #
 # def selectInputKeysValues(allObjectiveData):
@@ -149,4 +166,5 @@ def mannWhiteneyTest(analyzableData):
 
 input = readInput()
 selectedResults = selectAspectsOfData(input)
-boxAndWhiskerIt(selectedResults)
+lookForMissing(input)
+# boxAndWhiskerIt(selectedResults)
