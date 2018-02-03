@@ -27,6 +27,7 @@ def runVariousSurveys(possibleSurveys):
 
 def lookForMissing(points):
     usersPerVideoName = defaultdict(set)
+    forUserNameSeeVideo = defaultdict(set)
     for point in points:
         videoName = getattr(point, 'videoName')
         usersName = getattr(point, 'userName')
@@ -36,16 +37,17 @@ def lookForMissing(points):
 
         # if usersPerVideoName[videoName].
         usersPerVideoName[study, videoName].add(int(usersName))
-        # note that this ignores the fact that there should be four question/answer points per user per video --> four duplicates
+        forUserNameSeeVideo[study, usersName].add(videoName)
 
-
-    for key, value in usersPerVideoName.items():
-        usersPerVideoName[key] = sorted(value)
+    for key, value in forUserNameSeeVideo.items():
+        forUserNameSeeVideo[key] = sorted(value)
+    for key, value in forUserNameSeeVideo.items():
+        print(key, value)
 
     # for video, users in usersPerVideoName.items():
     #     print(video, users)
-    for key in sorted(usersPerVideoName.iterkeys()):
-        print "%s: %s" % (key, usersPerVideoName[key])
+    # for key in sorted(usersPerVideoName.iterkeys()):
+    #     print "%s: %s" % (key, usersPerVideoName[key])
 
 
 
