@@ -68,6 +68,7 @@ def selectAspectsOfData(allObjectiveData):
     perTaskAndHiddenEqualsF1 = defaultdict(list)
     perUserPrecision = defaultdict(list)
     perStudyAndTaskEqualsPrecision = defaultdict(list)
+    perHiddenEqualF1 = defaultdict(list)
     for point in allObjectiveData:
         task = getattr(point, 'task')
         user = getattr(point, 'user')
@@ -82,9 +83,11 @@ def selectAspectsOfData(allObjectiveData):
         perTaskAndHiddenEqualsF1[task, hidden].append(float(F1))
         perUserPrecision[user].append(float(precision))
         perStudyAndTaskEqualsPrecision[study, task].append(float(precision))
+        perHiddenEqualF1[hidden].append(float(precision))
 
     return perTaskAndHiddenEqualsPrecision
 strSelectAspectsOfData= 'perTaskAndHiddenEqualsPrecision'
+
 
 
 def describeTheData(inputData):
