@@ -11,6 +11,7 @@ objectivePoint = namedtuple('objectivePoint', 'task, user, precision, recall, F1
 def readInput():
     # format: task	user	precision	recall	F1	study	hidden
     allObjectiveData = []
+    # tuesdayUserStudy_c_d.csv # objective_2018_01_25_studyABCD.csv
     with open('objective_2018_01_25_studyABCD.csv') as csvfile:
         data = list(csv.reader(csvfile, delimiter=','))
         for row in data:
@@ -19,6 +20,36 @@ def readInput():
             allObjectiveData.append(objectivePoint(task=row[0], user=row[1], precision=row[2], recall=row[3], F1=row[4], study=row[5], hidden=row[6]))
     # print(allObjectiveData)
     return allObjectiveData
+
+def eachUsersAverages(allObjectiveData):
+    perUserRecallScores = defaultdict(list)
+    for point in allObjectiveData:
+        # task = getattr(point, 'task')
+        user = getattr(point, 'user')
+        # precision = getattr(point, 'precision')
+        recall = getattr(point, 'recall')
+        # F1 = getattr(point, 'F1')
+        # study = getattr(point, 'study')
+        # hidden = getattr(point, 'hidden')
+        perUserRecallScores[user].append(float(recall))
+    userNameToAverageRecall = {}
+    for userName, allRecallScores in perUserRecallScores.items():
+        # print(userName, allRecallScores)
+        # for item in allRecallScores:
+        average = sum(allRecallScores)/len(allRecallScores)
+        userNameToAverageRecall[userName] = average
+        print(userName, average)
+    f = open('objectiveData/averageRecallScorePerUser.txt', 'w')
+    for user, score in userNameToAverageRecall.items():
+        f.write(user)
+        f.write(',')
+        f.write(str(score))
+        f.write('\n')
+    f.close()
+
+    # print(userNameToAverageRecall)
+
+
 def lookForMissing(allObjectiveData):
     perStudyAndVideoEqualsUser = defaultdict(list)
     for point in allObjectiveData:
@@ -36,31 +67,6 @@ def lookForMissing(allObjectiveData):
 
 
     print(perStudyAndVideoEqualsUser)
-
-#
-# def selectInputKeysValues(allObjectiveData):
-#     # keys = ['task', 'user', 'precision', 'recall', 'F1', 'study', 'hidden']
-#     values = ['precision', 'recall', 'F1']
-#     allThatData = defaultdict(list)
-#     for value in values:
-#         for point in allObjectiveData:
-#             task = getattr(point, 'task')
-#             user = getattr(point, 'user')
-#             precision = getattr(point, 'precision')
-#             recall = getattr(point, 'recall')
-#             F1 = getattr(point, 'F1')
-#             study = getattr(point, 'study')
-#             hidden = getattr(point, 'hidden')
-#             allThatData[task, hidden] =
-#
-#
-#
-#
-#         strSelectAspectsOfData = str(values)
-#         # print(strSelectAspectsOfData)
-#         # selectAspectsOfData(allObjectiveData)
-#
-
 
 def selectAspectsOfData(allObjectiveData):
     perTaskAndHiddenEqualsPrecision = defaultdict(list)
@@ -168,6 +174,8 @@ def mannWhiteneyTest(analyzableData):
     print("do more stuff")
 
 input = readInput()
-selectedResults = selectAspectsOfData(input)
-lookForMissing(input)
-# boxAndWhiskerIt(selectedResults)
+# selectedResults = selectAspectsOfData(input)
+# lookForMissing(input)
+# # boxAndWhiskerIt(selectedResults)
+
+averagedInfo = eachUsersAverages(input)
