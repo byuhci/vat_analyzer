@@ -1,0 +1,826 @@
+{
+    "user_id": "055",
+    "session_id": "5a78ba10ee2b1975ba835bd3",
+    "study": "studyD",
+    "workspace": "pill.pills-pink",
+    "details": {
+        "workspace": "pill.pills-pink",
+        "labels": [
+            {
+                "time": 45.348439,
+                "endTime": 53.19784948989895,
+                "type": "pill",
+                "id": 1
+            },
+            {
+                "time": 63.837935,
+                "endTime": 69.0387402696609,
+                "type": "move",
+                "id": 2
+            },
+            {
+                "time": 125.793425,
+                "endTime": 136.40306775013332,
+                "type": "pill",
+                "id": 3
+            },
+            {
+                "time": 178.249231,
+                "endTime": 180.82172687484692,
+                "type": "move",
+                "id": 4
+            },
+            {
+                "time": 269.797699,
+                "endTime": 279.0069297945268,
+                "type": "pill",
+                "id": 5
+            },
+            {
+                "time": 331.11448,
+                "endTime": 334.81339418691005,
+                "type": "move",
+                "id": 6
+            },
+            {
+                "time": 446.714919,
+                "endTime": 449.1047524458637,
+                "type": "move",
+                "id": 7
+            },
+            {
+                "time": 564.243242,
+                "endTime": 573.1427984828542,
+                "type": "pill",
+                "id": 8
+            },
+            {
+                "time": 608.808096,
+                "endTime": 613.2420612413135,
+                "type": "move",
+                "id": 9
+            }
+        ],
+        "_starts": [
+            "2018-02-05T20:42:24.000Z"
+        ],
+        "_ends": [
+            "2018-02-05T20:44:48.597Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyD/pills-pink/055.labels.json",
+    "videoFlash": 0.561365,
+    "surveys": {
+        "user-info": {
+            "firstname": "Riley",
+            "lastname": "Hale",
+            "email": "riley.e.hale@gmail.com"
+        },
+        "practice-first": {
+            "question1": "1",
+            "question2": "ok",
+            "question3": "100",
+            "question4": "5"
+        },
+        "practice-second": {},
+        "practice-third": {},
+        "practice-survey": {},
+        "pill-blue": {
+            "question1": "1",
+            "question2": "1",
+            "question3": "20",
+            "question4": "80"
+        },
+        "pill-red": {
+            "question1": "1",
+            "question2": "4",
+            "question3": "10",
+            "question4": "60"
+        },
+        "pill-orange": {
+            "question1": "5",
+            "question2": "5",
+            "question3": "100",
+            "question4": "90"
+        },
+        "pills-survey": {
+            "question1": "5",
+            "question2": "1",
+            "question3": "4",
+            "question4": "5"
+        },
+        "run-blue": {
+            "question1": "5",
+            "question2": "2",
+            "question3": "20",
+            "question4": "70"
+        },
+        "run-yellow": {
+            "question1": "1",
+            "question2": "1",
+            "question3": "30",
+            "question4": "70"
+        },
+        "run-red": {
+            "question1": "5",
+            "question2": "5",
+            "question3": "90",
+            "question4": "90"
+        },
+        "run-survey": {
+            "question1": "5",
+            "question2": "1",
+            "question3": "5",
+            "question4": "5"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2018-02-05T20:42:51.545Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:42:51",
+                "_end": "-",
+                "data": {
+                    "type": "pill",
+                    "time": 45.348439
+                }
+            },
+            {
+                "time": "2018-02-05T20:42:55.815Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:42:55",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 45.348439,
+                        "endTime": 53.19784948989895,
+                        "type": "pill",
+                        "id": 1
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:00.187Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:43:00",
+                "_end": "-",
+                "data": {
+                    "type": "move",
+                    "time": 63.837935
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:02.103Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:43:02",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 63.837935,
+                        "endTime": 69.0387402696609,
+                        "type": "move",
+                        "id": 2
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:10.738Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:43:10",
+                "_end": "-",
+                "data": {
+                    "type": "pill",
+                    "time": 125.793425
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:15.906Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:43:15",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 125.793425,
+                        "endTime": 136.40306775013332,
+                        "type": "pill",
+                        "id": 3
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:27.009Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:43:27",
+                "_end": "-",
+                "data": {
+                    "type": "move",
+                    "time": 178.249231
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:30.599Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:43:30",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 178.249231,
+                        "endTime": 180.82172687484692,
+                        "type": "move",
+                        "id": 4
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:41.610Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:43:41",
+                "_end": "-",
+                "data": {
+                    "type": "pill",
+                    "time": 269.797699
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:44.712Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:43:44",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 269.797699,
+                        "endTime": 279.0069297945268,
+                        "type": "pill",
+                        "id": 5
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:43:57.387Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:43:57",
+                "_end": "-",
+                "data": {
+                    "type": "move",
+                    "time": 331.11448
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:00.295Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:44:00",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 331.11448,
+                        "endTime": 334.81339418691005,
+                        "type": "move",
+                        "id": 6
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:12.851Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:44:12",
+                "_end": "-",
+                "data": {
+                    "type": "move",
+                    "time": 446.714919
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:19.140Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:44:19",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 446.714919,
+                        "endTime": 449.1047524458637,
+                        "type": "move",
+                        "id": 7
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:30.418Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:44:30",
+                "_end": "-",
+                "data": {
+                    "type": "pill",
+                    "time": 564.243242
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:33.054Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:44:33",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 564.243242,
+                        "endTime": 573.1427984828542,
+                        "type": "pill",
+                        "id": 8
+                    }
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:41.347Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "13:44:41",
+                "_end": "-",
+                "data": {
+                    "type": "move",
+                    "time": 608.808096
+                }
+            },
+            {
+                "time": "2018-02-05T20:44:43.750Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "13:44:43",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 608.808096,
+                        "endTime": 613.2420612413135,
+                        "type": "move",
+                        "id": 9
+                    }
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:42:42.617Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:42:42",
+                "data": {
+                    "time": 42.23487
+                }
+            },
+            {
+                "time": "2018-02-05T20:42:46.441Z",
+                "type": "PAUSE",
+                "source": "video:button",
+                "_t": "13:42:46",
+                "_end": "-"
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:42:48.553Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:42:48",
+                "data": {
+                    "time": 45.348439
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:42:55.814Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:42:55",
+                "data": {
+                    "time": 45.348439
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:42:58.930Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:42:58",
+                "data": {
+                    "time": 63.837935
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:02.102Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:02",
+                "data": {
+                    "time": 63.837935
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:03.769Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:03",
+                "data": {
+                    "time": 84.275831
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:04.985Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:04",
+                "data": {
+                    "time": 106.763605
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:07.679Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:07",
+                "data": {
+                    "time": 125.793425
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:15.904Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:15",
+                "data": {
+                    "time": 125.793425
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:16.949Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:16",
+                "data": {
+                    "time": 148.301495
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:20.263Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:20",
+                "data": {
+                    "time": 170.993474
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:23.514Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:23",
+                "data": {
+                    "time": 178.249231
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:30.598Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:30",
+                "data": {
+                    "time": 178.249231
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:32.358Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:32",
+                "data": {
+                    "time": 199.955616
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:34.386Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:34",
+                "data": {
+                    "time": 268.427731
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:40.113Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:40",
+                "data": {
+                    "time": 269.797699
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:44.711Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:44",
+                "data": {
+                    "time": 269.797699
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:45.763Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:45",
+                "data": {
+                    "time": 292.863904
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:51.349Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:51",
+                "data": {
+                    "time": 330.759304
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:43:55.707Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:43:55",
+                "data": {
+                    "time": 331.11448
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:00.294Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:00",
+                "data": {
+                    "time": 331.11448
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:01.433Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:01",
+                "data": {
+                    "time": 352.039476
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:03.185Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:03",
+                "data": {
+                    "time": 393.248208
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:06.000Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:06",
+                "data": {
+                    "time": 440.19996
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:10.994Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:10",
+                "data": {
+                    "time": 446.714919
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:19.137Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:19",
+                "data": {
+                    "time": 446.714919
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:21.007Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:21",
+                "data": {
+                    "time": 457.126677
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:23.649Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:23",
+                "data": {
+                    "time": 564.875763
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:28.659Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:28",
+                "data": {
+                    "time": 564.243242
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:33.051Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:33",
+                "data": {
+                    "time": 564.243242
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:34.714Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:34",
+                "data": {
+                    "time": 591.441602
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:36.438Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:36",
+                "data": {
+                    "time": 603.305172
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:40.106Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:40",
+                "data": {
+                    "time": 608.808096
+                }
+            },
+            {
+                "time": {
+                    "start": "2018-02-05T20:42:24.688Z",
+                    "end": "2018-02-05T20:44:43.747Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "13:42:24",
+                "_end": "13:44:43",
+                "data": {
+                    "time": 608.808096
+                }
+            }
+        ]
+    }
+}
