@@ -82,7 +82,7 @@ def calculateAverageAnswer(averages):
 
 def makeAveragedCSV(averages):
     # print(averages)
-    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + tempVar + 'WithFeb.csv', 'w') as csvfile:
+    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphsWithFeb/' + tempVar + 'WithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
             # print(key, value)
@@ -136,6 +136,8 @@ def runOneVariationOfSurveys(studyType):
     # only allow users 001-045
     validFiles = list(filter(lambda x: x.split('.')[0] <= '056.info.json',
                              glob.glob('*.info.json')))
+
+    # TODO: also consider *.survey.json
 
     points = []
     for fileName in validFiles:
@@ -262,9 +264,9 @@ def makeListsByKeys(points):
     return hiddenValAndVideoName
 
 def boxAndWhiskerIt(toBeAveraged):
+    # subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker # name of folder I should be in
     # print(toBeAveraged)
     # xvalueQuesText = ['\n'.join(wrap(l, 18)) for l in xvalueQuesText]
-    # print(os.getcwd())
     for graph, points in toBeAveraged.items():
         plt.figure()
         yMin = 0
@@ -273,13 +275,14 @@ def boxAndWhiskerIt(toBeAveraged):
             yMax = 100
         plt.ylim((yMin, yMax))
         plt.boxplot(points, 0, 'gD')
-        plt.title(graph[0] + '\n' + graph[1] + '\n' + graph[2]) # what was hidden, run- or pill, actual question
+        titleVar = graph[2] + '\n' + graph[1] + '\n' + graph[0] + '\n' + 'length of points list: ' + str(len(points))
+        plt.title(titleVar) # what was hidden, run- or pill, actual question
 
-        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + str(graph) + '.png')
+        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.png')
 
 def describeTheData(toBeAveraged):
     # print(s.describe())
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/' + 'DataDescribeOutputWithFeb.txt', 'w')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/DataDescribeOutputWithFeb.txt', 'w')
     for graph, points in toBeAveraged.items():
         s = pd.Series(points)
         f.write(str(graph))
@@ -389,19 +392,23 @@ tempVar = 'ABCD' # C_D
 
 points = runVariousSurveys(options) # this holds all 1200 things
 
-# need to os.chdir because in a survey folder still
-os.chdir(resultOutput)
+
 
 # lookForMissing(points) # not necessarily needed #
 rawDataCSV(points)
 
-
+# need to os.chdir because in a survey folder still
+os.chdir(resultOutput) #  /AML/vat_analyzer
+# print(os.getcwd())
 
 
 hiddenValAndVideoName = makeListsByKeys(points)
-# boxAndWhiskerIt(hiddenValAndVideoName) # or describeTheData or boxAndWhiskerIt or wilcoxonTest or oneSampleTTest
+boxAndWhiskerIt(hiddenValAndVideoName)
+describeTheData(hiddenValAndVideoName)
+wilcoxonTest(hiddenValAndVideoName)
+oneSampleTTest(hiddenValAndVideoName)
 
-#
+
 # # # this takes the sum and count to calculate averages
 # averages = calculateTotalAnswersPerQuestion(points) # hiddenValAndVideoName
 # averages = calculateAverageAnswer(averages)
