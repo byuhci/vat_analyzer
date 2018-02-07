@@ -11,9 +11,10 @@ from collections import defaultdict, namedtuple
 import numpy as np
 from textwrap import wrap
 
-
-SURVEY_PATH = '/users/home/naomi/Documents/AML/vat_analyzer/surveyInstructionsAndResults'
-resultOutput = '/users/home/naomi/Documents/AML/vat_analyzer/'
+# /home/naomi/Documents/
+# /users/home/naomi/Documents/
+SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyInstructionsAndResults'
+resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                             'quesText, quesAnswer, quesNum, responseType, surveyFamily, answerMax')
@@ -54,7 +55,7 @@ def lookForMissing(points):
 
 def rawDataCSV(points):
     os.chdir(SURVEY_PATH )
-    with open('allRawResults.csv', 'w') as csvfile:
+    with open('allRawResultsWithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for tup in sorted(points):
             csvwriter.writerow(tup)
@@ -73,19 +74,6 @@ def calculateTotalAnswersPerQuestion(points):
     # print(averages)
     return averages
 
-
-    # # sum, count, average, maxAverage
-    # averages = defaultdict(lambda: [0, 0, 0, 0])
-    # for key, value in somePoints.items():
-    #     print(key, value)
-    #     averages[key] =
-    #
-    #     # Increment sum by answer, then increment count by 1
-    #     averages[point[2:5]][0] += int(point.quesAnswer)
-    #     averages[point[2:5]][1] += 1
-    #     # print(point[2:5])
-
-
 def calculateAverageAnswer(averages):
     # sum, count, average
     for value in averages.values():
@@ -94,7 +82,7 @@ def calculateAverageAnswer(averages):
 
 def makeAveragedCSV(averages):
     # print(averages)
-    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + tempVar + '.csv', 'w') as csvfile:
+    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + tempVar + 'WithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
             # print(key, value)
@@ -103,7 +91,6 @@ def makeAveragedCSV(averages):
             row.extend(key)
             # print(key, value)
             csvwriter.writerow(row)
-
 
 def runOneVariationOfSurveys(studyType):
     answerMax = 100
@@ -147,7 +134,7 @@ def runOneVariationOfSurveys(studyType):
     os.chdir(os.path.join(SURVEY_PATH, studyType))
 
     # only allow users 001-045
-    validFiles = list(filter(lambda x: x.split('.')[0] <= '045.info.json',
+    validFiles = list(filter(lambda x: x.split('.')[0] <= '056.info.json',
                              glob.glob('*.info.json')))
 
     points = []
@@ -192,7 +179,7 @@ def runOneVariationOfSurveys(studyType):
 
 
 def compareLearedVsUnlearned(points):
-    with open('learnedVsUnlearned.csv', 'w') as csvfile:
+    with open('learnedVsUnlearnedWithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         # points.type() # list
         newMap = {}
@@ -247,7 +234,7 @@ def averageForPillVsRun(averages):
         runVpillAverage[key[1], key[2]][3] = 100 if runVpillAverage[key[1], key[2]][2] > 5 else 5
     # print(runVpillAverage)
 
-    with open('learnedVunlearnedForSeppi' + tempVar + '.csv', 'w') as csvfile:
+    with open('learnedVunlearnedForSeppi' + tempVar + 'WithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in runVpillAverage.items():
             # print(key, value)
@@ -292,7 +279,7 @@ def boxAndWhiskerIt(toBeAveraged):
 
 def describeTheData(toBeAveraged):
     # print(s.describe())
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/' + 'DataDescribeOutput.txt', 'w')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/' + 'DataDescribeOutputWithFeb.txt', 'w')
     for graph, points in toBeAveraged.items():
         s = pd.Series(points)
         f.write(str(graph))
@@ -304,7 +291,7 @@ def describeTheData(toBeAveraged):
 
 def isItNormal(toBeAveraged):
     # print("hi")
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/normalization.txt', 'w')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/normalizationWithFeb.txt', 'w')
     for graph, points in toBeAveraged.items():
         f.write(str(graph))
         f.write('\n')
@@ -320,7 +307,7 @@ def isItNormal(toBeAveraged):
     f.close()
 
 def wilcoxonTest(analyzableData): #non parametric test
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/wilcoxon.txt', 'w')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/wilcoxonWithFeb.txt', 'w')
     f.write('(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
     f.write('\n')
     for graph, points in analyzableData.items():
@@ -335,7 +322,7 @@ def wilcoxonTest(analyzableData): #non parametric test
     f.close()
 
 def oneSampleTTest(analyzableData):
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/OneSampleTTest.txt', 'w')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/OneSampleTTestWithFeb.txt', 'w')
     f.write('RuntimeWarning: Degrees of freedom <= 0 for slice \n')
     f.write('RuntimeWarning: invalid value encountered in double_scalars ret = ret.dtype.type(ret / rcount) \n\n')
     for graph, points in analyzableData.items():
@@ -349,7 +336,7 @@ def oneSampleTTest(analyzableData):
     f.close()
 
 def mannWhitneyUTest(analyzableData):
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTest.txt', 'w')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTestWithFeb.txt', 'w')
     # possible
 
     # f.write(str(scipy.stats.mannwhitneyu(points, secondArray, 0, 'less'))) # 'less', 'two-sided' or 'greater'
@@ -405,7 +392,8 @@ points = runVariousSurveys(options) # this holds all 1200 things
 # need to os.chdir because in a survey folder still
 os.chdir(resultOutput)
 
-lookForMissing(points) # not necessarily needed # rawDataCSV(points)
+# lookForMissing(points) # not necessarily needed #
+rawDataCSV(points)
 
 
 
