@@ -13,7 +13,8 @@ from textwrap import wrap
 
 # /home/naomi/Documents/
 # /users/home/naomi/Documents/
-SURVEY_PATH = '/home/naomi/Documents/AML/vat_analyzer/surveyInstructionsAndResults'
+survey_label_info_files = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies' # vat_analyzer/surveyInstructionsAndResults
+survey_directions = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
 resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
@@ -23,39 +24,148 @@ Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
 def runVariousSurveys(possibleSurveys):
     points = []
     for study in possibleSurveys:  # ['studyA', 'studyB', 'studyC', 'studyD'] or just two of those
-        points += runOneVariationOfSurveys(study)
+        points += getData(study)
     return points
 
-def lookForMissing(points):
+def getData(studyType):
+    os.chdir(survey_directions)
+    with open(studyType + '.tasks.json', 'r') as file:
+        guidelines = json.load(file)
+    studyInfo = getStudyInfo(guidelines)
+    quesInfo = getQuesInfo(guidelines)
+    file.close()
+    return runOneVariationOfSurveys(studyInfo, quesInfo, studyType)
+
+def getQuesInfo(guidelines):
+    answerMax = 100
+    quesInfo = {}
+    # loop through each survey style ('has-both', 'no-vid', etc.)
+    for key, value in guidelines['surveys'].items():
+        # loop through each question in the survey:
+        if key not in ['userinfo', 'practice-task', 'empty-task']:
+            # key values: 'has-both', 'no-vid', etc.
+            for question in value:
+                # likert, likertPercentage, likertTime, etc.
+                responseType = question['type']
+                # question1, question2, etc.
+                quesNum = question['name'].lower().replace(' ', '')
+                quesText = question['text']
+                quesInfo[(key, quesNum)] = (responseType, quesText)
+    return quesInfo
+
+def getStudyInfo(guidelines):
+    studyInfo = {}
+    for task in guidelines['tasks']:
+        videoNames = task['name']
+        # Ignore data points that are from surveys
+        if task['type'] != 'survey':
+            survey = task['survey']
+            data = task['data']
+            if 'hide' in data:
+                hidden = 'no-' + data['hide'] + '-task'
+            else:
+                hidden = 'has-both-task'  # Neither is hidden
+            studyInfo[videoNames] = (hidden, survey)
+        else:
+            survey = task['survey']
+            hidden = 'not applicable'
+            studyInfo[videoNames] = (hidden, survey)
+    return studyInfo
+
+
+def selectFileNames(studyType):
+    # only allow users 001-056
+    validFiles = list(filter(lambda x: x.split('.')[0] <= '056.info.json',
+                             glob.glob('*.info.json')))
+    validFiles.extend(filter(lambda x: x.split('.')[0] <= '056.info.json',
+                             glob.glob('*.survey.json')))
+    return validFiles
+
+def runOneVariationOfSurveys(studyInfo, quesInfo, studyType):
+    # go to the folder with all users' data/results
+    # os.chdir(os.path.join(survey_label_info_files, studyType))
+    print(os.listdir(os.getcwd()))
+    validFiles = selectFileNames(studyType)
+    points = []
+
+    for fileName in validFiles:
+        # print(fileName)
+        with open(fileName, 'r') as file:
+            information = json.load(file)
+        userName = fileName.split('.')[0]
+
+
+        if fileName[-11:] == 'survey.json':
+            # then do different things because this file only has the text answers
+            for sets, questions in information.items():
+                for question, textAnswer in questions.items():
+                    print(question, textAnswer)
+                    # TODO: these are the question answers for the final likerty thing
+                    # SAVE THEM
+                    # and grab the question text while we're here
+                    # points.append(Point(userName, studyType, key,
+                    #                     hiddenThing, quesText, quesAnswer,
+                    #                     quesNum, quesType, surveyFamily, answerMax))
+        continue; # because we got everything out of that file
+
+
+        allSurveys = information['surveys']
+        # print(allSurveys)
+        for key, value in allSurveys.items():
+            # if key in ['question1', 'question2', 'question3', 'question4']:
+            if key not in ['user-info', 'practice-first',
+                           'practice-second', 'practice-third',
+                           'practice-survey']:
+                # 'has-both' or 'no-video' or 'post-section'
+                hiddenThing, surveyFamily = studyInfo[key]
+                questions = ['question' + str(i)
+                             for i in range(1, len(value) + 1)]
+                answers = [value[q] for q in questions]
+
+                for quesNum, quesAnswer in zip(questions, answers):
+                    quesType, quesText = quesInfo[(surveyFamily, quesNum)]
+                    # Adjust (-2 to +2) to (1 to 5)
+                    if (quesType == 'likert' or quesType == 'likertTime'):
+                        quesAnswer = int(quesAnswer) + 3
+                    if quesAnswer < 5:
+                        answerMax = 5
+                    points.append(Point(userName, studyType, key,
+                                        hiddenThing, quesText, quesAnswer,
+                                        quesNum, quesType, surveyFamily, answerMax))
+
+                if key in ['run-survey', 'pills-survey']:
+                    1 + 2
+
+            elif key in ['user-info', 'practice-first',
+                         'practice-second', 'practice-third',
+                         'practice-survey']:
+                1 + 1
+            else:
+                print("key: ", key, '\n', 'this was a BUG')
+    return points # total of 1200 are made here
+
+
+def lookForMissingAnnotationsFromUsers(points):
     usersPerVideoName = defaultdict(set)
     forUserNameSeeVideo = defaultdict(set)
+    # per study and video color/name, which users saw that:
     for point in points:
         videoName = getattr(point, 'videoName')
         usersName = getattr(point, 'userName')
         hiddenVal = getattr(point, 'hiddenValue')
         study = getattr(point, 'studyName')
-
-
-        # if usersPerVideoName[videoName].
         usersPerVideoName[study, videoName].add(int(usersName))
         forUserNameSeeVideo[study, usersName].add(videoName)
 
+    # sort that, so users are in numerical order
     for key, value in forUserNameSeeVideo.items():
         forUserNameSeeVideo[key] = sorted(value)
-    for key, value in forUserNameSeeVideo.items():
-        print(key, value)
-
-    # for video, users in usersPerVideoName.items():
-    #     print(video, users)
-    # for key in sorted(usersPerVideoName.iterkeys()):
-    #     print "%s: %s" % (key, usersPerVideoName[key])
-
 
 
 
 def rawDataCSV(points):
-    os.chdir(SURVEY_PATH )
-    with open('allRawResultsWithFeb.csv', 'w') as csvfile:
+    os.chdir(resultOutput)
+    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/allRawResultsWithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for tup in sorted(points):
             csvwriter.writerow(tup)
@@ -92,96 +202,9 @@ def makeAveragedCSV(averages):
             # print(key, value)
             csvwriter.writerow(row)
 
-def runOneVariationOfSurveys(studyType):
-    answerMax = 100
-    # print(os.getcwd())
-    os.chdir(SURVEY_PATH)
-    # print(os.getcwd())
-    with open(studyType + '.tasks.json', 'r') as file:
-        guidelines = json.load(file)
-    studyInfo = {}
-    quesInfo = {}
-    # loop through each survey style ('has-both', 'no-vid', etc.)
-    for key, value in guidelines['surveys'].items():
-        # loop through each question in the survey:
-        if key not in ['userinfo', 'practice-task', 'empty-task']:
-            # key values: 'has-both', 'no-vid', etc.
-            for question in value:
-                # likert, likertPercentage, likertTime, etc.
-                responseType = question['type']
-                # question1, question2, etc.
-                quesNum = question['name'].lower().replace(' ', '')
-                quesText = question['text']
-                quesInfo[(key, quesNum)] = (responseType, quesText)
-
-    for task in guidelines['tasks']:
-        videoNames = task['name']
-        # Ignore data points that are from surveys
-        if task['type'] != 'survey':
-            survey = task['survey']
-            data = task['data']
-            if 'hide' in data:
-                hidden = 'no-' + data['hide'] + '-task'
-            else:
-                hidden = 'has-both-task'  # Neither is hidden
-            studyInfo[videoNames] = (hidden, survey)
-        else:
-            survey = task['survey']
-            hidden = 'not applicable'
-            studyInfo[videoNames] = (hidden, survey)
-
-    # go to the folder with all users' data/results
-    os.chdir(os.path.join(SURVEY_PATH, studyType))
-
-    # only allow users 001-045
-    validFiles = list(filter(lambda x: x.split('.')[0] <= '056.info.json',
-                             glob.glob('*.info.json')))
-
-    # TODO: also consider *.survey.json
-
-    points = []
-    for fileName in validFiles:
-        with open(fileName, 'r') as file:
-            information = json.load(file)
-        userName = fileName.split('.')[0]
-        allSurveys = information['surveys']
-
-        for key, value in allSurveys.items():
-            if key not in ['user-info', 'practice-first',
-                           'practice-second', 'practice-third',
-                           'practice-survey']:
-                # 'has-both' or 'no-video' or 'post-section'
-                hiddenThing, surveyFamily = studyInfo[key]
-                questions = ['question' + str(i)
-                             for i in range(1, len(value) + 1)]
-                answers = [value[q] for q in questions]
-
-                for quesNum, quesAnswer in zip(questions, answers):
-                    quesType, quesText = quesInfo[(surveyFamily, quesNum)]
-                    # Adjust (-2 to +2) to (1 to 5)
-                    if (quesType == 'likert' or quesType == 'likertTime'):
-                        quesAnswer = int(quesAnswer) + 3
-                    if quesAnswer < 5:
-                        answerMax = 5
-                    points.append(Point(userName, studyType, key,
-                                        hiddenThing, quesText, quesAnswer,
-                                        quesNum, quesType, surveyFamily, answerMax))
-
-                if key in ['run-survey', 'pills-survey']:
-                    1 + 2
-
-            elif key in ['user-info', 'practice-first',
-                         'practice-second', 'practice-third',
-                         'practice-survey']:
-                1 + 1
-            else:
-                print("key: ", key, '\n', 'this was a BUG')
-    # print(points) # total of 1200 are made here
-    return points
-
 
 def compareLearedVsUnlearned(points):
-    with open('learnedVsUnlearnedWithFeb.csv', 'w') as csvfile:
+    with open('../subjectiveAnswersHiddenValRunOrPillActualQuestion/things/learnedVsUnlearnedWithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         # points.type() # list
         newMap = {}
@@ -394,7 +417,7 @@ points = runVariousSurveys(options) # this holds all 1200 things
 
 
 
-# lookForMissing(points) # not necessarily needed #
+# lookForMissingAnnotationsFromUsers(points) # not necessarily needed #
 rawDataCSV(points)
 
 # need to os.chdir because in a survey folder still
