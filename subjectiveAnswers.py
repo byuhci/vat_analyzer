@@ -122,13 +122,12 @@ def infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
     points = set()
     allSurveys = information['surveys']
     # print(allSurveys)
-    for key, value in allSurveys.items():
-        # if key in ['question1', 'question2', 'question3', 'question4']:
-        if key not in ['user-info', 'practice-first',
+    for videoColorOrTask, value in allSurveys.items():
+        if videoColorOrTask not in ['user-info', 'practice-first',
                        'practice-second', 'practice-third',
                        'practice-survey']:
             # 'has-both' or 'no-video' or 'post-section'
-            hiddenThing, surveyFamily = studyInfo[key]
+            hiddenThing, surveyFamily = studyInfo[videoColorOrTask]
             # print(hiddenThing, surveyFamily)
             questions = ['question' + str(i)
                          for i in range(1, len(value) + 1)]
@@ -142,20 +141,15 @@ def infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
                     quesAnswer = int(quesAnswer) + 3
                 if quesAnswer < 5:
                     answerMax = 5
-                # TODO: I need to be sure that I didn't already get this data point from earlier file
-                points.add(Point(userName, studyType, key,
+                newPoint = Point(userName, studyType, videoColorOrTask,
                                     hiddenThing, quesText, quesAnswer,
-                                    quesNum, quesType, surveyFamily, answerMax))
-                print(Point(userName, studyType, key,
-                                    hiddenThing, quesText, quesAnswer,
-                                    quesNum, quesType, surveyFamily, answerMax))
-            # if key in ['run-survey', 'pills-survey']:
-            #     points.append(Point(userName,studyType,))
+                                    quesNum, quesType, surveyFamily, answerMax)
+                points.add(newPoint)
 
-        elif key not in ['user-info', 'practice-first',
+        elif videoColorOrTask not in ['user-info', 'practice-first',
                          'practice-second', 'practice-third',
                          'practice-survey']:
-            print("key: ", key, '\n', 'this was a BUG')
+            print("videoColorOrTask: ", videoColorOrTask, '\n', 'this was a BUG')
     return points
 
 def surveyFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
@@ -164,7 +158,7 @@ def surveyFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
     for sets, questions in information.items():
         for question, textAnswer in questions.items():
             1 + 2
-            # print(question, textAnswer)
+            print(question, textAnswer)
             # TODO: these are the question answers for the final likerty thing
             # SAVE THEM
             # and grab the question text while we're here
