@@ -22,10 +22,11 @@ Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
 
 
 def runVariousSurveys(possibleSurveys):
-    points = []
+    
     for study in possibleSurveys:  # ['studyA', 'studyB', 'studyC', 'studyD'] or just two of those
-        points += getData(study)
-    return points
+        noDuplicatePoints += getData(study)
+    # print(points)
+    return noDuplicatePoints
 
 def getData(studyType):
     os.chdir(survey_directions)
@@ -37,7 +38,6 @@ def getData(studyType):
     return runOneVariationOfSurveys(studyInfo, quesInfo, studyType)
 
 def getQuesInfo(guidelines):
-    answerMax = 100
     quesInfo = {}
     # loop through each survey style ('has-both', 'no-vid', etc.)
     for key, value in guidelines['surveys'].items():
@@ -82,68 +82,96 @@ def selectFileNames(studyType):
     return validFiles
 
 def runOneVariationOfSurveys(studyInfo, quesInfo, studyType):
+    noDuplicatePoints = {}
     # go to the folder with all users' data/results
-    # os.chdir(os.path.join(survey_label_info_files, studyType))
-    print(os.listdir(os.getcwd()))
-    validFiles = selectFileNames(studyType)
+    folderStudySpecific = os.path.join(survey_label_info_files, studyType)
+    os.chdir(folderStudySpecific)
+    # print(os.listdir(os.getcwd()))
+    foldersFromStudy = os.listdir(os.getcwd())
+
+    for folder in foldersFromStudy:
+        os.chdir(os.path.join(survey_label_info_files, studyType, folder))
+        # print(folder)
+        noDuplicatePoints += runWholeFolder(studyInfo, quesInfo, studyType)
+    # print(points)
+    return noDuplicatePoints # total of 1200 are made here
+
+def runWholeFolder(studyInfo, quesInfo, studyType):
     points = []
-
-    for fileName in validFiles:
-        # print(fileName)
-        with open(fileName, 'r') as file:
+    eachFileOfData = os.listdir(os.getcwd())
+    for oneFile in eachFileOfData:
+        with open(oneFile, 'r') as file:
             information = json.load(file)
-        userName = fileName.split('.')[0]
+        userName = oneFile.split('.')[0]
+        points += runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType)
+    return points
 
+def runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType):
+    # validFiles = selectFileNames(studyType) # manually cleaned data, should not be issue
+    points = []
+    if oneFile[-9:] == 'info.json':
+        points += infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType)
+    elif oneFile[-11:] == 'survey.json':
+        points += surveyFiles(studyInfo, quesInfo, information, userName, oneFile, studyType)
+    elif not oneFile[-11:] == 'labels.json':
+        print("unknown file name syntax: ", oneFile)
+    return points
 
-        if fileName[-11:] == 'survey.json':
-            # then do different things because this file only has the text answers
-            for sets, questions in information.items():
-                for question, textAnswer in questions.items():
-                    print(question, textAnswer)
-                    # TODO: these are the question answers for the final likerty thing
-                    # SAVE THEM
-                    # and grab the question text while we're here
-                    # points.append(Point(userName, studyType, key,
-                    #                     hiddenThing, quesText, quesAnswer,
-                    #                     quesNum, quesType, surveyFamily, answerMax))
-        continue; # because we got everything out of that file
+def infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
+    answerMax = 100
+    points = []
+    allSurveys = information['surveys']
+    # print(allSurveys)
+    for key, value in allSurveys.items():
+        # if key in ['question1', 'question2', 'question3', 'question4']:
+        if key not in ['user-info', 'practice-first',
+                       'practice-second', 'practice-third',
+                       'practice-survey']:
+            # 'has-both' or 'no-video' or 'post-section'
+            hiddenThing, surveyFamily = studyInfo[key]
+            # print(hiddenThing, surveyFamily)
+            questions = ['question' + str(i)
+                         for i in range(1, len(value) + 1)]
+            answers = [value[q] for q in questions]
 
+            for quesNum, quesAnswer in zip(questions, answers):
+                quesType, quesText = quesInfo[(surveyFamily, quesNum)]
+                # Adjust (-2 to +2) to (1 to 5)
+                if ((quesType == 'likert' or quesType == 'likertTime') and userName < 045):
+                    # the original version was scaled from -2 to +2 points (not 1-5)
+                    quesAnswer = int(quesAnswer) + 3
+                if quesAnswer < 5:
+                    answerMax = 5
+                # TODO: I need to be sure that I didn't already get this data point from earlier file
+                points.append(Point(userName, studyType, key,
+                                    hiddenThing, quesText, quesAnswer,
+                                    quesNum, quesType, surveyFamily, answerMax))
+                # print(Point(userName, studyType, key,
+                #                     hiddenThing, quesText, quesAnswer,
+                #                     quesNum, quesType, surveyFamily, answerMax))
+            # if key in ['run-survey', 'pills-survey']:
+            #     points.append(Point(userName,studyType,))
 
-        allSurveys = information['surveys']
-        # print(allSurveys)
-        for key, value in allSurveys.items():
-            # if key in ['question1', 'question2', 'question3', 'question4']:
-            if key not in ['user-info', 'practice-first',
-                           'practice-second', 'practice-third',
-                           'practice-survey']:
-                # 'has-both' or 'no-video' or 'post-section'
-                hiddenThing, surveyFamily = studyInfo[key]
-                questions = ['question' + str(i)
-                             for i in range(1, len(value) + 1)]
-                answers = [value[q] for q in questions]
-
-                for quesNum, quesAnswer in zip(questions, answers):
-                    quesType, quesText = quesInfo[(surveyFamily, quesNum)]
-                    # Adjust (-2 to +2) to (1 to 5)
-                    if (quesType == 'likert' or quesType == 'likertTime'):
-                        quesAnswer = int(quesAnswer) + 3
-                    if quesAnswer < 5:
-                        answerMax = 5
-                    points.append(Point(userName, studyType, key,
-                                        hiddenThing, quesText, quesAnswer,
-                                        quesNum, quesType, surveyFamily, answerMax))
-
-                if key in ['run-survey', 'pills-survey']:
-                    1 + 2
-
-            elif key in ['user-info', 'practice-first',
+        elif key not in ['user-info', 'practice-first',
                          'practice-second', 'practice-third',
                          'practice-survey']:
-                1 + 1
-            else:
-                print("key: ", key, '\n', 'this was a BUG')
-    return points # total of 1200 are made here
+            print("key: ", key, '\n', 'this was a BUG')
+    return points
 
+def surveyFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
+    points = []
+    # then do different things because this file only has the text answers
+    for sets, questions in information.items():
+        for question, textAnswer in questions.items():
+            1 + 2
+            # print(question, textAnswer)
+            # TODO: these are the question answers for the final likerty thing
+            # SAVE THEM
+            # and grab the question text while we're here
+            # points.append(Point(userName, studyType, key,
+            #                     hiddenThing, quesText, quesAnswer,
+            #                     quesNum, quesType, surveyFamily, answerMax))
+    return points
 
 def lookForMissingAnnotationsFromUsers(points):
     usersPerVideoName = defaultdict(set)
@@ -424,12 +452,12 @@ rawDataCSV(points)
 os.chdir(resultOutput) #  /AML/vat_analyzer
 # print(os.getcwd())
 
-
-hiddenValAndVideoName = makeListsByKeys(points)
-boxAndWhiskerIt(hiddenValAndVideoName)
-describeTheData(hiddenValAndVideoName)
-wilcoxonTest(hiddenValAndVideoName)
-oneSampleTTest(hiddenValAndVideoName)
+# all of these at once demo okke-
+# hiddenValAndVideoName = makeListsByKeys(points)
+# boxAndWhiskerIt(hiddenValAndVideoName)
+# describeTheData(hiddenValAndVideoName)
+# wilcoxonTest(hiddenValAndVideoName)
+# oneSampleTTest(hiddenValAndVideoName)
 
 
 # # # this takes the sum and count to calculate averages
