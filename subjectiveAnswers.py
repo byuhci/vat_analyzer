@@ -13,7 +13,7 @@ from textwrap import wrap
 
 # /home/naomi/Documents/
 # /users/home/naomi/Documents/
-survey_label_info_files = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies' # vat_analyzer/surveyInstructionsAndResults
+survey_label_info_files = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
 survey_directions = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
 resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
 
@@ -28,6 +28,7 @@ def runVariousSurveys(possibleSurveys):
     # print(points)
     return points
 
+
 def getData(studyType):
     os.chdir(survey_directions)
     with open(studyType + '.tasks.json', 'r') as file:
@@ -37,6 +38,7 @@ def getData(studyType):
     file.close()
     points = runOneVariationOfSurveys(studyInfo, quesInfo, studyType)
     return points
+
 
 def getQuesInfo(guidelines):
     quesInfo = {}
@@ -53,6 +55,7 @@ def getQuesInfo(guidelines):
                 quesText = question['text']
                 quesInfo[(key, quesNum)] = (responseType, quesText)
     return quesInfo
+
 
 def getStudyInfo(guidelines):
     studyInfo = {}
@@ -82,6 +85,7 @@ def selectFileNames(studyType):
                              glob.glob('*.survey.json')))
     return validFiles
 
+
 def runOneVariationOfSurveys(studyInfo, quesInfo, studyType):
     noDuplicatePoints = set()
     # go to the folder with all users' data/results
@@ -96,20 +100,22 @@ def runOneVariationOfSurveys(studyInfo, quesInfo, studyType):
         noDuplicatePoints = noDuplicatePoints | runWholeFolder(studyInfo, quesInfo, studyType)
     # print(points)
     # print(noDuplicatePoints)
-    return noDuplicatePoints # total of 1200 are made here
+    return noDuplicatePoints  # total of 1200 are made here
+
 
 def runWholeFolder(studyInfo, quesInfo, studyType):
     points = set()
     eachFileOfData = os.listdir(os.getcwd())
-    taskFolderName = (os.getcwd().split('/'))[-1:]
+    taskFolderName = (os.getcwd().split('/'))[-1:][0]
     # print((os.getcwd().split('/')))
     for oneFile in eachFileOfData:
         with open(oneFile, 'r') as file:
             information = json.load(file)
         userName = oneFile.split('.')[0]
-        points = points|runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType, taskFolderName)
+        points = points | runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType, taskFolderName)
     # print(points)
     return points
+
 
 # global numEmptyFiles
 
@@ -117,26 +123,28 @@ def runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType, t
     # validFiles = selectFileNames(studyType) # manually cleaned data, should not be issue
     points = set()
     if oneFile[-9:] == 'info.json':
-        points = points|infoFiles(studyInfo, quesInfo, information, userName, studyType)
+        points = points | infoFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderName)
         # print(points)
     elif oneFile[-11:] == 'survey.json':
         points = points | surveyFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderName)
     elif not oneFile[-11:] == 'labels.json':
         print("unknown file name syntax: ", oneFile)
-    if points == set() and not oneFile[-11:] == 'labels.json':
+    #if points == set() and not oneFile[-11:] == 'labels.json':
         # TODO: are we concerned all of these are empty??
-        print('runOneFile leaving empty', userName, oneFile, studyType, taskFolderName)
+        #print('runOneFile leaving empty', userName, oneFile, studyType, taskFolderName)
         # numEmptyFiles += 1
     return points
 
-def infoFiles(studyInfo, quesInfo, information, userName, studyType):
+
+def infoFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderName):
     points = set()
     allSurveys = information['surveys']
     # print(allSurveys)
     for videoColorOrTask, value in allSurveys.items():
         if videoColorOrTask not in ['user-info', 'practice-first',
-                       'practice-second', 'practice-third',
-                       'practice-survey']:
+                                    'practice-second', 'practice-third',
+                                    'practice-survey']:
+            # print(videoColorOrTask, taskFolderName)
             # 'has-both' or 'no-video' or 'post-section'
             hiddenThing, surveyFamily = studyInfo[videoColorOrTask]
             # print(hiddenThing, surveyFamily)
@@ -151,24 +159,15 @@ def infoFiles(studyInfo, quesInfo, information, userName, studyType):
                     # the original version was scaled from -2 to +2 points (not 1-5)
                     quesAnswer = int(quesAnswer) + 3
                 newPoint = Point(userName, studyType, videoColorOrTask,
-                                    hiddenThing, quesText, int(quesAnswer),
-                                    quesNum, quesType, surveyFamily)
+                                 hiddenThing, quesText, int(quesAnswer),
+                                 quesNum, quesType, surveyFamily)
                 points.add(newPoint)
-
-        elif videoColorOrTask not in ['user-info', 'practice-first',
-                         'practice-second', 'practice-third',
-                         'practice-survey']:
-            print("videoColorOrTask: ", videoColorOrTask, '\n', 'this was a BUG')
-
-    if points == set():
-        # print('no \'survey\' in this file: ', userName, studyType, information)
-        1 + 1
-    # print(points)
     return points
+
 
 def surveyFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderName):
     points = set()
-    videoColorOrTask = taskFolderName[0] # list with one thing in it
+    videoColorOrTask = taskFolderName  # list with one thing in it
     for sets, questions in information.items():
         for quesNum, quesAnswer in questions.items():
             if quesNum in ['lastname', 'firstname', 'email']:
@@ -179,10 +178,13 @@ def surveyFiles(studyInfo, quesInfo, information, userName, studyType, taskFolde
 
             # print(type(quesAnswer))
             points.add(Point(userName, studyType, videoColorOrTask,
-                                hiddenThing, quesText, quesAnswer,
-                                quesNum, quesType, surveyFamily))
+                             hiddenThing, quesText, quesAnswer,
+                             quesNum, quesType, surveyFamily))
 
+    if points == set():
+        print('no \'survey\' in this file: ', userName, studyType, taskFolderName)
     return points
+
 
 def lookForMissingAnnotationsFromUsers(points):
     usersPerVideoName = defaultdict(set)
@@ -199,7 +201,6 @@ def lookForMissingAnnotationsFromUsers(points):
     # sort that, so users are in numerical order
     for key, value in forUserNameSeeVideo.items():
         forUserNameSeeVideo[key] = sorted(value)
-
 
 
 def rawDataCSV(points):
@@ -223,13 +224,15 @@ def calculateTotalAnswersPerQuestion(points):
         averages[point[2:5]][1] += 1
     return averages
 
+
 def calculateAverageAnswer(averages):
     # sum, count, average
     for value in averages.values():
-        if value == [0,0,0,0]:
+        if value == [0, 0, 0, 0]:
             continue
         value[2] = value[0] / value[1]
     return averages
+
 
 def makeAveragedCSV(averages):
     # print(averages)
@@ -242,6 +245,7 @@ def makeAveragedCSV(averages):
             row.extend(key)
             # print(key, value)
             csvwriter.writerow(row)
+
 
 def makeOutputOfTextQuestion(points):
     with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/textQuestionsWithFeb.csv', 'w') as csvfile:
@@ -263,9 +267,9 @@ def makeOutputOfTextQuestion(points):
             csvwriter.writerow(row)
 
 
-
 def compareLearedVsUnlearned(points):
-    with open('../subjectiveAnswersHiddenValRunOrPillActualQuestion/things/learnedVsUnlearnedWithFeb.csv', 'w') as csvfile:
+    with open('../subjectiveAnswersHiddenValRunOrPillActualQuestion/things/learnedVsUnlearnedWithFeb.csv',
+              'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         # points.type() # list
         newMap = {}
@@ -310,6 +314,7 @@ def calculatePillsAndRunSeparate(averages):
     aggregate = {k: combineTwoRows(v) for k, v in aggregate.items()}  #
     return aggregate
 
+
 def averageForPillVsRun(averages):
     # print(averages)
     runVpillAverage = defaultdict(lambda: [0, 0, 0, 0, key[0][:3]])
@@ -330,6 +335,7 @@ def averageForPillVsRun(averages):
             # print(row)
             csvwriter.writerow(row)
 
+
 def makeListsByKeys(points):
     hiddenValAndVideoName = defaultdict(list)
     for point in points:
@@ -344,8 +350,9 @@ def makeListsByKeys(points):
         else:
             surveyOrTask = 'annotation'
         # print(surveyOrTask)
-        hiddenValAndVideoName[hiddenValue, subVideoName, quesText,surveyOrTask].append(quesAnswer)
+        hiddenValAndVideoName[hiddenValue, subVideoName, quesText, surveyOrTask].append(quesAnswer)
     return hiddenValAndVideoName
+
 
 def boxAndWhiskerIt(toBeAveraged):
     # subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker # name of folder I should be in
@@ -360,9 +367,10 @@ def boxAndWhiskerIt(toBeAveraged):
         plt.ylim((yMin, yMax))
         plt.boxplot(points, 0, 'gD')
         titleVar = graph[2] + '\n' + graph[1] + '\n' + graph[0] + '\n' + 'length of points list: ' + str(len(points))
-        plt.title(titleVar) # what was hidden, run- or pill, actual question
+        plt.title(titleVar)  # what was hidden, run- or pill, actual question
 
         plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.png')
+
 
 def describeTheData(toBeAveraged):
     # print(s.describe())
@@ -372,9 +380,10 @@ def describeTheData(toBeAveraged):
         f.write(str(graph))
         f.write('\n')
         f.write(str(s.describe()))
-        #print(s.describe())
+        # print(s.describe())
         f.write('\n\n')
     f.close()
+
 
 def isItNormal(toBeAveraged):
     # print("hi")
@@ -393,9 +402,11 @@ def isItNormal(toBeAveraged):
         f.write('\n\n')
     f.close()
 
-def wilcoxonTest(analyzableData): #non parametric test
+
+def wilcoxonTest(analyzableData):  # non parametric test
     f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/wilcoxonWithFeb.txt', 'w')
-    f.write('(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
+    f.write(
+        '(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
     f.write('\n')
     for graph, points in analyzableData.items():
         f.write(str(graph))
@@ -407,6 +418,7 @@ def wilcoxonTest(analyzableData): #non parametric test
         f.write('\n')
         f.write('\n')
     f.close()
+
 
 def oneSampleTTest(analyzableData):
     f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/OneSampleTTestWithFeb.txt', 'w')
@@ -421,6 +433,7 @@ def oneSampleTTest(analyzableData):
         f.write('\n')
         f.write('\n')
     f.close()
+
 
 def mannWhitneyUTest(analyzableData):
     f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTestWithFeb.txt', 'w')
@@ -459,35 +472,34 @@ def makeBarGraph(someInfo):
         else:
             xvalueQuesText = ['\n'.join(wrap(l, 28)) for l in xvalueQuesText]
         plt.bar(y_pos, yvalueQuesAns, align='center', alpha=0.5)
-        plt.xticks(y_pos, xvalueQuesText) # , rotation=40, ha='right'
+        plt.xticks(y_pos, xvalueQuesText)  # , rotation=40, ha='right'
         plt.ylim(0, graph[2])
 
         plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(counter) + '.png')
 
+
 #         plt.show()
 
-        # plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.png')
+# plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.png')
 
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']
 # options = ['studyA', 'studyB']
 # options = ['studyC', 'studyD']
-tempVar = 'ABCD' # C_D
+tempVar = 'ABCD'  # C_D
 
-points = runVariousSurveys(options) # this holds all 1200 things
-
-
+points = runVariousSurveys(options)  # this holds all 1200 things
 
 # lookForMissingAnnotationsFromUsers(points) # not necessarily needed #
 rawDataCSV(points)
 
 # need to os.chdir because in a survey folder still
-os.chdir(resultOutput) #  /AML/vat_analyzer
+os.chdir(resultOutput)  # /AML/vat_analyzer
 # print(os.getcwd())
 
 # # this takes the sum and count to calculate averages
 makeOutputOfTextQuestion(points)
-averages = calculateTotalAnswersPerQuestion(points) # hiddenValAndVideoName
+averages = calculateTotalAnswersPerQuestion(points)  # hiddenValAndVideoName
 averages = calculateAverageAnswer(averages)
 makeAveragedCSV(averages)
 
