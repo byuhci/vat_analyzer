@@ -246,12 +246,19 @@ def makeAveragedCSV(averages):
 def makeOutputOfTextQuestion(points):
     with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/textQuestionsWithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
+        pairs = []
         for point in points:
             responseType = getattr(point, 'responseType')
             if not responseType == 'textMulti':
                 continue
             quesAnswer = getattr(point, 'quesAnswer')
             quesText = getattr(point, 'quesText')
+
+            pairs.append((quesText, quesAnswer))
+        pairs.sort()
+        for pair in pairs:
+            quesText = pair[0]
+            quesAnswer = pair[1]
             row = [quesText, quesAnswer]
             csvwriter.writerow(row)
 
