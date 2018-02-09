@@ -123,7 +123,7 @@ def runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType, t
         points = points | surveyFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderName)
     elif not oneFile[-11:] == 'labels.json':
         print("unknown file name syntax: ", oneFile)
-    if points == set():
+    if points == set() and not oneFile[-11:] == 'labels.json':
         # TODO: are we concerned all of these are empty??
         print('runOneFile leaving empty', userName, oneFile, studyType, taskFolderName)
         # numEmptyFiles += 1
@@ -177,7 +177,7 @@ def surveyFiles(studyInfo, quesInfo, information, userName, studyType, taskFolde
             hiddenThing, surveyFamily = studyInfo[videoColorOrTask]
             quesType, quesText = quesInfo[(surveyFamily, quesNum)]
 
-            print(type(quesAnswer))
+            # print(type(quesAnswer))
             points.add(Point(userName, studyType, videoColorOrTask,
                                 hiddenThing, quesText, quesAnswer,
                                 quesNum, quesType, surveyFamily))
