@@ -22,11 +22,11 @@ Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
 
 
 def runVariousSurveys(possibleSurveys):
-    
+    points = []
     for study in possibleSurveys:  # ['studyA', 'studyB', 'studyC', 'studyD'] or just two of those
-        noDuplicatePoints += getData(study)
+        points += getData(study)
     # print(points)
-    return noDuplicatePoints
+    return points
 
 def getData(studyType):
     os.chdir(survey_directions)
@@ -82,44 +82,44 @@ def selectFileNames(studyType):
     return validFiles
 
 def runOneVariationOfSurveys(studyInfo, quesInfo, studyType):
-    noDuplicatePoints = {}
+    noDuplicatePoints = set()
     # go to the folder with all users' data/results
     folderStudySpecific = os.path.join(survey_label_info_files, studyType)
     os.chdir(folderStudySpecific)
-    # print(os.listdir(os.getcwd()))
+
     foldersFromStudy = os.listdir(os.getcwd())
 
     for folder in foldersFromStudy:
         os.chdir(os.path.join(survey_label_info_files, studyType, folder))
         # print(folder)
-        noDuplicatePoints += runWholeFolder(studyInfo, quesInfo, studyType)
+        noDuplicatePoints.union(runWholeFolder(studyInfo, quesInfo, studyType))
     # print(points)
     return noDuplicatePoints # total of 1200 are made here
 
 def runWholeFolder(studyInfo, quesInfo, studyType):
-    points = []
+    points = set()
     eachFileOfData = os.listdir(os.getcwd())
     for oneFile in eachFileOfData:
         with open(oneFile, 'r') as file:
             information = json.load(file)
         userName = oneFile.split('.')[0]
-        points += runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType)
+        points.union(runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType))
     return points
 
 def runOneFile(studyInfo, quesInfo, information, userName, oneFile, studyType):
     # validFiles = selectFileNames(studyType) # manually cleaned data, should not be issue
-    points = []
+    points = set()
     if oneFile[-9:] == 'info.json':
-        points += infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType)
+        points.union(infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType))
     elif oneFile[-11:] == 'survey.json':
-        points += surveyFiles(studyInfo, quesInfo, information, userName, oneFile, studyType)
+        points.union(surveyFiles(studyInfo, quesInfo, information, userName, oneFile, studyType))
     elif not oneFile[-11:] == 'labels.json':
         print("unknown file name syntax: ", oneFile)
     return points
 
 def infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
     answerMax = 100
-    points = []
+    points = set()
     allSurveys = information['surveys']
     # print(allSurveys)
     for key, value in allSurveys.items():
@@ -143,12 +143,12 @@ def infoFiles(studyInfo, quesInfo, information, userName, oneFile, studyType):
                 if quesAnswer < 5:
                     answerMax = 5
                 # TODO: I need to be sure that I didn't already get this data point from earlier file
-                points.append(Point(userName, studyType, key,
+                points.add(Point(userName, studyType, key,
                                     hiddenThing, quesText, quesAnswer,
                                     quesNum, quesType, surveyFamily, answerMax))
-                # print(Point(userName, studyType, key,
-                #                     hiddenThing, quesText, quesAnswer,
-                #                     quesNum, quesType, surveyFamily, answerMax))
+                print(Point(userName, studyType, key,
+                                    hiddenThing, quesText, quesAnswer,
+                                    quesNum, quesType, surveyFamily, answerMax))
             # if key in ['run-survey', 'pills-survey']:
             #     points.append(Point(userName,studyType,))
 
