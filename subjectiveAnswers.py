@@ -236,6 +236,7 @@ def calculateAverageAnswer(averages):
 
 def makeAveragedCSV(averages):
     # print(averages)
+    print(tempVar)
     with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/' + tempVar + 'WithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
