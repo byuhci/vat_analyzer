@@ -473,6 +473,7 @@ def mannWhitneyUTest(analyzableData):
 
 
 def makeBarGraph(someInfo):
+    plt.gcf().clear()
     toBeGraphed = defaultdict(list)
     counter = 0
     for key, value in someInfo.items():
@@ -503,10 +504,8 @@ def makeBarGraph(someInfo):
         plt.xticks(y_pos, xvalueQuesText)  # , rotation=40, ha='right'
         plt.ylim(0, graph[2])
 
-        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(counter) + '.png')
-
-
-#         plt.show()
+        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphsWithFeb/' + str(graph) + '.png')
+        plt.gcf().clear()
 
 # plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.png')
 
@@ -551,7 +550,7 @@ oneSampleTTest(hiddenValAndVideoName)
 # # averageTogether = correctForLearningEffect(averages)
 # # makeAveragedCSV(averageTogether)
 #
-# # this combines run-yellow with run-red BUT leaves pills and run separate
-# pillsAndRunSep = calculatePillsAndRunSeparate(averages)
-# makeAveragedCSV(pillsAndRunSep)
-# makeBarGraph(pillsAndRunSep)
+# this combines run-yellow with run-red BUT leaves pills and run separate
+pillsAndRunSep = calculatePillsAndRunSeparate(averages)
+makeAveragedCSV(pillsAndRunSep)
+makeBarGraph(pillsAndRunSep)
