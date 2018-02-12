@@ -1,62 +1,138 @@
-('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey')
-count    128.000000
-mean       5.070312
-std        1.005368
-min        3.000000
-25%        5.000000
-50%        5.000000
-75%        5.000000
-max        8.000000
+('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey', 5)
+count    53.000000
+mean      4.320755
+std       1.221185
+min       1.000000
+25%       4.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
 dtype: float64
 
-(u'no-data-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-count    173.000000
-mean      49.421965
-std       22.994210
-min       10.000000
-25%       30.000000
-50%       50.000000
-75%       60.000000
-max      100.000000
-dtype: float64
-
-('has-both-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-count    255.000000
-mean      72.784314
-std       26.600214
-min       20.000000
-25%       50.000000
-50%       80.000000
+(u'no-video-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+count     56.000000
+mean      91.964286
+std       15.657661
+min       40.000000
+25%       90.000000
+50%      100.000000
 75%      100.000000
 max      100.000000
 dtype: float64
 
-(u'no-video-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-count    1.0
-mean     3.0
-std      NaN
-min      3.0
-25%      3.0
-50%      3.0
-75%      3.0
-max      3.0
+('not applicable', 'fina', u'Please rank these data sets in order of difficulty, from the easiest to annotate (accurately and efficiently) to the hardest: Pill, Running, Cane', 'survey', 'string')
+count                      12
+unique                     11
+top       Pill, Running, Cane
+freq                        2
+dtype: object
+
+(u'no-data-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+count     55.000000
+mean      54.181818
+std       23.780704
+min       10.000000
+25%       40.000000
+50%       50.000000
+75%       70.000000
+max      100.000000
 dtype: float64
 
-('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have video?', 'survey')
-count    144.000000
-mean       3.861111
-std        1.845846
-min        1.000000
-25%        2.000000
-50%        4.000000
-75%        5.000000
-max        7.000000
+(u'no-video-task', 'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+count    13.000000
+mean      4.000000
+std       0.912871
+min       2.000000
+25%       4.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
 dtype: float64
 
-(u'no-video-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-count    151.000000
-mean      96.225166
-std        7.894447
+(u'no-video-task', u'pill', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation', 5)
+count    56.000000
+mean      3.303571
+std       1.400255
+min       1.000000
+25%       2.000000
+50%       4.000000
+75%       4.000000
+max       5.000000
+dtype: float64
+
+('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+count    56.000000
+mean      4.285714
+std       1.275137
+min       1.000000
+25%       4.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-video-task', u'pill', u'I was satisfied having only data for this task.', 'annotation', 5)
+count    56.000000
+mean      2.892857
+std       1.603162
+min      -1.000000
+25%       2.000000
+50%       2.000000
+75%       4.000000
+max       5.000000
+dtype: float64
+
+('not applicable', 'fina', u'When and why is video essential?', 'survey', 'string')
+count                                                    12
+unique                                                   12
+top       The video is extremely helpful when you're fir...
+freq                                                      1
+dtype: object
+
+('not applicable', 'fina', u'When and why is data essential? ', 'survey', 'string')
+count                                                    12
+unique                                                   12
+top       Data is essential because it is as obnoxious a...
+freq                                                      1
+dtype: object
+
+('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey', 5)
+count    56.000000
+mean      4.196429
+std       1.285155
+min       1.000000
+25%       4.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-data-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+count     56.000000
+mean      67.321429
+std       31.012670
+min        0.000000
+25%       40.000000
+50%       80.000000
+75%       90.000000
+max      100.000000
+dtype: float64
+
+('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey', 5)
+count    53.000000
+mean      4.245283
+std       1.479419
+min      -2.000000
+25%       4.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-video-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+count     52.000000
+mean      95.769231
+std        8.932460
 min       70.000000
 25%      100.000000
 50%      100.000000
@@ -64,43 +140,215 @@ min       70.000000
 max      100.000000
 dtype: float64
 
-('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-count    255.000000
-mean       5.509804
-std        1.484467
-min        1.000000
-25%        5.000000
-50%        5.000000
-75%        7.000000
-max        8.000000
+('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have video?', 'survey', 5)
+count    53.000000
+mean      1.792453
+std       1.536210
+min      -2.000000
+25%       1.000000
+50%       2.000000
+75%       2.000000
+max       5.000000
 dtype: float64
 
-('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey')
-count    144.000000
-mean       5.562500
-std        1.527001
-min        1.000000
-25%        5.000000
-50%        5.000000
-75%        7.000000
-max        8.000000
+('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have data?', 'survey', 5)
+count    56.000000
+mean      3.535714
+std       1.464294
+min       0.000000
+25%       2.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
 dtype: float64
 
-(u'no-data-task', u'run-', u'I was satisfied having only video for this task.', 'annotation')
-count    156.000000
-mean       2.448718
-std        1.558721
-min        1.000000
-25%        1.000000
-50%        2.000000
-75%        4.000000
-max        8.000000
+(u'no-video-task', u'run-', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation', 5)
+count    52.000000
+mean      3.788462
+std       1.473112
+min       0.000000
+25%       3.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
 dtype: float64
 
-('has-both-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-count    237.000000
-mean      75.696203
-std       28.404622
+(u'no-data-task', u'pill', u'I was satisfied having only video for this task.', 'annotation', 5)
+count    55.000000
+mean      2.072727
+std       1.942264
+min      -2.000000
+25%       1.000000
+50%       2.000000
+75%       4.000000
+max       5.000000
+dtype: float64
+
+(u'no-data-task', u'run-', u'I was satisfied having only video for this task.', 'annotation', 5)
+count    55.000000
+mean      1.727273
+std       1.693720
+min      -2.000000
+25%       1.000000
+50%       2.000000
+75%       2.000000
+max       5.000000
+dtype: float64
+
+(u'no-data-task', u'run-', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation', 5)
+count    55.000000
+mean      3.145455
+std       1.591856
+min      -1.000000
+25%       2.000000
+50%       4.000000
+75%       4.000000
+max       5.000000
+dtype: float64
+
+('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have video?', 'survey', 5)
+count    56.000000
+mean      2.303571
+std       1.661540
+min      -2.000000
+25%       2.000000
+50%       2.000000
+75%       4.000000
+max       5.000000
+dtype: float64
+
+('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have data?', 'survey', 5)
+count    53.000000
+mean      3.849057
+std       1.573778
+min      -1.000000
+25%       4.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-video-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+count     56.000000
+mean      70.000000
+std       32.022719
+min        0.000000
+25%       50.000000
+50%       85.000000
+75%      100.000000
+max      100.000000
+dtype: float64
+
+(u'no-video-task', 'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred.', 'annotation', 5)
+count    13.000000
+mean      4.846154
+std       0.375534
+min       4.000000
+25%       5.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+('has-both-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+count     56.000000
+mean      74.821429
+std       30.569805
+min       10.000000
+25%       70.000000
+50%       90.000000
+75%      100.000000
+max      100.000000
+dtype: float64
+
+('has-both-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+count     56.000000
+mean      79.107143
+std       27.652176
+min       20.000000
+25%       67.500000
+50%      100.000000
+75%      100.000000
+max      100.000000
+dtype: float64
+
+('not applicable', 'fina', u'Is there anything else that you would like to say about video annotation?', 'survey', 'string')
+count                                                    11
+unique                                                   11
+top       If the video loaded faster while scrolling thr...
+freq                                                      1
+dtype: object
+
+('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey', 5)
+count    56.000000
+mean      4.464286
+std       1.205507
+min       1.000000
+25%       5.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-data-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+count     55.000000
+mean      63.454545
+std       30.984953
+min        0.000000
+25%       45.000000
+50%       70.000000
+75%       90.000000
+max      100.000000
+dtype: float64
+
+(u'no-video-task', 'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+count    13.0
+mean      5.0
+std       0.0
+min       5.0
+25%       5.0
+50%       5.0
+75%       5.0
+max       5.0
+dtype: float64
+
+('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+count    56.000000
+mean      3.803571
+std       1.622788
+min      -1.000000
+25%       2.750000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-video-task', u'run-', u'I was satisfied having only data for this task.', 'annotation', 5)
+count    52.000000
+mean      3.596154
+std       1.445203
+min       1.000000
+25%       2.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-video-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+count     52.000000
+mean      70.000000
+std       32.839479
+min        0.000000
+25%       50.000000
+50%       80.000000
+75%      100.000000
+max      100.000000
+dtype: float64
+
+('has-both-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+count     57.000000
+mean      76.315789
+std       26.364992
 min       20.000000
 25%       50.000000
 50%       90.000000
@@ -108,263 +356,21 @@ min       20.000000
 max      100.000000
 dtype: float64
 
-(u'no-data-task', u'pill', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation')
-count    173.000000
-mean       4.323699
-std        1.784743
-min        1.000000
-25%        3.000000
-50%        4.000000
-75%        5.000000
-max        8.000000
+(u'no-data-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+count    55.000000
+mean     49.818182
+std      16.941174
+min      10.000000
+25%      40.000000
+50%      50.000000
+75%      60.000000
+max      80.000000
 dtype: float64
 
-(u'no-video-task', u'pill', u'I was satisfied having only data for this task.', 'annotation')
-count    169.000000
-mean       3.928994
-std        2.094704
-min        1.000000
-25%        2.000000
-50%        4.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-(u'no-data-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-count    156.000000
-mean      47.820513
-std       16.354732
-min       10.000000
-25%       40.000000
-50%       50.000000
-75%       60.000000
-max       80.000000
-dtype: float64
-
-(u'no-data-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-count    156.000000
-mean      62.884615
-std       30.374217
-min        0.000000
-25%       47.500000
-50%       70.000000
-75%       90.000000
-max      100.000000
-dtype: float64
-
-(u'no-video-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-count    169.000000
-mean      90.000000
-std       16.797109
-min       40.000000
-25%       80.000000
-50%      100.000000
-75%      100.000000
-max      100.000000
-dtype: float64
-
-('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-count    255.000000
-mean       4.886275
-std        1.975940
-min        1.000000
-25%        4.000000
-50%        5.000000
-75%        6.000000
-max        8.000000
-dtype: float64
-
-('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey')
-count    128.000000
-mean       4.976562
-std        1.226125
-min        1.000000
-25%        5.000000
-50%        5.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have data?', 'survey')
-count    128.000000
-mean       4.546875
-std        1.430045
-min        1.000000
-25%        4.000000
-50%        5.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-count    237.000000
-mean       5.257384
-std        1.247539
-min        3.000000
-25%        5.000000
-50%        5.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-(u'no-video-task', u'run-', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation')
-count    151.000000
-mean       4.523179
-std        1.284961
-min        1.000000
-25%        4.000000
-50%        4.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-(u'no-video-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-count    151.000000
-mean      71.258278
-std       31.671325
-min        0.000000
-25%       60.000000
-50%       80.000000
-75%      100.000000
-max      100.000000
-dtype: float64
-
-(u'no-video-task', u'run-', u'I was satisfied having only data for this task.', 'annotation')
-count    151.000000
-mean       4.344371
-std        1.366486
-min        1.000000
-25%        4.000000
-50%        4.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-(u'no-video-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-count    169.000000
-mean      70.177515
-std       30.908339
-min        0.000000
-25%       50.000000
-50%       80.000000
-75%      100.000000
-max      100.000000
-dtype: float64
-
-('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey')
-count    144.000000
-mean       5.937500
-std        1.482857
-min        4.000000
-25%        5.000000
-50%        5.000000
-75%        8.000000
-max        8.000000
-dtype: float64
-
-(u'no-data-task', u'run-', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation')
-count    156.000000
-mean       3.942308
-std        1.340392
-min        2.000000
-25%        3.000000
-50%        4.000000
-75%        4.000000
-max        8.000000
-dtype: float64
-
-('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-count    237.000000
-mean       4.594937
-std        1.571885
-min        2.000000
-25%        4.000000
-50%        5.000000
-75%        5.000000
-max        8.000000
-dtype: float64
-
-(u'no-data-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-count    173.000000
-mean      67.283237
-std       31.588112
-min        0.000000
-25%       40.000000
-50%       80.000000
-75%       90.000000
-max      100.000000
-dtype: float64
-
-(u'no-video-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-count    1.0
-mean     5.0
-std      NaN
-min      5.0
-25%      5.0
-50%      5.0
-75%      5.0
-max      5.0
-dtype: float64
-
-(u'no-video-task', u'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred.', 'annotation')
-count    1.0
-mean     4.0
-std      NaN
-min      4.0
-25%      4.0
-50%      4.0
-75%      4.0
-max      4.0
-dtype: float64
-
-(u'no-video-task', u'pill', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation')
-count    169.000000
-mean       4.479290
-std        2.023931
-min        1.000000
-25%        3.000000
-50%        4.000000
-75%        7.000000
-max        8.000000
-dtype: float64
-
-(u'no-video-task', u'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring.', 'annotation')
-count    1.0
-mean     2.0
-std      NaN
-min      2.0
-25%      2.0
-50%      2.0
-75%      2.0
-max      2.0
-dtype: float64
-
-('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have data?', 'survey')
-count    144.000000
-mean       4.965278
-std        1.908440
-min        1.000000
-25%        4.000000
-50%        5.000000
-75%        7.000000
-max        8.000000
-dtype: float64
-
-(u'no-data-task', u'pill', u'I was satisfied having only video for this task.', 'annotation')
-count    173.000000
-mean       3.433526
-std        1.695558
-min        1.000000
-25%        2.000000
-50%        4.000000
-75%        4.000000
-max        7.000000
-dtype: float64
-
-('has-both-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-count    255.000000
-mean      71.764706
-std       35.511220
+('has-both-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+count     57.000000
+mean      71.929825
+std       35.928431
 min        0.000000
 25%       60.000000
 50%       90.000000
@@ -372,25 +378,47 @@ min        0.000000
 max      100.000000
 dtype: float64
 
-('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have video?', 'survey')
-count    128.000000
-mean       2.515625
-std        1.441698
-min        1.000000
-25%        1.750000
-50%        2.000000
-75%        4.000000
-max        8.000000
+('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+count    57.000000
+mean      3.684211
+std       1.465775
+min       1.000000
+25%       2.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
 dtype: float64
 
-('has-both-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-count    237.000000
-mean      75.527426
-std       28.954894
-min       10.000000
-25%       70.000000
-50%       90.000000
-75%      100.000000
-max      100.000000
+(u'no-data-task', u'pill', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation', 5)
+count    55.000000
+mean      2.981818
+std       1.509119
+min      -1.000000
+25%       2.000000
+50%       3.000000
+75%       4.000000
+max       5.000000
+dtype: float64
+
+('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+count    56.000000
+mean      4.410714
+std       1.124549
+min       1.000000
+25%       4.000000
+50%       5.000000
+75%       5.000000
+max       5.000000
+dtype: float64
+
+(u'no-video-task', 'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring.', 'annotation', 5)
+count    13.000000
+mean      3.923077
+std       1.255756
+min       2.000000
+25%       3.000000
+50%       4.000000
+75%       5.000000
+max       5.000000
 dtype: float64
 

@@ -1,145 +1,145 @@
 (this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. 
-('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey')
-datapoints: 128
-WilcoxonResult(statistic=0.0, pvalue=2.635066754936783e-25)
+('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey', 5)
+datapoints: 53
+WilcoxonResult(statistic=0.0, pvalue=3.1353974148826956e-11)
 
-(u'no-data-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-datapoints: 173
-WilcoxonResult(statistic=0.0, pvalue=2.6878234481253353e-30)
+(u'no-video-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=7.651171327843185e-12)
 
-('has-both-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-datapoints: 255
-WilcoxonResult(statistic=0.0, pvalue=5.161725263882168e-44)
+(u'no-data-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+datapoints: 55
+WilcoxonResult(statistic=0.0, pvalue=1.0012327803005339e-10)
 
-(u'no-video-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-datapoints: 1
-WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415)
+(u'no-video-task', 'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+datapoints: 13
+WilcoxonResult(statistic=0.0, pvalue=0.001257926068496905)
 
-('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have video?', 'survey')
-datapoints: 144
-WilcoxonResult(statistic=0.0, pvalue=1.000001811471575e-25)
+(u'no-video-task', u'pill', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation', 5)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=5.5607593630762313e-11)
 
-(u'no-video-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-datapoints: 151
-WilcoxonResult(statistic=0.0, pvalue=1.079680207062495e-29)
+('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=1.0602383950821677e-11)
 
-('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-datapoints: 255
-WilcoxonResult(statistic=0.0, pvalue=3.0051417156981143e-46)
+(u'no-video-task', u'pill', u'I was satisfied having only data for this task.', 'annotation', 5)
+datapoints: 56
+WilcoxonResult(statistic=5.5, pvalue=1.0868424414519256e-10)
 
-('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey')
-datapoints: 144
-WilcoxonResult(statistic=0.0, pvalue=2.443710850291293e-26)
+('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey', 5)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=1.6414797307715716e-11)
 
-(u'no-data-task', u'run-', u'I was satisfied having only video for this task.', 'annotation')
-datapoints: 156
-WilcoxonResult(statistic=0.0, pvalue=7.199713179717805e-28)
+(u'no-data-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=9.514175702495332e-11)
 
-('has-both-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-datapoints: 237
-WilcoxonResult(statistic=0.0, pvalue=9.613614135565404e-42)
+('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey', 5)
+datapoints: 53
+WilcoxonResult(statistic=4.5, pvalue=6.543800566173988e-11)
 
-(u'no-data-task', u'pill', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation')
-datapoints: 173
-WilcoxonResult(statistic=0.0, pvalue=1.5617137638768089e-30)
+(u'no-video-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+datapoints: 52
+WilcoxonResult(statistic=0.0, pvalue=2.8362603044446046e-11)
 
-(u'no-video-task', u'pill', u'I was satisfied having only data for this task.', 'annotation')
-datapoints: 169
-WilcoxonResult(statistic=0.0, pvalue=9.630157563247129e-30)
+('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have video?', 'survey', 5)
+datapoints: 53
+WilcoxonResult(statistic=87.5, pvalue=2.6838822936857025e-08)
 
-(u'no-data-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-datapoints: 156
-WilcoxonResult(statistic=0.0, pvalue=1.393752840468468e-27)
+('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have data?', 'survey', 5)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=7.130803979165421e-11)
 
-(u'no-data-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-datapoints: 156
-WilcoxonResult(statistic=0.0, pvalue=1.1086405061488959e-26)
+(u'no-video-task', u'run-', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation', 5)
+datapoints: 52
+WilcoxonResult(statistic=0.0, pvalue=4.237664834538839e-10)
 
-(u'no-video-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-datapoints: 169
-WilcoxonResult(statistic=0.0, pvalue=1.1712455044718513e-31)
+(u'no-data-task', u'pill', u'I was satisfied having only video for this task.', 'annotation', 5)
+datapoints: 55
+WilcoxonResult(statistic=123.5, pvalue=7.631665879858016e-08)
 
-('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-datapoints: 255
-WilcoxonResult(statistic=0.0, pvalue=2.834852406840723e-44)
+(u'no-data-task', u'run-', u'I was satisfied having only video for this task.', 'annotation', 5)
+datapoints: 55
+WilcoxonResult(statistic=121.5, pvalue=9.42193876684236e-08)
 
-('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey')
-datapoints: 128
-WilcoxonResult(statistic=0.0, pvalue=4.685610083377285e-25)
+(u'no-data-task', u'run-', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation', 5)
+datapoints: 55
+WilcoxonResult(statistic=4.5, pvalue=3.067382469381288e-10)
 
-('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have data?', 'survey')
-datapoints: 128
-WilcoxonResult(statistic=0.0, pvalue=1.5660200299212667e-23)
+('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have video?', 'survey', 5)
+datapoints: 56
+WilcoxonResult(statistic=65.0, pvalue=2.5352548151862517e-09)
 
-('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-datapoints: 237
-WilcoxonResult(statistic=0.0, pvalue=6.314847303730468e-44)
+('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have data?', 'survey', 5)
+datapoints: 53
+WilcoxonResult(statistic=3.5, pvalue=2.0613616633127983e-10)
 
-(u'no-video-task', u'run-', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation')
-datapoints: 151
-WilcoxonResult(statistic=0.0, pvalue=1.9063522851002245e-27)
+(u'no-video-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=9.109420005587671e-11)
 
-(u'no-video-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-datapoints: 151
-WilcoxonResult(statistic=0.0, pvalue=1.3650025778755793e-26)
+(u'no-video-task', 'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred.', 'annotation', 5)
+datapoints: 13
+WilcoxonResult(statistic=0.0, pvalue=0.0006290199752643491)
 
-(u'no-video-task', u'run-', u'I was satisfied having only data for this task.', 'annotation')
-datapoints: 151
-WilcoxonResult(statistic=0.0, pvalue=2.5305990575244e-27)
+('has-both-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=5.750087083309729e-11)
 
-(u'no-video-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-datapoints: 169
-WilcoxonResult(statistic=0.0, pvalue=6.630370121335168e-29)
+('has-both-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=3.213340892856283e-11)
 
-('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey')
-datapoints: 144
-WilcoxonResult(statistic=0.0, pvalue=5.375056170067088e-27)
+('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey', 5)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=3.2905957223212863e-12)
 
-(u'no-data-task', u'run-', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation')
-datapoints: 156
-WilcoxonResult(statistic=0.0, pvalue=6.666145956319044e-28)
+(u'no-data-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+datapoints: 55
+WilcoxonResult(statistic=0.0, pvalue=2.1391248857059648e-10)
 
-('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-datapoints: 237
-WilcoxonResult(statistic=0.0, pvalue=1.3898868072361874e-41)
+(u'no-video-task', 'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+datapoints: 13
+WilcoxonResult(statistic=0.0, pvalue=0.0003114909767673833)
 
-(u'no-data-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-datapoints: 173
-WilcoxonResult(statistic=0.0, pvalue=8.340048168596215e-30)
+('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+datapoints: 56
+WilcoxonResult(statistic=2.5, pvalue=7.780323761925904e-11)
 
-(u'no-video-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-datapoints: 1
-WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415)
+(u'no-video-task', u'run-', u'I was satisfied having only data for this task.', 'annotation', 5)
+datapoints: 52
+WilcoxonResult(statistic=0.0, pvalue=2.3237120321005742e-10)
 
-(u'no-video-task', u'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred.', 'annotation')
-datapoints: 1
-WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415)
+(u'no-video-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+datapoints: 52
+WilcoxonResult(statistic=0.0, pvalue=4.325237399378883e-10)
 
-(u'no-video-task', u'pill', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation')
-datapoints: 169
-WilcoxonResult(statistic=0.0, pvalue=9.243272271940438e-30)
+('has-both-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+datapoints: 57
+WilcoxonResult(statistic=0.0, pvalue=3.655008531815111e-11)
 
-(u'no-video-task', u'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring.', 'annotation')
-datapoints: 1
-WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415)
+(u'no-data-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+datapoints: 55
+WilcoxonResult(statistic=0.0, pvalue=9.333688729970132e-11)
 
-('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have data?', 'survey')
-datapoints: 144
-WilcoxonResult(statistic=0.0, pvalue=1.0967236569814197e-25)
+('has-both-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+datapoints: 57
+WilcoxonResult(statistic=0.0, pvalue=1.13225900829512e-10)
 
-(u'no-data-task', u'pill', u'I was satisfied having only video for this task.', 'annotation')
-datapoints: 173
-WilcoxonResult(statistic=0.0, pvalue=1.60799169628582e-30)
+('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+datapoints: 57
+WilcoxonResult(statistic=0.0, pvalue=2.7621940148369366e-11)
 
-('has-both-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-datapoints: 255
-WilcoxonResult(statistic=0.0, pvalue=5.898732743629479e-42)
+(u'no-data-task', u'pill', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation', 5)
+datapoints: 55
+WilcoxonResult(statistic=5.0, pvalue=2.2497617997867774e-10)
 
-('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have video?', 'survey')
-datapoints: 128
-WilcoxonResult(statistic=0.0, pvalue=2.743162778008678e-23)
+('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+datapoints: 56
+WilcoxonResult(statistic=0.0, pvalue=7.532580620633607e-12)
 
-('has-both-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-datapoints: 237
-WilcoxonResult(statistic=0.0, pvalue=4.2463921480023653e-41)
+(u'no-video-task', 'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring.', 'annotation', 5)
+datapoints: 13
+WilcoxonResult(statistic=0.0, pvalue=0.0012713273343777534)
 

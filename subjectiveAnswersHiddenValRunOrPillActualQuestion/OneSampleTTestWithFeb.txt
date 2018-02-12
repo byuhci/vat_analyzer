@@ -1,147 +1,147 @@
 RuntimeWarning: Degrees of freedom <= 0 for slice 
 RuntimeWarning: invalid value encountered in double_scalars ret = ret.dtype.type(ret / rcount) 
 
-('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey')
-len(datapoints): 128
-Ttest_1sampResult(statistic=57.057739180496, pvalue=2.1958347518444893e-92)
+('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey', 5)
+len(datapoints): 53
+Ttest_1sampResult(statistic=25.75824343046069, pvalue=2.844768527511457e-31)
 
-(u'no-data-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-len(datapoints): 173
-Ttest_1sampResult(statistic=28.269919176772227, pvalue=1.4882829058327102e-66)
+(u'no-video-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+len(datapoints): 56
+Ttest_1sampResult(statistic=43.952778925359816, pvalue=1.5707879994492547e-44)
 
-('has-both-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-len(datapoints): 255
-Ttest_1sampResult(statistic=43.6940945834716, pvalue=3.8305676128228796e-120)
+(u'no-data-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+len(datapoints): 55
+Ttest_1sampResult(statistic=16.897023613692056, pvalue=3.247325747595904e-23)
 
-(u'no-video-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-len(datapoints): 1
-Ttest_1sampResult(statistic=nan, pvalue=nan)
+(u'no-video-task', 'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+len(datapoints): 13
+Ttest_1sampResult(statistic=15.798734126505199, pvalue=2.1443170136162417e-09)
 
-('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have video?', 'survey')
-len(datapoints): 144
-Ttest_1sampResult(statistic=25.101404377253004, pvalue=2.922194908141081e-54)
+(u'no-video-task', u'pill', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=17.655115308010938, pvalue=2.5413238405510433e-24)
 
-(u'no-video-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-len(datapoints): 151
-Ttest_1sampResult(statistic=149.78054930412077, pvalue=3.062463969578506e-165)
+('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=25.151299358580264, pvalue=7.597607572479988e-32)
 
-('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-len(datapoints): 255
-Ttest_1sampResult(statistic=59.27008494377771, pvalue=9.4930425343044e-151)
+(u'no-video-task', u'pill', u'I was satisfied having only data for this task.', 'annotation', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=13.503410382775131, pvalue=4.1872305146119225e-19)
 
-('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey')
-len(datapoints): 144
-Ttest_1sampResult(statistic=43.713146480866975, pvalue=1.2502209467584067e-84)
+('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?', 'survey', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=24.43533729395108, pvalue=3.272011553617985e-31)
 
-(u'no-data-task', u'run-', u'I was satisfied having only video for this task.', 'annotation')
-len(datapoints): 156
-Ttest_1sampResult(statistic=19.62152097176606, pvalue=7.385305739845905e-44)
+(u'no-data-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+len(datapoints): 56
+Ttest_1sampResult(statistic=16.244568345839976, pvalue=1.2003806014959726e-22)
 
-('has-both-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-len(datapoints): 237
-Ttest_1sampResult(statistic=41.026006671644204, pvalue=2.1901485174566137e-109)
+('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey', 5)
+len(datapoints): 53
+Ttest_1sampResult(statistic=20.890725544918336, pvalue=5.9257494423953054e-27)
 
-(u'no-data-task', u'pill', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation')
-len(datapoints): 173
-Ttest_1sampResult(statistic=31.864190295667292, pvalue=4.565766745213786e-74)
+(u'no-video-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+len(datapoints): 52
+Ttest_1sampResult(statistic=77.31372516118128, pvalue=1.569155201386989e-54)
 
-(u'no-video-task', u'pill', u'I was satisfied having only data for this task.', 'annotation')
-len(datapoints): 169
-Ttest_1sampResult(statistic=24.383836805866682, pvalue=4.532840000503745e-57)
+('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have video?', 'survey', 5)
+len(datapoints): 53
+Ttest_1sampResult(statistic=8.494445041082177, pvalue=2.1234428261959247e-11)
 
-(u'no-data-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-len(datapoints): 156
-Ttest_1sampResult(statistic=36.52019605839328, pvalue=4.866509419060621e-78)
+('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have data?', 'survey', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=18.069369660486686, pvalue=8.533425911195533e-25)
 
-(u'no-data-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-len(datapoints): 156
-Ttest_1sampResult(statistic=25.858398163021402, pvalue=4.276391194494853e-58)
+(u'no-video-task', u'run-', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation', 5)
+len(datapoints): 52
+Ttest_1sampResult(statistic=18.54507739921385, pvalue=2.5521407048405403e-24)
 
-(u'no-video-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation')
-len(datapoints): 169
-Ttest_1sampResult(statistic=69.6548452611477, pvalue=7.3161360343452e-126)
+(u'no-data-task', u'pill', u'I was satisfied having only video for this task.', 'annotation', 5)
+len(datapoints): 55
+Ttest_1sampResult(statistic=7.914348702664148, pvalue=1.3562485219600712e-10)
 
-('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-len(datapoints): 255
-Ttest_1sampResult(statistic=39.48882618850235, pvalue=2.0786129844520674e-110)
+(u'no-data-task', u'run-', u'I was satisfied having only video for this task.', 'annotation', 5)
+len(datapoints): 55
+Ttest_1sampResult(statistic=7.563114717188423, pvalue=5.020738732040599e-10)
 
-('not applicable', u'run-', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey')
-len(datapoints): 128
-Ttest_1sampResult(statistic=45.91975657096812, pvalue=5.839758003053671e-81)
+(u'no-data-task', u'run-', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation', 5)
+len(datapoints): 55
+Ttest_1sampResult(statistic=14.654158212258807, pvalue=1.8322343779125225e-20)
 
-('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have data?', 'survey')
-len(datapoints): 128
-Ttest_1sampResult(statistic=35.9723001362243, pvalue=1.8658291486243325e-68)
+('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have video?', 'survey', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=10.374924990766738, pvalue=1.4685519992581067e-14)
 
-('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-len(datapoints): 237
-Ttest_1sampResult(statistic=64.87683519542358, pvalue=1.9119345701738473e-152)
+('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have data?', 'survey', 5)
+len(datapoints): 53
+Ttest_1sampResult(statistic=17.805275475248543, pvalue=8.83225122766059e-24)
 
-(u'no-video-task', u'run-', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation')
-len(datapoints): 151
-Ttest_1sampResult(statistic=43.25558048461639, pvalue=1.3131957649124098e-86)
+(u'no-video-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+len(datapoints): 56
+Ttest_1sampResult(statistic=16.358137194750185, pvalue=8.728644804683141e-23)
 
-(u'no-video-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-len(datapoints): 151
-Ttest_1sampResult(statistic=27.647607819441514, pvalue=9.40798239466977e-61)
+(u'no-video-task', 'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred.', 'annotation', 5)
+len(datapoints): 13
+Ttest_1sampResult(statistic=46.52858359018777, pvalue=6.3443371198747445e-15)
 
-(u'no-video-task', u'run-', u'I was satisfied having only data for this task.', 'annotation')
-len(datapoints): 151
-Ttest_1sampResult(statistic=39.06700232955128, pvalue=1.6408079839342868e-80)
+('has-both-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+len(datapoints): 56
+Ttest_1sampResult(statistic=18.315860995122083, pvalue=4.495734238712824e-25)
 
-(u'no-video-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-len(datapoints): 169
-Ttest_1sampResult(statistic=29.516554766178043, pvalue=2.2322432521834035e-68)
+('has-both-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+len(datapoints): 56
+Ttest_1sampResult(statistic=21.408211897893523, pvalue=2.3877061210427663e-28)
 
-('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey')
-len(datapoints): 144
-Ttest_1sampResult(statistic=48.04915119159295, pvalue=3.942075809811781e-90)
+('not applicable', u'pill', u'If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?', 'survey', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=27.712538820255435, pvalue=5.3821932883388375e-34)
 
-(u'no-data-task', u'run-', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation')
-len(datapoints): 156
-Ttest_1sampResult(statistic=36.73508598555145, pvalue=2.1524199944392107e-78)
+(u'no-data-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+len(datapoints): 55
+Ttest_1sampResult(statistic=15.187742812504924, pvalue=3.846962718871884e-21)
 
-('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation')
-len(datapoints): 237
-Ttest_1sampResult(statistic=45.002122990775646, pvalue=8.52249268886694e-118)
+(u'no-video-task', 'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+len(datapoints): 13
+Ttest_1sampResult(statistic=inf, pvalue=0.0)
 
-(u'no-data-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-len(datapoints): 173
-Ttest_1sampResult(statistic=28.016008080110133, pvalue=5.334292343371637e-66)
+('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=17.539764077123415, pvalue=3.4548674184501004e-24)
 
-(u'no-video-task', u'pill', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation')
-len(datapoints): 1
-Ttest_1sampResult(statistic=nan, pvalue=nan)
+(u'no-video-task', u'run-', u'I was satisfied having only data for this task.', 'annotation', 5)
+len(datapoints): 52
+Ttest_1sampResult(statistic=17.94365919252671, pvalue=1.1012238080301692e-23)
 
-(u'no-video-task', u'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred.', 'annotation')
-len(datapoints): 1
-Ttest_1sampResult(statistic=nan, pvalue=nan)
+(u'no-video-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+len(datapoints): 52
+Ttest_1sampResult(statistic=15.371047163713047, pvalue=8.777844658175685e-21)
 
-(u'no-video-task', u'pill', u'When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video.', 'annotation')
-len(datapoints): 169
-Ttest_1sampResult(statistic=28.771130624061396, pvalue=8.101687179762972e-67)
+('has-both-task', u'pill', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+len(datapoints): 57
+Ttest_1sampResult(statistic=21.853660494631153, pvalue=4.332426981255335e-29)
 
-(u'no-video-task', u'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring.', 'annotation')
-len(datapoints): 1
-Ttest_1sampResult(statistic=nan, pvalue=nan)
+(u'no-data-task', u'run-', u'What percentage of the video do you think you were able to annotate?', 'annotation', 100)
+len(datapoints): 55
+Ttest_1sampResult(statistic=21.808496314440156, pvalue=1.9231465827362044e-28)
 
-('not applicable', u'pill', u'After annotating for several rounds, how essential would it be to have data?', 'survey')
-len(datapoints): 144
-Ttest_1sampResult(statistic=31.220965124664403, pvalue=1.0062816056332793e-65)
+('has-both-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation', 100)
+len(datapoints): 57
+Ttest_1sampResult(statistic=15.115001025291516, pvalue=2.033419239969108e-21)
 
-(u'no-data-task', u'pill', u'I was satisfied having only video for this task.', 'annotation')
-len(datapoints): 173
-Ttest_1sampResult(statistic=26.6348843092172, pvalue=6.308453255913676e-63)
+('has-both-task', u'pill', u'When I looked at the data, I was able to recognize WHAT event was occurring.', 'annotation', 5)
+len(datapoints): 57
+Ttest_1sampResult(statistic=18.976432406451966, pvalue=4.6528620133803836e-26)
 
-('has-both-task', u'pill', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-len(datapoints): 255
-Ttest_1sampResult(statistic=32.27122123006376, pvalue=7.643845845768154e-92)
+(u'no-data-task', u'pill', u'With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched.', 'annotation', 5)
+len(datapoints): 55
+Ttest_1sampResult(statistic=14.653417666876525, pvalue=1.8362519154376865e-20)
 
-('not applicable', u'run-', u'After annotating for several rounds, how essential would it be to have video?', 'survey')
-len(datapoints): 128
-Ttest_1sampResult(statistic=19.741333686255526, pvalue=1.6186653394878056e-40)
+('has-both-task', u'run-', u'When I looked at the data, I was able to recognize WHEN an event occurred.', 'annotation', 5)
+len(datapoints): 56
+Ttest_1sampResult(statistic=29.351112498132817, pvalue=2.7811753945447173e-35)
 
-('has-both-task', u'run-', u'What percentage of events you annotated fell within the window of error, do you think?', 'annotation')
-len(datapoints): 237
-Ttest_1sampResult(statistic=40.15659456564629, pvalue=1.8276497851644376e-107)
+(u'no-video-task', 'pill', u'When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring.', 'annotation', 5)
+len(datapoints): 13
+Ttest_1sampResult(statistic=11.264015659634348, pvalue=9.757275651295017e-08)
 

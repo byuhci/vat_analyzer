@@ -155,9 +155,12 @@ def infoFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderN
             for quesNum, quesAnswer in zip(questions, answers):
                 quesType, quesText = quesInfo[(surveyFamily, quesNum)]
                 # Adjust (-2 to +2) to (1 to 5)
-                if ((quesType == 'likert' or quesType == 'likertTime') and userName < 045):
+                # print(int(userName) < 045)
+                if ((quesType == 'likert' or quesType == 'likertTime') and int(userName) < 045):
                     # the original version was scaled from -2 to +2 points (not 1-5)
+
                     quesAnswer = int(quesAnswer) + 3
+
                 newPoint = Point(userName, studyType, videoColorOrTask,
                                  hiddenThing, quesText, int(quesAnswer),
                                  quesNum, quesType, surveyFamily)
@@ -177,6 +180,11 @@ def surveyFiles(studyInfo, quesInfo, information, userName, studyType, taskFolde
             quesType, quesText = quesInfo[(surveyFamily, quesNum)]
 
             # print(type(quesAnswer))
+            try:
+                int(quesAnswer)
+                quesAnswer = int(quesAnswer)
+            except ValueError:
+                1 + 1
             points.add(Point(userName, studyType, videoColorOrTask,
                              hiddenThing, quesText, quesAnswer,
                              quesNum, quesType, surveyFamily))
@@ -227,11 +235,19 @@ def calculateTotalAnswersPerQuestion(points):
 
 def calculateAverageAnswer(averages):
     # sum, count, average
-    for value in averages.values():
-        if value == [0, 0, 0, 0]:
+    maxAnswers = {}
+    # print(averages)
+    for colorHiddenQuestion, sumCountAvgMax in averages.items():
+        if sumCountAvgMax == [0, 0, 0, 0]:
             continue
-        value[2] = value[0] / value[1]
-    return averages
+        sumCountAvgMax[2] = sumCountAvgMax[0] / sumCountAvgMax[1]
+        if sumCountAvgMax[2] > 5:
+            sumCountAvgMax[3] = 100
+        else:
+            sumCountAvgMax[3] = 5
+        maxAnswers[colorHiddenQuestion[2]] = sumCountAvgMax[3]
+    # print(averages)
+    return averages, maxAnswers
 
 
 def makeAveragedCSV(averages):
@@ -337,7 +353,7 @@ def averageForPillVsRun(averages):
             csvwriter.writerow(row)
 
 
-def makeListsByKeys(points):
+def makeListsByKeys(points, maxAnswers):
     hiddenValAndVideoName = defaultdict(list)
     for point in points:
         # print(point)
@@ -351,14 +367,19 @@ def makeListsByKeys(points):
         else:
             surveyOrTask = 'annotation'
         # print(surveyOrTask)
-        hiddenValAndVideoName[hiddenValue, subVideoName, quesText, surveyOrTask].append(quesAnswer)
+        if maxAnswers.has_key(str(quesText)):
+            numMaxAnswer = maxAnswers[str(quesText)]
+        else:
+            numMaxAnswer = 'string'
+        hiddenValAndVideoName[hiddenValue, subVideoName, quesText, surveyOrTask, numMaxAnswer].append(quesAnswer)
+    print(hiddenValAndVideoName)
     return hiddenValAndVideoName
 
 
 def boxAndWhiskerIt(toBeAveraged):
     # subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker # name of folder I should be in
-    # print(toBeAveraged)
-    # xvalueQuesText = ['\n'.join(wrap(l, 18)) for l in xvalueQuesText]
+    # print(repr(toBeAveraged))
+
     for graph, points in toBeAveraged.items():
         plt.figure()
         yMin = 0
@@ -366,8 +387,10 @@ def boxAndWhiskerIt(toBeAveraged):
         if points[0] > 5:
             yMax = 100
         plt.ylim((yMin, yMax))
+        if type(points[0]) is not int:
+            continue
         plt.boxplot(points, 0, 'gD')
-        titleVar = graph[2] + '\n' + graph[1] + '\n' + graph[0] + '\n' + 'length of points list: ' + str(len(points))
+        titleVar = graph[2] + '\n' + graph[1] + '    ' + graph[0]  + '    length of points list: ' + str(len(points))
         plt.title(titleVar)  # what was hidden, run- or pill, actual question
 
         plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.png')
@@ -410,6 +433,8 @@ def wilcoxonTest(analyzableData):  # non parametric test
         '(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
     f.write('\n')
     for graph, points in analyzableData.items():
+        if type(points[0]) is not int:
+            continue
         f.write(str(graph))
         f.write('\n')
         f.write('datapoints: ')
@@ -426,6 +451,8 @@ def oneSampleTTest(analyzableData):
     f.write('RuntimeWarning: Degrees of freedom <= 0 for slice \n')
     f.write('RuntimeWarning: invalid value encountered in double_scalars ret = ret.dtype.type(ret / rcount) \n\n')
     for graph, points in analyzableData.items():
+        if type(points[0]) is not int:
+            continue
         f.write(str(graph))
         f.write('\nlen(datapoints): ')
         f.write(str(len(points)))
@@ -501,15 +528,16 @@ os.chdir(resultOutput)  # /AML/vat_analyzer
 # # this takes the sum and count to calculate averages
 makeOutputOfTextQuestion(points)
 averages = calculateTotalAnswersPerQuestion(points)  # hiddenValAndVideoName
-averages = calculateAverageAnswer(averages)
+averages, maxAnswers = calculateAverageAnswer(averages)
 makeAveragedCSV(averages)
 
 # # all of these at once demo okke-
-# hiddenValAndVideoName = makeListsByKeys(points)
-# boxAndWhiskerIt(hiddenValAndVideoName)
-# describeTheData(hiddenValAndVideoName)
-# wilcoxonTest(hiddenValAndVideoName)
-# oneSampleTTest(hiddenValAndVideoName)
+hiddenValAndVideoName = makeListsByKeys(points, maxAnswers)
+# print(hiddenValAndVideoName)
+boxAndWhiskerIt(hiddenValAndVideoName)
+describeTheData(hiddenValAndVideoName)
+wilcoxonTest(hiddenValAndVideoName)
+oneSampleTTest(hiddenValAndVideoName)
 
 
 #
