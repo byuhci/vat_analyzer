@@ -265,40 +265,33 @@ def makeAveragedCSV(averages):
 
 
 def makeOutputOfTextQuestion(points):
-    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/textQuestionsWithFeb.csv', 'w') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        pairs = []
-        for point in points:
-            responseType = getattr(point, 'responseType')
-            if not responseType == 'textMulti':
-                continue
-            quesAnswer = getattr(point, 'quesAnswer')
-            quesText = getattr(point, 'quesText')
+    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/textQuestionsWithFeb.txt', 'w')
+    pairs = []
+    for point in points:
+        responseType = getattr(point, 'responseType')
+        if not responseType == 'textMulti':
+            continue
+        quesAnswer = getattr(point, 'quesAnswer')
+        quesText = getattr(point, 'quesText')
 
-            pairs.append((quesText, quesAnswer))
-        textAnswers = defaultdict(list)
-        pairs.sort()
-        for pair in pairs:
-            textAnswers[pair[0]].append(pair[1])
-        # print(textAnswers)
+        pairs.append((quesText, quesAnswer))
+    textAnswers = defaultdict(list)
+    pairs.sort()
+    for pair in pairs:
+        textAnswers[pair[0]].append(pair[1])
+    # print(textAnswers)
 
-        for question, manyAnswers in textAnswers.items():
-            # print(question, manyAnswers)
-            row = ['question']
-            row.append(question)
-            csvwriter.writerow(row)
-            print(manyAnswers[0])
-            for answer in manyAnswers:
-                print(type(answer))
-                row = []
-                row.append(answer)
-                csvwriter.writerow(row)
-            # print(row)
-            # for answer in manyAnswers:
-            #     print(answer)
-            #     csvwriter.writerow(str(answer))
-            csvwriter.writerow('\n\n')
-            print('\n\n')
+    for question, manyAnswers in textAnswers.items():
+        # print(question, manyAnswers)
+        f.write('question: ')
+        if not question == '':
+            f.write(question)
+        f.write('\n\n')
+        for answer in manyAnswers:
+            f.write(answer)
+            f.write('\n')
+        f.write('\n\n\n')
+    f.close()
 
 
 def compareLearedVsUnlearned(points):
