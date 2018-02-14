@@ -276,12 +276,29 @@ def makeOutputOfTextQuestion(points):
             quesText = getattr(point, 'quesText')
 
             pairs.append((quesText, quesAnswer))
+        textAnswers = defaultdict(list)
         pairs.sort()
         for pair in pairs:
-            quesText = pair[0]
-            quesAnswer = pair[1]
-            row = [quesText, quesAnswer]
+            textAnswers[pair[0]].append(pair[1])
+        # print(textAnswers)
+
+        for question, manyAnswers in textAnswers.items():
+            # print(question, manyAnswers)
+            row = ['question']
+            row.append(question)
             csvwriter.writerow(row)
+            print(manyAnswers[0])
+            for answer in manyAnswers:
+                print(type(answer))
+                row = []
+                row.append(answer)
+                csvwriter.writerow(row)
+            # print(row)
+            # for answer in manyAnswers:
+            #     print(answer)
+            #     csvwriter.writerow(str(answer))
+            csvwriter.writerow('\n\n')
+            print('\n\n')
 
 
 def compareLearedVsUnlearned(points):
