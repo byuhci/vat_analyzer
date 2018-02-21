@@ -403,7 +403,7 @@ def boxAndWhiskerIt(toBeAveraged):
         titleVar = graph[2] + '\n' + graph[1] + '    ' + graph[0]  + '    length of points list: ' + str(len(points))
         plt.title(titleVar)  # what was hidden, run- or pill, actual question
 
-        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.png')
+        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.pdf')
 
 
 def describeTheData(toBeAveraged):
@@ -514,10 +514,10 @@ def makeBarGraph(someInfo):
         plt.xticks(y_pos, xvalueQuesText)  # , rotation=40, ha='right'
         plt.ylim(0, graph[2])
 
-        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphsWithFeb/' + str(graph) + '.png')
+        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphsWithFeb/' + str(graph) + '.pdf')
         plt.gcf().clear()
 
-# plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.png')
+# plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.pdf')
 
 
 options = ['studyA', 'studyB', 'studyC', 'studyD']

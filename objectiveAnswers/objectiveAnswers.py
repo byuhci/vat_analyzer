@@ -139,7 +139,7 @@ def boxAndWhiskerIt(inputData):
         plt.figure()
         plt.boxplot(points, 0, 'gD')
         plt.title(graph) # what was hidden, run- or pill, actual question
-        plt.savefig('objectiveData/boxAndWhisker/' + strSelectAspectsOfData + '/' + strSelectAspectsOfData + str(graph) + '.png')
+        plt.savefig('objectiveData/boxAndWhisker/' + strSelectAspectsOfData + '/' + strSelectAspectsOfData + str(graph) + '.pdf')
 
 def wilcoxonTest(analyzableData): #non parametric test
     f = open('objectiveData/wilcoxon/' + strSelectAspectsOfData + 'Wilcoxon.txt', 'w')
