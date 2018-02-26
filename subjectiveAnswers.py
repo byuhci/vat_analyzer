@@ -13,9 +13,9 @@ from textwrap import wrap
 
 # /home/naomi/Documents/
 # /users/home/naomi/Documents/
-survey_label_info_files = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
-survey_directions = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
-resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
+survey_label_info_files = '/users/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
+survey_directions = '/users/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
+resultOutput = '/users/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                             'quesText, quesAnswer, quesNum, responseType, surveyFamily')
@@ -156,11 +156,15 @@ def infoFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderN
                 quesType, quesText = quesInfo[(surveyFamily, quesNum)]
                 # Adjust (-2 to +2) to (1 to 5)
                 # print(int(userName) < 045)
-                if ((quesType == 'likert' or quesType == 'likertTime') and int(userName) < 045):
-                    # the original version was scaled from -2 to +2 points (not 1-5)
-
+                # if ((quesType == 'likert' or quesType == 'likertTime') and int(userName) < 045):
+                # if quesType in ['likert', 'likert ', 'likertTime', 'likertTime '] and int(userName) < 045:
+                #     # the original version was scaled from -2 to +2 points (not 1-5)
+                #
+                #     quesAnswer = int(quesAnswer) + 3
+                if quesType not in ['textMulti', 'likertPercentage']:
                     quesAnswer = int(quesAnswer) + 3
-
+                # elif int(userName) >= 045 and quesType not in ['likert', 'likert ', 'likertTime', 'likertTime ']:
+                #     print quesType
                 newPoint = Point(userName, studyType, videoColorOrTask,
                                  hiddenThing, quesText, int(quesAnswer),
                                  quesNum, quesType, surveyFamily)
@@ -530,37 +534,39 @@ points = runVariousSurveys(options)  # this holds all 1200 things
 # lookForMissingAnnotationsFromUsers(points) # not necessarily needed #
 rawDataCSV(points)
 
-# need to os.chdir because in a survey folder still
-os.chdir(resultOutput)  # /AML/vat_analyzer
-# print(os.getcwd())
 
-# # this takes the sum and count to calculate averages
-makeOutputOfTextQuestion(points)
-averages = calculateTotalAnswersPerQuestion(points)  # hiddenValAndVideoName
-averages, maxAnswers = calculateAverageAnswer(averages)
-makeAveragedCSV(averages)
-
-# # all of these at once demo okke-
-hiddenValAndVideoName = makeListsByKeys(points, maxAnswers)
-# print(hiddenValAndVideoName)
-boxAndWhiskerIt(hiddenValAndVideoName)
-describeTheData(hiddenValAndVideoName)
-wilcoxonTest(hiddenValAndVideoName)
-oneSampleTTest(hiddenValAndVideoName)
-
-
+# commented out to speed things up
+# # need to os.chdir because in a survey folder still
+# os.chdir(resultOutput)  # /AML/vat_analyzer
+# # print(os.getcwd())
 #
-# # # according to run v. pill
-# # runVpillAverage = averageForPillVsRun(averages)
+# # # this takes the sum and count to calculate averages
+# makeOutputOfTextQuestion(points)
+# averages = calculateTotalAnswersPerQuestion(points)  # hiddenValAndVideoName
+# averages, maxAnswers = calculateAverageAnswer(averages)
+# makeAveragedCSV(averages)
 #
-# # THINGS BROKEN UP # about 52 data-points
-# # makeAveragedCSV(averages)
+# # # all of these at once demo okke-
+# hiddenValAndVideoName = makeListsByKeys(points, maxAnswers)
+# # print(hiddenValAndVideoName)
+# boxAndWhiskerIt(hiddenValAndVideoName)
+# describeTheData(hiddenValAndVideoName)
+# wilcoxonTest(hiddenValAndVideoName)
+# oneSampleTTest(hiddenValAndVideoName)
 #
-# # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
-# # averageTogether = correctForLearningEffect(averages)
-# # makeAveragedCSV(averageTogether)
 #
-# this combines run-yellow with run-red BUT leaves pills and run separate
-pillsAndRunSep = calculatePillsAndRunSeparate(averages)
-makeAveragedCSV(pillsAndRunSep)
-makeBarGraph(pillsAndRunSep)
+# #
+# # # # according to run v. pill
+# # # runVpillAverage = averageForPillVsRun(averages)
+# #
+# # # THINGS BROKEN UP # about 52 data-points
+# # # makeAveragedCSV(averages)
+# #
+# # # this puts all run-yellow with run-red AND pills-red with pills-orange #about 20 data points
+# # # averageTogether = correctForLearningEffect(averages)
+# # # makeAveragedCSV(averageTogether)
+# #
+# # this combines run-yellow with run-red BUT leaves pills and run separate
+# pillsAndRunSep = calculatePillsAndRunSeparate(averages)
+# makeAveragedCSV(pillsAndRunSep)
+# makeBarGraph(pillsAndRunSep)
