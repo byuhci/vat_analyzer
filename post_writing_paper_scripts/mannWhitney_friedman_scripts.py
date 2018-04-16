@@ -26,6 +26,9 @@ def readInData():
     # hidden	% correct	% mislabelled	% off	% wrong	% missed
     hasVideo = []
     hasData = []
+
+    videoSetOfList = []
+    dataSetOfList = []
     # read in percentComplete.csv # for percent complete, paired with hidden value
     # format of various_percents_for_mann_whitney.csv
     # hidden,correct,"not type, bounds","type, not bounds","not type, not bounds",missed,"not type, (bounds || not bounds)"
@@ -33,12 +36,18 @@ def readInData():
     with open('various_percents_for_mann_whitney.csv', 'r') as csvfile:
         allRows = csv.reader(csvfile, delimiter=',')  # , quotechar='|'
         for row in allRows:
-            if row[0] == 'data':  # data is hidden
-                # store in one place
-                hasVideo.append(row[whatLookingAt])
-            elif row[0] == 'video':  # video is hidden
-                # store in other
-                hasData.append(row[whatLookingAt])
+            # print(len(row))
+            for column in row:
+                if first:
+                    continue
+
+                if row[0] == 'data':  # data is hidden
+                    # store in one place
+                    hasVideo.append(row[whatLookingAt])
+                elif row[0] == 'video':  # video is hidden
+                    # store in other
+                    hasData.append(row[whatLookingAt])
+            first = False
 
     return hasData, hasVideo
 
