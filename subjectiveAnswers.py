@@ -13,9 +13,9 @@ from textwrap import wrap
 
 # /home/naomi/Documents/
 # /users/home/naomi/Documents/
-survey_label_info_files = '/users/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
-survey_directions = '/users/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
-resultOutput = '/users/home/naomi/Documents/AML/vat_analyzer/'
+survey_label_info_files = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
+survey_directions = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
+resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                             'quesText, quesAnswer, quesNum, responseType, surveyFamily')
