@@ -7,12 +7,9 @@ from time import strftime
 # stuff I found in subjectiveAnswer.py
 
 def mannWhitney(hasData, hasVideo, type):  # non parametric test
-    print(strftime("%Y-%m-%d %H:%M"))
-    print(type + " hasData: " + str(hasData) + '\n')
-    print(type + " hasVideo: " + str(hasVideo) + '\n')
-    f = open('results_mann_whitney/wilcoxon_' + numToEnglish[whatLookingAt] + '.txt', 'w')
-    f.write('numToEnglish[whatLookingAt]: ' + numToEnglish[whatLookingAt] + '\n')
-    f.write('comparing hasData to hasVideo: ' + '\n')
+    f = open('results_mann_whitney/wilcoxon_' + numToEnglish[whatLookingAt] + type + '.txt', 'w')
+    f.write(type +' numToEnglish[whatLookingAt]: ' + numToEnglish[whatLookingAt] + '\n')
+    f.write('comparing hasData to hasVideo: ' + type + '\n')
     # f.write("hasData: " + str(hasData))
     # f.write("hasVideo:" + str(hasVideo))
     f.write(str(mannwhitneyu(hasData, hasVideo)) + '\n')
