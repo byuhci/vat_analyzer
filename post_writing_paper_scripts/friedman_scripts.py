@@ -1,30 +1,92 @@
 from time import strftime
 import csv
-from collections import defaultdict
+from collections import defaultdict, namedtuple
+from scipy.stats import mannwhitneyu
+
+datapoint = namedtuple('datapoint', 'saw setOfQuestions	question')
 
 
 def readInData():
     # subjectiveData.csv
     # saw	answer	questionNum	set of questions	QUESTION	task-type
-    hasData = defaultdict(set)
-    hasVideo = defaultdict(set)
-    something = defaultdict(set)
+    hasData = defaultdict(list)
+    hasVideo = defaultdict(list)
+    something = defaultdict(list)
     print(strftime("%Y-%m-%d %H:%M"))
     with open('subjectiveData.csv', 'r') as csvfile:
         allRows = csv.reader(csvfile, delimiter=',')  # , quotechar='|'
         for row in allRows:
-            if row[0] == 'data':
-                # print(row[1])
-                # print(str(row[2:5]))
-                hasData[str(row[2:5])].add(row[1])
-            elif row[0] == 'video':
-                hasVideo[str(row[2:5])].add(row[1])
+            if row[4] == 'free-response':
+                continue
+            newpoint = datapoint(row[0], row[3], row[4])
+            something[newpoint].append(int(row[1]))
+            # something[str(row[3:6])].add(int(row[1]))
 
-    return hasData, hasVideo
+    return hasData, hasVideo, something
 
-def printRawData(hasData, hasVideo):
-    for key, value in hasVideo.items():
-        print(key, value)
 
-hasData, hasVideo = readInData()
-printRawData(hasData, hasVideo)
+def printRawData(someData):
+    f = open('results_mann_whitney/subjective/subjectiveData.txt', 'w')
+    for key, value in someData.items():
+        f.write(str(key))
+        f.write('\n')
+        f.write(str(value))
+        f.write('\n\n')
+        # f.write(str(len(value), key, value))
+
+
+def percievedAccuracyAndEfficiency(someData):
+    dupli = someData
+    f = open('results_mann_whitney/subjective/percievedAccuracyAndEfficiency.txt', 'w')
+    f.write('percievedAccuracyAndEfficiency\n\n')
+    for key, value in someData.items():
+        if getattr(key, 'saw') == 'both':
+            continue
+        for matchingKey, matchingValue in dupli.items():
+            if getattr(matchingKey, 'saw') == 'both':
+                continue
+            if getattr(key, 'setOfQuestions') == getattr(matchingKey, 'setOfQuestions') and \
+                    getattr(key, 'question') == getattr(matchingKey, 'question') \
+                    and getattr(key, 'saw') == getattr(matchingKey, 'saw'):
+                continue
+            elif getattr(key, 'question') == getattr(matchingKey, 'question'):
+                f.write(str(key) + '\n' + str(matchingKey) + '\n')
+                f.write(str(value) + '\n' + str(matchingValue) + '\n')
+                f.write(str(mannwhitneyu(value, matchingValue)) + '\n')
+                f.write('\n\n')
+
+
+def howEssential(someData):
+    f = open('results_mann_whitney/subjective/howEssential.txt', 'w')
+    f.write('howEssential: \n\n')
+    for key, value in someData.items():
+        for matchingKey, matchingValue in someData.items():
+            if getattr(key, 'setOfQuestions') == 'post-section' and \
+                    getattr(matchingKey, 'setOfQuestions') == 'post-section' \
+                    and getattr(key, 'question') == getattr(matchingKey, 'question'):
+                f.write(str(key) + '\n' + str(matchingKey) + '\n')
+                f.write(str(value) + '\n' + str(matchingValue) + '\n')
+                f.write(str(mannwhitneyu(value, matchingValue)) + '\n')
+                f.write('\n\n')
+
+
+def howSatisfied(someData):
+    f = open('results_mann_whitney/subjective/howSatisfied.txt', 'w')
+    f.write('howSatisfied: \n\n')
+    for key, value in someData.items():
+        for matchingKey, matchingValue in someData.items():
+            if getattr(key, 'question')[:10] == 'satisfied:' and \
+                    getattr(matchingKey, 'question')[:10] == 'satisfied:':
+                f.write(str(key) + '\n' + str(matchingKey) + '\n')
+                f.write(str(value) + '\n' + str(matchingValue) + '\n')
+                f.write(str(mannwhitneyu(value, matchingValue)) + '\n')
+                f.write('\n\n')
+
+
+
+hasData, hasVideo, something = readInData()
+printRawData(something)
+percievedAccuracyAndEfficiency(something)
+howEssential(something)
+howSatisfied(something)
+
