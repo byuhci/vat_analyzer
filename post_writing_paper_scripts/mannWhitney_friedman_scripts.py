@@ -6,8 +6,10 @@ from time import strftime
 
 # stuff I found in subjectiveAnswer.py
 
-def mannWhitney(hasData, hasVideo):  # non parametric test
+def mannWhitney(hasData, hasVideo, type):  # non parametric test
     print(strftime("%Y-%m-%d %H:%M"))
+    print(type + " hasData: " + str(hasData) + '\n')
+    print(type + " hasVideo: " + str(hasVideo) + '\n')
     f = open('results_mann_whitney/wilcoxon_' + numToEnglish[whatLookingAt] + '.txt', 'w')
     f.write('numToEnglish[whatLookingAt]: ' + numToEnglish[whatLookingAt] + '\n')
     f.write('comparing hasData to hasVideo: ' + '\n')
@@ -17,15 +19,12 @@ def mannWhitney(hasData, hasVideo):  # non parametric test
     # f.write(str(scipy.stats.wilcoxon(hasData, hasVideo)))
     f.close()
 
-
-def friedmanLikertTest(analyzableData):
-    print(strftime("%Y-%m-%d %H:%M"))
-
-
 def readInData():
     # hidden	% correct	% mislabelled	% off	% wrong	% missed
-    hasVideo = []
-    hasData = []
+    has_video_pills = []
+    has_data_pills = []
+    has_video_run = []
+    has_data_run = []
 
     videoSetOfList = []
     dataSetOfList = []
@@ -35,28 +34,31 @@ def readInData():
     # hidden	correct	not type & bounds	type & not bounds	not type & not bounds	missed
     # hidden	% correct	% mislabelled	% off	% wrong	% missed	not type, (bounds || not bounds)
     first = True
-    with open('percentCompleteAllColumns.csv', 'r') as csvfile:
+    with open('stackedData.csv', 'r') as csvfile:
         allRows = csv.reader(csvfile, delimiter=',')  # , quotechar='|'
         for row in allRows:
             # print(len(row))
             for column in row:
                 if first:
                     continue
-
-                if row[0] == 'data':  # data is hidden
+                if row[0] == 'data' and row[7] == 'running':  # data is hidden
+                    has_data_run.append(row[whatLookingAt])
+                elif row[0] == 'data' and row[7] == 'pills':  # data is hidden
                     # store in one place
-                    hasVideo.append(row[whatLookingAt])
-                elif row[0] == 'video':  # video is hidden
+                    has_data_pills.append(row[whatLookingAt])
+                elif row[0] == 'video' and row[7] == 'running':  # video is hidden
+                    has_video_run.append(row[whatLookingAt])
+                elif row[0] == 'video' and row[7] == 'pills':  # video is hidden
                     # store in other
-                    hasData.append(row[whatLookingAt])
+                    has_video_pills.append(row[whatLookingAt])
             first = False
 
-    return hasData, hasVideo
+    return has_data_run, has_video_run, has_data_pills, has_video_pills
 
 # global vars = the best
 whatLookingAt = 6
 
-
+# hidden	correct	not type & bounds	type & not bounds	not type & not bounds	missed
 numToEnglish = {
     0: 'hidden',
     1: 'correct (type and bounds)',
@@ -67,11 +69,7 @@ numToEnglish = {
     6: 'mislabled AND off (ANY not type)'
 }
 
+has_data_run, has_video_run, has_data_pills, has_video_pills = readInData()
 
-
-hasData, hasVideo = readInData()
-print(len(hasVideo), len(hasData))
-print("hasVideo", hasVideo)
-print("hasData", hasData)
-mannWhitney(hasData, hasVideo)
-print('finished')
+mannWhitney(has_data_run, has_video_run, 'run')
+mannWhitney(has_data_pills, has_video_pills, 'pills')
