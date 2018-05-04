@@ -154,17 +154,20 @@ def infoFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderN
 
             for quesNum, quesAnswer in zip(questions, answers):
                 quesType, quesText = quesInfo[(surveyFamily, quesNum)]
-                # Adjust (-2 to +2) to (1 to 5)
-                # print(int(userName) < 045)
-                # if ((quesType == 'likert' or quesType == 'likertTime') and int(userName) < 045):
-                # if quesType in ['likert', 'likert ', 'likertTime', 'likertTime '] and int(userName) < 045:
-                #     # the original version was scaled from -2 to +2 points (not 1-5)
-                #
+                # # Adjust (-2 to +2) to (1 to 5)
+                # # print(int(userName) < 045)
+                # # if ((quesType == 'likert' or quesType == 'likertTime') and int(userName) < 045):
+                # # if quesType in ['likert', 'likert ', 'likertTime', 'likertTime '] and int(userName) < 045:
+                # #     # the original version was scaled from -2 to +2 points (not 1-5)
+                # #
+                # #     quesAnswer = int(quesAnswer) + 3
+                # if quesType not in ['textMulti', 'likertPercentage'] and int(userName) < 045:
+                #     print(userName + ":", quesAnswer + " -> " + str(int(quesAnswer)+3))
                 #     quesAnswer = int(quesAnswer) + 3
-                if quesType not in ['textMulti', 'likertPercentage']:
-                    quesAnswer = int(quesAnswer) + 3
-                # elif int(userName) >= 045 and quesType not in ['likert', 'likert ', 'likertTime', 'likertTime ']:
-                #     print quesType
+                # else:
+                #     print(userName + ":", quesAnswer)
+                # # elif int(userName) >= 045 and quesType not in ['likert', 'likert ', 'likertTime', 'likertTime ']:
+                # #     print quesType
                 newPoint = Point(userName, studyType, videoColorOrTask,
                                  hiddenThing, quesText, int(quesAnswer),
                                  quesNum, quesType, surveyFamily)
