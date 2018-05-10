@@ -7,7 +7,7 @@ from time import strftime
 # stuff I found in subjectiveAnswer.py
 
 def mannWhitney(hasData, hasVideo, type):  # non parametric test
-    f = open('results_mann_whitney/wilcoxon_' + numToEnglish[whatLookingAt] + type + '.txt', 'w')
+    f = open('results_mann_whitney/' + type + numToEnglish[whatLookingAt] + 'wilcoxon.txt', 'w')
     f.write(type +' numToEnglish[whatLookingAt]: ' + numToEnglish[whatLookingAt] + '\n')
     f.write('comparing hasData to hasVideo: ' + type + '\n')
     # f.write("hasData: " + str(hasData))
@@ -55,7 +55,7 @@ def readInData():
 # global vars = the best
 whatLookingAt = 6
 
-# hidden	correct	not type & bounds	type & not bounds	not type & not bounds	missed
+# hidden	correct	type & bounds	type & not bounds	not type & not bounds	missed
 numToEnglish = {
     0: 'hidden',
     1: 'correct (type and bounds)',
