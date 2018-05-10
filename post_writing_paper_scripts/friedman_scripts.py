@@ -61,7 +61,8 @@ def selfEval(someData):
 
 
 def howEssential(someData):
-    f = open('results_mann_whitney/subjective/howEssential.txt', 'w')
+    f = open('results_mann_whitney/akuin2017'
+             'subjective/howEssential.txt', 'w')
     f.write('########################################################\n')
     f.write('howEssential: \n\n')
     for key, value in someData.items():
