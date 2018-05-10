@@ -18,7 +18,7 @@ def readInData():
         for row in allRows:
             if row[4] == 'free-response':
                 continue
-            newpoint = datapoint(row[0], row[3], row[4], row[5])
+            newpoint = datapoint(row[0], row[3], row[4], 'eitherPillOrRun') # row[5] # this says run or pill
             something[newpoint].append(int(row[1]))
             # something[str(row[3:6])].add(int(row[1]))
 
@@ -61,7 +61,7 @@ def selfEval(someData):
 
 
 def howEssential(someData):
-    f = open('results_mann_whitney/akuin2017'
+    f = open('results_mann_whitney/'
              'subjective/howEssential.txt', 'w')
     f.write('########################################################\n')
     f.write('howEssential: \n\n')
