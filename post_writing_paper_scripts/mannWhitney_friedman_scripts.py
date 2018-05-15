@@ -2,6 +2,8 @@ import csv
 import scipy.stats
 from scipy.stats import mannwhitneyu
 from time import strftime
+import numpy as np
+
 
 
 # stuff I found in subjectiveAnswer.py
@@ -14,8 +16,55 @@ def mannWhitney(hasData, hasVideo, type, whatLookingAt):  # non parametric test
     # f.write("hasVideo:" + str(hasVideo))
     f.write(str(mannwhitneyu(hasData, hasVideo)) + '\n')
     # f.write(str(scipy.stats.wilcoxon(hasData, hasVideo)))
+
+    if numToEnglish[whatLookingAt] == 'hidden':
+        return
+
+
+    # if numToEnglish[whatLookingAt] == 'data' or numToEnglish[whatLookingAt] == 'video':
+    #     return
+    #
+    # if hasData[0] == 'video' or hasData[0] == 'data':
+    #     return
+    # print(str(type + ' ' + numToEnglish[whatLookingAt] + ' hasData')) # this part was used to find the means the night before the paper was due
+    # print(hasData)
+    # results = []
+    # for number in hasData:
+    #     isNumAndVal = is_number(number)
+    #     if not isNumAndVal:
+    #         break
+    #     results.append(isNumAndVal)
+    #
+    # # results = list(map(float, hasData))
+    # # print(results) # np.mean(
+    # print(np.mean(results))
+    # print('\n')
+
+
     f.close()
 
+
+    # print(hasVideo)
+    print(str(type + ' ' + numToEnglish[whatLookingAt] + ' hasVideo')) # this part was used to find the means the night before the paper was due
+    results = []
+    print(hasVideo)
+    for number in hasVideo:
+        isNumAndVal = is_number(number)
+        if not isNumAndVal:
+            break
+        results.append(isNumAndVal)
+
+    # print(results) # np.mean(
+    print(np.mean(results))
+    print('\n')
+
+def is_number(s):
+    # print("a" + s + "a")
+    try:
+        float(s)
+        return float(s)
+    except ValueError:
+        return False
 
 def readInData(whatLookingAt):
     # hidden	% correct	% mislabelled	% off	% wrong	% missed
@@ -73,7 +122,7 @@ def main():
         if numToEnglish.get(key) == 'combo':
             continue
         whatLookingAt = key
-        print(key)
+        # print(key) # lets you know what you are looking at
         has_data_run, has_video_run, has_data_pills, has_video_pills = readInData(whatLookingAt)
         mannWhitney(has_data_run, has_video_run, 'run', whatLookingAt) # just runs that by itself aka regularly
         mannWhitney(has_data_pills, has_video_pills, 'pills', whatLookingAt)
@@ -93,4 +142,5 @@ def combo():
 
 
 
-combo()
+# combo()
+main()
