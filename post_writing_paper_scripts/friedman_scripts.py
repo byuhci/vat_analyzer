@@ -2,6 +2,7 @@ from time import strftime
 import csv
 from collections import defaultdict, namedtuple
 from scipy.stats import mannwhitneyu
+import numpy as np
 
 datapoint = namedtuple('datapoint', 'saw setOfQuestions	question taskType')
 
@@ -18,7 +19,7 @@ def readInData():
         for row in allRows:
             if row[4] == 'free-response':
                 continue
-            newpoint = datapoint(row[0], row[3], row[4], 'eitherPillOrRun') # row[5] # this says run or pill
+            newpoint = datapoint(row[0], row[3], row[4], row[5]) # 'eitherPillOrRun' row[5] # this says run or pill
             something[newpoint].append(int(row[1]))
             # something[str(row[3:6])].add(int(row[1]))
 
@@ -57,6 +58,11 @@ def selfEval(someData):
                 f.write(str(value) + '\n' + str(matchingValue) + '\n')
                 f.write(str(mannwhitneyu(value, matchingValue)) + '\n')
                 f.write('\n\n')
+        # print(key) # this part was used to find the means the night before the paper was due
+        # print(np.mean(value))
+        # print('\n')
+        # # f.write(str('\n\n' + key))
+        # # f.write(str(value))
     f.write('########################################################\n')
 
 
@@ -68,8 +74,8 @@ def howEssential(someData):
     for key, value in someData.items():
         for matchingKey, matchingValue in someData.items():
             if getattr(key, 'setOfQuestions') == 'post-section' and \
-                    getattr(matchingKey, 'setOfQuestions') == 'post-section' \
-                    and getattr(key, 'question')[:12] == getattr(matchingKey, 'question')[:12]:
+                    getattr(matchingKey, 'setOfQuestions') == 'post-section' and \
+                    getattr(key, 'question')[:12] == getattr(matchingKey, 'question')[:12]:
                 f.write(str(key) + '\n' + str(matchingKey) + '\n')
                 f.write(str(value) + '\n' + str(matchingValue) + '\n')
                 f.write(str(mannwhitneyu(value, matchingValue)) + '\n')
