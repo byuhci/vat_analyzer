@@ -5,6 +5,8 @@ import numpy as np
 # from pandas import DataFrame
 import pandas as pd
 import scipy.stats
+from scipy.stats import mannwhitneyu
+
 
 recordedTallys= namedtuple('recordedTallys', ['task','user','START','ENDdata','ENDvideo','SELECT','DESELECT','DESELECTdata','CHANGEEVENTTYPE','CANCEL','DELETE','MOVE','MOVEextent','RESIZE','RESIZEextent','JUMPdata','JUMPvideo','SCRUBdata','SCRUBvideo','SCRUBvideoExtent','PLAY','PAUSE','CHANGEPLAYBACKRATE','SKIP','PEEK','STUDY_NAME','HIDDEN'])
 
@@ -147,6 +149,7 @@ def oneSampleTTest(analyzableData,vidOrDat):
     f.close()
 
 def makeDatVidNeutComparison(toBePlotted):
+    print("hi")
     print(toBePlotted)
     dataResults = {}
     videoResults  = {}
@@ -205,21 +208,63 @@ def makeDatVidNeutComparison(toBePlotted):
     # plt.legend((p1[0], p2[0]), ('Men', 'Women'))
     # plt.interactive(False)
 
+globalDataScrubbingVars = []
+globalVideoScrubbingVars = []
 
+def calculateMean(toBeAveragedDict, variables, interface, biggerDict):
+    print("variables: ")
+    print(variables)
+    print("interface: ")
+    print(interface)
+    print("toBeAveragedDict: " + str(toBeAveragedDict.__sizeof__()))
+    print(toBeAveragedDict)
+    allNumbersForTypeOfTool = []
+    for key, many_values in toBeAveragedDict.items():
+        allNumbersForTypeOfTool.append(many_values)
+        # to calculate for the individual kinds of annotation tool usage
+        # print(key)
+        # print(np.mean(many_values))
+        # if key == ('SCRUBvideo', 'none'): # ('SCRUBvideo', 'none')
+        #     print("OOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNNEEEEEEEEEEEEEEEEEEEEE")
+        #     globalVideoScrubbingVars = many_values
+        #     print(globalVideoScrubbingVars)
+        #
+        # if key == ('SCRUBdata', 'none'): #  ('SCRUBdata', 'none')
+        #     print("OOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNNEEEEEEEEEEEEEEEEEEEEE")
+        #     globalDataScrubbingVars = many_values
+        #     print(globalDataScrubbingVars)
+    print(np.mean(allNumbersForTypeOfTool))
+    print('\n')
+    #
+    print(str(interface))
+    biggerDict[str(interface)] = allNumbersForTypeOfTool
 
 def runCode(dictInfo):
     # print(dictInfo)
     toBePlotted = {}
+    biggerDict = defaultdict(list) # []
     for interface, variables in dictInfo.items():
         toBeAveraged = mapOfData(dataFromCSV, variables)
         toBePlotted.update(makeCSVwithAveragesDataVsVideo(toBeAveraged, dataThings, interface))
 
 
-        boxAndWhiskerIt(toBeAveraged, interface)  # bo&whisker
-        describeTheData(toBeAveraged, interface)  # count, mean, std, mean, 25, 50, 75, max, dtype
-        oneSampleTTest(toBeAveraged, interface)  # normalization spread
-    # print(len(toBePlotted))
-    makeDatVidNeutComparison(toBePlotted)
+
+        calculateMean(toBeAveraged, variables, interface, biggerDict)
+    print("hi")
+    print(biggerDict)
+    for oneInterfaceName, values in biggerDict.items():
+        for otherName, moreValues in biggerDict.items():
+            print("comparing: " + oneInterfaceName + " to " + otherName)
+            print(mannwhitneyu(values, moreValues))
+
+    # print(globalVideoScrubbingVars)
+    # print(mannwhitneyu([2.0, 0.0, 0.0, 0.0, 0.0, 43.0, 0.0, 0.0, 11.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 11.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 8.0, 0.0, 0.0, 2.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 2.0, 0.0, 4.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2.0, 101.0, 37.0, 27.0, 52.0, 61.0, 53.0, 36.0, 2.0, 25.0, 34.0, 44.0, 47.0, 91.0, 37.0, 42.0, 63.0, 82.0, 64.0, 43.0, 45.0, 36.0, 65.0, 33.0, 38.0, 15.0, 25.0, 35.0, 57.0, 14.0, 30.0, 7.0, 37.0, 23.0, 14.0, 9.0, 51.0, 21.0, 60.0, 24.0, 53.0, 31.0, 29.0, 46.0, 47.0, 31.0, 30.0, 17.0, 69.0, 34.0, 37.0, 74.0, 51.0, 23.0, 41.0, 48.0, 73.0, 39.0, 17.0, 50.0, 60.0, 38.0, 59.0, 35.0, 85.0, 35.0, 23.0, 39.0, 33.0, 88.0, 46.0, 24.0, 103.0, 40.0, 30.0, 48.0, 41.0, 38.0, 27.0, 0.0, 31.0, 17.0, 44.0, 30.0, 16.0, 0.0, 37.0, 39.0, 34.0, 17.0, 46.0, 44.0, 53.0, 45.0, 41.0, 48.0, 31.0, 34.0, 38.0, 28.0, 43.0, 44.0, 27.0, 0.0, 54.0, 63.0, 38.0, 24.0, 44.0]))
+
+    #     boxAndWhiskerIt(toBeAveraged, interface)  # bo&whisker
+    #     describeTheData(toBeAveraged, interface)  # count, mean, std, mean, 25, 50, 75, max, dtype
+    #     oneSampleTTest(toBeAveraged, interface)  # normalization spread
+    # # print(len(toBePlotted))
+    # makeDatVidNeutComparison(toBePlotted)
 
 dataFromCSV = readInCSV()
 

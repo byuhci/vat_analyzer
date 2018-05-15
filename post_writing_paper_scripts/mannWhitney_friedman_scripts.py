@@ -49,6 +49,8 @@ def mannWhitney(hasData, hasVideo, type, whatLookingAt):  # non parametric test
     results = []
     print(hasVideo)
     for number in hasVideo:
+        if number == "":
+            break
         isNumAndVal = is_number(number)
         if not isNumAndVal:
             break

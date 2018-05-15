@@ -1,15 +1,4 @@
-video('SKIP', 'none')
-count    109.000000
-mean       9.321101
-std       40.411513
-min        0.000000
-25%        0.000000
-50%        0.000000
-75%        0.000000
-max      303.000000
-dtype: float64
-
-('ENDvideo', 'none')
+video('ENDvideo', 'none')
 count    109.000000
 mean       1.458716
 std        2.401898
@@ -20,15 +9,15 @@ min        0.000000
 max        8.000000
 dtype: float64
 
-('CHANGEPLAYBACKRATE', 'none')
-count    109.000000
-mean       0.944954
-std        1.520446
-min        0.000000
-25%        0.000000
-50%        0.000000
-75%        2.000000
-max        9.000000
+('JUMPvideo', 'none')
+count    109.0
+mean       0.0
+std        0.0
+min        0.0
+25%        0.0
+50%        0.0
+75%        0.0
+max        0.0
 dtype: float64
 
 ('SCRUBvideo', 'none')
@@ -42,14 +31,25 @@ min        0.000000
 max       43.000000
 dtype: float64
 
-('JUMPvideo', 'none')
-count    109.0
-mean       0.0
-std        0.0
-min        0.0
-25%        0.0
-50%        0.0
-75%        0.0
-max        0.0
+('CHANGEPLAYBACKRATE', 'none')
+count    109.000000
+mean       0.944954
+std        1.520446
+min        0.000000
+25%        0.000000
+50%        0.000000
+75%        2.000000
+max        9.000000
+dtype: float64
+
+('SKIP', 'none')
+count    109.000000
+mean       9.321101
+std       40.411513
+min        0.000000
+25%        0.000000
+50%        0.000000
+75%        0.000000
+max      303.000000
 dtype: float64
 
