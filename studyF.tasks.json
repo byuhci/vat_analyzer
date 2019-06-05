@@ -1,0 +1,349 @@
+{
+  "surveys": {
+    "empty-task": [],
+    "practice-task": [
+      {
+        "type": "likert",
+        "name": "Question1",
+        "text": "After the practice rounds, you will be given a survey after each task. Most questions will be on a scale of one to five."
+      },
+      {
+        "type": "textMulti",
+        "name": "Question  2",
+        "text": "Some questions will have you write a sentence or two. Type 'ok'"
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 3",
+        "text": "Some will have you evaluate how much of a task you completed."
+      },
+      {
+        "type": "likertTime",
+        "name": "Question 4",
+        "text": "Or evaluate how important an aspect of VAT is."
+      }
+    ],
+    "has-both-task": [
+      {
+        "type": "likert",
+        "name": "Question 1",
+        "text": "When I looked at the data, I was able to recognize WHEN an event occurred."
+      },
+      {
+        "type": "likert",
+        "name": "Question 2",
+        "text": "When I looked at the data, I was able to recognize WHAT event was occurring."
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 3",
+        "text": "What percentage of the video do you think you were able to annotate?"
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 4",
+        "text": "What percentage of events you annotated fell within the window of error, do you think?"
+      }
+    ],
+    "no-data-task": [
+      {
+        "type": "likert",
+        "name": "Question 1",
+        "text": "I was satisfied having only video for this task."
+      },
+      {
+        "type": "likert",
+        "name": "Question 2",
+        "text": "With the experience that I have, I am able to sketch a rough graph (either accelerometer, gyroscope, OR both) for each of the events that were portrayed in the video that I just watched."
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 3",
+        "text": "What percentage of the video do you think you were able to annotate?"
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 4",
+        "text": "What percentage of events you annotated fell within the window of error, do you think?"
+      }
+    ],
+    "no-video-task": [
+      {
+        "type": "likert",
+        "name": "Question 1",
+        "text": "I was satisfied having only data for this task."
+      },
+      {
+        "type": "likert",
+        "name": "Question 2",
+        "text": "When I look at the graph of either accelerometer or gyroscope data or both, I can tell what event would be happening if there was video."
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 3",
+        "text": "What percentage of the video do you think you were able to annotate?"
+      },
+      {
+        "type": "likertPercentage",
+        "name": "Question 4",
+        "text": "What percentage of events you annotated fell within the window of error, do you think?"
+      }
+    ],
+    "post-section": [
+      {
+        "type": "likertTime",
+        "name": "Question 1",
+        "text": "If you were asked to provide annotations for a new project, how essential would it be to have video for the first round?"
+      },
+      {
+        "type": "likertTime",
+        "name": "Question 2",
+        "text": "After annotating for several rounds, how essential would it be to have video?"
+      },
+      {
+        "type": "likertTime",
+        "name": "Question 3",
+        "text": "If you were asked to provide annotations for a new project, how essential would it be to have data for the first round?"
+      },
+      {
+        "type": "likertTime",
+        "name": "Question 4",
+        "text": "After annotating for several rounds, how essential would it be to have data?"
+      }
+    ],
+    "post-distraction-survey": [
+      {
+        "type": "likert",
+        "name": "Question 1",
+        "text": "When I looked at the data, I was able to recognize WHEN an event occurred."
+      },
+      {
+        "type": "likert",
+        "name": "Question 2",
+        "text": "When I looked at the data, I was able to recognize WHAT event was occurring."
+      },
+      {
+        "type": "likert",
+        "name": "Question 3",
+        "text": "When I saw this data PREVIOUSLY, I was able to see the pattern of WHEN events occurred."
+      },
+      {
+        "type": "likert",
+        "name": "Question 4",
+        "text": "When I saw this data PREVIOUSLY, I was able to see the pattern of WHAT events were occurring."
+      }
+    ],
+    "final": [
+      {
+        "type": "textMulti",
+        "name": "Question 1",
+        "text": "Please rank these data sets in order of difficulty, from the easiest to annotate (accurately and efficiently) to the hardest: Gait, Drywall, Cane"
+      },
+      {
+        "type": "textMulti",
+        "name": "Question 2",
+        "text": "When and why is video essential?"
+      },
+      {
+        "type": "textMulti",
+        "name": "Question 3",
+        "text": "When and why is data essential?"
+      },
+      {
+        "type": "textMulti",
+        "name": "Question 4",
+        "text": "Is there anything else that you would like to say about video annotation?"
+      }
+    ],
+    "userinfo": [
+      {
+        "type": "text",
+        "name": "First Name"
+      },
+      {
+        "type": "text",
+        "name": "Last Name"
+      },
+      {
+        "type": "email",
+        "name": "Email"
+      }
+    ]
+  },
+  "data_intro": {
+	"cane": [
+      		"This data was created so you can practice using the interface of VAT. It's okay if you don't finish it before you run out of time, the purpose is for you to get comfortable with adjusting video settings and clicking/dragging the data.",
+      		"We need you to mark only one event: 'Ground' when the cane is on the ground.",
+      		"Try to recognize when the cane is on the ground by looking at patterns in the data. Remember that you can switch between the gyroscope data and the default 'accelerometer' data."
+    	],
+	"gait": [
+      		"For the gait data you will need to recognize and differentiate between tow different types of events: an ‘orange-in-air’ event, and an ‘orange-on-ground’ event. There is also no gyroscope data available for the gait data.",
+      		"An ‘orange-in-air’ event is when the orange triangle (shoe) is not touching the ground.",
+      		"An ‘orange-on-ground’ event is when the orange triangle (shoe) is touching the ‘ground’."
+    	],
+    "drywall": [
+	"PLEASE ONLY ANNOTATE THE EVENTS FROM THE ONE MAIN CHARACTER; THE MAN WHO TURNS THE CAMERA ON.",
+        "For the dry-wall data you will be trying to recognize and differentiate between two different types of events: a ‘Cutting’ event and a ‘Measuring’ event.",
+        "A ‘Cutting’ event occurs when the subject is cutting the drywall with the razor blade.",
+        "A 'Cutting' event begins the instant the razor blade touches the material and ends the instant the razor blade leaves the material.",
+        "A ‘Measuring’ event occurs when the subject is measuring the drywall with the tape measure.",
+        "A 'Measuring' event begins the instant the metal foot on the end of the tape measure hooks onto the material and ends the instant the foot unhooks from the material."
+
+    ]
+  },
+  "tasks": [
+    {
+      "name": "user-info",
+      "type": "survey",
+      "survey": "userinfo"
+    },
+    {
+      "name": "practice-first",
+      "type": "cane",
+      "data": {
+        "workspace": "cane.cane-vid3-dat3",
+        "timeLimit": {
+          "minutes": 3
+        }
+      },
+      "survey": "practice-task",
+      "intro": "This practice task is to give you time to get familiar with labeling data. Try experimenting with different methods for navigating the data and video as you annotate."
+    },
+    {
+      "name": "practice-second",
+      "type": "cane",
+      "data": {
+        "workspace": "cane.cane-vid1-dat2",
+        "timeLimit": {
+          "minutes": 2
+        },
+        "hide": "data"
+      },
+      "survey": "empty-task",
+      "intro": "Not every portion of this user study will have DATA. See if you can correctly annotate this data WITHOUT THE DATA. Try experimenting with the interface as you annotate."
+    },
+    {
+      "name": "practice-third",
+      "type": "cane",
+      "data": {
+        "workspace": "cane.cane-yellow",
+        "timeLimit": {
+          "minutes": 2
+        },
+        "hide": "video"
+      },
+      "survey": "empty-task",
+      "intro": "Not every portion of this user study will have VIDEO. See if you can correctly annotate this video WITHOUT THE VIDEO. Try experimenting with the interface as you annotate."
+    },
+    {
+      "name": "practice-survey",
+      "type": "survey",
+      "survey": "empty-task"
+    },
+    {
+      "name": "drywall-blue",
+      "data": {
+        "workspace": "drywall.drywall-blue",
+        "timeLimit": {
+          "minutes": 3
+        }
+      },
+      "type": "drywall",
+      "survey": "has-both-task",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "drywall-red",
+      "type": "drywall",
+      "data": {
+        "workspace": "drywall.drywall-red",
+        "timeLimit": {
+          "minutes": 3
+        },
+        "hide": "data"
+      },
+      "survey": "no-data-task",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "drywall-orange",
+      "type": "drywall",
+      "data": {
+        "workspace": "drywall.drywall-orange",
+        "timeLimit": {
+          "minutes": 3
+        },
+        "hide": "video"
+      },
+      "survey": "no-video-task",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "drywall-survey",
+      "type": "survey",
+      "survey": "post-section"
+    },
+    {
+      "name": "gait-blue",
+      "type": "gait",
+      "data": {
+        "workspace": "gait.gait-blue",
+        "timeLimit": {
+          "minutes": 3
+        }
+      },
+      "survey": "has-both-task",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "gait-red",
+      "type": "gait",
+      "data": {
+        "workspace": "gait.gait-red",
+        "hide": "data",
+        "timeLimit": {
+          "minutes": 3
+        }
+      },
+      "survey": "no-data-task",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "gait-yellow",
+      "type": "gait",
+      "data": {
+        "workspace": "gait.gait-yellow",
+        "hide": "video",
+        "timeLimit": {
+          "minutes": 3
+        }
+      },
+      "survey": "no-video-task",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "gait-survey",
+      "type": "survey",
+      "survey": "post-section"
+    },
+    {
+      "name": "drywall-pink",
+      "type": "drywall",
+      "data": {
+        "workspace": "drywall.drywall-pink",
+        "timeLimit": {
+          "minutes": 3
+        },
+        "hide": "video"
+      },
+      "survey": "post-distraction-survey",
+      "intro": "Please be as efficient and accurate as you can in the time allotted."
+    },
+    {
+      "name": "final-survey",
+      "type": "survey",
+      "survey": "final"
+    }
+  ]
+}
+
