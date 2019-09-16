@@ -13,12 +13,12 @@ from textwrap import wrap
 
 # /home/naomi/Documents/
 # /users/home/naomi/Documents/
-survey_label_info_files = './VAT_Data_09132019'
+survey_label_info_files = '/mnt/c/Users/naomi/Documents/vat_analyzer/VAT_Data_09132019'
 # '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
 
 
-survey_directions = './' # '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
-resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
+survey_directions = '/mnt/c/Users/naomi/Documents/vat_analyzer/' # '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
+resultOutput = '/mnt/c/Users/naomi/Documents/vat_analyzer/' # '/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
                             'quesText, quesAnswer, quesNum, responseType, surveyFamily')
@@ -98,7 +98,7 @@ def runOneVariationOfSurveys(studyInfo, quesInfo, studyType):
     foldersFromStudy = os.listdir(os.getcwd())
 
     for folder in foldersFromStudy:
-        os.chdir(os.path.join(survey_label_info_files, studyType, folder))
+        os.chdir(os.path.join(survey_label_info_files, studyType, folder + '/'))
         # print(folder)
         noDuplicatePoints = noDuplicatePoints | runWholeFolder(studyInfo, quesInfo, studyType)
     # print(points)
