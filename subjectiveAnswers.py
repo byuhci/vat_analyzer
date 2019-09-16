@@ -13,8 +13,11 @@ from textwrap import wrap
 
 # /home/naomi/Documents/
 # /users/home/naomi/Documents/
-survey_label_info_files = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
-survey_directions = '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
+survey_label_info_files = './VAT_Data_09132019'
+# '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'  # vat_analyzer/surveyInstructionsAndResults
+
+
+survey_directions = './' # '/home/naomi/Documents/AML/data/naomiStudiesAll/user-studies'
 resultOutput = '/home/naomi/Documents/AML/vat_analyzer/'
 
 Point = namedtuple('Point', 'userName, studyName, videoName, hiddenValue, '
@@ -215,7 +218,7 @@ def lookForMissingAnnotationsFromUsers(points):
 
 def rawDataCSV(points):
     os.chdir(resultOutput)
-    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/allRawResultsWithFeb.csv', 'w') as csvfile:
+    with open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/things/allRawResultsWithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for tup in sorted(points):
             csvwriter.writerow(tup)
@@ -255,7 +258,7 @@ def calculateAverageAnswer(averages):
 def makeAveragedCSV(averages):
     # print(averages)
     print(tempVar)
-    with open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/' + tempVar + 'WithFeb.csv', 'w') as csvfile:
+    with open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/things/' + tempVar + 'WithFeb.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for key, value in averages.items():
             # print(key, value)
@@ -267,7 +270,7 @@ def makeAveragedCSV(averages):
 
 
 def makeOutputOfTextQuestion(points):
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/things/textQuestionsWithFeb.txt', 'w')
+    f = open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/things/textQuestionsWithFeb.txt', 'w')
     pairs = []
     for point in points:
         responseType = getattr(point, 'responseType')
@@ -297,7 +300,7 @@ def makeOutputOfTextQuestion(points):
 
 
 def compareLearedVsUnlearned(points):
-    with open('../subjectiveAnswersHiddenValRunOrPillActualQuestion/things/learnedVsUnlearnedWithFeb.csv',
+    with open('../SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/things/learnedVsUnlearnedWithFeb.csv',
               'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         # points.type() # list
@@ -389,7 +392,7 @@ def makeListsByKeys(points, maxAnswers):
 
 
 def boxAndWhiskerIt(toBeAveraged):
-    # subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker # name of folder I should be in
+    # SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker # name of folder I should be in
     # print(repr(toBeAveraged))
 
     for graph, points in toBeAveraged.items():
@@ -405,12 +408,12 @@ def boxAndWhiskerIt(toBeAveraged):
         titleVar = graph[2] + '\n' + graph[1] + '    ' + graph[0]  + '    length of points list: ' + str(len(points))
         plt.title(titleVar)  # what was hidden, run- or pill, actual question
 
-        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.pdf')
+        plt.savefig('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/boxAndWhisker/' + titleVar + '.pdf')
 
 
 def describeTheData(toBeAveraged):
     # print(s.describe())
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/DataDescribeOutputWithFeb.txt', 'w')
+    f = open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/DataDescribeOutputWithFeb.txt', 'w')
     for graph, points in toBeAveraged.items():
         s = pd.Series(points)
         f.write(str(graph))
@@ -423,7 +426,7 @@ def describeTheData(toBeAveraged):
 
 def isItNormal(toBeAveraged):
     # print("hi")
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/normalizationWithFeb.txt', 'w')
+    f = open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/normalizationWithFeb.txt', 'w')
     for graph, points in toBeAveraged.items():
         f.write(str(graph))
         f.write('\n')
@@ -440,7 +443,7 @@ def isItNormal(toBeAveraged):
 
 
 def wilcoxonTest(analyzableData):  # non parametric test
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/wilcoxonWithFeb.txt', 'w')
+    f = open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/wilcoxonWithFeb.txt', 'w')
     f.write(
         '(this error kept printing to the console) UserWarning: Warning: sample size too small for normal approximation. ')
     f.write('\n')
@@ -459,7 +462,7 @@ def wilcoxonTest(analyzableData):  # non parametric test
 
 
 def oneSampleTTest(analyzableData):
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/OneSampleTTestWithFeb.txt', 'w')
+    f = open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/OneSampleTTestWithFeb.txt', 'w')
     f.write('RuntimeWarning: Degrees of freedom <= 0 for slice \n')
     f.write('RuntimeWarning: invalid value encountered in double_scalars ret = ret.dtype.type(ret / rcount) \n\n')
     for graph, points in analyzableData.items():
@@ -476,7 +479,7 @@ def oneSampleTTest(analyzableData):
 
 
 def mannWhitneyUTest(analyzableData):
-    f = open('subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTestWithFeb.txt', 'w')
+    f = open('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/mannWhitneyUTestWithFeb.txt', 'w')
     # possible
 
     # f.write(str(scipy.stats.mannwhitneyu(points, secondArray, 0, 'less'))) # 'less', 'two-sided' or 'greater'
@@ -516,13 +519,13 @@ def makeBarGraph(someInfo):
         plt.xticks(y_pos, xvalueQuesText)  # , rotation=40, ha='right'
         plt.ylim(0, graph[2])
 
-        plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphsWithFeb/' + str(graph) + '.pdf')
+        plt.savefig('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphsWithFeb/' + str(graph) + '.pdf')
         plt.gcf().clear()
 
-# plt.savefig('subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.pdf')
+# plt.savefig('SEPT2019_subjectiveAnswersHiddenValRunOrPillActualQuestion/barGraphs/' + str(graph) + str(graph[2]) +'.pdf')
 
 
-options = ['studyA', 'studyB', 'studyC', 'studyD']
+options = ['studyE', 'studyF', 'studyG', 'studyH']
 # options = ['studyA', 'studyB']
 # options = ['studyC', 'studyD']
 tempVar = 'ABCD'  # C_D
