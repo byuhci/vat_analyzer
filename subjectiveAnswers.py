@@ -156,7 +156,9 @@ def infoFiles(studyInfo, quesInfo, information, userName, studyType, taskFolderN
                 quesType, quesText = quesInfo[(surveyFamily, quesNum)]
                 # Adjust (-2 to +2) to (1 to 5)
                 # print(int(userName) < 045)
-                if ((quesType == 'likert' or quesType == 'likertTime') and int(userName) < 045):
+
+                # commented this out because the userid format changed....
+                if ((quesType == 'likert' or quesType == 'likertTime')): #  and int(userName) < 045):
                     # the original version was scaled from -2 to +2 points (not 1-5)
 
                     quesAnswer = int(quesAnswer) + 3
