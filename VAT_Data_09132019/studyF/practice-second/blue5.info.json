@@ -1,0 +1,150 @@
+{
+    "user_id": "blue5",
+    "session_id": "5cf0391381249f67dd06a9d8",
+    "study": "studyF",
+    "workspace": "cane.cane-vid1-dat2",
+    "details": {
+        "workspace": "cane.cane-vid1-dat2",
+        "labels": [
+            {
+                "time": 28.437461,
+                "endTime": 44.61917,
+                "type": "ground",
+                "id": 1
+            },
+            {
+                "time": 44.61917,
+                "endTime": 47.188383,
+                "type": "ground",
+                "id": 2
+            }
+        ],
+        "_starts": [
+            "2019-05-30T20:16:53.000Z",
+            "2019-05-30T20:22:57.000Z"
+        ],
+        "_ends": [
+            "2019-05-30T20:20:04.290Z",
+            "2019-05-30T20:20:25.324Z",
+            "2019-05-30T20:23:55.010Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyF/practice-second/blue5.labels.json",
+    "videoFlash": 1.922515,
+    "surveys": {
+        "user-info": {
+            "firstname": "Minjie",
+            "lastname": "Yuan",
+            "email": "angelyuan98@gmail.com"
+        },
+        "practice-first": {
+            "question1": "3",
+            "question2": "ok",
+            "question3": "50",
+            "question4": "3"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-05-30T20:23:30.498Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "14:23:30",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 28.437461
+                }
+            },
+            {
+                "time": "2019-05-30T20:23:46.672Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "14:23:46",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 44.61917
+                }
+            },
+            {
+                "time": "2019-05-30T20:23:49.249Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "14:23:49",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 44.61917,
+                        "endTime": 47.188383,
+                        "type": "ground",
+                        "id": 2
+                    },
+                    "key": "enter"
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": {
+                    "start": "2019-05-30T20:22:57.112Z",
+                    "end": "2019-05-30T20:23:18.102Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "14:22:57",
+                "_end": "14:23:18",
+                "data": {
+                    "time": 5.930568
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-05-30T20:22:57.112Z",
+                    "end": "2019-05-30T20:23:22.850Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "14:22:57",
+                "_end": "14:23:22",
+                "data": {
+                    "time": 17.126469
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-05-30T20:22:57.112Z",
+                    "end": "2019-05-30T20:23:24.228Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "14:22:57",
+                "_end": "14:23:24",
+                "data": {
+                    "time": 21.244322
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-05-30T20:22:57.112Z",
+                    "end": "2019-05-30T20:23:26.015Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "14:22:57",
+                "_end": "14:23:26",
+                "data": {
+                    "time": 23.95675
+                }
+            },
+            {
+                "time": "2019-05-30T20:23:51.176Z",
+                "type": "PAUSE",
+                "source": "video:button",
+                "_t": "14:23:51",
+                "_end": "-"
+            }
+        ]
+    }
+}

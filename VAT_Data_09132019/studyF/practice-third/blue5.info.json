@@ -1,0 +1,141 @@
+{
+    "user_id": "blue5",
+    "session_id": "5cf0391381249f67dd06a9d8",
+    "study": "studyF",
+    "workspace": "cane.cane-yellow",
+    "details": {
+        "workspace": "cane.cane-yellow",
+        "labels": [
+            {
+                "time": 28.122721,
+                "endTime": 50.909451,
+                "type": "ground",
+                "id": 1
+            },
+            {
+                "time": 28.122721,
+                "endTime": 28.122721,
+                "type": "ground",
+                "id": 2
+            }
+        ],
+        "_starts": [
+            "2019-05-30T20:24:01.000Z"
+        ],
+        "_ends": [
+            "2019-05-30T20:20:23.362Z",
+            "2019-05-30T20:20:29.911Z",
+            "2019-05-30T20:20:44.139Z",
+            "2019-05-30T20:25:17.156Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyF/practice-third/blue5.labels.json",
+    "videoFlash": 2.133995,
+    "surveys": {
+        "user-info": {
+            "firstname": "Minjie",
+            "lastname": "Yuan",
+            "email": "angelyuan98@gmail.com"
+        },
+        "practice-first": {
+            "question1": "3",
+            "question2": "ok",
+            "question3": "50",
+            "question4": "3"
+        },
+        "practice-second": {}
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-05-30T20:24:43.922Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "14:24:43",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 28.122721
+                }
+            },
+            {
+                "time": "2019-05-30T20:25:06.706Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "14:25:06",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 50.909451
+                }
+            },
+            {
+                "time": "2019-05-30T20:25:14.228Z",
+                "type": "END",
+                "source": "hotkey:h_pos",
+                "_t": "14:25:14",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 28.122721,
+                        "endTime": 28.122721,
+                        "type": "ground",
+                        "id": 2
+                    },
+                    "key": "enter"
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": {
+                    "start": "2019-05-30T20:24:30.865Z",
+                    "end": "2019-05-30T20:24:30.892Z"
+                },
+                "type": "SCRUB",
+                "source": "video:drag",
+                "_t": "14:24:30",
+                "_end": "14:24:30",
+                "data": {
+                    "to": 20.482473,
+                    "from": 6.102278
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-05-30T20:24:36.178Z",
+                    "end": "2019-05-30T20:24:36.210Z"
+                },
+                "type": "SCRUB",
+                "source": "video:drag",
+                "_t": "14:24:36",
+                "_end": "14:24:36",
+                "data": {
+                    "to": 7.736414,
+                    "from": 25.49279
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-05-30T20:24:38.674Z",
+                    "end": "2019-05-30T20:24:38.711Z"
+                },
+                "type": "SCRUB",
+                "source": "video:drag",
+                "_t": "14:24:38",
+                "_end": "14:24:38",
+                "data": {
+                    "to": 23.399481,
+                    "from": 10.025489
+                }
+            },
+            {
+                "time": "2019-05-30T20:25:10.389Z",
+                "type": "PAUSE",
+                "source": "video:button",
+                "_t": "14:25:10",
+                "_end": "-"
+            }
+        ]
+    }
+}

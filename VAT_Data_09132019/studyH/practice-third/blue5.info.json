@@ -1,0 +1,83 @@
+{
+    "user_id": "blue5",
+    "session_id": "5cf0391381249f67dd06a9d8",
+    "study": "studyH",
+    "workspace": "cane.cane-yellow",
+    "details": {
+        "workspace": "cane.cane-yellow",
+        "labels": [],
+        "_starts": [],
+        "_ends": [
+            "2019-05-30T20:20:23.362Z",
+            "2019-05-30T20:20:29.911Z",
+            "2019-05-30T20:20:44.139Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyH/practice-third/blue5.labels.json",
+    "videoFlash": 2.133995,
+    "surveys": {
+        "user-info": {
+            "firstname": "Minjie",
+            "lastname": "Yuan",
+            "email": "angelyuan98@gmail.com"
+        },
+        "practice-first": {
+            "question1": "4",
+            "question2": "ok",
+            "question3": "50",
+            "question4": "3"
+        },
+        "practice-second": {}
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-05-30T20:20:17.789Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "14:20:17",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 103.213897
+                }
+            },
+            {
+                "time": "2019-05-30T20:20:18.878Z",
+                "type": "END",
+                "source": "side-bar:button:ctb",
+                "_t": "14:20:18",
+                "_end": "-",
+                "data": {}
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": {
+                    "start": "2019-05-30T20:16:53.138Z",
+                    "end": "2019-05-30T20:20:13.269Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "14:16:53",
+                "_end": "14:20:13",
+                "data": {
+                    "time": 103.213897
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-05-30T20:16:53.138Z",
+                    "end": "2019-05-30T20:20:19.853Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "14:16:53",
+                "_end": "14:20:19",
+                "data": {
+                    "time": 103.213897
+                }
+            }
+        ]
+    }
+}

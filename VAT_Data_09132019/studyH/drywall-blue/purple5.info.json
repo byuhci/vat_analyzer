@@ -1,0 +1,932 @@
+{
+    "user_id": "purple5",
+    "session_id": "5d2f55ff81249f67dd06ab6d",
+    "study": "studyH",
+    "workspace": "drywall.drywall-blue",
+    "details": {
+        "workspace": "drywall.drywall-blue",
+        "labels": [
+            {
+                "time": 112.491897,
+                "endTime": 129.942324,
+                "type": "measuring",
+                "id": 1
+            },
+            {
+                "time": 140.798011,
+                "endTime": 142.03103946552844,
+                "type": "measuring",
+                "id": 2
+            },
+            {
+                "time": 144.65548,
+                "endTime": 156.403042,
+                "type": "measuring",
+                "id": 3
+            },
+            {
+                "time": 162.646926,
+                "endTime": 168.949418,
+                "type": "measuring",
+                "id": 4
+            },
+            {
+                "time": 173.942289,
+                "endTime": 178.598887,
+                "type": "measuring",
+                "id": 5
+            },
+            {
+                "time": 282.628372,
+                "endTime": 294.889113,
+                "type": "measuring",
+                "id": 6
+            }
+        ],
+        "_starts": [
+            "2019-07-17T17:29:21.000Z"
+        ],
+        "_ends": [
+            "2019-07-17T17:33:04.373Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyH/drywall-blue/purple5.labels.json",
+    "videoFlash": 14.917947,
+    "surveys": {
+        "user-info": {
+            "firstname": "Parker",
+            "lastname": "Seegmiller",
+            "email": "m.parker.seegmiller@gmail.com"
+        },
+        "practice-first": {
+            "question1": "5",
+            "question2": "ok",
+            "question3": "100",
+            "question4": "5"
+        },
+        "practice-second": {},
+        "practice-third": {},
+        "practice-survey": {},
+        "gait-blue": {
+            "question1": "4",
+            "question2": "2",
+            "question3": "50",
+            "question4": "10"
+        },
+        "gait-red": {
+            "question1": "5",
+            "question2": "2",
+            "question3": "90",
+            "question4": "10"
+        },
+        "gait-yellow": {
+            "question1": "2",
+            "question2": "2",
+            "question3": "60",
+            "question4": "50"
+        },
+        "gait-survey": {
+            "question1": "5",
+            "question2": "4",
+            "question3": "2",
+            "question4": "3"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-07-17T17:31:23.110Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:31:23",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 112.491897
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:37.836Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:31:37",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 112.491897,
+                        "endTime": 129.942324,
+                        "type": "measuring",
+                        "id": 1
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:44.298Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:31:44",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 140.798011
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:48.354Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:31:48",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 140.798011,
+                        "endTime": 142.03103946552844,
+                        "type": "measuring",
+                        "id": 2
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:59.522Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "11:31:59",
+                "_end": "-",
+                "data": {
+                    "time": 140.798011,
+                    "endTime": 142.03103946552844,
+                    "type": "measuring",
+                    "id": 2
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-07-17T17:32:00.964Z",
+                    "end": "2019-07-17T17:32:03.570Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "11:32:00",
+                "_end": "11:32:03",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        140.798011,
+                        143.993387
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-07-17T17:32:00.964Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:08.562Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:32:08",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 144.65548
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:15.219Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:32:15",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 144.65548,
+                        "endTime": 156.403042,
+                        "type": "measuring",
+                        "id": 3
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:18.339Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:32:18",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 162.646926
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:21.492Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:32:21",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 162.646926,
+                        "endTime": 168.949418,
+                        "type": "measuring",
+                        "id": 4
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:23.986Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:32:23",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 173.942289
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:26.322Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:32:26",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 173.942289,
+                        "endTime": 178.598887,
+                        "type": "measuring",
+                        "id": 5
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:54.539Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:32:54",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 282.628372
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:56.074Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:32:56",
+                "_end": "-",
+                "data": {
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:56.947Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "11:32:56",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 282.628372
+                }
+            },
+            {
+                "time": "2019-07-17T17:33:03.467Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "11:33:03",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 282.628372,
+                        "endTime": 294.889113,
+                        "type": "measuring",
+                        "id": 6
+                    },
+                    "key": "enter"
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": "2019-07-17T17:30:10.043Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "11:30:10",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:30:23.258Z",
+                "type": "CHANGE-PLAYBACK-RATE",
+                "source": "video:menu",
+                "_t": "11:30:23",
+                "_end": "-",
+                "data": {
+                    "oldRate": 1,
+                    "newRate": 1.5
+                }
+            },
+            {
+                "time": "2019-07-17T17:30:38.043Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "11:30:38",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:00.538Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:00",
+                "_end": "-",
+                "data": {
+                    "t": 50.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:01.266Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:01",
+                "_end": "-",
+                "data": {
+                    "t": 60.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:01.658Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:01",
+                "_end": "-",
+                "data": {
+                    "t": 70.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:03.017Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:03",
+                "_end": "-",
+                "data": {
+                    "t": 80.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:03.826Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:03",
+                "_end": "-",
+                "data": {
+                    "t": 90.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:04.714Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:04",
+                "_end": "-",
+                "data": {
+                    "t": 100.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:06.145Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:06",
+                "_end": "-",
+                "data": {
+                    "t": 110.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:06.929Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:06",
+                "_end": "-",
+                "data": {
+                    "t": 120.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:07.666Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:07",
+                "_end": "-",
+                "data": {
+                    "t": 130.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:09.577Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:09",
+                "_end": "-",
+                "data": {
+                    "t": 140.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:10.298Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:10",
+                "_end": "-",
+                "data": {
+                    "t": 150.178783,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:13.970Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:13",
+                "_end": "-",
+                "data": {
+                    "t": 160.178783,
+                    "Δt": -10,
+                    "key": "j"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:14.361Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:14",
+                "_end": "-",
+                "data": {
+                    "t": 150.178783,
+                    "Δt": -10,
+                    "key": "j"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:14.809Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:14",
+                "_end": "-",
+                "data": {
+                    "t": 140.178783,
+                    "Δt": -10,
+                    "key": "j"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:15.250Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:15",
+                "_end": "-",
+                "data": {
+                    "t": 130.178783,
+                    "Δt": -10,
+                    "key": "j"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:15.745Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:15",
+                "_end": "-",
+                "data": {
+                    "t": 120.178783,
+                    "Δt": -10,
+                    "key": "j"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:17.518Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "11:31:17",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:19.098Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "11:31:19",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:26.217Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "11:31:26",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:41.866Z",
+                "type": "CHANGE-PLAYBACK-RATE",
+                "source": "hotkey:up",
+                "_t": "11:31:41",
+                "_end": "-",
+                "data": {
+                    "oldRate": 1.5,
+                    "newRate": 2
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:45.898Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "11:31:45",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:49.194Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:49",
+                "_end": "-",
+                "data": {
+                    "t": 143.993387,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:52.290Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:52",
+                "_end": "-",
+                "data": {
+                    "t": 142.993387,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:53.314Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:53",
+                "_end": "-",
+                "data": {
+                    "t": 141.993387,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:54.330Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:54",
+                "_end": "-",
+                "data": {
+                    "t": 140.993387,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:54.994Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:54",
+                "_end": "-",
+                "data": {
+                    "t": 139.993387,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:55.522Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:55",
+                "_end": "-",
+                "data": {
+                    "t": 138.993387,
+                    "Δt": 1,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:56.354Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:56",
+                "_end": "-",
+                "data": {
+                    "t": 139.993387,
+                    "Δt": 1,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:57.450Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:57",
+                "_end": "-",
+                "data": {
+                    "t": 140.993387,
+                    "Δt": 1,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-07-17T17:31:57.914Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:31:57",
+                "_end": "-",
+                "data": {
+                    "t": 141.993387,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-07-17T17:29:21.721Z",
+                    "end": "2019-07-17T17:31:59.521Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "11:29:21",
+                "_end": "11:31:59",
+                "data": {
+                    "time": 140.993387
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-07-17T17:29:21.721Z",
+                    "end": "2019-07-17T17:32:03.575Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "11:29:21",
+                "_end": "11:32:03",
+                "data": {
+                    "time": 140.993387
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:05.404Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "11:32:05",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:07.282Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "11:32:07",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:09.354Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "11:32:09",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:30.659Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:30",
+                "_end": "-",
+                "data": {
+                    "t": 187.291019,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:39.147Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:39",
+                "_end": "-",
+                "data": {
+                    "t": 213.872018,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:39.699Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:39",
+                "_end": "-",
+                "data": {
+                    "t": 224.655276,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:40.844Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:40",
+                "_end": "-",
+                "data": {
+                    "t": 236.051264,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:41.563Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:41",
+                "_end": "-",
+                "data": {
+                    "t": 246.719921,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:42.419Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:42",
+                "_end": "-",
+                "data": {
+                    "t": 257.425038,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:43.467Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:43",
+                "_end": "-",
+                "data": {
+                    "t": 268.691341,
+                    "Δt": 10,
+                    "key": "l"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:47.122Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "11:32:47",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:49.611Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:49",
+                "_end": "-",
+                "data": {
+                    "t": 284.628372,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:50.578Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:50",
+                "_end": "-",
+                "data": {
+                    "t": 283.628372,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:51.067Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:51",
+                "_end": "-",
+                "data": {
+                    "t": 282.628372,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:52.058Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:52",
+                "_end": "-",
+                "data": {
+                    "t": 281.628372,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:53.234Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:53",
+                "_end": "-",
+                "data": {
+                    "t": 280.628372,
+                    "Δt": 1,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:53.498Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "11:32:53",
+                "_end": "-",
+                "data": {
+                    "t": 281.628372,
+                    "Δt": 1,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-07-17T17:32:57.275Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "11:32:57",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            }
+        ]
+    }
+}

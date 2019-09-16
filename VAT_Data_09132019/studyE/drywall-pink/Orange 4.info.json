@@ -1,0 +1,2068 @@
+{
+    "user_id": "Orange 4",
+    "session_id": "5d154da781249f67dd06aaad",
+    "study": "studyE",
+    "workspace": "drywall.drywall-pink",
+    "details": {
+        "workspace": "drywall.drywall-pink",
+        "labels": [
+            {
+                "time": 194.172246,
+                "endTime": 230.340969,
+                "type": "measuring",
+                "id": 1
+            },
+            {
+                "time": 230.340969,
+                "endTime": 231.369226,
+                "type": "measuring",
+                "id": 2
+            },
+            {
+                "time": 405.626619,
+                "endTime": 405.736439,
+                "type": "measuring",
+                "id": 4
+            },
+            {
+                "time": 394.575827,
+                "endTime": 405.387967,
+                "type": "cutting",
+                "id": 5
+            },
+            {
+                "time": 405.387967,
+                "endTime": 405.626619,
+                "type": "cutting",
+                "id": 6
+            },
+            {
+                "time": 493.047361,
+                "endTime": 498.602003,
+                "type": "measuring",
+                "id": 7
+            },
+            {
+                "time": 507.565184,
+                "endTime": 516.708633,
+                "type": "measuring",
+                "id": 8
+            },
+            {
+                "time": 532.659867,
+                "endTime": 539.327353,
+                "type": "cutting",
+                "id": 9
+            },
+            {
+                "time": 555.260963,
+                "endTime": 566.655107,
+                "type": "cutting",
+                "id": 10
+            },
+            {
+                "time": 637.948033,
+                "endTime": 664.067101,
+                "type": "measuring",
+                "id": 11
+            }
+        ],
+        "_starts": [
+            "2019-06-28T00:12:46.000Z"
+        ],
+        "_ends": [
+            "2019-06-28T00:16:30.966Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyE/drywall-pink/Orange 4.labels.json",
+    "videoFlash": 0.0001,
+    "surveys": {
+        "user-info": {
+            "firstname": "Matthew",
+            "lastname": "Porritt",
+            "email": "mporr99@gmail.com"
+        },
+        "practice-first": {
+            "question1": "4",
+            "question2": "ok",
+            "question3": "100",
+            "question4": "4"
+        },
+        "drywall-survey": {
+            "question1": "5",
+            "question2": "5",
+            "question3": "1",
+            "question4": "2"
+        },
+        "gait-blue": {
+            "question1": "5",
+            "question2": "5",
+            "question3": "70",
+            "question4": "80"
+        },
+        "gait-red": {
+            "question1": "4",
+            "question2": "4",
+            "question3": "90",
+            "question4": "90"
+        },
+        "gait-yellow": {
+            "question1": "5",
+            "question2": "5",
+            "question3": "100",
+            "question4": "100"
+        },
+        "gait-survey": {
+            "question1": "4",
+            "question2": "2",
+            "question3": "4",
+            "question4": "5"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-06-28T00:13:59.577Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:13:59",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 194.172246
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:05.204Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:14:05",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 230.340969
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:05.718Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:14:05",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 230.340969,
+                        "endTime": 231.369226,
+                        "type": "measuring",
+                        "id": 2
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:31.030Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:14:31",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 395.123242
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:33.670Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:14:33",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 405.626619
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:34.113Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:14:34",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 405.626619,
+                        "endTime": 405.736439,
+                        "type": "measuring",
+                        "id": 4
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:38.485Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "18:14:38",
+                "_end": "-",
+                "data": {
+                    "time": 395.123242,
+                    "endTime": 405.626619,
+                    "type": "measuring",
+                    "id": 3
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:40.130Z",
+                "type": "DELETE",
+                "source": "side-bar:button",
+                "_t": "18:14:40",
+                "_end": "-",
+                "data": {
+                    "id": 3,
+                    "idx": 2
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:42.660Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:14:42",
+                "_end": "-",
+                "data": {
+                    "type": "cutting",
+                    "time": 394.575827
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:44.796Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:14:44",
+                "_end": "-",
+                "data": {
+                    "type": "cutting",
+                    "time": 405.387967
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:46.982Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:14:46",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 405.387967,
+                        "endTime": 405.626619,
+                        "type": "cutting",
+                        "id": 6
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:06.229Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:15:06",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 493.047361
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:17.335Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:15:17",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 493.047361,
+                        "endTime": 498.602003,
+                        "type": "measuring",
+                        "id": 7
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:25.909Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:15:25",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 507.565184
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:44.199Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:15:44",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 507.565184,
+                        "endTime": 516.708633,
+                        "type": "measuring",
+                        "id": 8
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:56.877Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:15:56",
+                "_end": "-",
+                "data": {
+                    "type": "cutting",
+                    "time": 532.659867
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:00.774Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:16:00",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 532.659867,
+                        "endTime": 539.327353,
+                        "type": "cutting",
+                        "id": 9
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:03.158Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:16:03",
+                "_end": "-",
+                "data": {
+                    "type": "cutting",
+                    "time": 555.260963
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:06.597Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:16:06",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 555.260963,
+                        "endTime": 566.655107,
+                        "type": "cutting",
+                        "id": 10
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:24.969Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "18:16:24",
+                "_end": "-",
+                "data": {
+                    "type": "measuring",
+                    "time": 637.948033
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:28.713Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "18:16:28",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 637.948033,
+                        "endTime": 664.067101,
+                        "type": "measuring",
+                        "id": 11
+                    },
+                    "key": "enter"
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": "2019-06-28T00:13:35.789Z",
+                "type": "CHANGE-PLAYBACK-RATE",
+                "source": "video:button",
+                "_t": "18:13:35",
+                "_end": "-",
+                "data": {
+                    "oldRate": 1,
+                    "newRate": 1.5
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:36.188Z",
+                "type": "CHANGE-PLAYBACK-RATE",
+                "source": "video:button",
+                "_t": "18:13:36",
+                "_end": "-",
+                "data": {
+                    "oldRate": 1.5,
+                    "newRate": 2
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:38.565Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:38",
+                "_end": "-",
+                "data": {
+                    "t": 8.997561,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:39.093Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:39",
+                "_end": "-",
+                "data": {
+                    "t": 14.780024,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:39.523Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:39",
+                "_end": "-",
+                "data": {
+                    "t": 20.348841,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:39.877Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:39",
+                "_end": "-",
+                "data": {
+                    "t": 25.843812,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:40.133Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:40",
+                "_end": "-",
+                "data": {
+                    "t": 30.952911,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:40.373Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:40",
+                "_end": "-",
+                "data": {
+                    "t": 36.030956,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:40.581Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:40",
+                "_end": "-",
+                "data": {
+                    "t": 41.030956,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:40.901Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:40",
+                "_end": "-",
+                "data": {
+                    "t": 46.030956,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:41.396Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:41",
+                "_end": "-",
+                "data": {
+                    "t": 51.071072,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:42.035Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:42",
+                "_end": "-",
+                "data": {
+                    "t": 56.105662,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:42.805Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:42",
+                "_end": "-",
+                "data": {
+                    "t": 61.879537,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:43.299Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:43",
+                "_end": "-",
+                "data": {
+                    "t": 67.430137,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:43.813Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:43",
+                "_end": "-",
+                "data": {
+                    "t": 73.134335,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:44.342Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:44",
+                "_end": "-",
+                "data": {
+                    "t": 78.767098,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:44.853Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:44",
+                "_end": "-",
+                "data": {
+                    "t": 84.400357,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:45.349Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:45",
+                "_end": "-",
+                "data": {
+                    "t": 90.068743,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:45.830Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:45",
+                "_end": "-",
+                "data": {
+                    "t": 95.724525,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:46.275Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:46",
+                "_end": "-",
+                "data": {
+                    "t": 101.325456,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:46.851Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:46",
+                "_end": "-",
+                "data": {
+                    "t": 106.832652,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:47.312Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:47",
+                "_end": "-",
+                "data": {
+                    "t": 112.333251,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:47.813Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:47",
+                "_end": "-",
+                "data": {
+                    "t": 117.942049,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:48.309Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:48",
+                "_end": "-",
+                "data": {
+                    "t": 123.526997,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:48.789Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:48",
+                "_end": "-",
+                "data": {
+                    "t": 129.096768,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:49.221Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:49",
+                "_end": "-",
+                "data": {
+                    "t": 134.647819,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:49.653Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:49",
+                "_end": "-",
+                "data": {
+                    "t": 139.863184,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:50.115Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:50",
+                "_end": "-",
+                "data": {
+                    "t": 144.863184,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:50.741Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:50",
+                "_end": "-",
+                "data": {
+                    "t": 150.199223,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:51.304Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:51",
+                "_end": "-",
+                "data": {
+                    "t": 155.235393,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:51.877Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:51",
+                "_end": "-",
+                "data": {
+                    "t": 160.397558,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:52.661Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:52",
+                "_end": "-",
+                "data": {
+                    "t": 166.61512,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:53.287Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:53",
+                "_end": "-",
+                "data": {
+                    "t": 172.406014,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:13:53.877Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:13:53",
+                "_end": "-",
+                "data": {
+                    "t": 178.173749,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:01.068Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:01",
+                "_end": "-",
+                "data": {
+                    "t": 197.155031,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:01.446Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:01",
+                "_end": "-",
+                "data": {
+                    "t": 202.155031,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:02.197Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:02",
+                "_end": "-",
+                "data": {
+                    "t": 207.657131,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:02.790Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:02",
+                "_end": "-",
+                "data": {
+                    "t": 212.903533,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:03.284Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:03",
+                "_end": "-",
+                "data": {
+                    "t": 218.015001,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:03.846Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:03",
+                "_end": "-",
+                "data": {
+                    "t": 223.323198,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:06.757Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:06",
+                "_end": "-",
+                "data": {
+                    "t": 231.819885,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:07.191Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:07",
+                "_end": "-",
+                "data": {
+                    "t": 236.883395,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:07.797Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:07",
+                "_end": "-",
+                "data": {
+                    "t": 241.901598,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:08.275Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:08",
+                "_end": "-",
+                "data": {
+                    "t": 246.963446,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:08.789Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:08",
+                "_end": "-",
+                "data": {
+                    "t": 252.049717,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:09.299Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:09",
+                "_end": "-",
+                "data": {
+                    "t": 257.055414,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:09.764Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:09",
+                "_end": "-",
+                "data": {
+                    "t": 262.069819,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:10.293Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:10",
+                "_end": "-",
+                "data": {
+                    "t": 267.160359,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:10.902Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:10",
+                "_end": "-",
+                "data": {
+                    "t": 272.187807,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:11.460Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:11",
+                "_end": "-",
+                "data": {
+                    "t": 277.196794,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:12.134Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:12",
+                "_end": "-",
+                "data": {
+                    "t": 282.32353,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:17.914Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:17",
+                "_end": "-",
+                "data": {
+                    "t": 288.634096,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:18.261Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:18",
+                "_end": "-",
+                "data": {
+                    "t": 293.634096,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:18.885Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:18",
+                "_end": "-",
+                "data": {
+                    "t": 298.671115,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:19.447Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:19",
+                "_end": "-",
+                "data": {
+                    "t": 303.762273,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:20.020Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:20",
+                "_end": "-",
+                "data": {
+                    "t": 308.769439,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:20.613Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:20",
+                "_end": "-",
+                "data": {
+                    "t": 313.797828,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:21.195Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:21",
+                "_end": "-",
+                "data": {
+                    "t": 318.856191,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:21.703Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:21",
+                "_end": "-",
+                "data": {
+                    "t": 323.937314,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:22.315Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:22",
+                "_end": "-",
+                "data": {
+                    "t": 328.996922,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:22.821Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:22",
+                "_end": "-",
+                "data": {
+                    "t": 334.079378,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:23.300Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:23",
+                "_end": "-",
+                "data": {
+                    "t": 339.152121,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:23.846Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:23",
+                "_end": "-",
+                "data": {
+                    "t": 344.153917,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:24.325Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:24",
+                "_end": "-",
+                "data": {
+                    "t": 349.176739,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:24.820Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:24",
+                "_end": "-",
+                "data": {
+                    "t": 354.251712,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:25.286Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:25",
+                "_end": "-",
+                "data": {
+                    "t": 359.26268,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:25.830Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:25",
+                "_end": "-",
+                "data": {
+                    "t": 364.300251,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:26.787Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:26",
+                "_end": "-",
+                "data": {
+                    "t": 369.486029,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:27.268Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:27",
+                "_end": "-",
+                "data": {
+                    "t": 374.494126,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:28.133Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:28",
+                "_end": "-",
+                "data": {
+                    "t": 379.596869,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:28.612Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:28",
+                "_end": "-",
+                "data": {
+                    "t": 384.668228,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:30.004Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:30",
+                "_end": "-",
+                "data": {
+                    "t": 389.976579,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:32.179Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:32",
+                "_end": "-",
+                "data": {
+                    "t": 395.411232,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:32.916Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:32",
+                "_end": "-",
+                "data": {
+                    "t": 400.492274,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:34.901Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:34",
+                "_end": "-",
+                "data": {
+                    "t": 406.110253,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:35.511Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:35",
+                "_end": "-",
+                "data": {
+                    "t": 411.312062,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:36.246Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:36",
+                "_end": "-",
+                "data": {
+                    "t": 406.617252,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:36.885Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:36",
+                "_end": "-",
+                "data": {
+                    "t": 401.85954,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:37.238Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:37",
+                "_end": "-",
+                "data": {
+                    "t": 396.93685,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-28T00:12:46.453Z",
+                    "end": "2019-06-28T00:14:38.484Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "18:12:46",
+                "_end": "18:14:38",
+                "data": {
+                    "time": 392.486857
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:43.238Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:43",
+                "_end": "-",
+                "data": {
+                    "t": 394.867095,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:43.893Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:43",
+                "_end": "-",
+                "data": {
+                    "t": 400.021549,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:48.198Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:48",
+                "_end": "-",
+                "data": {
+                    "t": 407.084287,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:48.614Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:48",
+                "_end": "-",
+                "data": {
+                    "t": 412.246078,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:48.965Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:48",
+                "_end": "-",
+                "data": {
+                    "t": 417.314827,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:49.238Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:49",
+                "_end": "-",
+                "data": {
+                    "t": 422.314827,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:49.462Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:49",
+                "_end": "-",
+                "data": {
+                    "t": 427.314827,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:52.086Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:52",
+                "_end": "-",
+                "data": {
+                    "t": 433.315544,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:52.515Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:52",
+                "_end": "-",
+                "data": {
+                    "t": 438.44186,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:52.921Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:52",
+                "_end": "-",
+                "data": {
+                    "t": 443.44186,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:53.429Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:53",
+                "_end": "-",
+                "data": {
+                    "t": 448.49128,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:53.893Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:53",
+                "_end": "-",
+                "data": {
+                    "t": 453.620408,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:54.345Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:54",
+                "_end": "-",
+                "data": {
+                    "t": 458.630088,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:54.822Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:54",
+                "_end": "-",
+                "data": {
+                    "t": 463.632729,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:55.526Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:55",
+                "_end": "-",
+                "data": {
+                    "t": 468.674648,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:56.022Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:56",
+                "_end": "-",
+                "data": {
+                    "t": 473.822094,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:57.158Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:57",
+                "_end": "-",
+                "data": {
+                    "t": 479.144511,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:14:57.886Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:14:57",
+                "_end": "-",
+                "data": {
+                    "t": 484.262839,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:00.320Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:00",
+                "_end": "-",
+                "data": {
+                    "t": 490.388096,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:00.870Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:00",
+                "_end": "-",
+                "data": {
+                    "t": 495.570342,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:02.263Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:02",
+                "_end": "-",
+                "data": {
+                    "t": 491.190171,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:02.615Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:02",
+                "_end": "-",
+                "data": {
+                    "t": 496.315196,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:17.973Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:17",
+                "_end": "-",
+                "data": {
+                    "t": 498.921829,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:18.406Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:18",
+                "_end": "-",
+                "data": {
+                    "t": 504.05747,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:19.223Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:19",
+                "_end": "-",
+                "data": {
+                    "t": 509.302334,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:46.378Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:46",
+                "_end": "-",
+                "data": {
+                    "t": 517.800806,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:48.167Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:48",
+                "_end": "-",
+                "data": {
+                    "t": 523.594601,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:50.423Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:50",
+                "_end": "-",
+                "data": {
+                    "t": 529.624867,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:50.998Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:50",
+                "_end": "-",
+                "data": {
+                    "t": 534.794488,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:57.393Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:57",
+                "_end": "-",
+                "data": {
+                    "t": 532.913219,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:57.927Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:57",
+                "_end": "-",
+                "data": {
+                    "t": 538.075632,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:15:58.406Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:15:58",
+                "_end": "-",
+                "data": {
+                    "t": 543.208443,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:01.415Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:01",
+                "_end": "-",
+                "data": {
+                    "t": 539.647855,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:01.806Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:01",
+                "_end": "-",
+                "data": {
+                    "t": 544.763261,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:02.240Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:02",
+                "_end": "-",
+                "data": {
+                    "t": 549.886789,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:03.901Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:03",
+                "_end": "-",
+                "data": {
+                    "t": 555.628731,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:04.342Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:04",
+                "_end": "-",
+                "data": {
+                    "t": 560.767839,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:07.319Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:07",
+                "_end": "-",
+                "data": {
+                    "t": 567.012868,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:07.830Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:07",
+                "_end": "-",
+                "data": {
+                    "t": 572.027602,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:08.406Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:08",
+                "_end": "-",
+                "data": {
+                    "t": 577.108237,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:08.918Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:08",
+                "_end": "-",
+                "data": {
+                    "t": 582.274487,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:09.429Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:09",
+                "_end": "-",
+                "data": {
+                    "t": 587.297137,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:09.911Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:09",
+                "_end": "-",
+                "data": {
+                    "t": 592.343269,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:10.423Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:10",
+                "_end": "-",
+                "data": {
+                    "t": 597.491396,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:10.968Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:10",
+                "_end": "-",
+                "data": {
+                    "t": 602.497898,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:11.461Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:11",
+                "_end": "-",
+                "data": {
+                    "t": 607.510152,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:12.022Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:12",
+                "_end": "-",
+                "data": {
+                    "t": 612.529797,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:12.664Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:12",
+                "_end": "-",
+                "data": {
+                    "t": 617.769666,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:13.852Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:13",
+                "_end": "-",
+                "data": {
+                    "t": 623.127946,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:17.783Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:17",
+                "_end": "-",
+                "data": {
+                    "t": 629.940031,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:19.240Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:19",
+                "_end": "-",
+                "data": {
+                    "t": 635.389055,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:20.039Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:20",
+                "_end": "-",
+                "data": {
+                    "t": 640.575751,
+                    "Δt": -5,
+                    "key": "left"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:25.493Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:25",
+                "_end": "-",
+                "data": {
+                    "t": 638.209844,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:25.926Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:25",
+                "_end": "-",
+                "data": {
+                    "t": 643.36594,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:26.386Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:26",
+                "_end": "-",
+                "data": {
+                    "t": 648.48782,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:26.846Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:26",
+                "_end": "-",
+                "data": {
+                    "t": 653.493496,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:27.672Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:27",
+                "_end": "-",
+                "data": {
+                    "t": 658.656015,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:29.374Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:29",
+                "_end": "-",
+                "data": {
+                    "t": 664.39831,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-06-28T00:16:30.152Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "18:16:30",
+                "_end": "-",
+                "data": {
+                    "t": 669.681704,
+                    "Δt": 5,
+                    "key": "right"
+                }
+            }
+        ]
+    }
+}

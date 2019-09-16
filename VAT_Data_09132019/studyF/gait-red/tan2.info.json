@@ -1,0 +1,1853 @@
+{
+    "user_id": "tan2",
+    "session_id": "5d51a35781249f67dd06ac5d",
+    "study": "studyF",
+    "workspace": "gait.gait-red",
+    "details": {
+        "workspace": "gait.gait-red",
+        "labels": [
+            {
+                "time": 0.112,
+                "endTime": 0.892,
+                "type": "orange-on-ground",
+                "id": 1
+            },
+            {
+                "time": 0.910497,
+                "endTime": 1.7958328455284862,
+                "type": "orange-in-air",
+                "id": 2
+            },
+            {
+                "time": 1.826079,
+                "endTime": 2.673049105691433,
+                "type": "orange-on-ground",
+                "id": 3
+            },
+            {
+                "time": 2.682457,
+                "endTime": 3.4142862682928183,
+                "type": "orange-in-air",
+                "id": 4
+            },
+            {
+                "time": 3.478,
+                "endTime": 4.1961684552846865,
+                "type": "orange-on-ground",
+                "id": 5
+            },
+            {
+                "time": 4.241999999999427,
+                "endTime": 4.975780813007693,
+                "type": "orange-in-air",
+                "id": 6
+            },
+            {
+                "time": 4.998000000000198,
+                "endTime": 5.526868617886275,
+                "type": "orange-on-ground",
+                "id": 7
+            },
+            {
+                "time": 5.554406,
+                "endTime": 6.2745258048781345,
+                "type": "orange-in-air",
+                "id": 8
+            },
+            {
+                "time": 6.351999999999596,
+                "endTime": 6.867207804877973,
+                "type": "orange-on-ground",
+                "id": 9
+            },
+            {
+                "time": 6.884646999999635,
+                "endTime": 7.835049276422577,
+                "type": "orange-in-air",
+                "id": 10
+            },
+            {
+                "time": 7.84679000000036,
+                "endTime": 8.313209186991962,
+                "type": "orange-on-ground",
+                "id": 11
+            }
+        ],
+        "_starts": [
+            "2019-08-12T18:04:47.000Z"
+        ],
+        "_ends": [
+            "2019-08-12T18:08:00.017Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyF/gait-red/tan2.labels.json",
+    "videoFlash": 0.00001,
+    "surveys": {
+        "user-info": {
+            "firstname": "Zakary",
+            "lastname": "Gibbons"
+        },
+        "practice-first": {
+            "question1": "4",
+            "question2": "ok",
+            "question3": "70",
+            "question4": "5"
+        },
+        "gait-blue": {
+            "question1": "4",
+            "question2": "4",
+            "question3": "50",
+            "question4": "70"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-08-12T18:05:08.475Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:05:08",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 0.112
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:09.261Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "12:05:09",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 0.112,
+                        "endTime": 0.892,
+                        "type": "orange-on-ground",
+                        "id": 1
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:09.790Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:05:09",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 1.414
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:10.413Z",
+                "type": "END",
+                "source": "hotkey:ctb",
+                "_t": "12:05:10",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 1.414,
+                        "endTime": 2.02,
+                        "type": "orange-in-air",
+                        "id": 2
+                    },
+                    "key": "enter"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:10.683Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:05:10",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 2.304
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:11.729Z",
+                "type": "CANCEL",
+                "source": "hotkey",
+                "_t": "12:05:11",
+                "_end": "-",
+                "data": {
+                    "time": 2.304,
+                    "type": "orange-in-air",
+                    "editting": false
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:15.033Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:05:15",
+                "_end": "-",
+                "data": {
+                    "time": 1.414,
+                    "endTime": 2.02,
+                    "type": "orange-in-air",
+                    "id": 2
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:15.305Z",
+                "type": "DELETE",
+                "source": "hotkey",
+                "_t": "12:05:15",
+                "_end": "-",
+                "data": {
+                    "id": 2,
+                    "idx": 1
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:27.514Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:05:27",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 0.900974
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:38.488Z",
+                "type": "CANCEL",
+                "source": "hotkey",
+                "_t": "12:05:38",
+                "_end": "-",
+                "data": {
+                    "time": 0.900974,
+                    "type": "orange-in-air",
+                    "editting": false
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:43.486Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:05:43",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 0.910497
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:47.026Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:05:47",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 0.910497,
+                        "endTime": 1.7958328455284862,
+                        "type": "orange-in-air",
+                        "id": 2
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:51.888Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:05:51",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 1.826079
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:54.264Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:05:54",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 1.826079,
+                        "endTime": 2.673049105691433,
+                        "type": "orange-on-ground",
+                        "id": 3
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:00.974Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:06:00",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 2.782
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:02.744Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:06:02",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 2.782,
+                        "endTime": 3.6972744715448855,
+                        "type": "orange-in-air",
+                        "id": 4
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:07.770Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:06:07",
+                "_end": "-",
+                "data": {
+                    "time": 2.782,
+                    "endTime": 3.6972744715448855,
+                    "type": "orange-in-air",
+                    "id": 4
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:08.410Z",
+                "type": "DELETE",
+                "source": "hotkey",
+                "_t": "12:06:08",
+                "_end": "-",
+                "data": {
+                    "id": 4,
+                    "idx": 3
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:11.356Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:06:11",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 2.682457
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:12.960Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:06:12",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 2.682457
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:14.520Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:06:14",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 2.682457,
+                        "endTime": 3.4142862682928183,
+                        "type": "orange-in-air",
+                        "id": 4
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:20.143Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:06:20",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 3.478
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:21.416Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:06:21",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 3.478,
+                        "endTime": 4.1961684552846865,
+                        "type": "orange-on-ground",
+                        "id": 5
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:26.158Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:06:26",
+                "_end": "-",
+                "data": {
+                    "time": 3.478,
+                    "endTime": 4.1961684552846865,
+                    "type": "orange-on-ground",
+                    "id": 5
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:06:27.268Z",
+                    "end": "2019-08-12T18:06:29.125Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:06:27",
+                "_end": "12:06:29",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        3.478,
+                        4.2976487804879575
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-08-12T18:06:27.268Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:30.415Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:06:30",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 4.242
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:32.059Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:06:32",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 4.241999999999427,
+                        "endTime": 4.975780813007693,
+                        "type": "orange-in-air",
+                        "id": 6
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:37.487Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:06:37",
+                "_end": "-",
+                "data": {
+                    "time": 4.241999999999427,
+                    "endTime": 4.975780813007693,
+                    "type": "orange-in-air",
+                    "id": 6
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:38.269Z",
+                "type": "DESELECT",
+                "source": "data:click",
+                "_t": "12:06:38",
+                "_end": "-",
+                "data": {
+                    "time": 4.242,
+                    "endTime": 5.178741463414098,
+                    "type": "orange-in-air",
+                    "id": 6
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:38.847Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:06:38",
+                "_end": "-",
+                "data": {
+                    "time": 4.241999999999427,
+                    "endTime": 4.975780813007693,
+                    "type": "orange-in-air",
+                    "id": 6
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:06:39.407Z",
+                    "end": "2019-08-12T18:06:40.340Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:06:39",
+                "_end": "12:06:40",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        4.242,
+                        5.178741463414098
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-08-12T18:06:39.407Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:42.270Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:06:42",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 4.998
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:44.073Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:06:44",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 4.998000000000198,
+                        "endTime": 5.526868617886275,
+                        "type": "orange-on-ground",
+                        "id": 7
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:49.041Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:06:49",
+                "_end": "-",
+                "data": {
+                    "time": 4.998000000000198,
+                    "endTime": 5.526868617886275,
+                    "type": "orange-on-ground",
+                    "id": 7
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:06:50.415Z",
+                    "end": "2019-08-12T18:06:52.383Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:06:50",
+                "_end": "12:06:52",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        4.998,
+                        5.921080650406676
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-08-12T18:06:50.415Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:00.943Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:07:00",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 5.554406
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:01.703Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:07:01",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 5.554406,
+                        "endTime": 6.2745258048781345,
+                        "type": "orange-in-air",
+                        "id": 8
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:07.396Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:07:07",
+                "_end": "-",
+                "data": {
+                    "time": 5.554406,
+                    "endTime": 6.2745258048781345,
+                    "type": "orange-in-air",
+                    "id": 8
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:07:08.128Z",
+                    "end": "2019-08-12T18:07:10.765Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:07:08",
+                "_end": "12:07:10",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        5.554406,
+                        6.534081252032655
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-08-12T18:07:08.128Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:15.437Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:07:15",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 6.352
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:16.665Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:07:16",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 6.351999999999596,
+                        "endTime": 6.867207804877973,
+                        "type": "orange-on-ground",
+                        "id": 9
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:21.561Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:07:21",
+                "_end": "-",
+                "data": {
+                    "time": 6.351999999999596,
+                    "endTime": 6.867207804877973,
+                    "type": "orange-on-ground",
+                    "id": 9
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:07:22.328Z",
+                    "end": "2019-08-12T18:07:23.982Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:07:22",
+                "_end": "12:07:23",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        6.352,
+                        7.376560975609559
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-08-12T18:07:22.328Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:31.100Z",
+                "type": "DESELECT",
+                "source": "data:click",
+                "_t": "12:07:31",
+                "_end": "-",
+                "data": {
+                    "time": 6.352,
+                    "endTime": 6.962833495934842,
+                    "type": "orange-on-ground",
+                    "id": 9
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:33.001Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:07:33",
+                "_end": "-",
+                "data": {
+                    "time": 6.351999999999596,
+                    "endTime": 6.867207804877973,
+                    "type": "orange-on-ground",
+                    "id": 9
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:07:33.991Z",
+                    "end": "2019-08-12T18:07:35.052Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:07:33",
+                "_end": "12:07:35",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        6.352,
+                        6.962833495934842
+                    ],
+                    "start": "2019-08-12T18:07:33.991Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:37.024Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:07:37",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 6.884647
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:38.617Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:07:38",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 6.884646999999635,
+                        "endTime": 7.835049276422577,
+                        "type": "orange-in-air",
+                        "id": 10
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:45.768Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:07:45",
+                "_end": "-",
+                "data": {
+                    "time": 6.884646999999635,
+                    "endTime": 7.835049276422577,
+                    "type": "orange-in-air",
+                    "id": 10
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:07:46.912Z",
+                    "end": "2019-08-12T18:07:47.950Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:07:46",
+                "_end": "12:07:47",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        6.884647,
+                        7.977512040650196
+                    ],
+                    "_brushside": 1,
+                    "start": "2019-08-12T18:07:46.912Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:49.151Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:07:49",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 7.84679
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:51.235Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:07:51",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 7.84679000000036,
+                        "endTime": 8.313209186991962,
+                        "type": "orange-on-ground",
+                        "id": 11
+                    }
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:55.140Z",
+                "type": "SELECT",
+                "source": "data:click",
+                "_t": "12:07:55",
+                "_end": "-",
+                "data": {
+                    "time": 7.84679000000036,
+                    "endTime": 8.313209186991962,
+                    "type": "orange-on-ground",
+                    "id": 11
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:07:55.768Z",
+                    "end": "2019-08-12T18:07:56.430Z"
+                },
+                "type": "RESIZE",
+                "source": "data:brush",
+                "_t": "12:07:55",
+                "_end": "12:07:56",
+                "data": {
+                    "brushing": true,
+                    "origin": [
+                        7.84679,
+                        8.393222520325304
+                    ],
+                    "start": "2019-08-12T18:07:55.768Z",
+                    "ε": 0.1,
+                    "mode": "resize"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:58.178Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:07:58",
+                "_end": "-",
+                "data": {
+                    "type": "orange-on-ground",
+                    "time": 8.322
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:58.479Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:07:58",
+                "_end": "-",
+                "data": {
+                    "type": "orange-in-air",
+                    "time": 8.322
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": "2019-08-12T18:05:08.330Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:05:08",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:12.184Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:05:12",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:15.026Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:15",
+                "data": {
+                    "time": 3.84
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:16.357Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:16",
+                "data": {
+                    "time": 0.420894
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:20.298Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:20",
+                "data": {
+                    "time": 0.887313
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:22.459Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "12:05:22",
+                "_end": "-",
+                "data": {
+                    "t": 0.887313,
+                    "Δt": 1,
+                    "key": "right"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:23.274Z",
+                "type": "SKIP",
+                "source": "hotkey",
+                "_t": "12:05:23",
+                "_end": "-",
+                "data": {
+                    "t": 1.887313,
+                    "Δt": -1,
+                    "key": "left"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:25.496Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:25",
+                "data": {
+                    "time": 0.9009738130081298
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:31.273Z",
+                "type": "CHANGE-PLAYBACK-RATE",
+                "source": "video:menu",
+                "_t": "12:05:31",
+                "_end": "-",
+                "data": {
+                    "oldRate": 1,
+                    "newRate": 0.25
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:35.802Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:05:35",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:39.386Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:05:39",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:40.616Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:40",
+                "data": {
+                    "time": 0.910497
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:43.936Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:05:43",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:47.020Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:47",
+                "data": {
+                    "time": 1.67
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:49.354Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:05:49",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:51.613Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:51",
+                "data": {
+                    "time": 1.8260786991872113
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:05:54.261Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:05:54",
+                "data": {
+                    "time": 1.826079
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:55.053Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:05:55",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:58.267Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:05:58",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:59.036Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:05:59",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:05:59.622Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:05:59",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:02.741Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:02",
+                "data": {
+                    "time": 2.782
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:03.148Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:03",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:06.944Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:06",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:07.768Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:07",
+                "data": {
+                    "time": 3.748
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:11.144Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:11",
+                "data": {
+                    "time": 2.682457
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:14.517Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:14",
+                "data": {
+                    "time": 2.682457
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:15.149Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:15",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:18.388Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:18",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:21.412Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:21",
+                "data": {
+                    "time": 3.478
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:21.620Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:21",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:24.554Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:24",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:26.156Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:26",
+                "data": {
+                    "time": 4.242
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:29.131Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:29",
+                "data": {
+                    "time": 4.242
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:32.052Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:32",
+                "data": {
+                    "time": 4.242
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:32.470Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:32",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:34.823Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:34",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:35.435Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:35",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:36.187Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:36",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:37.485Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:37",
+                "data": {
+                    "time": 4.998
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:38.267Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:38",
+                "data": {
+                    "time": 4.998
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:38.843Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:38",
+                "data": {
+                    "time": 4.998
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:40.351Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:40",
+                "data": {
+                    "time": 4.998
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:44.068Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:44",
+                "data": {
+                    "time": 4.998
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:44.619Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:44",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:46.894Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:46",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:49.036Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:49",
+                "data": {
+                    "time": 5.519278
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:52.394Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:52",
+                "data": {
+                    "time": 5.519278
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:54.623Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:06:54",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:06:54.796Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:06:54",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:06:57.589Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:06:57",
+                "data": {
+                    "time": 5.554406
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:01.694Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:01",
+                "data": {
+                    "time": 5.554406
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:02.142Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:02",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:04.901Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:04",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:07.389Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:07",
+                "data": {
+                    "time": 6.234
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:10.773Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:10",
+                "data": {
+                    "time": 6.234
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:11.420Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:11",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:12.109Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:12",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:16.660Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:16",
+                "data": {
+                    "time": 6.352
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:17.211Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:17",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:19.249Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:19",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:20.509Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:20",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:20.914Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:20",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:21.558Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:21",
+                "data": {
+                    "time": 6.95
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:23.996Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:23",
+                "data": {
+                    "time": 6.95
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:24.060Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:24",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:25.708Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:25",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:27.797Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:27",
+                "data": {
+                    "time": 6.9744178861787836
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:29.771Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:29",
+                "data": {
+                    "time": 6.884647
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:31.099Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:31",
+                "data": {
+                    "time": 6.884647
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:32.996Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:32",
+                "data": {
+                    "time": 6.884647
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:35.060Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:35",
+                "data": {
+                    "time": 6.884647
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:38.613Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:38",
+                "data": {
+                    "time": 6.884647
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:39.113Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:39",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:42.398Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:42",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:43.100Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:43",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:43.762Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:43",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:45.765Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:45",
+                "data": {
+                    "time": 7.84679
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:47.962Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:47",
+                "data": {
+                    "time": 7.84679
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:51.229Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:51",
+                "data": {
+                    "time": 7.84679
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:51.786Z",
+                "type": "PLAY",
+                "source": "hotkey",
+                "_t": "12:07:51",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": "2019-08-12T18:07:53.824Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:07:53",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:55.134Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:55",
+                "data": {
+                    "time": 8.322
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-08-12T18:04:47.615Z",
+                    "end": "2019-08-12T18:07:56.446Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:04:47",
+                "_end": "12:07:56",
+                "data": {
+                    "time": 8.322
+                }
+            }
+        ]
+    }
+}

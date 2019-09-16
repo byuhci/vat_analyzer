@@ -1,0 +1,305 @@
+{
+    "user_id": "Orange1",
+    "session_id": "5d07d74381249f67dd06aa87",
+    "study": "studyG",
+    "workspace": "drywall.drywall-orange",
+    "details": {
+        "workspace": "drywall.drywall-orange",
+        "labels": [
+            {
+                "time": 72.925176,
+                "endTime": 144.98777235431794,
+                "type": "cutting",
+                "id": 1
+            }
+        ],
+        "_starts": [
+            "2019-06-17T18:28:27.000Z"
+        ],
+        "_ends": [
+            "2019-06-17T18:25:43.071Z",
+            "2019-06-17T18:30:19.366Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyG/drywall-orange/Orange1.labels.json",
+    "videoFlash": 3.411767,
+    "surveys": {
+        "user-info": {
+            "firstname": "Tara",
+            "lastname": "Nye",
+            "email": "taraashleynye@yahoo.com"
+        },
+        "practice-first": {
+            "question1": "4",
+            "question2": "';l",
+            "question3": "40",
+            "question4": "3"
+        },
+        "practice-second": {},
+        "practice-third": {},
+        "practice-survey": {},
+        "drywall-blue": {
+            "question1": "3",
+            "question2": "3",
+            "question3": "40",
+            "question4": "40"
+        },
+        "drywall-red": {
+            "question1": "3",
+            "question2": "3",
+            "question3": "40",
+            "question4": "40"
+        }
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-06-17T18:28:59.794Z",
+                "type": "START",
+                "source": "hotkey",
+                "_t": "12:28:59",
+                "_end": "-",
+                "data": {
+                    "type": "cutting",
+                    "time": 72.925176
+                }
+            },
+            {
+                "time": "2019-06-17T18:29:52.542Z",
+                "type": "END",
+                "source": "data:click:h_pos",
+                "_t": "12:29:52",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 72.925176,
+                        "endTime": 144.98777235431794,
+                        "type": "cutting",
+                        "id": 1
+                    }
+                }
+            }
+        ],
+        "navigationEvents": [
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:28:40.760Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:28:40",
+                "data": {
+                    "time": 56.672399
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:28:45.559Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:28:45",
+                "data": {
+                    "time": 72.588859
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:28:52.036Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:28:52",
+                "data": {
+                    "time": 72.5215
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:28:52.971Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:28:52",
+                "data": {
+                    "time": 73.464809
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:28:54.932Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:28:54",
+                "data": {
+                    "time": 72.819016
+                }
+            },
+            {
+                "time": "2019-06-17T18:28:55.038Z",
+                "type": "PAUSE",
+                "source": "hotkey",
+                "_t": "12:28:55",
+                "_end": "-",
+                "data": {
+                    "key": "space"
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:01.951Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:01",
+                "data": {
+                    "time": 80.377887
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:11.644Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:11",
+                "data": {
+                    "time": 144.680002
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:29:17.804Z",
+                    "end": "2019-06-17T18:29:18.302Z"
+                },
+                "type": "SCRUB",
+                "source": "video:drag",
+                "_t": "12:29:17",
+                "_end": "12:29:18",
+                "data": {
+                    "to": 125.002833,
+                    "from": 144.680002
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:22.605Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:22",
+                "data": {
+                    "time": 536.804976
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:23.885Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:23",
+                "data": {
+                    "time": 508.145789
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:28.966Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:28",
+                "data": {
+                    "time": 340.946877
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:42.732Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:42",
+                "data": {
+                    "time": 351.66339
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:29:52.533Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:29:52",
+                "data": {
+                    "time": 351.66339
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:30:06.928Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:30:06",
+                "data": {
+                    "time": 386.109326
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:30:09.269Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:30:09",
+                "data": {
+                    "time": 467.248642
+                }
+            },
+            {
+                "time": {
+                    "start": "2019-06-17T18:28:27.101Z",
+                    "end": "2019-06-17T18:30:10.534Z"
+                },
+                "type": "SCRUB",
+                "source": "data:drag",
+                "_t": "12:28:27",
+                "_end": "12:30:10",
+                "data": {
+                    "time": 582.833894
+                }
+            }
+        ]
+    }
+}

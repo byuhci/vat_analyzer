@@ -1,0 +1,101 @@
+{
+    "user_id": "Grey2",
+    "session_id": "5d7bcede81249f67dd06ad0f",
+    "study": "studyE",
+    "workspace": "cane.cane-yellow",
+    "details": {
+        "workspace": "cane.cane-yellow",
+        "labels": [
+            {
+                "time": 28.347953,
+                "endTime": 52.228057,
+                "type": "ground",
+                "id": 1
+            },
+            {
+                "time": 54.76212,
+                "endTime": 64.192974,
+                "type": "ground",
+                "id": 2
+            }
+        ],
+        "_starts": [
+            "2019-09-13T17:21:57.000Z"
+        ],
+        "_ends": [
+            "2019-09-13T17:23:13.216Z"
+        ]
+    },
+    "labels_file": "/home/ubuntu/vat/data/user-studies/studyE/practice-third/Grey2.labels.json",
+    "videoFlash": 2.133995,
+    "surveys": {
+        "user-info": {
+            "firstname": "Benjamin",
+            "lastname": "Griffin",
+            "email": "benjamingriffin98@gmail.com"
+        },
+        "practice-first": {
+            "question1": "5",
+            "question2": "ok",
+            "question3": "70",
+            "question4": "5"
+        },
+        "practice-second": {}
+    },
+    "logs": {
+        "labelEvents": [
+            {
+                "time": "2019-09-13T17:22:34.536Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "11:22:34",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 28.347953
+                }
+            },
+            {
+                "time": "2019-09-13T17:22:58.394Z",
+                "type": "END",
+                "source": "side-bar:button:ctb",
+                "_t": "11:22:58",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 28.347953,
+                        "endTime": 52.228057,
+                        "type": "ground",
+                        "id": 1
+                    }
+                }
+            },
+            {
+                "time": "2019-09-13T17:23:00.921Z",
+                "type": "START",
+                "source": "side-bar:button",
+                "_t": "11:23:00",
+                "_end": "-",
+                "data": {
+                    "type": "ground",
+                    "time": 54.76212
+                }
+            },
+            {
+                "time": "2019-09-13T17:23:10.363Z",
+                "type": "END",
+                "source": "side-bar:button:ctb",
+                "_t": "11:23:10",
+                "_end": "-",
+                "data": {
+                    "lbl": {
+                        "time": 54.76212,
+                        "endTime": 64.192974,
+                        "type": "ground",
+                        "id": 2
+                    }
+                }
+            }
+        ]
+    }
+}
