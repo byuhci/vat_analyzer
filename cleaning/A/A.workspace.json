@@ -1,0 +1,80 @@
+{
+  "workspace": [
+    "cleaning",
+    "A"
+  ],
+  "labels": {
+    "ducks": {
+      "path": "cleaning/A/ducks.labels.json",
+      "event-map": {
+        "1": "ducks",
+        "2": "move"
+      }
+    },
+    "fake": {
+      "path": "cleaning/A/fake.labels.json",
+      "event-map": {
+        "1": "not-ducks"
+      }
+    },
+    "user-labels": {
+      "path": "cleaning/A/user-labels.labels.json",
+      "event-map": {
+        "1": "cats",
+        "2": "cows"
+      }
+    },
+    "null2": {
+      "path": "cleaning/A/null2.labels.json",
+      "event-map": {
+        "1": 0
+      }
+    },
+    "null-only": {
+      "path": "cleaning/A/null-only.labels.json",
+      "event-map": {
+        "1": "and",
+        "2": "now",
+        "3": "for",
+        "4": "something",
+        "5": "completely",
+        "6": "different"
+      }
+    }
+  },
+  "video": {
+    "video": {
+      "path": "cleaning/A/video.mp4",
+      "flashes": [
+        8.325749
+      ]
+    }
+  },
+  "data": {
+    "data": {
+      "path": "cleaning/A/data.csv",
+      "labelled": false,
+      "format": "bdl",
+      "Hz": 1000,
+      "channels": "AGCLB",
+      "flashes": [
+        0,
+        425360
+      ]
+    },
+    "energy": {
+      "path": "cleaning/A/energy.csv",
+      "labelled": false,
+      "type": "energy",
+      "format": "csv",
+      "Hz": 4.0,
+      "channels": "AGCLB",
+      "flashes": [
+        0,
+        425360
+      ],
+      "window-length": 50,
+      "overlap": 0.5
+    }
+  }
+}
